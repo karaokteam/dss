@@ -1,0 +1,66 @@
+# Inference recipe of the final submission (public LB 0.82093).
+
+# Checkpoints in work/weights. full = trained on all images (test set), split = trained on 70% (split_val).
+models:
+  y26l_1536:     {type: yolo,   full: yolo26l_1536_full.pt,      split: split/yolo26l_1536_split.pt}
+  y26l_1920:     {type: yolo,   full: yolo26l_1920_full.pt,      split: split/yolo26l_1920_split.pt}
+  y26x_1920:     {type: yolo,   full: yolo26x_1920_full.pt,      split: split/yolo26x_1920_split.pt}
+  y26l_1920_aug: {type: yolo,   full: yolo26l_1920_aug_full.pt,  split: split/yolo26l_1920_aug_split.pt}
+  rf_1536:       {type: rfdetr, full: rfdetrL_1536_full_ema.pth, split: split/rfdetrL_1536_split.pth}
+  rf_1920:       {type: rfdetr, full: rfdetrL_1920_full_ema.pth, split: split/rfdetrL_1920_split.pth}
+
+# Stage 1: one pass = one model at one image size, optionally on a mirrored image. weight = weight in WBF.
+passes:
+  - {id: 1,  model: y26l_1536,     size: 1536, hflip: false, vflip: false, weight: 1, half: true}
+  - {id: 2,  model: y26l_1536,     size: 1536, hflip: true,  vflip: false, weight: 1}
+  - {id: 3,  model: y26l_1536,     size: 1920, hflip: false, vflip: false, weight: 1}
+  - {id: 4,  model: y26l_1536,     size: 1920, hflip: true,  vflip: false, weight: 1}
+  - {id: 5,  model: y26l_1536,     size: 2304, hflip: false, vflip: false, weight: 1}
+  - {id: 6,  model: y26l_1536,     size: 2304, hflip: true,  vflip: false, weight: 1}
+  - {id: 7,  model: y26l_1920,     size: 1920, hflip: false, vflip: false, weight: 2}
+  - {id: 8,  model: y26l_1920,     size: 1920, hflip: true,  vflip: false, weight: 2}
+  - {id: 9,  model: rf_1536,       size: 1536, hflip: false, vflip: false, weight: 1}
+  - {id: 10, model: rf_1536,       size: 1536, hflip: true,  vflip: false, weight: 1}
+  - {id: 11, model: rf_1920,       size: 1920, hflip: false, vflip: false, weight: 1}
+  - {id: 12, model: rf_1920,       size: 1920, hflip: true,  vflip: false, weight: 1}
+  - {id: 13, model: y26l_1536,     size: 1536, hflip: false, vflip: true,  weight: 1}
+  - {id: 14, model: y26l_1920,     size: 1920, hflip: false, vflip: true,  weight: 2}
+  - {id: 15, model: y26l_1536,     size: 1536, hflip: true,  vflip: true,  weight: 1}
+  - {id: 16, model: y26l_1920,     size: 1920, hflip: true,  vflip: true,  weight: 2}
+  - {id: 17, model: y26l_1920,     size: 2304, hflip: false, vflip: false, weight: 2}
+  - {id: 18, model: y26l_1920,     size: 2304, hflip: true,  vflip: false, weight: 2}
+  - {id: 19, model: y26x_1920,     size: 1920, hflip: false, vflip: false, weight: 2}
+  - {id: 20, model: y26x_1920,     size: 1920, hflip: true,  vflip: false, weight: 2}
+  - {id: 21, model: y26l_1920_aug, size: 1920, hflip: false, vflip: false, weight: 2}
+  - {id: 22, model: y26l_1920_aug, size: 1920, hflip: true,  vflip: false, weight: 2}
+
+yolo_inference: {conf: 0.005, iou: 0.7, max_det: 1000}
+rfdetr_inference: {threshold: 0.001, num_select: 300}
+wbf: {iou: 0.7, conf_type: box_and_model_avg, skip_box_thr: 0.001}
+
+# Stage 2: new score = p^blend * fused_score^(1 - blend)
+calibrator:
+  support_iou: 0.55
+  blend: 0.5
+  folds: 5
+  gbm: {max_iter: 250, learning_rate: 0.05, max_leaf_nodes: 15, min_samples_leaf: 40, l2_regularization: 1.0}
+  random_state: 0
+
+# Stage 3: car/van boxes, s^alpha * q^(1 - alpha)
+dino_carvan:
+  weights: dino_carvan_vitl.pt
+  backbone: vit_large_patch14_dinov2.lvd142m
+  image_size: 224
+  min_conf: 0.03
+  alpha: 0.6
+
+# Stage 4: truck/bus boxes, s^alpha * p^(1 - alpha)
+convnext_cls4:
+  weights: convnextL_cls4_split.pt
+  backbone: convnext_large.fb_in22k_ft_in1k_384
+  crop_size: 128
+  input_size: 224
+  classes: [truck, bus]
+  min_conf: 0.03
+  alpha: 0.8
+  below_min_prob: 0.25

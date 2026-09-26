@@ -61,8 +61,9 @@ only runs on the same GPU type and TensorRT version it was built with (here H200
 `triton/` serves the fp16 engine with Triton Inference Server: a client sends one JPEG (like a frame from a drone
 camera) and gets the boxes back. The server decodes the JPEG, fits it into 1920×1920, runs the engine and NMS
 (confidence 0.25), and returns up to 300 boxes (x1, y1, x2, y2, score, class) in original image pixels. On a test image
-it finds the same 67 boxes and classes as running the engine directly with Ultralytics; scores differ by up to 0.09
-because the image is resized on the GPU instead of with OpenCV.
+its 67 boxes all match running the engine directly with Ultralytics (same box and class). Scores differ by up to
+0.09 because the image is resized on the GPU instead of with OpenCV, so a box near the 0.25 cut-off can come or go:
+the direct run had one more, a 0.32 bus on top of a truck.
 
 It runs two copies of the model on the GPU with dynamic batching (Triton waits up to 2 ms to group waiting requests
 into one batch of up to 16). In our load tests on one H200 this was the best setup: about 108 images/s with 32

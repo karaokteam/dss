@@ -1,0 +1,13 @@
+# Satır sonları herkeste aynı (Windows/Mac/Linux karışık ekip)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pt binary
+*.pdf binary
+
+# Satır listesi dosyaları: iki kişi aynı anda ekleme yaparsa conflict yerine ikisini de al
+requirements.txt merge=union
+.gitignore merge=union
+
+# Notebook'lar satır bazlı birleştirilemez — kimse başkasının notebook'unu düzenlemez
+*.ipynb -diff

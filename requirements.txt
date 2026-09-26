@@ -1,0 +1,13 @@
+# Alfabetik, satır başına bir paket. Ekleme serbest (chore/ branch); .gitattributes merge=union.
+numpy
+openai           # GLM OpenAI-uyumluysa (OI-LLM-1)
+pandas
+pillow
+pydantic>=2.6
+pydeck
+pytest
+python-dotenv
+ruff
+scipy            # Hungarian (linear_sum_assignment)
+streamlit
+ultralytics      # YOLO

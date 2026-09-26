@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Sırlar
+.env
+
+# Veri / model / cache (repo dışı)
+models/*
+!models/.gitkeep
+cache/*
+!cache/.gitkeep
+kaggle/submissions/
+*.pt
+*.onnx
+
+# Notebook / editör
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store

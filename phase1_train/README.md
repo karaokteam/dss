@@ -6,7 +6,7 @@ Detecting **car, van, truck and bus** in drone images. Metric: mAP@0.5 over the 
 ## The pipeline in one picture
 
 ```
- test image ──► 6 detectors × TTA = 22 inference passes            (YOLO26-L/X, RF-DETR-L; flips, 3 scales)
+ test image ──► 6 trained detectors, run 22 times (sizes, mirrors) ── see "Models and passes"
                     │
                     ▼
    Stage 1  Weighted Boxes Fusion, per class ─────────────────────► fused.csv
@@ -30,6 +30,56 @@ Detecting **car, van, truck and bus** in drone images. Metric: mAP@0.5 over the 
 | **+ stage 4 (final)** | +0.14 (stage 4 on the plain fusion) | **0.82093** |
 
 Earlier milestones: YOLO + RF-DETR fusion 0.78710, 10-pass TTA 0.79972, 12-pass TTA 0.80731.
+
+## Models and passes
+
+Two architectures (YOLO26 and RF-DETR), **six trained detectors**. All start from COCO-pretrained weights and are
+trained on all 6,471 labelled images for the test set. Each also has a "split twin" trained on 70% of the images;
+the twins are only used on split_val (to make decisions and to fit the calibrator).
+
+| # | Detector | Trained at | split_val alone (twin) | Passes | Why it is in the ensemble |
+|---|---|---|---|---|---|
+| 1 | YOLO26-L | 1536 px | 82.66 | 8 | the first strong model |
+| 2 | YOLO26-L | 1920 px | 83.71 | 6 | higher resolution helps the small vehicles (+1.05 alone) |
+| 3 | YOLO26-X | 1920 px | 84.01 | 2 | larger model, best single detector (+0.20 in the ensemble) |
+| 4 | YOLO26-L, augmented | 1920 px | 83.54 | 2 | blur / haze / colour / JPEG augmentation and more van-truck-bus images (+0.10 in the ensemble) |
+| 5 | RF-DETR-L | 1536 px | 82.60 | 2 | a different architecture (transformer); removing both RF-DETRs costs −0.44 |
+| 6 | RF-DETR-L | 1920 px | 83.28 | 2 | same, higher resolution |
+
+A **pass** is one run of one detector over all images: at one input size, on the original image or on a mirrored
+copy (boxes found on a mirrored image are mirrored back). The 22 passes are the six detectors run in different ways
+(test-time augmentation), not 22 models. **Weight** is how much the pass counts in the fusion: the three strongest
+YOLO models (2, 3, 4) count double.
+
+| Pass | Detector | Input size | Image the detector sees | Weight |
+|---|---|---|---|---|
+| 1 | 1 · YOLO26-L 1536 | 1536 | original | 1 |
+| 2 | 1 · YOLO26-L 1536 | 1536 | mirrored left-right | 1 |
+| 3 | 1 · YOLO26-L 1536 | 1920 (enlarged) | original | 1 |
+| 4 | 1 · YOLO26-L 1536 | 1920 (enlarged) | mirrored left-right | 1 |
+| 5 | 1 · YOLO26-L 1536 | 2304 (enlarged) | original | 1 |
+| 6 | 1 · YOLO26-L 1536 | 2304 (enlarged) | mirrored left-right | 1 |
+| 7 | 2 · YOLO26-L 1920 | 1920 | original | 2 |
+| 8 | 2 · YOLO26-L 1920 | 1920 | mirrored left-right | 2 |
+| 9 | 5 · RF-DETR-L 1536 | 1536 | original | 1 |
+| 10 | 5 · RF-DETR-L 1536 | 1536 | mirrored left-right | 1 |
+| 11 | 6 · RF-DETR-L 1920 | 1920 | original | 1 |
+| 12 | 6 · RF-DETR-L 1920 | 1920 | mirrored left-right | 1 |
+| 13 | 1 · YOLO26-L 1536 | 1536 | upside down | 1 |
+| 14 | 2 · YOLO26-L 1920 | 1920 | upside down | 2 |
+| 15 | 1 · YOLO26-L 1536 | 1536 | upside down and left-right (rotated 180°) | 1 |
+| 16 | 2 · YOLO26-L 1920 | 1920 | upside down and left-right (rotated 180°) | 2 |
+| 17 | 2 · YOLO26-L 1920 | 2304 (enlarged) | original | 2 |
+| 18 | 2 · YOLO26-L 1920 | 2304 (enlarged) | mirrored left-right | 2 |
+| 19 | 3 · YOLO26-X 1920 | 1920 | original | 2 |
+| 20 | 3 · YOLO26-X 1920 | 1920 | mirrored left-right | 2 |
+| 21 | 4 · YOLO26-L 1920 augmented | 1920 | original | 2 |
+| 22 | 4 · YOLO26-L 1920 augmented | 1920 | mirrored left-right | 2 |
+
+The numbering is the order in which the passes were added during the competition; it is kept because the fused
+file is reproduced byte-for-byte in this order. Enlarged inputs make small vehicles bigger for the detector; the
+upside-down passes work because all YOLO models were trained with vertical flips (a drone view has no "up").
+The same table is in `configs/pipeline.yaml` (`hflip` = mirrored left-right, `vflip` = upside down).
 
 ## Repository layout
 
@@ -93,24 +143,13 @@ were then retrained on 100% of the data ("full") with the same recipe; the 70% m
 because the calibrator is fitted on their split_val predictions. Local gains transferred to the leaderboard at
 roughly 85%, except for extra TTA passes (below).
 
-**Detectors** (`02`, `03`). Ultralytics YOLO26 (COCO-pretrained), trained at high resolution because the vehicles are
-small (median ~40×40 px):
+**Detectors** (`02`, `03`). The six detectors are listed under "Models and passes". They are trained at high
+resolution because the vehicles are small (median ~40×40 px). Inference uses **multi-label NMS**: a box is kept under
+every class above the threshold (+2.9 mAP, because mAP ranks each class separately).
 
-| Model | Input | split twin alone | Notes |
-|---|---|---|---|
-| YOLO26-L | 1536 | 82.66 | |
-| YOLO26-L | 1920 | 83.71 | 1920 px training gave +1.05 over 1536 |
-| YOLO26-X | 1920 | 84.01 | +0.20 in the ensemble |
-| YOLO26-L, augmented | 1920 | 83.54 | blur/haze/gamma/white-balance/JPEG, stronger colour and scale jitter, class-balanced sampling (van/truck/bus images repeated); weaker alone, +0.10 in the ensemble, +0.13 on split_test |
-| RF-DETR-L | 1536 | 82.60 | a different architecture: removing both RF-DETR models costs −0.44 |
-| RF-DETR-L | 1920 | 83.28 | |
-
-All use vertical flips as training augmentation (a drone view has no "up"). Inference uses **multi-label NMS**: a
-box is kept under every class above the threshold (+2.9 mAP, because mAP ranks each class separately).
-
-**Stage 1 – fusion** (`10`, `11`). Each of the 22 passes is one model at one input size, possibly on a mirrored
-image. Weighted Boxes Fusion merges boxes of the same class (IoU 0.7); the two strongest YOLO models count double.
-The fused score is the weighted mean score times the share of passes that found the box.
+**Stage 1 – fusion** (`10`, `11`). The 22 passes are fused with Weighted Boxes Fusion, which merges boxes of the
+same class (IoU 0.7). The fused score is the weighted mean score times the share of (weighted) passes that found
+the box.
 
 **Stage 2 – calibrator** (`12`). WBF counts passes, so six TTA passes of one checkpoint count more than three
 different model families agreeing. For every fused box we compute, per model family, its best matching score and the

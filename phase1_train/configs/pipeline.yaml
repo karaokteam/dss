@@ -9,7 +9,8 @@ models:
   rf_1536:       {type: rfdetr, full: rfdetrL_1536_full_ema.pth, split: split/rfdetrL_1536_split.pth}
   rf_1920:       {type: rfdetr, full: rfdetrL_1920_full_ema.pth, split: split/rfdetrL_1920_split.pth}
 
-# Stage 1: one pass = one model at one image size, optionally on a mirrored image. weight = weight in WBF.
+# Stage 1: one pass = one detector at one input size, on the original or a mirrored image (README "Models and passes").
+# hflip = mirrored left-right, vflip = upside down, weight = how much the pass counts in WBF.
 passes:
   - {id: 1,  model: y26l_1536,     size: 1536, hflip: false, vflip: false, weight: 1, half: true}
   - {id: 2,  model: y26l_1536,     size: 1536, hflip: true,  vflip: false, weight: 1}

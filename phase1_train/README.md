@@ -98,11 +98,3 @@ YOLO_PY=/path/to/yolo/python RFDETR_PY=/path/to/rfdetr/python bash run_inference
 
 From scratch: `bash run_training.sh`, copy the checkpoints to `work/weights/` (names in `configs/pipeline.yaml`),
 then `run_inference.sh`. For new images: `bash run_inference.sh /path/to/images`.
-
-## Notes
-
-* Stage 1 reproduces the submitted fusion exactly (`fused.csv` md5 `79ad54a28a7c9b74b6f7962b8e47fc85`).
-* The submitted calibrator (stage 2) was not seeded, so a refit gives slightly different scores; this code fixes
-  the seed. The submitted final file has md5 `45c931b0b830e20f71ce8490e4946e48`.
-* Only the competition's training data was used, with general pretrained weights (COCO, ImageNet, DINOv2).
-  Licences: Ultralytics AGPL-3.0, rfdetr / timm Apache-2.0, ensemble-boxes MIT, scikit-learn BSD-3-Clause.

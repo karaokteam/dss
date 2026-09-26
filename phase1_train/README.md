@@ -1,7 +1,42 @@
 # Phase 1: vehicle detection (karaokteam)
 
-Detecting car, van, truck and bus in drone images for the Level Up AI | ROKETSAN hackathon.
-Metric: mAP@0.5 over the four classes. Final submission: **public leaderboard 0.82093**.
+The task was to find cars, vans, trucks and buses in drone images, scored by mAP@0.5. Our final submission scored
+**0.82093** on the public leaderboard.
+
+## How we approached it
+
+The images come from VisDrone, which has had its own detection challenge for several years, so we did not start
+from zero. We read what the winning VisDrone-DET teams did (for example TPH-YOLOv5 from the 2021 challenge) and
+used their recipe as our starting point:
+
+- **Train at high resolution.** Most vehicles are tiny (around 40×40 px), so we trained at 1536 and 1920 px
+  instead of the usual 640.
+- **Train different models and combine them.** The winners ensemble several detectors, so we trained six: four
+  YOLO26 variants and two RF-DETR models (a transformer, so it makes different mistakes), at different resolutions.
+  One of the YOLOs was trained with extra blur, haze and colour changes and with more van / truck / bus images
+  (repeat-factor sampling from LVIS), because the test images come from other places and cameras.
+- **Test-time augmentation.** Each model is also run on mirrored and enlarged copies of the image, 22 runs in
+  total, and all boxes are merged with Weighted Boxes Fusion, the usual choice in past Kaggle detection
+  competitions.
+- **A second-stage classifier for classes that look alike.** TPH-YOLOv5 added a separate classifier for the
+  categories its detector confused. Our biggest error was exactly that: car vs van, and truck vs bus.
+
+What we added ourselves:
+
+- **Several labels per box.** When the models are unsure, a vehicle is kept as both "car" and "van" with
+  different scores. mAP ranks each class separately, so this alone gave +2.9.
+- **A calibrator on top of the fusion.** Fusion counts runs, so six mirrored runs of the same model look like
+  strong agreement even though they are really one opinion. For every fused box we look at which of the six models
+  found it, how confident each one was, and whether a competing class (car vs van, truck vs bus) sits in the same
+  place. A small gradient-boosting model per class, trained on held-out images, turns this into a probability
+  that the box is real, and we rank boxes by it. It never moves or removes a box. This was worth +0.66 on the
+  leaderboard.
+- **Our own version of the second stage.** The classifiers don't overwrite the detector's label; they only
+  adjust its score. Car / van boxes go to a DINOv2 ViT-L classifier (built by a teammate) that sees a crop twice
+  the vehicle's size, so it can judge its size against the road and the cars around it. Truck / bus boxes go to
+  a ConvNeXt-L classifier, which added another +0.32.
+- **Honest validation.** We kept 15% of the labelled images aside and made every decision on them, then retrained
+  the final models on all the data.
 
 ## Pipeline
 

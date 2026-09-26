@@ -1,0 +1,6 @@
+# On top of phase1_train/requirements/yolo.txt (versions we used, CUDA 13.0)
+tensorrt-cu13==11.3.0.99
+onnx==1.23.0
+onnxslim==0.1.96
+nvidia-modelopt[onnx]==0.47.0
+matplotlib

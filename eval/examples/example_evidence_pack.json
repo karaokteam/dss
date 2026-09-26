@@ -1,0 +1,479 @@
+{
+ "schema_version": "1.0",
+ "image": {
+  "image_id": "img_003839",
+  "capture_time": "13:25",
+  "width_px": 960,
+  "height_px": 540,
+  "zone": "Kuzey Yolu",
+  "center_lat": 39.937402,
+  "center_lon": 32.848781,
+  "dist_to_base_m": 1768,
+  "footprint_m": [
+   149,
+   84
+  ]
+ },
+ "detections": [
+  {
+   "det_id": "D1",
+   "label": "car",
+   "conf": 0.88,
+   "lat": 39.93721,
+   "lon": 32.848236,
+   "dist_to_base_m": 1757,
+   "track_id": "T0047",
+   "match_dist_m": 0.3
+  },
+  {
+   "det_id": "D2",
+   "label": "car",
+   "conf": 0.88,
+   "lat": 39.937403,
+   "lon": 32.84903,
+   "dist_to_base_m": 1764,
+   "track_id": "T0115",
+   "match_dist_m": 0.3
+  },
+  {
+   "det_id": "D3",
+   "label": "truck",
+   "conf": 0.88,
+   "lat": 39.937373,
+   "lon": 32.848245,
+   "dist_to_base_m": 1775,
+   "track_id": "T0182",
+   "match_dist_m": 0.3
+  },
+  {
+   "det_id": "D4",
+   "label": "car",
+   "conf": 0.88,
+   "lat": 39.937248,
+   "lon": 32.849379,
+   "dist_to_base_m": 1741,
+   "track_id": "T0183",
+   "match_dist_m": 0.3
+  }
+ ],
+ "motions": [
+  {
+   "track_id": "T0047",
+   "det_id": "D1",
+   "window": "11:25-13:25",
+   "dist_start_m": 1763,
+   "dist_min_m": 1753,
+   "dist_now_m": 1757,
+   "approach_rate_30m_mps": -0.0,
+   "avg_speed_mps": 7.4,
+   "speed_last_30m_mps": 0.0,
+   "heading_deg": 71,
+   "heading_cardinal": "D",
+   "toward_base_cos": -0.08,
+   "path_len_m": 29014,
+   "eta_min": null,
+   "stops": [
+    {
+     "start": "11:40",
+     "end": "12:00",
+     "minutes": 20,
+     "dist_to_base_m": 1760
+    }
+   ],
+   "pattern": "dolaniyor"
+  },
+  {
+   "track_id": "T0115",
+   "det_id": "D2",
+   "window": "11:25-13:25",
+   "dist_start_m": 1796,
+   "dist_min_m": 1764,
+   "dist_now_m": 1764,
+   "approach_rate_30m_mps": 0.01,
+   "avg_speed_mps": 0.0,
+   "speed_last_30m_mps": 0.0,
+   "heading_deg": 143,
+   "heading_cardinal": "GD",
+   "toward_base_cos": 0.9,
+   "path_len_m": 83,
+   "eta_min": null,
+   "stops": [
+    {
+     "start": "11:25",
+     "end": "13:25",
+     "minutes": 120,
+     "dist_to_base_m": 1796
+    }
+   ],
+   "pattern": "sabit"
+  },
+  {
+   "track_id": "T0182",
+   "det_id": "D3",
+   "window": "11:25-13:25",
+   "dist_start_m": 7446,
+   "dist_min_m": 1769,
+   "dist_now_m": 1775,
+   "approach_rate_30m_mps": 0.0,
+   "avg_speed_mps": 4.2,
+   "speed_last_30m_mps": 0.0,
+   "heading_deg": 190,
+   "heading_cardinal": "G",
+   "toward_base_cos": 0.91,
+   "path_len_m": 7581,
+   "eta_min": null,
+   "stops": [
+    {
+     "start": "11:25",
+     "end": "11:45",
+     "minutes": 20,
+     "dist_to_base_m": 7446
+    },
+    {
+     "start": "12:15",
+     "end": "13:25",
+     "minutes": 70,
+     "dist_to_base_m": 1771
+    }
+   ],
+   "pattern": "sabit"
+  },
+  {
+   "track_id": "T0183",
+   "det_id": "D4",
+   "window": "11:25-13:25",
+   "dist_start_m": 4270,
+   "dist_min_m": 1741,
+   "dist_now_m": 1741,
+   "approach_rate_30m_mps": 2.09,
+   "avg_speed_mps": 6.5,
+   "speed_last_30m_mps": 2.2,
+   "heading_deg": 133,
+   "heading_cardinal": "GD",
+   "toward_base_cos": 0.8,
+   "path_len_m": 11758,
+   "eta_min": 13.9,
+   "stops": [
+    {
+     "start": "11:35",
+     "end": "11:50",
+     "minutes": 15,
+     "dist_to_base_m": 6230
+    },
+    {
+     "start": "11:55",
+     "end": "12:30",
+     "minutes": 35,
+     "dist_to_base_m": 5061
+    },
+    {
+     "start": "12:35",
+     "end": "12:50",
+     "minutes": 15,
+     "dist_to_base_m": 7231
+    },
+    {
+     "start": "12:55",
+     "end": "13:15",
+     "minutes": 20,
+     "dist_to_base_m": 5511
+    }
+   ],
+   "pattern": "duraklayip_yaklasiyor"
+  }
+ ],
+ "unmatched_tracks": [],
+ "zone_summary": {
+  "zone": "Kuzey Yolu",
+  "detected_counts": {
+   "car": 3,
+   "truck": 1
+  },
+  "heavy_vehicle_present": true
+ },
+ "reports": [
+  {
+   "report_id": "R001",
+   "time": "13:05",
+   "source": "official",
+   "text": "39.9374N 32.8483E civarinda 1 kamyon goruldu, yukleri tespit edilemedi.",
+   "scope": "koordinat",
+   "lat": 39.9374,
+   "lon": 32.8483,
+   "minutes_before_capture": 20,
+   "dist_to_frame_center_m": 41,
+   "checks": {
+    "tracks_near_at_report_time": [
+     {
+      "track_id": "T0182",
+      "dist_m": 0
+     },
+     {
+      "track_id": "T0115",
+      "dist_m": 52
+     }
+    ],
+    "detections_near": [
+     {
+      "det_id": "D1",
+      "label": "car",
+      "dist_m": 21,
+      "has_track": true
+     },
+     {
+      "det_id": "D2",
+      "label": "car",
+      "dist_m": 62,
+      "has_track": true
+     },
+     {
+      "det_id": "D3",
+      "label": "truck",
+      "dist_m": 5,
+      "has_track": true
+     },
+     {
+      "det_id": "D4",
+      "label": "car",
+      "dist_m": 93,
+      "has_track": true
+     }
+    ],
+    "stationary_tracks_near": [
+     "T0182",
+     "T0115"
+    ],
+    "label_counts_near": {
+     "car": 3,
+     "truck": 1
+    }
+   }
+  },
+  {
+   "report_id": "R065",
+   "time": "12:20",
+   "source": "official",
+   "text": "Kuzey Yolu bolgesindeki devriyeyle telsiz baglantisi 40 dakikadir kurulamiyor.",
+   "scope": "bolge",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 65,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R072",
+   "time": "11:30",
+   "source": "official",
+   "text": "Kuzey Yolu cevresinden gelen bir ihbar incelendi, dogrulanamadi.",
+   "scope": "bolge",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 115,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R077",
+   "time": "12:40",
+   "source": "third_party",
+   "text": "Kuzey Yolu bolgesindeki devriyeyle telsiz baglantisi 40 dakikadir kurulamiyor.",
+   "scope": "bolge",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 45,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R085",
+   "time": "12:35",
+   "source": "official",
+   "text": "Kuzey Yolu cevresinden gelen bir ihbar incelendi, dogrulanamadi.",
+   "scope": "bolge",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 50,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R089",
+   "time": "12:40",
+   "source": "official",
+   "text": "39.93740N 32.84903E civarinda bir otomobil uzun suredir hareketsiz duruyor.",
+   "scope": "koordinat",
+   "lat": 39.9374,
+   "lon": 32.84903,
+   "minutes_before_capture": 45,
+   "dist_to_frame_center_m": 21,
+   "checks": {
+    "tracks_near_at_report_time": [
+     {
+      "track_id": "T0115",
+      "dist_m": 12
+     },
+     {
+      "track_id": "T0182",
+      "dist_m": 62
+     }
+    ],
+    "detections_near": [
+     {
+      "det_id": "D1",
+      "label": "car",
+      "dist_m": 70,
+      "has_track": true
+     },
+     {
+      "det_id": "D2",
+      "label": "car",
+      "dist_m": 0,
+      "has_track": true
+     },
+     {
+      "det_id": "D3",
+      "label": "truck",
+      "dist_m": 67,
+      "has_track": true
+     },
+     {
+      "det_id": "D4",
+      "label": "car",
+      "dist_m": 34,
+      "has_track": true
+     }
+    ],
+    "stationary_tracks_near": [
+     "T0115"
+    ],
+    "label_counts_near": {
+     "car": 3,
+     "truck": 1
+    }
+   }
+  },
+  {
+   "report_id": "R099",
+   "time": "11:30",
+   "source": "official",
+   "text": "Kuzey Yolu bolgesinde trafik akisi normal seyrediyor.",
+   "scope": "bolge",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 115,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  }
+ ],
+ "context_reports": [
+  {
+   "report_id": "R003",
+   "time": "11:55",
+   "source": "third_party",
+   "text": "Planli tatbikat nedeniyle gun icinde bolgede dost unsurlar bulunacak.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 90,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R030",
+   "time": "13:25",
+   "source": "official",
+   "text": "Lojistik konvoyu yakit ikmali icin planlanan saatte yola cikacak.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 0,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R034",
+   "time": "13:05",
+   "source": "third_party",
+   "text": "Lojistik konvoyu yakit ikmali icin planlanan saatte yola cikacak.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 20,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R057",
+   "time": "12:40",
+   "source": "official",
+   "text": "Hava acik, gorus mesafesi iyi.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 45,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R060",
+   "time": "12:15",
+   "source": "third_party",
+   "text": "Lojistik konvoyu yakit ikmali icin planlanan saatte yola cikacak.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 70,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  },
+  {
+   "report_id": "R122",
+   "time": "11:35",
+   "source": "official",
+   "text": "Planli tatbikat nedeniyle gun icinde bolgede dost unsurlar bulunacak.",
+   "scope": "genel",
+   "lat": null,
+   "lon": null,
+   "minutes_before_capture": 110,
+   "dist_to_frame_center_m": null,
+   "checks": null
+  }
+ ],
+ "hard_flags": [
+  {
+   "flag_id": "F1",
+   "code": "UZUN_BEKLEME_YAKIN",
+   "description": "T0115 üsse 2 km içinde ≥30 dk bekledi",
+   "evidence": [
+    "T0115",
+    "D2"
+   ],
+   "min_level": "ORTA"
+  },
+  {
+   "flag_id": "F2",
+   "code": "AGIR_ARAC_YAKIN",
+   "description": "truck üsse 1775 m",
+   "evidence": [
+    "T0182",
+    "D3"
+   ],
+   "min_level": "ORTA"
+  },
+  {
+   "flag_id": "F3",
+   "code": "UZUN_BEKLEME_YAKIN",
+   "description": "T0182 üsse 2 km içinde ≥30 dk bekledi",
+   "evidence": [
+    "T0182",
+    "D3"
+   ],
+   "min_level": "ORTA"
+  }
+ ],
+ "rule_floor": "ORTA",
+ "notes": [
+  "ÖRNEK PAKET: tespitler model yerine track konumlarından üretildi; sınıflar temsilidir."
+ ]
+}

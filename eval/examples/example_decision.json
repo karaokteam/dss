@@ -1,0 +1,46 @@
+{
+ "image_id": "img_003839",
+ "attention_required": true,
+ "attention_level": "YUKSEK",
+ "vehicles": [
+  {"det_id": "D3", "track_id": "T0182", "level": "YUKSEK",
+   "observations": ["2 saatte üsse uzaklığı 7446 m'den 1775 m'ye indi", "Son 70 dk'dır aynı noktada bekliyor", "Ağır araç (truck)"],
+   "evidence": ["D3", "T0182", "F2", "F3"]},
+  {"det_id": "D4", "track_id": "T0183", "level": "ORTA",
+   "observations": ["Son 30 dk'da 2.09 m/s ile üsse yaklaşıyor", "Mevcut hızla ~13.9 dk'da üsse ulaşır", "Aralıklı duraklamalarla ilerliyor"],
+   "evidence": ["D4", "T0183"]},
+  {"det_id": "D2", "track_id": "T0115", "level": "DUSUK",
+   "observations": ["120 dk boyunca yerinden ayrılmadı", "Otomobil"],
+   "evidence": ["D2", "T0115", "F1"]}
+ ],
+ "report_verdicts": [
+  {"report_id": "R001", "category": "gorulme", "claim": "13:05'te bildirilen konumda 1 kamyon var, yükü belirsiz.",
+   "status": "DOGRULANDI", "reason": "Rapor saatinde T0182 bildirilen noktada (0 m); çekim anında aynı araç D3 olarak truck sınıfında tespit edildi.",
+   "evidence": ["T0182", "D3"], "risk_effect": "etkisiz"},
+  {"report_id": "R089", "category": "hareketsizlik", "claim": "Bildirilen konumda bir otomobil uzun süredir hareketsiz.",
+   "status": "DOGRULANDI", "reason": "T0115 rapor noktasına 12 m; son 30 dk hareketsiz; D2 car olarak tespit edildi.",
+   "evidence": ["T0115", "D2"], "risk_effect": "etkisiz"},
+  {"report_id": "R099", "category": "bolge_olumsuz", "claim": "11:30'da Kuzey Yolu'nda trafik normal.",
+   "status": "DOGRULANAMADI", "reason": "Rapor saatinde bölgeye ait görüntü yok; 11:30 sonrası T0182 bölgeye yaklaştığı için iddia güncelliğini yitirmiş.",
+   "evidence": ["T0182"], "risk_effect": "etkisiz"},
+  {"report_id": "R065", "category": "gurultu", "claim": "Kuzey Yolu devriyesiyle 40 dk telsiz bağlantısı yok.",
+   "status": "DOGRULANAMADI", "reason": "Sensörlerimizle doğrulanamaz; bölgede insan gözlemi zayıf olabilir, bu yüzden drone verisine ağırlık verildi.",
+   "evidence": [], "risk_effect": "etkisiz"},
+  {"report_id": "R077", "category": "gurultu", "claim": "R065 ile aynı iddia, third_party kaynaklı.",
+   "status": "DOGRULANAMADI", "reason": "R065'in tekrarı; bağımsız doğrulama yok.",
+   "evidence": [], "risk_effect": "etkisiz"},
+  {"report_id": "R072", "category": "gurultu", "claim": "Bir ihbar incelendi, doğrulanamadı.",
+   "status": "ILGISIZ", "reason": "İçerik ve konum bilgisi yok.", "evidence": [], "risk_effect": "etkisiz"},
+  {"report_id": "R085", "category": "gurultu", "claim": "Bir ihbar incelendi, doğrulanamadı.",
+   "status": "ILGISIZ", "reason": "İçerik ve konum bilgisi yok.", "evidence": [], "risk_effect": "etkisiz"}
+ ],
+ "key_findings": [
+  "Kamyon (D3/T0182) 2 saatte üsse 5.7 km yaklaştı ve 1.8 km mesafede 70 dk'dır bekliyor.",
+  "Otomobil (D4/T0183) 2.1 m/s ile üsse yaklaşıyor, ~14 dk'da ulaşabilir.",
+  "Kamyon ve hareketsiz otomobil raporları tespitle uyumlu; bölgede devriye iletişimi kesik."
+ ],
+ "summary": "Kuzey Yolu'nda, üsse yaklaşık 1.8 km mesafede 4 araç var. En dikkat çekici olan kamyon (D3): son iki saatte üsse 5.7 km yaklaşmış ve 70 dakikadır aynı noktada bekliyor; 13:05 tarihli official rapor bu kamyonu doğruluyor ancak yükü bilinmiyor. Bir otomobil (D4) aralıklı duraklamalarla üsse yaklaşmaya devam ediyor. Bölgedeki devriyeyle telsiz bağlantısı kurulamadığı bildirildiğinden sahadan teyit alınamıyor.",
+ "recommended_action": "Kamyonun yük durumu için yakın görüntüleme veya devriye teyidi isteyin; D4'ün yaklaşmasını bir sonraki drone geçişinde izleyin.",
+ "deviation_from_rules": "Kural tabanı ORTA; ağır aracın uzun mesafeden hedefli yaklaşıp üs yakınında beklemesi ve bölgede saha iletişiminin kesik olması birlikte değerlendirildiğinde YUKSEK seçildi.",
+ "confidence": "orta"
+}

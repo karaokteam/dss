@@ -1,0 +1,12 @@
+ultralytics
+pandas
+numpy
+scipy
+pydantic>=2
+openai
+python-dotenv
+streamlit
+streamlit-folium
+folium
+opencv-python-headless
+pytest

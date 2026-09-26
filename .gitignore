@@ -1,0 +1,41 @@
+# ── Gizli bilgiler ──
+.env
+.env.*
+!.env.example
+kaggle.json
+*.key
+
+# ── Model ağırlıkları (GitHub dosya sınırı 100 MB; Drive/HF üzerinden paylaşın) ──
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.engine
+runs/
+
+# ── Kaggle 1. aşama verisi (binlerce görüntü) ──
+data/kaggle/
+data/train/
+data/test/
+*.zip
+
+# ── Üretilen çıktılar ──
+cache/*
+!cache/.gitkeep
+outputs/
+*.log
+
+# ── Python / ortam ──
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ── IDE / OS ──
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

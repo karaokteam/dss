@@ -8,10 +8,15 @@ Arayüz (diğer modüller buna güvenir; değiştirmeden önce ekibe haber verin
 Kanıt paketine GİRMEZ: LLM'in önüne konursa LLM onu kopyalar. Amaç, "LLM kural tabanına göre
 ne kadar iyi?" sorusunu run_eval ile sayıya dökmek.
 """
+from pathlib import Path
+
 from dss.evidence.builder import Data
 from dss.reports.claims import Claim, norm, parse_claim
 from dss.reports.trace import ReportTrace, trace_for
+from dss.reports.zone_checks import ZoneChecks, load_detections_file, track_classes, zone_checks_for
 from dss.schemas import EvidencePack, ReportEv, ReportVerdict
+
+DETECTIONS = Path(__file__).parents[1] / "data" / "image_box_and_reports" / "detections_all_ge0.10.json"
 
 STILL_M = 25          # bu kadar oynayan araç "duruyor" sayılır
 MOVED_M = 100         # bundan fazla oynayan araç "hareket etti" sayılır
@@ -19,6 +24,25 @@ TREND_M = 300         # 30 dk'da üsse yaklaşma/uzaklaşma eşiği
 FULL_COVERAGE = 0.9   # iddia edilen sürenin bu kadarı kapsanıyorsa tam doğrulama
 CONF_OK = 0.5
 HEAVY = {"truck", "bus"}
+MOVING_FLAGS = {"YAKIN_VARIS", "YAKIN_YAKLASMA", "AGIR_ARAC_YAKIN"}   # bekleme tek başına "olağandışı" sayılmaz
+
+_zone_ctx: dict[int, tuple] = {}
+
+
+def _zone_inputs(D: Data) -> tuple:
+    if id(D) not in _zone_ctx:
+        dets = load_detections_file(DETECTIONS)
+        _zone_ctx[id(D)] = (track_classes(D, dets), dets)
+    return _zone_ctx[id(D)]
+
+
+def _zone_status(c: Claim, z: ZoneChecks) -> tuple[str, list[str]]:
+    """Asimetri: görülen ağır araç / anomali iddiayı çürütür; görülmemesi en fazla kısmen doğrular."""
+    if c.vehicle_class == "heavy":
+        hits = [v.track_id for v in z.heavy]
+    else:
+        hits = [v.track_id for v in z.anomalies if MOVING_FLAGS & set(v.flags)]
+    return ("CELISIYOR", hits) if hits else ("KISMEN_DOGRULANDI", [])
 
 
 def _label(pack: EvidencePack, tr: ReportTrace) -> tuple[str | None, float]:
@@ -79,8 +103,11 @@ def baseline_verdicts(pack: EvidencePack, D: Data) -> list[ReportVerdict]:
     for r in pack.reports:
         c = parse_claim(r.text, D.zones)
         tr = trace_for(r, pack.detections, pack.image.image_id, D, c) if r.scope == "koordinat" else None
-        status = _status(c, r, tr, pack)
-        evidence = [e for e in (tr.target_track, tr.target_det) if e] if tr else []
+        if r.scope == "bolge" and c.category == "bolge_olumsuz":
+            status, evidence = _zone_status(c, zone_checks_for(r, D, *_zone_inputs(D)))
+        else:
+            status = _status(c, r, tr, pack)
+            evidence = [e for e in (tr.target_track, tr.target_det) if e] if tr else []
         if status in ("DOGRULANDI", "CELISIYOR", "KISMEN_DOGRULANDI") and not evidence:
             evidence = [r.report_id]  # yokluk kanıtının kimliği yok (hayalet rapor)
         out.append(ReportVerdict(report_id=r.report_id, category=c.category or "gurultu",

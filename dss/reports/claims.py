@@ -70,6 +70,7 @@ class Claim:
     identity: bool = False                    # dost / ikmal / devriye iddiası
     visual: tuple[str, ...] = ()              # renk, yüklü, üzeri örtülü
     past_event: bool = False                  # "dün gece": veri kapsamı dışında
+    secondhand: bool = False                  # "sabah devriyesi ... bildirmedi": aktarılan yokluk, bağlamdır
 
 
 def parse_claim(text: str, zones: list[dict] | None = None) -> Claim:
@@ -119,4 +120,5 @@ def parse_claim(text: str, zones: list[dict] | None = None) -> Claim:
         duration_min=duration if category != "gurultu" else None,
         identity=category == "dost_kimlik", visual=visual,
         past_event=bool(re.search(r"dun gece|dunden", t)),
+        secondhand=bool(re.search(r"devriye\w* .*bildirmedi", t)),
     )

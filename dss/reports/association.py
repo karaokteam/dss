@@ -9,7 +9,9 @@ Kurallar:
   * Pencere: rapor, çekimden önceki 0-120 dk içinde olmalı.
   * koordinat: rapor noktası kare merkezine <= 250 m. Veride koordinatlı 72 raporun her biri
     tam olarak bir görüntüye bağlanıyor (bkz. RAPOR_DOGRULAMA.md B4).
-  * bolge: koordinatsız, metinde görüntünün bölgesinin adı geçiyor.
+  * bolge: koordinatsız, metinde görüntünün bölgesinin adı geçiyor. "Sabah devriyesi ... bildirmedi"
+    gibi aktarılan yokluk bildirimleri iddia değil bağlamdır: context_reports'a gider (scope="bolge").
+    Bölge iddialarının kontrolleri için bkz. zone_checks.py.
   * genel (context): ne koordinat ne bölge adı var. Aynı metin birden çok kez geliyorsa
     (ör. "Hava acik" x10) yalnızca en yenisi tutulur; bağlam olarak tekrar bilgi taşımaz.
 Başka bölgeden söz eden raporlar bu görüntüye alınmaz.
@@ -18,7 +20,7 @@ checks alanı burada doldurulmaz: koordinatlı raporlar için checks.checks_for 
 import math
 from typing import TYPE_CHECKING
 
-from dss.reports.claims import COORD_RE, hm, norm
+from dss.reports.claims import COORD_RE, hm, norm, parse_claim
 from dss.schemas import ReportEv
 
 if TYPE_CHECKING:
@@ -31,6 +33,12 @@ REPORT_WINDOW_MIN = 120
 def frame_center(D: "Data", image_id: str) -> tuple[float, float]:
     c = D.meta[image_id]["corner_coordinates"]
     return (c["top_left"][0] + c["bottom_left"][0]) / 2, (c["top_left"][1] + c["top_right"][1]) / 2
+
+
+def _keep_latest(context: dict[str, ReportEv], key: str, r: ReportEv) -> None:
+    prev = context.get(key)
+    if prev is None or r.minutes_before_capture < prev.minutes_before_capture:
+        context[key] = r
 
 
 def reports_for(image_id: str, D: "Data") -> tuple[list[ReportEv], list[ReportEv]]:
@@ -56,10 +64,11 @@ def reports_for(image_id: str, D: "Data") -> tuple[list[ReportEv], list[ReportEv
             if dist <= REPORT_FRAME_RADIUS_M:
                 reports.append(ReportEv(**base, scope="koordinat", lat=lat, lon=lon, dist_to_frame_center_m=dist))
         elif norm(zone) in t:
-            reports.append(ReportEv(**base, scope="bolge"))
+            if parse_claim(r["text"]).secondhand:
+                _keep_latest(context, t, ReportEv(**base, scope="bolge"))
+            else:
+                reports.append(ReportEv(**base, scope="bolge"))
         elif not any(z in t for z in zone_names):
-            prev = context.get(t)
-            if prev is None or before < prev.minutes_before_capture:
-                context[t] = ReportEv(**base, scope="genel")
+            _keep_latest(context, t, ReportEv(**base, scope="genel"))
 
     return reports, sorted(context.values(), key=lambda r: r.report_id)

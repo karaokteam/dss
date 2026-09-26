@@ -5,6 +5,8 @@
 > - Rapor kimlikleri 1'den başlıyor (`R001`). Bu dokümanın ilk sürümündeki R042 = R043.
 > - Yeni bulgu: rapor koordinatları **çekim anındaki** bir aracın konumu (5 hane 0–1 m, 4 hane ≤10 m). Kontroller "hedef araç" üzerinden yapılıyor.
 > - Uygulama: `dss/reports/` (`claims`, `association`, `checks`, `trace`). Etiketli set ve değerlendirme: `eval/gold_reports.json`, `eval/run_eval.py`. Şema önerisi: `docs/SCHEMA_PROPOSAL_REPORTS.md`.
+> - **Bölge raporları (§5'in uygulanmış hali):** Bölge iddiaları tek karede değil, bütün bölgede ve rapor anı ±15 dk içinde ölçülüyor (`dss/reports/zone_checks.py`). Track'lere sınıf, ≤3 m eşleşen tespitten taşınıyor (0,10 eşiği, 201/226 track). "Olağandışı" = sert bayrak koşulu. "Sabah devriyesi" raporları bağlama geçti. Yön sektörü ile en yakın bölge merkezi track noktalarının %100'ünde aynı sonucu verdiği için §5.2'deki Z1/Z2 tartışması kapandı. Ayrıntılar: `docs/SCHEMA_PROPOSAL_REPORTS.md` §5.
+> - Sayı düzeltmesi: koordinatlı rapor 72 (B2'deki 54 + 18 dost/kimlik). Bölge adlı 43 raporun 22'si bölge iddiası, 21'i bağlam.
 > - Aşağıdaki step kimlikleri (RAP-2, TRK-1…) ve keşif haritası eski iskelete aitti; yeni yapıda Kişi 1–6 dağılımı geçerli.
 
 > **Durum:** Tartışma taslağı, 2026-09-26. Karar verilmesi gerekenler §7'de.

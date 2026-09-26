@@ -140,3 +140,49 @@ def test_gold_labels_point_to_reports_in_packs():
     for g in gold:
         ids = {r.report_id for r in reports_for(g["image_id"], data())[0]}
         assert g["report_id"] in ids, f'{g["image_id"]}/{g["report_id"]} pakette yok'
+
+
+# ── zone_checks: bölge adıyla yazılmış raporlar ─────────────────────────────
+
+@lru_cache
+def zone_inputs():
+    from dss.reports.zone_checks import load_detections_file, track_classes
+    dets = load_detections_file(ROOT / "data" / "image_box_and_reports" / "detections_all_ge0.10.json")
+    return track_classes(data(), dets), dets
+
+
+def zone(image_id, rid):
+    from dss.reports.zone_checks import zone_checks_for
+    return zone_checks_for(report(image_id, rid), data(), *zone_inputs())
+
+
+def test_track_classes_cover_most_tracks_and_rescue_low_conf_truck():
+    classes, _ = zone_inputs()
+    assert len(classes) >= 190
+    assert classes["T0122"].label == "truck" and classes["T0122"].conf < 0.25   # track destekli 0,10
+
+
+def test_heavy_vehicle_contradicts_no_heavy_claim_r017():
+    z = zone("img_004530", "R017")
+    assert z.zone == "Guney Kapisi Yaklasimi" and "T0174" in {v.track_id for v in z.heavy}
+
+
+def test_no_heavy_seen_r100():
+    z = zone("img_005561", "R100")
+    assert z.heavy == [] and z.vehicles_seen > 0
+
+
+def test_near_arrival_anomaly_r042():
+    z = zone("img_001733", "R042")
+    t0034 = next(v for v in z.anomalies if v.track_id == "T0034")
+    assert "YAKIN_VARIS" in t0034.flags and t0034.dist_to_base_m < 1000
+
+
+def test_radio_gap_linked_r099():
+    assert "R065" in zone("img_003464", "R099").radio_gap_reports
+
+
+def test_morning_patrol_is_context_not_claim():
+    reports, context = reports_for("img_005672", data())
+    assert "R008" not in {r.report_id for r in reports}
+    assert "R008" in {r.report_id for r in context}

@@ -4,3 +4,4 @@ onnx==1.23.0
 onnxslim==0.1.96
 nvidia-modelopt[onnx]==0.47.0
 matplotlib
+nvidia-pytriton==0.7.0   # Triton server with the Python backend, and the client

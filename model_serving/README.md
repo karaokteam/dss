@@ -37,6 +37,7 @@ benchmark.py       latency and throughput for batch sizes 1-16
 evaluate.py        split_val mAP@0.5 and end-to-end speed
 plot.py            results/results.json -> plots and table
 results/           our measurements
+triton/            serving the engine with Triton Inference Server (below)
 ```
 
 ## How to run
@@ -54,3 +55,54 @@ python plot.py
 
 Building an fp16 engine takes about 15 minutes (most of it the ModelOpt conversion on the CPU). A TensorRT engine
 only runs on the same GPU type and TensorRT version it was built with (here H200, TensorRT 11.3).
+
+## Serving with Triton
+
+We then put the fp16 engine behind Triton Inference Server, the way a real service would run it: a client sends one
+JPEG (like a frame from a drone camera) and gets the boxes back. The server decodes the JPEG, fits it into
+1920×1920, runs the engine and NMS (confidence 0.25), and returns up to 300 boxes in original image pixels. We
+checked it against running the engine directly on the same image: 67 of 67 boxes match.
+
+We tried 1, 2 and 4 copies of the model on the GPU (instances), with and without dynamic batching (Triton waits up to
+2 ms to group waiting requests into one batch of up to 16), under 1 to 32 clients sending images at the same time.
+
+![triton](triton/results/triton_summary.png)
+
+| Setup | 1 client | 8 clients | 32 clients | GPU memory |
+|---|---|---|---|---|
+| 1 instance | 31 img/s, p95 52 ms | 28 img/s, p95 322 ms | 28 img/s, p95 1319 ms | 33 GiB |
+| 1 instance + batching | 29 img/s, p95 52 ms | 71 img/s, p95 146 ms | 87 img/s, p95 484 ms | 42 GiB |
+| 2 instances | 28 img/s, p95 56 ms | 55 img/s, p95 208 ms | 61 img/s, p95 591 ms | 66 GiB |
+| **2 instances + batching** | 27 img/s, p95 56 ms | **76 img/s, p95 146 ms** | **108 img/s, p95 416 ms** | 81 GiB |
+| 4 instances | 28 img/s, p95 57 ms | 61 img/s, p95 183 ms | 61 img/s, p95 627 ms | 131 GiB |
+| 4 instances + batching | 26 img/s, p95 58 ms | 77 img/s, p95 156 ms | 67 img/s, p95 1111 ms | 140 GiB (full) |
+
+The full table for all client counts is in `triton/results/triton_table.md`.
+
+What we found:
+
+- **Dynamic batching matters most.** Without it one instance is stuck at ~30 images/s however many clients wait.
+  With it, Triton groups waiting requests (about 13 images per run at 32 clients) and the same instance does 87.
+- **Two instances with batching is the best setup:** 108 images/s under heavy load, 76 at 8 clients with 95% of
+  answers within 146 ms. One image on an idle server takes about 31 ms end to end.
+- **Four instances do not fit.** Each instance keeps its own TensorRT workspace for batches of 16 at 1920 px plus
+  its own PyTorch memory, 33-42 GiB each. Four fill the 140 GiB GPU: in our first run requests failed with
+  "CUDA out of memory", in the second throughput became erratic.
+- **The server is slower than the engine alone** (108 vs 195 images/s): every request also has its JPEG decoded
+  on the CPU, is resized, goes through NMS and passes through Triton's Python backend.
+
+How to run (Triton from the `nvidia-pytriton` wheel, no Docker needed):
+
+```bash
+export TRITON_HOME=<site-packages>/pytriton/tritonserver   # tritonserver with the Python backend
+export PYTHON_ENV=<venv with torch, torchvision, ultralytics>
+export LIBPYTHON_DIR=<folder with libpython3.11.so>          # for a venv: the base Python's lib folder
+export SITE_PACKAGES=<folder where tensorrt is installed>
+bash triton/start_server.sh ENGINE 2 on                     # 2 instances, dynamic batching
+python triton/load_test.py IMAGE_FOLDER --label "2 instance(s), batching on"
+bash triton/sweep.sh ENGINE IMAGE_FOLDER                    # every setup, about 15 minutes
+python triton/plot.py
+```
+
+Two things we had to work around: the Python backend's NumPy bridge does not work with NumPy 2, so tensors go in
+and out through DLPack, and the backend could not read string (BYTES) inputs, so the JPEG is sent as a uint8 array.

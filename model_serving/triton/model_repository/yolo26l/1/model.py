@@ -1,10 +1,10 @@
 """Triton Python-backend model: one JPEG (as uint8 bytes) in, up to 300 boxes (x1, y1, x2, y2, score, class) out.
 
-The JPEG is decoded on the CPU; letterboxing to 1920x1920, the TensorRT engine and NMS run on the GPU.
+The TensorRT engine is read from model.engine next to this file. The JPEG is decoded on the CPU; letterboxing to
+1920x1920, the engine and NMS run on the GPU.
 Each Triton instance of this model is a separate process with its own TensorRT context.
 Tensors go in and out through DLPack: the backend's NumPy bridge does not work with NumPy 2.
 """
-import json
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -22,14 +22,14 @@ from ultralytics.utils.nms import non_max_suppression  # noqa: E402
 
 SIZE = 1920
 MAX_BOXES = 300
+CONFIDENCE = 0.25
 
 
 class TritonPythonModel:
     def initialize(self, args):
-        config = json.loads(args['model_config'])
         torch.cuda.set_device(int(args['model_instance_device_id']))
 
-        data = open(config['parameters']['engine']['string_value'], 'rb').read()
+        data = open(os.path.join(os.path.dirname(__file__), 'model.engine'), 'rb').read()
         metadata_length = int.from_bytes(data[:4], byteorder='little')   # Ultralytics stores metadata in front
         engine = trt.Runtime(trt.Logger(trt.Logger.WARNING)).deserialize_cuda_engine(data[4 + metadata_length:])
         self.context = engine.create_execution_context()
@@ -50,8 +50,8 @@ class TritonPythonModel:
 
         responses = []
         for i in range(len(requests)):
-            outputs = [pb_utils.Tensor.from_dlpack('boxes', to_dlpack(boxes[i:i + 1].contiguous())),
-                       pb_utils.Tensor.from_dlpack('count', to_dlpack(count[i:i + 1].contiguous()))]
+            outputs = [pb_utils.Tensor.from_dlpack('boxes', to_dlpack(boxes[i:i + 1])),
+                       pb_utils.Tensor.from_dlpack('count', to_dlpack(count[i:i + 1]))]
             responses.append(pb_utils.InferenceResponse(outputs))
         return responses
 
@@ -59,7 +59,7 @@ class TritonPythonModel:
         # The GPU decoder (nvJPEG) rejects some of these JPEGs, so decode on the CPU, several at a time
         images = [image.cuda() for image in self.decoder.map(decode_jpeg, jpegs)]
         batch, scales, pads = self.letterbox(images)
-        detections = non_max_suppression(self.run_engine(batch), conf_thres=0.25, iou_thres=0.7, max_det=MAX_BOXES)
+        detections = non_max_suppression(self.run_engine(batch), conf_thres=CONFIDENCE, iou_thres=0.7, max_det=MAX_BOXES)
 
         boxes = torch.zeros((len(jpegs), MAX_BOXES, 6), dtype=torch.float32)
         count = torch.zeros((len(jpegs), 1), dtype=torch.int32)

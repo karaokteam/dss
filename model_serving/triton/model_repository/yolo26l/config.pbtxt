@@ -1,0 +1,11 @@
+# One JPEG per request in, up to 300 boxes (x1, y1, x2, y2, score, class) out.
+# Two copies of the model on the GPU, and Triton groups waiting requests into batches of up to 16.
+backend: "python"
+max_batch_size: 16
+input [{ name: "image", data_type: TYPE_UINT8, dims: [-1], allow_ragged_batch: true }]
+output [
+  { name: "boxes", data_type: TYPE_FP32, dims: [300, 6] },
+  { name: "count", data_type: TYPE_INT32, dims: [1] }
+]
+instance_group [{ count: 2, kind: KIND_GPU }]
+dynamic_batching { max_queue_delay_microseconds: 2000 }

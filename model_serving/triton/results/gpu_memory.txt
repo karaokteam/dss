@@ -1,6 +1,0 @@
-1 instance(s), batching off: peak GPU memory 33945 MiB
-1 instance(s), batching on: peak GPU memory 43187 MiB
-2 instance(s), batching off: peak GPU memory 67285 MiB
-2 instance(s), batching on: peak GPU memory 82511 MiB
-4 instance(s), batching off: peak GPU memory 133981 MiB
-4 instance(s), batching on: peak GPU memory 143149 MiB

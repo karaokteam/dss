@@ -5,25 +5,20 @@ diye basit sürümleri var. Arayüz aynı kalırsa import satırını değiştir
 """
 import json
 import math
-import re
-import unicodedata
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+from dss.reports.association import reports_for
+from dss.reports.checks import checks_for
 from dss.schemas import (LEVEL_ORDER, DetectionEv, EvidencePack, HardFlag, ImageInfo,
-                     MotionEv, NearDetection, NearTrack, ReportChecks, ReportEv, StopEv,
-                     UnmatchedTrack, ZoneSummary)
+                     MotionEv, StopEv, UnmatchedTrack, ZoneSummary)
 
 # ── Parametreler (kalibre edilecek) ──
 MATCH_MAX_M = 15
-REPORT_FRAME_RADIUS_M = 250      # veride tüm koordinatlı raporlar kare merkezine ≤135 m
-REPORT_WINDOW_MIN = 120          # rapor, çekimden önceki 2 saat içinde olmalı
-CHECK_RADIUS_M = 150
 STOP_SPEED = 0.5                 # m/s
 R = 6_371_000
-COORD_RE = re.compile(r"(\d{2}\.\d+)N\s+(\d{2}\.\d+)E")
 
 
 class Data:
@@ -52,11 +47,6 @@ class Data:
 def hm(s: str) -> int:
     h, m = s.split(":")
     return int(h) * 60 + int(m)
-
-
-def norm(s: str) -> str:
-    s = unicodedata.normalize("NFKD", s.lower().replace("ı", "i"))
-    return "".join(ch for ch in s if not unicodedata.combining(ch))
 
 
 CARDINAL = ["K", "KD", "D", "GD", "G", "GB", "B", "KB"]
@@ -159,55 +149,11 @@ def build_pack(D: Data, image_id: str, raw_dets: list[dict]) -> EvidencePack:
     zs = ZoneSummary(zone=zone, detected_counts=counts,
                      heavy_vehicle_present=any(d.label in ("truck", "bus") for d in dets))
 
-    # ── Raporlar
-    reports, context = [], []
-    for idx, r in enumerate(D.reports, 1):
-        before = hm(cap) - hm(r["time"])
-        if not 0 <= before <= REPORT_WINDOW_MIN:
-            continue
-        rid, t = f"R{idx:03d}", norm(r["text"])
-        mm = COORD_RE.search(r["text"])
-        if mm:
-            lat, lon = float(mm[1]), float(mm[2])
-            x, y = D.xy(lat, lon)
-            dist = int(math.hypot(x - cx, y - cy))
-            if dist > REPORT_FRAME_RADIUS_M:
-                continue
-            rt = hm(r["time"])
-            near_t = D.tracks[(abs(D.tracks.t - rt) <= 5)].copy()
-            near_t["dv"] = np.hypot(near_t.x - x, near_t.y - y)
-            best = near_t[near_t.dv <= CHECK_RADIUS_M].groupby("track_id").dv.min().sort_values()
-            tr_near = [(tid, int(dv)) for tid, dv in best.items()]
-            det_near = []
-            for d in dets:
-                dx, dy = D.xy(d.lat, d.lon)
-                dv = math.hypot(dx - x, dy - y)
-                if dv <= CHECK_RADIUS_M:
-                    det_near.append(NearDetection(det_id=d.det_id, label=d.label, dist_m=int(dv),
-                                                  has_track=d.track_id is not None))
-            # Rapor noktasına yakın olup rapor saatine kadar ≥30 dk yerinden kıpırdamamış track'ler
-            stationary = []
-            for tid in best.index:
-                w = D.tracks[(D.tracks.track_id == tid) & (D.tracks.t.between(rt - 30, rt))]
-                if len(w) >= 7 and np.hypot(w.x - w.x.iloc[-1], w.y - w.y.iloc[-1]).max() < 25:
-                    stationary.append(tid)
-            lc = {}
-            for nd in det_near:
-                lc[nd.label] = lc.get(nd.label, 0) + 1
-            reports.append(ReportEv(
-                report_id=rid, time=r["time"], source=r["source"], text=r["text"],
-                scope="koordinat", lat=lat, lon=lon, minutes_before_capture=before,
-                dist_to_frame_center_m=dist,
-                checks=ReportChecks(
-                    tracks_near_at_report_time=[NearTrack(track_id=a, dist_m=b) for a, b in tr_near],
-                    detections_near=det_near, stationary_tracks_near=stationary,
-                    label_counts_near=lc)))
-        elif norm(zone) in t:
-            reports.append(ReportEv(report_id=rid, time=r["time"], source=r["source"],
-                                    text=r["text"], scope="bolge", minutes_before_capture=before))
-        elif not any(norm(z["name"]) in t for z in D.zones):
-            context.append(ReportEv(report_id=rid, time=r["time"], source=r["source"],
-                                    text=r["text"], scope="genel", minutes_before_capture=before))
+    # ── Raporlar (Kişi 4: dss/reports/)
+    reports, context = reports_for(image_id, D)
+    for r in reports:
+        if r.scope == "koordinat":
+            r.checks = checks_for(r, dets, cap, D)
 
     # ── Sert bayraklar
     flags = []

@@ -1,5 +1,12 @@
 # Rapor Doğrulama ve Bölge Entegrasyonu — Tasarım Notu
 
+> **Güncelleme (yeni mimari, Kişi 4):**
+> - Kod hüküm vermez, ölçer. §4.3'teki ✓/◐/✗/? sonuçları kanıt paketine girmez; hükmü LLM `ReportVerdict` ile verir, validator denetler. Kural tabanlı hüküm sadece değerlendirme için `eval/baseline.py`'de durur.
+> - Rapor kimlikleri 1'den başlıyor (`R001`). Bu dokümanın ilk sürümündeki R042 = R043.
+> - Yeni bulgu: rapor koordinatları **çekim anındaki** bir aracın konumu (5 hane 0–1 m, 4 hane ≤10 m). Kontroller "hedef araç" üzerinden yapılıyor.
+> - Uygulama: `dss/reports/` (`claims`, `association`, `checks`, `trace`). Etiketli set ve değerlendirme: `eval/gold_reports.json`, `eval/run_eval.py`. Şema önerisi: `docs/SCHEMA_PROPOSAL_REPORTS.md`.
+> - Aşağıdaki step kimlikleri (RAP-2, TRK-1…) ve keşif haritası eski iskelete aitti; yeni yapıda Kişi 1–6 dağılımı geçerli.
+
 > **Durum:** Tartışma taslağı, 2026-09-26. Karar verilmesi gerekenler §7'de.
 > **İlgili step'ler:** RAP-2 (çıkarım), RAP-3 (doğrulama), RSK-3 (rapor kuralları), LLM-2 (brief), TRK-1 (eşleştirme), DET-4 (eşik).
 > **Keşif haritası:** `python -m exploration.map.build_map` → `exploration/map/index.html` (§8).
@@ -21,7 +28,7 @@
 |---|---|---|
 | Görüntü | 40 | 8 koridor × 5 görüntü; üsse 1,6 / 2,6 / 3,5 / 4,4 / 5,4 km mesafede. Boyutlar: 960×540, 1360×765, 1920×1080 |
 | Track | 226 × 25 nokta | 5 dakikalık adımlarla 2 saat. Her track, ait olduğu görüntünün çekim anında biter |
-| Tespit (`data/tracks_box/`) | ≥0,25 güven: 254 · ≥0,10 güven: 323 | Takımın 1. gün modelinin çıktısı (Kaggle public LB 0,82093). Kutu merkezinin lat/lon'u da dosyada var |
+| Tespit (`data/image_box_and_reports/`) | ≥0,25 güven: 254 · ≥0,10 güven: 323 | Takımın 1. gün modelinin çıktısı (Kaggle public LB 0,82093). Kutu merkezinin lat/lon'u da dosyada var |
 | Rapor | 137 | 98 official, 39 third_party. Saat aralığı 08:35–15:15. Sadece **32 kalıptan** üretilmiş |
 | Bölge | 8 + Merkez Üs | Bölge merkezleri üsse 3,2 km mesafede, 0°, 45°, …, 315° yönlerinde |
 
@@ -165,7 +172,7 @@ Tam liste RAP-2 step'inde `agent/reports/lexicon.py` ve testlere işlenecek.
   ],
   "reports": [
     {
-      "id": "R042", "time": "13:40", "source": "third_party",
+      "id": "R043", "time": "13:40", "source": "third_party",
       "text": "…yuklu bir kamyonun uzun suredir park halinde…",
       "claims": [
         {"type": "HAREKETSIZ", "status": "partial", "coverage": 0.54, "track": "T0126", "evidence": "T0126 son 65 dk'da 11 m oynadı"},
@@ -236,7 +243,7 @@ Veride Z1 ve Z2 görüntüler için aynı sonucu veriyor (her bölgeye 5 görün
 |---|---|---|
 | Eşleşme mesafesi | `MATCH_MAX_DIST_M = 10` (B5) | TRK-1 |
 | Düşük güvenli tespit | Track destekli kabul: ≥0,10 güven + ≤3 m track eşleşmesi → araç sayılır (B6) | DET-4, TRK-1 |
-| Tespit kaynağı | Agent `data/tracks_box/detections_all_ge0.10.json`'ı cache olarak okuyabilir; demo için model gerekmez | DET-3 |
+| Tespit kaynağı | Agent `data/image_box_and_reports/detections_all_ge0.10.json`'ı cache olarak okuyabilir; demo için model gerekmez | DET-3 |
 | "Yaklaşıyor" kuralı | Tek başına az puan. Ani kalkış, iç halka ve sınıf ile birleşince yüksek puan (B7) | RSK-2 |
 | Zaman kayması | Her iddia hem rapor hem çekim anında kontrol edilir (B8) | RAP-3 |
 

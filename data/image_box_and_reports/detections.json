@@ -1,0 +1,6138 @@
+{
+ "pipeline": "karaokteam day-1 detector (Kaggle public LB 0.82093): 22-pass WBF of YOLO26-L 1536/1920, YOLO26-X 1920, augmented YOLO26-L 1920, RF-DETR-L 1536/1920 (flip/multi-scale TTA) -> learned family-support calibrator -> DINOv2 ViT-L car/van crop re-scoring -> ConvNeXt-L truck/bus crop re-scoring",
+ "classes": [
+  "car",
+  "van",
+  "truck",
+  "bus"
+ ],
+ "bbox_format": "x, y, w, h in pixels, top-left origin",
+ "geo": "lat/lon of the box centre, linear interpolation between image corners (gorev_tanimi.pdf)",
+ "one_entry_per_vehicle": "overlapping boxes of different classes (IoU >= 0.6) merged; weaker labels listed in alt_labels",
+ "confidence_threshold": 0.25,
+ "images": [
+  {
+   "image_id": "img_000267",
+   "file": "images/img_000267.jpg",
+   "width_px": 1920,
+   "height_px": 1080,
+   "capture_time": "10:15",
+   "corner_coordinates": {
+    "top_left": [
+     39.921192,
+     32.893427
+    ],
+    "top_right": [
+     39.921192,
+     32.897753
+    ],
+    "bottom_left": [
+     39.919326,
+     32.893427
+    ],
+    "bottom_right": [
+     39.919326,
+     32.897753
+    ]
+   },
+   "counts": {
+    "car": 3,
+    "van": 1,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8853,
+     "bbox_xywh": [
+      1183,
+      191,
+      64,
+      40
+     ],
+     "center_px": [
+      1215.0,
+      211.0
+     ],
+     "lat": 39.920827,
+     "lon": 32.896165,
+     "alt_labels": [],
+     "id": "img_000267_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8806,
+     "bbox_xywh": [
+      886,
+      129,
+      29,
+      26
+     ],
+     "center_px": [
+      900.5,
+      142.0
+     ],
+     "lat": 39.920947,
+     "lon": 32.895456,
+     "alt_labels": [],
+     "id": "img_000267_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8674,
+     "bbox_xywh": [
+      872,
+      108,
+      23,
+      20
+     ],
+     "center_px": [
+      883.5,
+      118.0
+     ],
+     "lat": 39.920988,
+     "lon": 32.895418,
+     "alt_labels": [],
+     "id": "img_000267_002"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8233,
+     "bbox_xywh": [
+      834,
+      164,
+      45,
+      49
+     ],
+     "center_px": [
+      856.5,
+      188.5
+     ],
+     "lat": 39.920866,
+     "lon": 32.895357,
+     "alt_labels": [],
+     "id": "img_000267_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.6464,
+     "bbox_xywh": [
+      818,
+      96,
+      22,
+      27
+     ],
+     "center_px": [
+      829.0,
+      109.5
+     ],
+     "lat": 39.921003,
+     "lon": 32.895295,
+     "alt_labels": [
+      {
+       "label": "truck",
+       "confidence": 0.1813
+      },
+      {
+       "label": "car",
+       "confidence": 0.1346
+      }
+     ],
+     "id": "img_000267_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_000531",
+   "file": "images/img_000531.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "12:05",
+   "corner_coordinates": {
+    "top_left": [
+     39.892013,
+     32.817601
+    ],
+    "top_right": [
+     39.892013,
+     32.820647
+    ],
+    "bottom_left": [
+     39.890699,
+     32.817601
+    ],
+    "bottom_right": [
+     39.890699,
+     32.820647
+    ]
+   },
+   "counts": {
+    "car": 9,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9178,
+     "bbox_xywh": [
+      546,
+      323,
+      223,
+      172
+     ],
+     "center_px": [
+      657.5,
+      409.0
+     ],
+     "lat": 39.89131,
+     "lon": 32.819074,
+     "alt_labels": [],
+     "id": "img_000531_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9127,
+     "bbox_xywh": [
+      1039,
+      106,
+      96,
+      89
+     ],
+     "center_px": [
+      1087.0,
+      150.5
+     ],
+     "lat": 39.891754,
+     "lon": 32.820036,
+     "alt_labels": [],
+     "id": "img_000531_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9113,
+     "bbox_xywh": [
+      643,
+      538,
+      268,
+      227
+     ],
+     "center_px": [
+      777.0,
+      651.5
+     ],
+     "lat": 39.890894,
+     "lon": 32.819341,
+     "alt_labels": [],
+     "id": "img_000531_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9079,
+     "bbox_xywh": [
+      68,
+      417,
+      312,
+      142
+     ],
+     "center_px": [
+      224.0,
+      488.0
+     ],
+     "lat": 39.891175,
+     "lon": 32.818103,
+     "alt_labels": [],
+     "id": "img_000531_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9022,
+     "bbox_xywh": [
+      223,
+      156,
+      179,
+      92
+     ],
+     "center_px": [
+      312.5,
+      202.0
+     ],
+     "lat": 39.891666,
+     "lon": 32.818301,
+     "alt_labels": [],
+     "id": "img_000531_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8817,
+     "bbox_xywh": [
+      1086,
+      48,
+      77,
+      72
+     ],
+     "center_px": [
+      1124.5,
+      84.0
+     ],
+     "lat": 39.891869,
+     "lon": 32.82012,
+     "alt_labels": [],
+     "id": "img_000531_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8264,
+     "bbox_xywh": [
+      43,
+      113,
+      149,
+      74
+     ],
+     "center_px": [
+      117.5,
+      150.0
+     ],
+     "lat": 39.891755,
+     "lon": 32.817864,
+     "alt_labels": [],
+     "id": "img_000531_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7733,
+     "bbox_xywh": [
+      553,
+      0,
+      121,
+      33
+     ],
+     "center_px": [
+      613.5,
+      16.5
+     ],
+     "lat": 39.891985,
+     "lon": 32.818975,
+     "alt_labels": [],
+     "id": "img_000531_007"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6949,
+     "bbox_xywh": [
+      0,
+      83,
+      45,
+      69
+     ],
+     "center_px": [
+      22.5,
+      117.5
+     ],
+     "lat": 39.891811,
+     "lon": 32.817651,
+     "alt_labels": [],
+     "id": "img_000531_008"
+    }
+   ]
+  },
+  {
+   "image_id": "img_000733",
+   "file": "images/img_000733.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "13:00",
+   "corner_coordinates": {
+    "top_left": [
+     39.891318,
+     32.845977
+    ],
+    "top_right": [
+     39.891318,
+     32.848585
+    ],
+    "bottom_left": [
+     39.890192,
+     32.845977
+    ],
+    "bottom_right": [
+     39.890192,
+     32.848585
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9214,
+     "bbox_xywh": [
+      707,
+      416,
+      36,
+      44
+     ],
+     "center_px": [
+      725.0,
+      438.0
+     ],
+     "lat": 39.890673,
+     "lon": 32.847367,
+     "alt_labels": [],
+     "id": "img_000733_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8493,
+     "bbox_xywh": [
+      746,
+      704,
+      67,
+      61
+     ],
+     "center_px": [
+      779.5,
+      734.5
+     ],
+     "lat": 39.890237,
+     "lon": 32.847472,
+     "alt_labels": [],
+     "id": "img_000733_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8257,
+     "bbox_xywh": [
+      649,
+      201,
+      17,
+      18
+     ],
+     "center_px": [
+      657.5,
+      210.0
+     ],
+     "lat": 39.891009,
+     "lon": 32.847238,
+     "alt_labels": [],
+     "id": "img_000733_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5874,
+     "bbox_xywh": [
+      1082,
+      128,
+      23,
+      13
+     ],
+     "center_px": [
+      1093.5,
+      134.5
+     ],
+     "lat": 39.89112,
+     "lon": 32.848074,
+     "alt_labels": [],
+     "id": "img_000733_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.475,
+     "bbox_xywh": [
+      664,
+      307,
+      26,
+      31
+     ],
+     "center_px": [
+      677.0,
+      322.5
+     ],
+     "lat": 39.890843,
+     "lon": 32.847275,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1682
+      }
+     ],
+     "id": "img_000733_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_000860",
+   "file": "images/img_000860.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:10",
+   "corner_coordinates": {
+    "top_left": [
+     39.925651,
+     32.870729
+    ],
+    "top_right": [
+     39.925651,
+     32.872131
+    ],
+    "bottom_left": [
+     39.925045,
+     32.870729
+    ],
+    "bottom_right": [
+     39.925045,
+     32.872131
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9383,
+     "bbox_xywh": [
+      379,
+      304,
+      38,
+      48
+     ],
+     "center_px": [
+      398.0,
+      328.0
+     ],
+     "lat": 39.925283,
+     "lon": 32.87131,
+     "alt_labels": [],
+     "id": "img_000860_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9282,
+     "bbox_xywh": [
+      386,
+      389,
+      52,
+      74
+     ],
+     "center_px": [
+      412.0,
+      426.0
+     ],
+     "lat": 39.925173,
+     "lon": 32.871331,
+     "alt_labels": [],
+     "id": "img_000860_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9236,
+     "bbox_xywh": [
+      375,
+      225,
+      27,
+      30
+     ],
+     "center_px": [
+      388.5,
+      240.0
+     ],
+     "lat": 39.925382,
+     "lon": 32.871296,
+     "alt_labels": [],
+     "id": "img_000860_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7998,
+     "bbox_xywh": [
+      421,
+      241,
+      27,
+      27
+     ],
+     "center_px": [
+      434.5,
+      254.5
+     ],
+     "lat": 39.925365,
+     "lon": 32.871364,
+     "alt_labels": [],
+     "id": "img_000860_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3396,
+     "bbox_xywh": [
+      370,
+      156,
+      16,
+      20
+     ],
+     "center_px": [
+      378.0,
+      166.0
+     ],
+     "lat": 39.925465,
+     "lon": 32.871281,
+     "alt_labels": [],
+     "id": "img_000860_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_000926",
+   "file": "images/img_000926.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "11:35",
+   "corner_coordinates": {
+    "top_left": [
+     39.93141,
+     32.866814
+    ],
+    "top_right": [
+     39.93141,
+     32.86855
+    ],
+    "bottom_left": [
+     39.930662,
+     32.866814
+    ],
+    "bottom_right": [
+     39.930662,
+     32.86855
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.7862,
+     "bbox_xywh": [
+      1310,
+      0,
+      50,
+      32
+     ],
+     "center_px": [
+      1335.0,
+      16.0
+     ],
+     "lat": 39.931394,
+     "lon": 32.868518,
+     "alt_labels": [],
+     "id": "img_000926_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6553,
+     "bbox_xywh": [
+      1137,
+      0,
+      79,
+      21
+     ],
+     "center_px": [
+      1176.5,
+      10.5
+     ],
+     "lat": 39.9314,
+     "lon": 32.868316,
+     "alt_labels": [],
+     "id": "img_000926_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.458,
+     "bbox_xywh": [
+      1223,
+      13,
+      101,
+      34
+     ],
+     "center_px": [
+      1273.5,
+      30.0
+     ],
+     "lat": 39.931381,
+     "lon": 32.86844,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.1692
+      }
+     ],
+     "id": "img_000926_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3321,
+     "bbox_xywh": [
+      1258,
+      0,
+      40,
+      23
+     ],
+     "center_px": [
+      1278.0,
+      11.5
+     ],
+     "lat": 39.931399,
+     "lon": 32.868445,
+     "alt_labels": [],
+     "id": "img_000926_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.2757,
+     "bbox_xywh": [
+      1229,
+      0,
+      70,
+      24
+     ],
+     "center_px": [
+      1264.0,
+      12.0
+     ],
+     "lat": 39.931398,
+     "lon": 32.868427,
+     "alt_labels": [],
+     "id": "img_000926_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_001147",
+   "file": "images/img_001147.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "15:20",
+   "corner_coordinates": {
+    "top_left": [
+     39.896338,
+     32.827997
+    ],
+    "top_right": [
+     39.896338,
+     32.829711
+    ],
+    "bottom_left": [
+     39.895598,
+     32.827997
+    ],
+    "bottom_right": [
+     39.895598,
+     32.829711
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 0,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9008,
+     "bbox_xywh": [
+      433,
+      383,
+      26,
+      27
+     ],
+     "center_px": [
+      446.0,
+      396.5
+     ],
+     "lat": 39.895795,
+     "lon": 32.828793,
+     "alt_labels": [],
+     "id": "img_001147_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8833,
+     "bbox_xywh": [
+      359,
+      303,
+      19,
+      16
+     ],
+     "center_px": [
+      368.5,
+      311.0
+     ],
+     "lat": 39.895912,
+     "lon": 32.828655,
+     "alt_labels": [],
+     "id": "img_001147_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8792,
+     "bbox_xywh": [
+      372,
+      313,
+      20,
+      18
+     ],
+     "center_px": [
+      382.0,
+      322.0
+     ],
+     "lat": 39.895897,
+     "lon": 32.828679,
+     "alt_labels": [],
+     "id": "img_001147_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8604,
+     "bbox_xywh": [
+      498,
+      423,
+      27,
+      34
+     ],
+     "center_px": [
+      511.5,
+      440.0
+     ],
+     "lat": 39.895735,
+     "lon": 32.82891,
+     "alt_labels": [],
+     "id": "img_001147_003"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.7446,
+     "bbox_xywh": [
+      665,
+      260,
+      74,
+      26
+     ],
+     "center_px": [
+      702.0,
+      273.0
+     ],
+     "lat": 39.895964,
+     "lon": 32.82925,
+     "alt_labels": [],
+     "id": "img_001147_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6932,
+     "bbox_xywh": [
+      375,
+      270,
+      21,
+      12
+     ],
+     "center_px": [
+      385.5,
+      276.0
+     ],
+     "lat": 39.89596,
+     "lon": 32.828685,
+     "alt_labels": [],
+     "id": "img_001147_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_001230",
+   "file": "images/img_001230.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "15:15",
+   "corner_coordinates": {
+    "top_left": [
+     39.901901,
+     32.869247
+    ],
+    "top_right": [
+     39.901901,
+     32.871241
+    ],
+    "bottom_left": [
+     39.901041,
+     32.869247
+    ],
+    "bottom_right": [
+     39.901041,
+     32.871241
+    ]
+   },
+   "counts": {
+    "car": 3,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8726,
+     "bbox_xywh": [
+      479,
+      165,
+      20,
+      21
+     ],
+     "center_px": [
+      489.0,
+      175.5
+     ],
+     "lat": 39.901622,
+     "lon": 32.870263,
+     "alt_labels": [],
+     "id": "img_001230_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8063,
+     "bbox_xywh": [
+      491,
+      226,
+      22,
+      25
+     ],
+     "center_px": [
+      502.0,
+      238.5
+     ],
+     "lat": 39.901521,
+     "lon": 32.87029,
+     "alt_labels": [],
+     "id": "img_001230_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8041,
+     "bbox_xywh": [
+      316,
+      499,
+      68,
+      41
+     ],
+     "center_px": [
+      350.0,
+      519.5
+     ],
+     "lat": 39.901074,
+     "lon": 32.869974,
+     "alt_labels": [],
+     "id": "img_001230_002"
+    }
+   ]
+  },
+  {
+   "image_id": "img_001643",
+   "file": "images/img_001643.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "15:10",
+   "corner_coordinates": {
+    "top_left": [
+     39.970529,
+     32.853993
+    ],
+    "top_right": [
+     39.970529,
+     32.856825
+    ],
+    "bottom_left": [
+     39.969309,
+     32.853993
+    ],
+    "bottom_right": [
+     39.969309,
+     32.856825
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9297,
+     "bbox_xywh": [
+      1220,
+      485,
+      140,
+      166
+     ],
+     "center_px": [
+      1290.0,
+      568.0
+     ],
+     "lat": 39.969623,
+     "lon": 32.856679,
+     "alt_labels": [],
+     "id": "img_001643_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.927,
+     "bbox_xywh": [
+      796,
+      163,
+      144,
+      113
+     ],
+     "center_px": [
+      868.0,
+      219.5
+     ],
+     "lat": 39.970179,
+     "lon": 32.8558,
+     "alt_labels": [],
+     "id": "img_001643_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9005,
+     "bbox_xywh": [
+      1046,
+      21,
+      139,
+      102
+     ],
+     "center_px": [
+      1115.5,
+      72.0
+     ],
+     "lat": 39.970414,
+     "lon": 32.856316,
+     "alt_labels": [],
+     "id": "img_001643_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7738,
+     "bbox_xywh": [
+      918,
+      662,
+      164,
+      103
+     ],
+     "center_px": [
+      1000.0,
+      713.5
+     ],
+     "lat": 39.969391,
+     "lon": 32.856075,
+     "alt_labels": [],
+     "id": "img_001643_003"
+    }
+   ]
+  },
+  {
+   "image_id": "img_001733",
+   "file": "images/img_001733.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "15:05",
+   "corner_coordinates": {
+    "top_left": [
+     39.935015,
+     32.825054
+    ],
+    "top_right": [
+     39.935015,
+     32.827726
+    ],
+    "bottom_left": [
+     39.933863,
+     32.825054
+    ],
+    "bottom_right": [
+     39.933863,
+     32.827726
+    ]
+   },
+   "counts": {
+    "car": 3,
+    "van": 2,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9185,
+     "bbox_xywh": [
+      760,
+      543,
+      80,
+      116
+     ],
+     "center_px": [
+      800.0,
+      601.0
+     ],
+     "lat": 39.93411,
+     "lon": 32.826626,
+     "alt_labels": [],
+     "id": "img_001733_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8877,
+     "bbox_xywh": [
+      633,
+      637,
+      97,
+      128
+     ],
+     "center_px": [
+      681.5,
+      701.0
+     ],
+     "lat": 39.933959,
+     "lon": 32.826393,
+     "alt_labels": [],
+     "id": "img_001733_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8438,
+     "bbox_xywh": [
+      646,
+      144,
+      18,
+      17
+     ],
+     "center_px": [
+      655.0,
+      152.5
+     ],
+     "lat": 39.934785,
+     "lon": 32.826341,
+     "alt_labels": [],
+     "id": "img_001733_002"
+    },
+    {
+     "label": "van",
+     "confidence": 0.5256,
+     "bbox_xywh": [
+      645,
+      312,
+      46,
+      61
+     ],
+     "center_px": [
+      668.0,
+      342.5
+     ],
+     "lat": 39.934499,
+     "lon": 32.826366,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.2012
+      },
+      {
+       "label": "truck",
+       "confidence": 0.1131
+      }
+     ],
+     "id": "img_001733_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.4028,
+     "bbox_xywh": [
+      666,
+      125,
+      18,
+      18
+     ],
+     "center_px": [
+      675.0,
+      134.0
+     ],
+     "lat": 39.934813,
+     "lon": 32.82638,
+     "alt_labels": [
+      {
+       "label": "truck",
+       "confidence": 0.3249
+      },
+      {
+       "label": "car",
+       "confidence": 0.322
+      }
+     ],
+     "id": "img_001733_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_002256",
+   "file": "images/img_002256.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "14:05",
+   "corner_coordinates": {
+    "top_left": [
+     39.944816,
+     32.807875
+    ],
+    "top_right": [
+     39.944816,
+     32.810929
+    ],
+    "bottom_left": [
+     39.943498,
+     32.807875
+    ],
+    "bottom_right": [
+     39.943498,
+     32.810929
+    ]
+   },
+   "counts": {
+    "car": 7,
+    "van": 3,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9373,
+     "bbox_xywh": [
+      870,
+      235,
+      97,
+      109
+     ],
+     "center_px": [
+      918.5,
+      289.5
+     ],
+     "lat": 39.944317,
+     "lon": 32.809938,
+     "alt_labels": [],
+     "id": "img_002256_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9331,
+     "bbox_xywh": [
+      801,
+      327,
+      130,
+      156
+     ],
+     "center_px": [
+      866.0,
+      405.0
+     ],
+     "lat": 39.944118,
+     "lon": 32.80982,
+     "alt_labels": [],
+     "id": "img_002256_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.907,
+     "bbox_xywh": [
+      730,
+      204,
+      133,
+      115
+     ],
+     "center_px": [
+      796.5,
+      261.5
+     ],
+     "lat": 39.944365,
+     "lon": 32.809664,
+     "alt_labels": [],
+     "id": "img_002256_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8631,
+     "bbox_xywh": [
+      726,
+      32,
+      108,
+      44
+     ],
+     "center_px": [
+      780.0,
+      54.0
+     ],
+     "lat": 39.944723,
+     "lon": 32.809627,
+     "alt_labels": [],
+     "id": "img_002256_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.8466,
+     "bbox_xywh": [
+      759,
+      5,
+      94,
+      49
+     ],
+     "center_px": [
+      806.0,
+      29.5
+     ],
+     "lat": 39.944765,
+     "lon": 32.809685,
+     "alt_labels": [],
+     "id": "img_002256_004"
+    },
+    {
+     "label": "van",
+     "confidence": 0.8297,
+     "bbox_xywh": [
+      558,
+      158,
+      146,
+      82
+     ],
+     "center_px": [
+      631.0,
+      199.0
+     ],
+     "lat": 39.944473,
+     "lon": 32.809292,
+     "alt_labels": [],
+     "id": "img_002256_005"
+    },
+    {
+     "label": "van",
+     "confidence": 0.6283,
+     "bbox_xywh": [
+      1325,
+      88,
+      35,
+      81
+     ],
+     "center_px": [
+      1342.5,
+      128.5
+     ],
+     "lat": 39.944595,
+     "lon": 32.81089,
+     "alt_labels": [],
+     "id": "img_002256_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6039,
+     "bbox_xywh": [
+      251,
+      337,
+      256,
+      104
+     ],
+     "center_px": [
+      379.0,
+      389.0
+     ],
+     "lat": 39.944146,
+     "lon": 32.808726,
+     "alt_labels": [],
+     "id": "img_002256_007"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5861,
+     "bbox_xywh": [
+      982,
+      1,
+      49,
+      29
+     ],
+     "center_px": [
+      1006.5,
+      15.5
+     ],
+     "lat": 39.944789,
+     "lon": 32.810135,
+     "alt_labels": [],
+     "id": "img_002256_008"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3227,
+     "bbox_xywh": [
+      1251,
+      88,
+      65,
+      70
+     ],
+     "center_px": [
+      1283.5,
+      123.0
+     ],
+     "lat": 39.944604,
+     "lon": 32.810757,
+     "alt_labels": [],
+     "id": "img_002256_009"
+    }
+   ]
+  },
+  {
+   "image_id": "img_002661",
+   "file": "images/img_002661.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:00",
+   "corner_coordinates": {
+    "top_left": [
+     39.961505,
+     32.846729
+    ],
+    "top_right": [
+     39.961505,
+     32.848477
+    ],
+    "bottom_left": [
+     39.960751,
+     32.846729
+    ],
+    "bottom_right": [
+     39.960751,
+     32.848477
+    ]
+   },
+   "counts": {
+    "car": 2,
+    "van": 1,
+    "truck": 2,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9233,
+     "bbox_xywh": [
+      382,
+      384,
+      74,
+      93
+     ],
+     "center_px": [
+      419.0,
+      430.5
+     ],
+     "lat": 39.960904,
+     "lon": 32.847492,
+     "alt_labels": [],
+     "id": "img_002661_000"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.7469,
+     "bbox_xywh": [
+      480,
+      140,
+      17,
+      26
+     ],
+     "center_px": [
+      488.5,
+      153.0
+     ],
+     "lat": 39.961291,
+     "lon": 32.847618,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.2168
+      }
+     ],
+     "id": "img_002661_001"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.5615,
+     "bbox_xywh": [
+      467,
+      127,
+      33,
+      13
+     ],
+     "center_px": [
+      483.5,
+      133.5
+     ],
+     "lat": 39.961319,
+     "lon": 32.847609,
+     "alt_labels": [],
+     "id": "img_002661_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3734,
+     "bbox_xywh": [
+      383,
+      153,
+      31,
+      15
+     ],
+     "center_px": [
+      398.5,
+      160.5
+     ],
+     "lat": 39.961281,
+     "lon": 32.847455,
+     "alt_labels": [],
+     "id": "img_002661_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.3014,
+     "bbox_xywh": [
+      387,
+      142,
+      29,
+      13
+     ],
+     "center_px": [
+      401.5,
+      148.5
+     ],
+     "lat": 39.961298,
+     "lon": 32.84746,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.2348
+      }
+     ],
+     "id": "img_002661_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_002900",
+   "file": "images/img_002900.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "13:50",
+   "corner_coordinates": {
+    "top_left": [
+     39.921088,
+     32.833091
+    ],
+    "top_right": [
+     39.921088,
+     32.835331
+    ],
+    "bottom_left": [
+     39.920122,
+     32.833091
+    ],
+    "bottom_right": [
+     39.920122,
+     32.835331
+    ]
+   },
+   "counts": {
+    "car": 2,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9356,
+     "bbox_xywh": [
+      697,
+      631,
+      57,
+      80
+     ],
+     "center_px": [
+      725.5,
+      671.0
+     ],
+     "lat": 39.920241,
+     "lon": 32.834286,
+     "alt_labels": [],
+     "id": "img_002900_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3828,
+     "bbox_xywh": [
+      1085,
+      443,
+      77,
+      43
+     ],
+     "center_px": [
+      1123.5,
+      464.5
+     ],
+     "lat": 39.920501,
+     "lon": 32.834941,
+     "alt_labels": [],
+     "id": "img_002900_001"
+    }
+   ]
+  },
+  {
+   "image_id": "img_003189",
+   "file": "images/img_003189.jpg",
+   "width_px": 1920,
+   "height_px": 1080,
+   "capture_time": "13:20",
+   "corner_coordinates": {
+    "top_left": [
+     39.94706,
+     32.82732
+    ],
+    "top_right": [
+     39.94706,
+     32.829756
+    ],
+    "bottom_left": [
+     39.94601,
+     32.82732
+    ],
+    "bottom_right": [
+     39.94601,
+     32.829756
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8923,
+     "bbox_xywh": [
+      1068,
+      140,
+      39,
+      34
+     ],
+     "center_px": [
+      1087.5,
+      157.0
+     ],
+     "lat": 39.946907,
+     "lon": 32.8287,
+     "alt_labels": [],
+     "id": "img_003189_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8897,
+     "bbox_xywh": [
+      1131,
+      323,
+      112,
+      118
+     ],
+     "center_px": [
+      1187.0,
+      382.0
+     ],
+     "lat": 39.946689,
+     "lon": 32.828826,
+     "alt_labels": [],
+     "id": "img_003189_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8609,
+     "bbox_xywh": [
+      1169,
+      131,
+      37,
+      32
+     ],
+     "center_px": [
+      1187.5,
+      147.0
+     ],
+     "lat": 39.946917,
+     "lon": 32.828827,
+     "alt_labels": [],
+     "id": "img_003189_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8524,
+     "bbox_xywh": [
+      1381,
+      134,
+      46,
+      30
+     ],
+     "center_px": [
+      1404.0,
+      149.0
+     ],
+     "lat": 39.946915,
+     "lon": 32.829101,
+     "alt_labels": [],
+     "id": "img_003189_003"
+    }
+   ]
+  },
+  {
+   "image_id": "img_003201",
+   "file": "images/img_003201.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:55",
+   "corner_coordinates": {
+    "top_left": [
+     39.87347,
+     32.851566
+    ],
+    "top_right": [
+     39.87347,
+     32.852906
+    ],
+    "bottom_left": [
+     39.872892,
+     32.851566
+    ],
+    "bottom_right": [
+     39.872892,
+     32.852906
+    ]
+   },
+   "counts": {
+    "car": 3,
+    "van": 2,
+    "truck": 0,
+    "bus": 1
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8758,
+     "bbox_xywh": [
+      505,
+      311,
+      23,
+      22
+     ],
+     "center_px": [
+      516.5,
+      322.0
+     ],
+     "lat": 39.873125,
+     "lon": 32.852287,
+     "alt_labels": [],
+     "id": "img_003201_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.863,
+     "bbox_xywh": [
+      504,
+      296,
+      21,
+      18
+     ],
+     "center_px": [
+      514.5,
+      305.0
+     ],
+     "lat": 39.873144,
+     "lon": 32.852284,
+     "alt_labels": [],
+     "id": "img_003201_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.568,
+     "bbox_xywh": [
+      481,
+      262,
+      16,
+      13
+     ],
+     "center_px": [
+      489.0,
+      268.5
+     ],
+     "lat": 39.873183,
+     "lon": 32.852249,
+     "alt_labels": [],
+     "id": "img_003201_002"
+    },
+    {
+     "label": "van",
+     "confidence": 0.4894,
+     "bbox_xywh": [
+      621,
+      296,
+      36,
+      23
+     ],
+     "center_px": [
+      639.0,
+      307.5
+     ],
+     "lat": 39.873141,
+     "lon": 32.852458,
+     "alt_labels": [],
+     "id": "img_003201_003"
+    },
+    {
+     "label": "bus",
+     "confidence": 0.4421,
+     "bbox_xywh": [
+      450,
+      222,
+      14,
+      18
+     ],
+     "center_px": [
+      457.0,
+      231.0
+     ],
+     "lat": 39.873223,
+     "lon": 32.852204,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1575
+      },
+      {
+       "label": "truck",
+       "confidence": 0.1376
+      }
+     ],
+     "id": "img_003201_004"
+    },
+    {
+     "label": "van",
+     "confidence": 0.4385,
+     "bbox_xywh": [
+      283,
+      282,
+      26,
+      24
+     ],
+     "center_px": [
+      296.0,
+      294.0
+     ],
+     "lat": 39.873155,
+     "lon": 32.851979,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.3723
+      }
+     ],
+     "id": "img_003201_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_003464",
+   "file": "images/img_003464.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "12:15",
+   "corner_coordinates": {
+    "top_left": [
+     39.945679,
+     32.856448
+    ],
+    "top_right": [
+     39.945679,
+     32.859548
+    ],
+    "bottom_left": [
+     39.944343,
+     32.856448
+    ],
+    "bottom_right": [
+     39.944343,
+     32.859548
+    ]
+   },
+   "counts": {
+    "car": 0,
+    "van": 1,
+    "truck": 6,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "truck",
+     "confidence": 0.9137,
+     "bbox_xywh": [
+      539,
+      313,
+      134,
+      106
+     ],
+     "center_px": [
+      606.0,
+      366.0
+     ],
+     "lat": 39.94504,
+     "lon": 32.857829,
+     "alt_labels": [],
+     "id": "img_003464_000"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8968,
+     "bbox_xywh": [
+      388,
+      167,
+      262,
+      123
+     ],
+     "center_px": [
+      519.0,
+      228.5
+     ],
+     "lat": 39.94528,
+     "lon": 32.857631,
+     "alt_labels": [],
+     "id": "img_003464_001"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.892,
+     "bbox_xywh": [
+      847,
+      167,
+      127,
+      72
+     ],
+     "center_px": [
+      910.5,
+      203.0
+     ],
+     "lat": 39.945324,
+     "lon": 32.858523,
+     "alt_labels": [],
+     "id": "img_003464_002"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8854,
+     "bbox_xywh": [
+      1003,
+      147,
+      48,
+      60
+     ],
+     "center_px": [
+      1027.0,
+      177.0
+     ],
+     "lat": 39.94537,
+     "lon": 32.858789,
+     "alt_labels": [],
+     "id": "img_003464_003"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8814,
+     "bbox_xywh": [
+      964,
+      111,
+      108,
+      52
+     ],
+     "center_px": [
+      1018.0,
+      137.0
+     ],
+     "lat": 39.94544,
+     "lon": 32.858768,
+     "alt_labels": [],
+     "id": "img_003464_004"
+    },
+    {
+     "label": "van",
+     "confidence": 0.501,
+     "bbox_xywh": [
+      248,
+      75,
+      63,
+      37
+     ],
+     "center_px": [
+      279.5,
+      93.5
+     ],
+     "lat": 39.945516,
+     "lon": 32.857085,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.362
+      }
+     ],
+     "id": "img_003464_005"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.4497,
+     "bbox_xywh": [
+      1042,
+      237,
+      105,
+      114
+     ],
+     "center_px": [
+      1094.5,
+      294.0
+     ],
+     "lat": 39.945166,
+     "lon": 32.858943,
+     "alt_labels": [],
+     "id": "img_003464_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_003839",
+   "file": "images/img_003839.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "13:25",
+   "corner_coordinates": {
+    "top_left": [
+     39.93778,
+     32.847904
+    ],
+    "top_right": [
+     39.93778,
+     32.849658
+    ],
+    "bottom_left": [
+     39.937024,
+     32.847904
+    ],
+    "bottom_right": [
+     39.937024,
+     32.849658
+    ]
+   },
+   "counts": {
+    "car": 6,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9354,
+     "bbox_xywh": [
+      164,
+      275,
+      50,
+      32
+     ],
+     "center_px": [
+      189.0,
+      291.0
+     ],
+     "lat": 39.937373,
+     "lon": 32.848249,
+     "alt_labels": [],
+     "id": "img_003839_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.8468,
+     "bbox_xywh": [
+      198,
+      246,
+      53,
+      33
+     ],
+     "center_px": [
+      224.5,
+      262.5
+     ],
+     "lat": 39.937413,
+     "lon": 32.848314,
+     "alt_labels": [],
+     "id": "img_003839_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.844,
+     "bbox_xywh": [
+      141,
+      369,
+      82,
+      79
+     ],
+     "center_px": [
+      182.0,
+      408.5
+     ],
+     "lat": 39.937208,
+     "lon": 32.848237,
+     "alt_labels": [],
+     "id": "img_003839_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6283,
+     "bbox_xywh": [
+      778,
+      350,
+      74,
+      57
+     ],
+     "center_px": [
+      815.0,
+      378.5
+     ],
+     "lat": 39.93725,
+     "lon": 32.849393,
+     "alt_labels": [],
+     "id": "img_003839_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5089,
+     "bbox_xywh": [
+      596,
+      250,
+      45,
+      35
+     ],
+     "center_px": [
+      618.5,
+      267.5
+     ],
+     "lat": 39.937405,
+     "lon": 32.849034,
+     "alt_labels": [],
+     "id": "img_003839_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4938,
+     "bbox_xywh": [
+      394,
+      177,
+      19,
+      18
+     ],
+     "center_px": [
+      403.5,
+      186.0
+     ],
+     "lat": 39.93752,
+     "lon": 32.848641,
+     "alt_labels": [
+      {
+       "label": "truck",
+       "confidence": 0.2241
+      }
+     ],
+     "id": "img_003839_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4883,
+     "bbox_xywh": [
+      288,
+      189,
+      23,
+      19
+     ],
+     "center_px": [
+      299.5,
+      198.5
+     ],
+     "lat": 39.937502,
+     "lon": 32.848451,
+     "alt_labels": [],
+     "id": "img_003839_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_003880",
+   "file": "images/img_003880.jpg",
+   "width_px": 1920,
+   "height_px": 1080,
+   "capture_time": "14:35",
+   "corner_coordinates": {
+    "top_left": [
+     39.953273,
+     32.900924
+    ],
+    "top_right": [
+     39.953273,
+     32.904122
+    ],
+    "bottom_left": [
+     39.951895,
+     32.900924
+    ],
+    "bottom_right": [
+     39.951895,
+     32.904122
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9225,
+     "bbox_xywh": [
+      1024,
+      561,
+      134,
+      60
+     ],
+     "center_px": [
+      1091.0,
+      591.0
+     ],
+     "lat": 39.952519,
+     "lon": 32.902741,
+     "alt_labels": [],
+     "id": "img_003880_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9185,
+     "bbox_xywh": [
+      1781,
+      710,
+      138,
+      223
+     ],
+     "center_px": [
+      1850.0,
+      821.5
+     ],
+     "lat": 39.952225,
+     "lon": 32.904005,
+     "alt_labels": [],
+     "id": "img_003880_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8061,
+     "bbox_xywh": [
+      1004,
+      114,
+      21,
+      17
+     ],
+     "center_px": [
+      1014.5,
+      122.5
+     ],
+     "lat": 39.953117,
+     "lon": 32.902614,
+     "alt_labels": [],
+     "id": "img_003880_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8014,
+     "bbox_xywh": [
+      900,
+      572,
+      108,
+      58
+     ],
+     "center_px": [
+      954.0,
+      601.0
+     ],
+     "lat": 39.952506,
+     "lon": 32.902513,
+     "alt_labels": [],
+     "id": "img_003880_003"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004318",
+   "file": "images/img_004318.jpg",
+   "width_px": 1920,
+   "height_px": 1080,
+   "capture_time": "15:45",
+   "corner_coordinates": {
+    "top_left": [
+     39.919752,
+     32.790882
+    ],
+    "top_right": [
+     39.919752,
+     32.79342
+    ],
+    "bottom_left": [
+     39.918656,
+     32.790882
+    ],
+    "bottom_right": [
+     39.918656,
+     32.79342
+    ]
+   },
+   "counts": {
+    "car": 6,
+    "van": 0,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9201,
+     "bbox_xywh": [
+      1192,
+      658,
+      127,
+      50
+     ],
+     "center_px": [
+      1255.5,
+      683.0
+     ],
+     "lat": 39.919059,
+     "lon": 32.792542,
+     "alt_labels": [],
+     "id": "img_004318_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9078,
+     "bbox_xywh": [
+      908,
+      477,
+      33,
+      38
+     ],
+     "center_px": [
+      924.5,
+      496.0
+     ],
+     "lat": 39.919249,
+     "lon": 32.792104,
+     "alt_labels": [],
+     "id": "img_004318_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8769,
+     "bbox_xywh": [
+      912,
+      429,
+      30,
+      31
+     ],
+     "center_px": [
+      927.0,
+      444.5
+     ],
+     "lat": 39.919301,
+     "lon": 32.792107,
+     "alt_labels": [],
+     "id": "img_004318_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8584,
+     "bbox_xywh": [
+      921,
+      506,
+      38,
+      46
+     ],
+     "center_px": [
+      940.0,
+      529.0
+     ],
+     "lat": 39.919215,
+     "lon": 32.792125,
+     "alt_labels": [],
+     "id": "img_004318_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7903,
+     "bbox_xywh": [
+      837,
+      449,
+      27,
+      32
+     ],
+     "center_px": [
+      850.5,
+      465.0
+     ],
+     "lat": 39.91928,
+     "lon": 32.792006,
+     "alt_labels": [],
+     "id": "img_004318_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5869,
+     "bbox_xywh": [
+      948,
+      372,
+      24,
+      20
+     ],
+     "center_px": [
+      960.0,
+      382.0
+     ],
+     "lat": 39.919364,
+     "lon": 32.792151,
+     "alt_labels": [],
+     "id": "img_004318_005"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.4332,
+     "bbox_xywh": [
+      949,
+      384,
+      31,
+      31
+     ],
+     "center_px": [
+      964.5,
+      399.5
+     ],
+     "lat": 39.919347,
+     "lon": 32.792157,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.3703
+      }
+     ],
+     "id": "img_004318_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004388",
+   "file": "images/img_004388.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "12:55",
+   "corner_coordinates": {
+    "top_left": [
+     39.954552,
+     32.843202
+    ],
+    "top_right": [
+     39.954552,
+     32.846364
+    ],
+    "bottom_left": [
+     39.953188,
+     32.843202
+    ],
+    "bottom_right": [
+     39.953188,
+     32.846364
+    ]
+   },
+   "counts": {
+    "car": 6,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9102,
+     "bbox_xywh": [
+      1123,
+      50,
+      110,
+      77
+     ],
+     "center_px": [
+      1178.0,
+      88.5
+     ],
+     "lat": 39.954394,
+     "lon": 32.845941,
+     "alt_labels": [],
+     "id": "img_004388_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8755,
+     "bbox_xywh": [
+      418,
+      246,
+      104,
+      189
+     ],
+     "center_px": [
+      470.0,
+      340.5
+     ],
+     "lat": 39.953945,
+     "lon": 32.844295,
+     "alt_labels": [],
+     "id": "img_004388_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8633,
+     "bbox_xywh": [
+      1194,
+      137,
+      124,
+      97
+     ],
+     "center_px": [
+      1256.0,
+      185.5
+     ],
+     "lat": 39.954221,
+     "lon": 32.846122,
+     "alt_labels": [],
+     "id": "img_004388_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8572,
+     "bbox_xywh": [
+      566,
+      130,
+      92,
+      120
+     ],
+     "center_px": [
+      612.0,
+      190.0
+     ],
+     "lat": 39.954213,
+     "lon": 32.844625,
+     "alt_labels": [],
+     "id": "img_004388_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7954,
+     "bbox_xywh": [
+      1064,
+      0,
+      85,
+      46
+     ],
+     "center_px": [
+      1106.5,
+      23.0
+     ],
+     "lat": 39.954511,
+     "lon": 32.845775,
+     "alt_labels": [],
+     "id": "img_004388_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.503,
+     "bbox_xywh": [
+      1299,
+      243,
+      61,
+      137
+     ],
+     "center_px": [
+      1329.5,
+      311.5
+     ],
+     "lat": 39.953997,
+     "lon": 32.846293,
+     "alt_labels": [],
+     "id": "img_004388_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004416",
+   "file": "images/img_004416.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:15",
+   "corner_coordinates": {
+    "top_left": [
+     39.888318,
+     32.880323
+    ],
+    "top_right": [
+     39.888318,
+     32.882307
+    ],
+    "bottom_left": [
+     39.887462,
+     32.880323
+    ],
+    "bottom_right": [
+     39.887462,
+     32.882307
+    ]
+   },
+   "counts": {
+    "car": 7,
+    "van": 1,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9357,
+     "bbox_xywh": [
+      55,
+      295,
+      68,
+      42
+     ],
+     "center_px": [
+      89.0,
+      316.0
+     ],
+     "lat": 39.887817,
+     "lon": 32.880507,
+     "alt_labels": [],
+     "id": "img_004416_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9203,
+     "bbox_xywh": [
+      116,
+      406,
+      108,
+      80
+     ],
+     "center_px": [
+      170.0,
+      446.0
+     ],
+     "lat": 39.887611,
+     "lon": 32.880674,
+     "alt_labels": [],
+     "id": "img_004416_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.908,
+     "bbox_xywh": [
+      0,
+      326,
+      72,
+      47
+     ],
+     "center_px": [
+      36.0,
+      349.5
+     ],
+     "lat": 39.887764,
+     "lon": 32.880397,
+     "alt_labels": [],
+     "id": "img_004416_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9075,
+     "bbox_xywh": [
+      537,
+      455,
+      126,
+      84
+     ],
+     "center_px": [
+      600.0,
+      497.0
+     ],
+     "lat": 39.88753,
+     "lon": 32.881563,
+     "alt_labels": [],
+     "id": "img_004416_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.8908,
+     "bbox_xywh": [
+      407,
+      410,
+      111,
+      113
+     ],
+     "center_px": [
+      462.5,
+      466.5
+     ],
+     "lat": 39.887579,
+     "lon": 32.881279,
+     "alt_labels": [],
+     "id": "img_004416_004"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.7558,
+     "bbox_xywh": [
+      379,
+      368,
+      121,
+      100
+     ],
+     "center_px": [
+      439.5,
+      418.0
+     ],
+     "lat": 39.887655,
+     "lon": 32.881231,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1706
+      }
+     ],
+     "id": "img_004416_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5097,
+     "bbox_xywh": [
+      129,
+      238,
+      48,
+      30
+     ],
+     "center_px": [
+      153.0,
+      253.0
+     ],
+     "lat": 39.887917,
+     "lon": 32.880639,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.1928
+      }
+     ],
+     "id": "img_004416_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3851,
+     "bbox_xywh": [
+      37,
+      128,
+      30,
+      12
+     ],
+     "center_px": [
+      52.0,
+      134.0
+     ],
+     "lat": 39.888106,
+     "lon": 32.88043,
+     "alt_labels": [],
+     "id": "img_004416_007"
+    },
+    {
+     "label": "car",
+     "confidence": 0.2552,
+     "bbox_xywh": [
+      7,
+      126,
+      29,
+      12
+     ],
+     "center_px": [
+      21.5,
+      132.0
+     ],
+     "lat": 39.888109,
+     "lon": 32.880367,
+     "alt_labels": [],
+     "id": "img_004416_008"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004423",
+   "file": "images/img_004423.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "15:50",
+   "corner_coordinates": {
+    "top_left": [
+     39.961493,
+     32.819159
+    ],
+    "top_right": [
+     39.961493,
+     32.820769
+    ],
+    "bottom_left": [
+     39.960799,
+     32.819159
+    ],
+    "bottom_right": [
+     39.960799,
+     32.820769
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 3,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.945,
+     "bbox_xywh": [
+      565,
+      396,
+      72,
+      34
+     ],
+     "center_px": [
+      601.0,
+      413.0
+     ],
+     "lat": 39.960962,
+     "lon": 32.820167,
+     "alt_labels": [],
+     "id": "img_004423_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.887,
+     "bbox_xywh": [
+      538,
+      476,
+      91,
+      49
+     ],
+     "center_px": [
+      583.5,
+      500.5
+     ],
+     "lat": 39.96085,
+     "lon": 32.820138,
+     "alt_labels": [],
+     "id": "img_004423_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8424,
+     "bbox_xywh": [
+      468,
+      255,
+      20,
+      24
+     ],
+     "center_px": [
+      478.0,
+      267.0
+     ],
+     "lat": 39.96115,
+     "lon": 32.819961,
+     "alt_labels": [],
+     "id": "img_004423_002"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.5556,
+     "bbox_xywh": [
+      487,
+      123,
+      18,
+      27
+     ],
+     "center_px": [
+      496.0,
+      136.5
+     ],
+     "lat": 39.961318,
+     "lon": 32.819991,
+     "alt_labels": [
+      {
+       "label": "bus",
+       "confidence": 0.4727
+      },
+      {
+       "label": "van",
+       "confidence": 0.1268
+      }
+     ],
+     "id": "img_004423_003"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.3625,
+     "bbox_xywh": [
+      493,
+      324,
+      19,
+      32
+     ],
+     "center_px": [
+      502.5,
+      340.0
+     ],
+     "lat": 39.961056,
+     "lon": 32.820002,
+     "alt_labels": [],
+     "id": "img_004423_004"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.3319,
+     "bbox_xywh": [
+      514,
+      100,
+      12,
+      17
+     ],
+     "center_px": [
+      520.0,
+      108.5
+     ],
+     "lat": 39.961354,
+     "lon": 32.820031,
+     "alt_labels": [],
+     "id": "img_004423_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3052,
+     "bbox_xywh": [
+      932,
+      366,
+      28,
+      30
+     ],
+     "center_px": [
+      946.0,
+      381.0
+     ],
+     "lat": 39.961003,
+     "lon": 32.820746,
+     "alt_labels": [],
+     "id": "img_004423_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004512",
+   "file": "images/img_004512.jpg",
+   "width_px": 1920,
+   "height_px": 1080,
+   "capture_time": "13:05",
+   "corner_coordinates": {
+    "top_left": [
+     39.950596,
+     32.888273
+    ],
+    "top_right": [
+     39.950596,
+     32.891917
+    ],
+    "bottom_left": [
+     39.949024,
+     32.888273
+    ],
+    "bottom_right": [
+     39.949024,
+     32.891917
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9289,
+     "bbox_xywh": [
+      970,
+      123,
+      61,
+      33
+     ],
+     "center_px": [
+      1000.5,
+      139.5
+     ],
+     "lat": 39.950393,
+     "lon": 32.890172,
+     "alt_labels": [],
+     "id": "img_004512_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.9202,
+     "bbox_xywh": [
+      943,
+      256,
+      44,
+      52
+     ],
+     "center_px": [
+      965.0,
+      282.0
+     ],
+     "lat": 39.950186,
+     "lon": 32.890104,
+     "alt_labels": [],
+     "id": "img_004512_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9103,
+     "bbox_xywh": [
+      950,
+      196,
+      37,
+      40
+     ],
+     "center_px": [
+      968.5,
+      216.0
+     ],
+     "lat": 39.950282,
+     "lon": 32.890111,
+     "alt_labels": [],
+     "id": "img_004512_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8907,
+     "bbox_xywh": [
+      917,
+      26,
+      36,
+      28
+     ],
+     "center_px": [
+      935.0,
+      40.0
+     ],
+     "lat": 39.950538,
+     "lon": 32.890048,
+     "alt_labels": [],
+     "id": "img_004512_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7669,
+     "bbox_xywh": [
+      1076,
+      189,
+      65,
+      36
+     ],
+     "center_px": [
+      1108.5,
+      207.0
+     ],
+     "lat": 39.950295,
+     "lon": 32.890377,
+     "alt_labels": [],
+     "id": "img_004512_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.514,
+     "bbox_xywh": [
+      1073,
+      166,
+      46,
+      37
+     ],
+     "center_px": [
+      1096.0,
+      184.5
+     ],
+     "lat": 39.950327,
+     "lon": 32.890353,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1957
+      }
+     ],
+     "id": "img_004512_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_004530",
+   "file": "images/img_004530.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "10:45",
+   "corner_coordinates": {
+    "top_left": [
+     39.907167,
+     32.84883
+    ],
+    "top_right": [
+     39.907167,
+     32.851236
+    ],
+    "bottom_left": [
+     39.906129,
+     32.84883
+    ],
+    "bottom_right": [
+     39.906129,
+     32.851236
+    ]
+   },
+   "counts": {
+    "car": 6,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "van",
+     "confidence": 0.9384,
+     "bbox_xywh": [
+      394,
+      406,
+      217,
+      127
+     ],
+     "center_px": [
+      502.5,
+      469.5
+     ],
+     "lat": 39.90653,
+     "lon": 32.849719,
+     "alt_labels": [],
+     "id": "img_004530_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9142,
+     "bbox_xywh": [
+      1163,
+      332,
+      197,
+      128
+     ],
+     "center_px": [
+      1261.5,
+      396.0
+     ],
+     "lat": 39.90663,
+     "lon": 32.851062,
+     "alt_labels": [],
+     "id": "img_004530_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9075,
+     "bbox_xywh": [
+      911,
+      16,
+      78,
+      89
+     ],
+     "center_px": [
+      950.0,
+      60.5
+     ],
+     "lat": 39.907085,
+     "lon": 32.850511,
+     "alt_labels": [],
+     "id": "img_004530_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8975,
+     "bbox_xywh": [
+      196,
+      589,
+      297,
+      149
+     ],
+     "center_px": [
+      344.5,
+      663.5
+     ],
+     "lat": 39.906267,
+     "lon": 32.849439,
+     "alt_labels": [],
+     "id": "img_004530_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8913,
+     "bbox_xywh": [
+      740,
+      0,
+      76,
+      68
+     ],
+     "center_px": [
+      778.0,
+      34.0
+     ],
+     "lat": 39.907121,
+     "lon": 32.850206,
+     "alt_labels": [],
+     "id": "img_004530_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8492,
+     "bbox_xywh": [
+      991,
+      499,
+      296,
+      149
+     ],
+     "center_px": [
+      1139.0,
+      573.5
+     ],
+     "lat": 39.906389,
+     "lon": 32.850845,
+     "alt_labels": [],
+     "id": "img_004530_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7418,
+     "bbox_xywh": [
+      1,
+      69,
+      111,
+      133
+     ],
+     "center_px": [
+      56.5,
+      135.5
+     ],
+     "lat": 39.906983,
+     "lon": 32.84893,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1929
+      }
+     ],
+     "id": "img_004530_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005359",
+   "file": "images/img_005359.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "11:30",
+   "corner_coordinates": {
+    "top_left": [
+     39.891657,
+     32.90057
+    ],
+    "top_right": [
+     39.891657,
+     32.903442
+    ],
+    "bottom_left": [
+     39.890417,
+     32.90057
+    ],
+    "bottom_right": [
+     39.890417,
+     32.903442
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9069,
+     "bbox_xywh": [
+      1263,
+      20,
+      59,
+      36
+     ],
+     "center_px": [
+      1292.5,
+      38.0
+     ],
+     "lat": 39.891595,
+     "lon": 32.903299,
+     "alt_labels": [],
+     "id": "img_005359_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9031,
+     "bbox_xywh": [
+      467,
+      285,
+      179,
+      102
+     ],
+     "center_px": [
+      556.5,
+      336.0
+     ],
+     "lat": 39.891112,
+     "lon": 32.901745,
+     "alt_labels": [],
+     "id": "img_005359_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8704,
+     "bbox_xywh": [
+      834,
+      10,
+      65,
+      34
+     ],
+     "center_px": [
+      866.5,
+      27.0
+     ],
+     "lat": 39.891613,
+     "lon": 32.9024,
+     "alt_labels": [],
+     "id": "img_005359_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8252,
+     "bbox_xywh": [
+      302,
+      260,
+      143,
+      89
+     ],
+     "center_px": [
+      373.5,
+      304.5
+     ],
+     "lat": 39.891163,
+     "lon": 32.901359,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1282
+      }
+     ],
+     "id": "img_005359_003"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005368",
+   "file": "images/img_005368.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "10:25",
+   "corner_coordinates": {
+    "top_left": [
+     39.92531,
+     32.883173
+    ],
+    "top_right": [
+     39.92531,
+     32.885055
+    ],
+    "bottom_left": [
+     39.924498,
+     32.883173
+    ],
+    "bottom_right": [
+     39.924498,
+     32.885055
+    ]
+   },
+   "counts": {
+    "car": 2,
+    "van": 0,
+    "truck": 3,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "truck",
+     "confidence": 0.884,
+     "bbox_xywh": [
+      1166,
+      316,
+      193,
+      187
+     ],
+     "center_px": [
+      1262.5,
+      409.5
+     ],
+     "lat": 39.924875,
+     "lon": 32.88492,
+     "alt_labels": [],
+     "id": "img_005368_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8511,
+     "bbox_xywh": [
+      670,
+      132,
+      22,
+      24
+     ],
+     "center_px": [
+      681.0,
+      144.0
+     ],
+     "lat": 39.925157,
+     "lon": 32.884115,
+     "alt_labels": [],
+     "id": "img_005368_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.648,
+     "bbox_xywh": [
+      601,
+      651,
+      77,
+      114
+     ],
+     "center_px": [
+      639.5,
+      708.0
+     ],
+     "lat": 39.924559,
+     "lon": 32.884058,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.2403
+      }
+     ],
+     "id": "img_005368_002"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.6156,
+     "bbox_xywh": [
+      630,
+      162,
+      34,
+      71
+     ],
+     "center_px": [
+      647.0,
+      197.5
+     ],
+     "lat": 39.9251,
+     "lon": 32.884068,
+     "alt_labels": [],
+     "id": "img_005368_003"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.5483,
+     "bbox_xywh": [
+      629,
+      114,
+      32,
+      58
+     ],
+     "center_px": [
+      645.0,
+      143.0
+     ],
+     "lat": 39.925158,
+     "lon": 32.884066,
+     "alt_labels": [],
+     "id": "img_005368_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005561",
+   "file": "images/img_005561.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "12:10",
+   "corner_coordinates": {
+    "top_left": [
+     39.898513,
+     32.857395
+    ],
+    "top_right": [
+     39.898513,
+     32.859925
+    ],
+    "bottom_left": [
+     39.897421,
+     32.857395
+    ],
+    "bottom_right": [
+     39.897421,
+     32.859925
+    ]
+   },
+   "counts": {
+    "car": 6,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.794,
+     "bbox_xywh": [
+      848,
+      461,
+      33,
+      25
+     ],
+     "center_px": [
+      864.5,
+      473.5
+     ],
+     "lat": 39.897837,
+     "lon": 32.859003,
+     "alt_labels": [],
+     "id": "img_005561_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7286,
+     "bbox_xywh": [
+      894,
+      451,
+      50,
+      24
+     ],
+     "center_px": [
+      919.0,
+      463.0
+     ],
+     "lat": 39.897852,
+     "lon": 32.859105,
+     "alt_labels": [],
+     "id": "img_005561_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7155,
+     "bbox_xywh": [
+      817,
+      468,
+      41,
+      27
+     ],
+     "center_px": [
+      837.5,
+      481.5
+     ],
+     "lat": 39.897826,
+     "lon": 32.858953,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1457
+      }
+     ],
+     "id": "img_005561_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6884,
+     "bbox_xywh": [
+      918,
+      447,
+      45,
+      21
+     ],
+     "center_px": [
+      940.5,
+      457.5
+     ],
+     "lat": 39.89786,
+     "lon": 32.859145,
+     "alt_labels": [],
+     "id": "img_005561_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6151,
+     "bbox_xywh": [
+      933,
+      444,
+      41,
+      20
+     ],
+     "center_px": [
+      953.5,
+      454.0
+     ],
+     "lat": 39.897865,
+     "lon": 32.859169,
+     "alt_labels": [],
+     "id": "img_005561_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5678,
+     "bbox_xywh": [
+      875,
+      458,
+      36,
+      25
+     ],
+     "center_px": [
+      893.0,
+      470.5
+     ],
+     "lat": 39.897841,
+     "lon": 32.859056,
+     "alt_labels": [],
+     "id": "img_005561_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005611",
+   "file": "images/img_005611.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "13:45",
+   "corner_coordinates": {
+    "top_left": [
+     39.913745,
+     32.802163
+    ],
+    "top_right": [
+     39.913745,
+     32.804111
+    ],
+    "bottom_left": [
+     39.912905,
+     32.802163
+    ],
+    "bottom_right": [
+     39.912905,
+     32.804111
+    ]
+   },
+   "counts": {
+    "car": 3,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9219,
+     "bbox_xywh": [
+      1170,
+      176,
+      56,
+      46
+     ],
+     "center_px": [
+      1198.0,
+      199.0
+     ],
+     "lat": 39.913526,
+     "lon": 32.803879,
+     "alt_labels": [],
+     "id": "img_005611_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9159,
+     "bbox_xywh": [
+      0,
+      635,
+      149,
+      124
+     ],
+     "center_px": [
+      74.5,
+      697.0
+     ],
+     "lat": 39.91298,
+     "lon": 32.80227,
+     "alt_labels": [],
+     "id": "img_005611_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.88,
+     "bbox_xywh": [
+      1120,
+      331,
+      106,
+      52
+     ],
+     "center_px": [
+      1173.0,
+      357.0
+     ],
+     "lat": 39.913353,
+     "lon": 32.803843,
+     "alt_labels": [],
+     "id": "img_005611_002"
+    },
+    {
+     "label": "van",
+     "confidence": 0.4858,
+     "bbox_xywh": [
+      53,
+      432,
+      131,
+      99
+     ],
+     "center_px": [
+      118.5,
+      481.5
+     ],
+     "lat": 39.913216,
+     "lon": 32.802333,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.4663
+      }
+     ],
+     "id": "img_005611_003"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005672",
+   "file": "images/img_005672.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "11:00",
+   "corner_coordinates": {
+    "top_left": [
+     39.912509,
+     32.836523
+    ],
+    "top_right": [
+     39.912509,
+     32.838195
+    ],
+    "bottom_left": [
+     39.911787,
+     32.836523
+    ],
+    "bottom_right": [
+     39.911787,
+     32.838195
+    ]
+   },
+   "counts": {
+    "car": 7,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8995,
+     "bbox_xywh": [
+      626,
+      230,
+      47,
+      20
+     ],
+     "center_px": [
+      649.5,
+      240.0
+     ],
+     "lat": 39.912188,
+     "lon": 32.837654,
+     "alt_labels": [],
+     "id": "img_005672_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8914,
+     "bbox_xywh": [
+      560,
+      211,
+      25,
+      18
+     ],
+     "center_px": [
+      572.5,
+      220.0
+     ],
+     "lat": 39.912215,
+     "lon": 32.83752,
+     "alt_labels": [],
+     "id": "img_005672_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8505,
+     "bbox_xywh": [
+      319,
+      290,
+      30,
+      42
+     ],
+     "center_px": [
+      334.0,
+      311.0
+     ],
+     "lat": 39.912093,
+     "lon": 32.837105,
+     "alt_labels": [],
+     "id": "img_005672_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8454,
+     "bbox_xywh": [
+      574,
+      227,
+      25,
+      21
+     ],
+     "center_px": [
+      586.5,
+      237.5
+     ],
+     "lat": 39.912191,
+     "lon": 32.837544,
+     "alt_labels": [],
+     "id": "img_005672_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.775,
+     "bbox_xywh": [
+      631,
+      190,
+      24,
+      17
+     ],
+     "center_px": [
+      643.0,
+      198.5
+     ],
+     "lat": 39.912244,
+     "lon": 32.837643,
+     "alt_labels": [],
+     "id": "img_005672_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6785,
+     "bbox_xywh": [
+      410,
+      154,
+      15,
+      15
+     ],
+     "center_px": [
+      417.5,
+      161.5
+     ],
+     "lat": 39.912293,
+     "lon": 32.83725,
+     "alt_labels": [],
+     "id": "img_005672_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6475,
+     "bbox_xywh": [
+      326,
+      270,
+      27,
+      28
+     ],
+     "center_px": [
+      339.5,
+      284.0
+     ],
+     "lat": 39.912129,
+     "lon": 32.837114,
+     "alt_labels": [],
+     "id": "img_005672_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005788",
+   "file": "images/img_005788.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "11:10",
+   "corner_coordinates": {
+    "top_left": [
+     39.928509,
+     32.810957
+    ],
+    "top_right": [
+     39.928509,
+     32.813151
+    ],
+    "bottom_left": [
+     39.927563,
+     32.810957
+    ],
+    "bottom_right": [
+     39.927563,
+     32.813151
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 1,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9234,
+     "bbox_xywh": [
+      601,
+      549,
+      101,
+      99
+     ],
+     "center_px": [
+      651.5,
+      598.5
+     ],
+     "lat": 39.927769,
+     "lon": 32.812008,
+     "alt_labels": [],
+     "id": "img_005788_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8883,
+     "bbox_xywh": [
+      635,
+      119,
+      20,
+      21
+     ],
+     "center_px": [
+      645.0,
+      129.5
+     ],
+     "lat": 39.928349,
+     "lon": 32.811998,
+     "alt_labels": [],
+     "id": "img_005788_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8636,
+     "bbox_xywh": [
+      669,
+      124,
+      20,
+      22
+     ],
+     "center_px": [
+      679.0,
+      135.0
+     ],
+     "lat": 39.928342,
+     "lon": 32.812052,
+     "alt_labels": [],
+     "id": "img_005788_002"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8082,
+     "bbox_xywh": [
+      680,
+      612,
+      70,
+      128
+     ],
+     "center_px": [
+      715.0,
+      676.0
+     ],
+     "lat": 39.927673,
+     "lon": 32.81211,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.6548
+      }
+     ],
+     "id": "img_005788_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6473,
+     "bbox_xywh": [
+      641,
+      70,
+      18,
+      19
+     ],
+     "center_px": [
+      650.0,
+      79.5
+     ],
+     "lat": 39.928411,
+     "lon": 32.812006,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.196
+      }
+     ],
+     "id": "img_005788_004"
+    },
+    {
+     "label": "van",
+     "confidence": 0.5676,
+     "bbox_xywh": [
+      723,
+      99,
+      18,
+      21
+     ],
+     "center_px": [
+      732.0,
+      109.5
+     ],
+     "lat": 39.928374,
+     "lon": 32.812138,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.2604
+      }
+     ],
+     "id": "img_005788_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5068,
+     "bbox_xywh": [
+      614,
+      17,
+      15,
+      16
+     ],
+     "center_px": [
+      621.5,
+      25.0
+     ],
+     "lat": 39.928478,
+     "lon": 32.81196,
+     "alt_labels": [],
+     "id": "img_005788_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_005978",
+   "file": "images/img_005978.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "10:20",
+   "corner_coordinates": {
+    "top_left": [
+     39.909646,
+     32.827455
+    ],
+    "top_right": [
+     39.909646,
+     32.828755
+    ],
+    "bottom_left": [
+     39.909086,
+     32.827455
+    ],
+    "bottom_right": [
+     39.909086,
+     32.828755
+    ]
+   },
+   "counts": {
+    "car": 15,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.946,
+     "bbox_xywh": [
+      480,
+      482,
+      34,
+      58
+     ],
+     "center_px": [
+      497.0,
+      511.0
+     ],
+     "lat": 39.909116,
+     "lon": 32.828128,
+     "alt_labels": [],
+     "id": "img_005978_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9371,
+     "bbox_xywh": [
+      493,
+      347,
+      25,
+      37
+     ],
+     "center_px": [
+      505.5,
+      365.5
+     ],
+     "lat": 39.909267,
+     "lon": 32.82814,
+     "alt_labels": [],
+     "id": "img_005978_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9185,
+     "bbox_xywh": [
+      454,
+      287,
+      21,
+      31
+     ],
+     "center_px": [
+      464.5,
+      302.5
+     ],
+     "lat": 39.909332,
+     "lon": 32.828084,
+     "alt_labels": [],
+     "id": "img_005978_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9092,
+     "bbox_xywh": [
+      506,
+      281,
+      21,
+      27
+     ],
+     "center_px": [
+      516.5,
+      294.5
+     ],
+     "lat": 39.909341,
+     "lon": 32.828154,
+     "alt_labels": [],
+     "id": "img_005978_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9019,
+     "bbox_xywh": [
+      329,
+      470,
+      48,
+      70
+     ],
+     "center_px": [
+      353.0,
+      505.0
+     ],
+     "lat": 39.909122,
+     "lon": 32.827933,
+     "alt_labels": [],
+     "id": "img_005978_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8778,
+     "bbox_xywh": [
+      569,
+      473,
+      35,
+      56
+     ],
+     "center_px": [
+      586.5,
+      501.0
+     ],
+     "lat": 39.909126,
+     "lon": 32.828249,
+     "alt_labels": [],
+     "id": "img_005978_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8723,
+     "bbox_xywh": [
+      512,
+      234,
+      17,
+      21
+     ],
+     "center_px": [
+      520.5,
+      244.5
+     ],
+     "lat": 39.909392,
+     "lon": 32.82816,
+     "alt_labels": [],
+     "id": "img_005978_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8478,
+     "bbox_xywh": [
+      390,
+      336,
+      35,
+      40
+     ],
+     "center_px": [
+      407.5,
+      356.0
+     ],
+     "lat": 39.909277,
+     "lon": 32.828007,
+     "alt_labels": [],
+     "id": "img_005978_007"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6213,
+     "bbox_xywh": [
+      509,
+      196,
+      15,
+      16
+     ],
+     "center_px": [
+      516.5,
+      204.0
+     ],
+     "lat": 39.909434,
+     "lon": 32.828154,
+     "alt_labels": [],
+     "id": "img_005978_008"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4717,
+     "bbox_xywh": [
+      518,
+      180,
+      14,
+      16
+     ],
+     "center_px": [
+      525.0,
+      188.0
+     ],
+     "lat": 39.909451,
+     "lon": 32.828166,
+     "alt_labels": [],
+     "id": "img_005978_009"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4637,
+     "bbox_xywh": [
+      453,
+      190,
+      16,
+      19
+     ],
+     "center_px": [
+      461.0,
+      199.5
+     ],
+     "lat": 39.909439,
+     "lon": 32.828079,
+     "alt_labels": [],
+     "id": "img_005978_010"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4613,
+     "bbox_xywh": [
+      572,
+      215,
+      36,
+      16
+     ],
+     "center_px": [
+      590.0,
+      223.0
+     ],
+     "lat": 39.909415,
+     "lon": 32.828254,
+     "alt_labels": [],
+     "id": "img_005978_011"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3826,
+     "bbox_xywh": [
+      545,
+      194,
+      14,
+      16
+     ],
+     "center_px": [
+      552.0,
+      202.0
+     ],
+     "lat": 39.909437,
+     "lon": 32.828203,
+     "alt_labels": [],
+     "id": "img_005978_012"
+    },
+    {
+     "label": "van",
+     "confidence": 0.3646,
+     "bbox_xywh": [
+      575,
+      231,
+      40,
+      18
+     ],
+     "center_px": [
+      595.0,
+      240.0
+     ],
+     "lat": 39.909397,
+     "lon": 32.828261,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.1657
+      }
+     ],
+     "id": "img_005978_013"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3445,
+     "bbox_xywh": [
+      495,
+      177,
+      13,
+      15
+     ],
+     "center_px": [
+      501.5,
+      184.5
+     ],
+     "lat": 39.909455,
+     "lon": 32.828134,
+     "alt_labels": [],
+     "id": "img_005978_014"
+    },
+    {
+     "label": "car",
+     "confidence": 0.2891,
+     "bbox_xywh": [
+      591,
+      316,
+      29,
+      31
+     ],
+     "center_px": [
+      605.5,
+      331.5
+     ],
+     "lat": 39.909302,
+     "lon": 32.828275,
+     "alt_labels": [],
+     "id": "img_005978_015"
+    }
+   ]
+  },
+  {
+   "image_id": "img_006388",
+   "file": "images/img_006388.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "10:35",
+   "corner_coordinates": {
+    "top_left": [
+     39.930833,
+     32.836144
+    ],
+    "top_right": [
+     39.930833,
+     32.838318
+    ],
+    "bottom_left": [
+     39.929895,
+     32.836144
+    ],
+    "bottom_right": [
+     39.929895,
+     32.838318
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 3,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.8907,
+     "bbox_xywh": [
+      1057,
+      200,
+      29,
+      25
+     ],
+     "center_px": [
+      1071.5,
+      212.5
+     ],
+     "lat": 39.930572,
+     "lon": 32.837857,
+     "alt_labels": [],
+     "id": "img_006388_000"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8781,
+     "bbox_xywh": [
+      1304,
+      164,
+      56,
+      93
+     ],
+     "center_px": [
+      1332.0,
+      210.5
+     ],
+     "lat": 39.930575,
+     "lon": 32.838273,
+     "alt_labels": [],
+     "id": "img_006388_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8437,
+     "bbox_xywh": [
+      642,
+      169,
+      30,
+      31
+     ],
+     "center_px": [
+      657.0,
+      184.5
+     ],
+     "lat": 39.930607,
+     "lon": 32.837194,
+     "alt_labels": [],
+     "id": "img_006388_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8137,
+     "bbox_xywh": [
+      1307,
+      155,
+      29,
+      19
+     ],
+     "center_px": [
+      1321.5,
+      164.5
+     ],
+     "lat": 39.930631,
+     "lon": 32.838256,
+     "alt_labels": [],
+     "id": "img_006388_003"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.7701,
+     "bbox_xywh": [
+      598,
+      77,
+      26,
+      43
+     ],
+     "center_px": [
+      611.0,
+      98.5
+     ],
+     "lat": 39.930712,
+     "lon": 32.837121,
+     "alt_labels": [],
+     "id": "img_006388_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7206,
+     "bbox_xywh": [
+      1258,
+      130,
+      19,
+      19
+     ],
+     "center_px": [
+      1267.5,
+      139.5
+     ],
+     "lat": 39.930662,
+     "lon": 32.83817,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1108
+      }
+     ],
+     "id": "img_006388_005"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.4375,
+     "bbox_xywh": [
+      1292,
+      106,
+      24,
+      27
+     ],
+     "center_px": [
+      1304.0,
+      119.5
+     ],
+     "lat": 39.930686,
+     "lon": 32.838228,
+     "alt_labels": [],
+     "id": "img_006388_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_006444",
+   "file": "images/img_006444.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "15:35",
+   "corner_coordinates": {
+    "top_left": [
+     39.886113,
+     32.812058
+    ],
+    "top_right": [
+     39.886113,
+     32.814046
+    ],
+    "bottom_left": [
+     39.885255,
+     32.812058
+    ],
+    "bottom_right": [
+     39.885255,
+     32.814046
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 0,
+    "truck": 0,
+    "bus": 1
+   },
+   "detections": [
+    {
+     "label": "bus",
+     "confidence": 0.9346,
+     "bbox_xywh": [
+      527,
+      298,
+      48,
+      63
+     ],
+     "center_px": [
+      551.0,
+      329.5
+     ],
+     "lat": 39.885589,
+     "lon": 32.813199,
+     "alt_labels": [],
+     "id": "img_006444_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9222,
+     "bbox_xywh": [
+      443,
+      301,
+      24,
+      26
+     ],
+     "center_px": [
+      455.0,
+      314.0
+     ],
+     "lat": 39.885614,
+     "lon": 32.813,
+     "alt_labels": [],
+     "id": "img_006444_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9167,
+     "bbox_xywh": [
+      414,
+      395,
+      42,
+      50
+     ],
+     "center_px": [
+      435.0,
+      420.0
+     ],
+     "lat": 39.885446,
+     "lon": 32.812959,
+     "alt_labels": [],
+     "id": "img_006444_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8521,
+     "bbox_xywh": [
+      464,
+      344,
+      37,
+      42
+     ],
+     "center_px": [
+      482.5,
+      365.0
+     ],
+     "lat": 39.885533,
+     "lon": 32.813057,
+     "alt_labels": [],
+     "id": "img_006444_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4948,
+     "bbox_xywh": [
+      688,
+      295,
+      28,
+      22
+     ],
+     "center_px": [
+      702.0,
+      306.0
+     ],
+     "lat": 39.885627,
+     "lon": 32.813512,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.1523
+      },
+      {
+       "label": "van",
+       "confidence": 0.1179
+      }
+     ],
+     "id": "img_006444_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.2924,
+     "bbox_xywh": [
+      531,
+      248,
+      15,
+      12
+     ],
+     "center_px": [
+      538.5,
+      254.0
+     ],
+     "lat": 39.885709,
+     "lon": 32.813173,
+     "alt_labels": [],
+     "id": "img_006444_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_006591",
+   "file": "images/img_006591.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "11:15",
+   "corner_coordinates": {
+    "top_left": [
+     39.92542,
+     32.822065
+    ],
+    "top_right": [
+     39.92542,
+     32.824003
+    ],
+    "bottom_left": [
+     39.924584,
+     32.822065
+    ],
+    "bottom_right": [
+     39.924584,
+     32.824003
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 2,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "van",
+     "confidence": 0.9375,
+     "bbox_xywh": [
+      318,
+      353,
+      38,
+      59
+     ],
+     "center_px": [
+      337.0,
+      382.5
+     ],
+     "lat": 39.924828,
+     "lon": 32.822745,
+     "alt_labels": [],
+     "id": "img_006591_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.923,
+     "bbox_xywh": [
+      147,
+      416,
+      61,
+      69
+     ],
+     "center_px": [
+      177.5,
+      450.5
+     ],
+     "lat": 39.924723,
+     "lon": 32.822423,
+     "alt_labels": [],
+     "id": "img_006591_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8869,
+     "bbox_xywh": [
+      86,
+      479,
+      66,
+      61
+     ],
+     "center_px": [
+      119.0,
+      509.5
+     ],
+     "lat": 39.924631,
+     "lon": 32.822305,
+     "alt_labels": [],
+     "id": "img_006591_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8842,
+     "bbox_xywh": [
+      646,
+      416,
+      70,
+      38
+     ],
+     "center_px": [
+      681.0,
+      435.0
+     ],
+     "lat": 39.924747,
+     "lon": 32.82344,
+     "alt_labels": [],
+     "id": "img_006591_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6024,
+     "bbox_xywh": [
+      358,
+      182,
+      22,
+      25
+     ],
+     "center_px": [
+      369.0,
+      194.5
+     ],
+     "lat": 39.925119,
+     "lon": 32.82281,
+     "alt_labels": [],
+     "id": "img_006591_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5181,
+     "bbox_xywh": [
+      199,
+      341,
+      46,
+      51
+     ],
+     "center_px": [
+      222.0,
+      366.5
+     ],
+     "lat": 39.924853,
+     "lon": 32.822513,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.1846
+      },
+      {
+       "label": "car",
+       "confidence": 0.1831
+      }
+     ],
+     "id": "img_006591_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_006673",
+   "file": "images/img_006673.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "10:30",
+   "corner_coordinates": {
+    "top_left": [
+     39.910284,
+     32.865679
+    ],
+    "top_right": [
+     39.910284,
+     32.868473
+    ],
+    "bottom_left": [
+     39.909078,
+     32.865679
+    ],
+    "bottom_right": [
+     39.909078,
+     32.868473
+    ]
+   },
+   "counts": {
+    "car": 8,
+    "van": 1,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9371,
+     "bbox_xywh": [
+      956,
+      465,
+      251,
+      107
+     ],
+     "center_px": [
+      1081.5,
+      518.5
+     ],
+     "lat": 39.909467,
+     "lon": 32.867901,
+     "alt_labels": [],
+     "id": "img_006673_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9226,
+     "bbox_xywh": [
+      1124,
+      143,
+      136,
+      90
+     ],
+     "center_px": [
+      1192.0,
+      188.0
+     ],
+     "lat": 39.909988,
+     "lon": 32.868128,
+     "alt_labels": [],
+     "id": "img_006673_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9145,
+     "bbox_xywh": [
+      789,
+      340,
+      203,
+      93
+     ],
+     "center_px": [
+      890.5,
+      386.5
+     ],
+     "lat": 39.909675,
+     "lon": 32.867508,
+     "alt_labels": [],
+     "id": "img_006673_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9089,
+     "bbox_xywh": [
+      1278,
+      155,
+      82,
+      99
+     ],
+     "center_px": [
+      1319.0,
+      204.5
+     ],
+     "lat": 39.909962,
+     "lon": 32.868389,
+     "alt_labels": [],
+     "id": "img_006673_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9009,
+     "bbox_xywh": [
+      687,
+      0,
+      107,
+      48
+     ],
+     "center_px": [
+      740.5,
+      24.0
+     ],
+     "lat": 39.910246,
+     "lon": 32.8672,
+     "alt_labels": [],
+     "id": "img_006673_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9,
+     "bbox_xywh": [
+      1009,
+      141,
+      131,
+      100
+     ],
+     "center_px": [
+      1074.5,
+      191.0
+     ],
+     "lat": 39.909983,
+     "lon": 32.867886,
+     "alt_labels": [],
+     "id": "img_006673_005"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8749,
+     "bbox_xywh": [
+      960,
+      0,
+      148,
+      80
+     ],
+     "center_px": [
+      1034.0,
+      40.0
+     ],
+     "lat": 39.910221,
+     "lon": 32.867803,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.324
+      }
+     ],
+     "id": "img_006673_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6867,
+     "bbox_xywh": [
+      1307,
+      403,
+      53,
+      83
+     ],
+     "center_px": [
+      1333.5,
+      444.5
+     ],
+     "lat": 39.909583,
+     "lon": 32.868419,
+     "alt_labels": [],
+     "id": "img_006673_007"
+    },
+    {
+     "label": "van",
+     "confidence": 0.3271,
+     "bbox_xywh": [
+      825,
+      0,
+      48,
+      57
+     ],
+     "center_px": [
+      849.0,
+      28.5
+     ],
+     "lat": 39.910239,
+     "lon": 32.867423,
+     "alt_labels": [],
+     "id": "img_006673_008"
+    },
+    {
+     "label": "car",
+     "confidence": 0.2902,
+     "bbox_xywh": [
+      1324,
+      484,
+      36,
+      99
+     ],
+     "center_px": [
+      1342.0,
+      533.5
+     ],
+     "lat": 39.909443,
+     "lon": 32.868436,
+     "alt_labels": [],
+     "id": "img_006673_009"
+    }
+   ]
+  },
+  {
+   "image_id": "img_007171",
+   "file": "images/img_007171.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "15:00",
+   "corner_coordinates": {
+    "top_left": [
+     39.943193,
+     32.881358
+    ],
+    "top_right": [
+     39.943193,
+     32.88381
+    ],
+    "bottom_left": [
+     39.942135,
+     32.881358
+    ],
+    "bottom_right": [
+     39.942135,
+     32.88381
+    ]
+   },
+   "counts": {
+    "car": 9,
+    "van": 0,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9402,
+     "bbox_xywh": [
+      716,
+      117,
+      56,
+      56
+     ],
+     "center_px": [
+      744.0,
+      145.0
+     ],
+     "lat": 39.942992,
+     "lon": 32.882699,
+     "alt_labels": [],
+     "id": "img_007171_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.939,
+     "bbox_xywh": [
+      752,
+      208,
+      78,
+      74
+     ],
+     "center_px": [
+      791.0,
+      245.0
+     ],
+     "lat": 39.942854,
+     "lon": 32.882784,
+     "alt_labels": [],
+     "id": "img_007171_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9323,
+     "bbox_xywh": [
+      808,
+      433,
+      178,
+      117
+     ],
+     "center_px": [
+      897.0,
+      491.5
+     ],
+     "lat": 39.942513,
+     "lon": 32.882975,
+     "alt_labels": [],
+     "id": "img_007171_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9272,
+     "bbox_xywh": [
+      662,
+      33,
+      49,
+      45
+     ],
+     "center_px": [
+      686.5,
+      55.5
+     ],
+     "lat": 39.943116,
+     "lon": 32.882596,
+     "alt_labels": [],
+     "id": "img_007171_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8532,
+     "bbox_xywh": [
+      469,
+      0,
+      49,
+      50
+     ],
+     "center_px": [
+      493.5,
+      25.0
+     ],
+     "lat": 39.943158,
+     "lon": 32.882248,
+     "alt_labels": [],
+     "id": "img_007171_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7392,
+     "bbox_xywh": [
+      740,
+      21,
+      51,
+      38
+     ],
+     "center_px": [
+      765.5,
+      40.0
+     ],
+     "lat": 39.943138,
+     "lon": 32.882738,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.3404
+      }
+     ],
+     "id": "img_007171_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.7107,
+     "bbox_xywh": [
+      1327,
+      14,
+      33,
+      35
+     ],
+     "center_px": [
+      1343.5,
+      31.5
+     ],
+     "lat": 39.943149,
+     "lon": 32.88378,
+     "alt_labels": [],
+     "id": "img_007171_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5274,
+     "bbox_xywh": [
+      578,
+      0,
+      37,
+      18
+     ],
+     "center_px": [
+      596.5,
+      9.0
+     ],
+     "lat": 39.943181,
+     "lon": 32.882433,
+     "alt_labels": [],
+     "id": "img_007171_007"
+    },
+    {
+     "label": "car",
+     "confidence": 0.4748,
+     "bbox_xywh": [
+      654,
+      79,
+      50,
+      55
+     ],
+     "center_px": [
+      679.0,
+      106.5
+     ],
+     "lat": 39.943046,
+     "lon": 32.882582,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.3024
+      }
+     ],
+     "id": "img_007171_008"
+    }
+   ]
+  },
+  {
+   "image_id": "img_007664",
+   "file": "images/img_007664.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "15:25",
+   "corner_coordinates": {
+    "top_left": [
+     39.881991,
+     32.844382
+    ],
+    "top_right": [
+     39.881991,
+     32.846086
+    ],
+    "bottom_left": [
+     39.881255,
+     32.844382
+    ],
+    "bottom_right": [
+     39.881255,
+     32.846086
+    ]
+   },
+   "counts": {
+    "car": 4,
+    "van": 0,
+    "truck": 3,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "truck",
+     "confidence": 0.9013,
+     "bbox_xywh": [
+      559,
+      265,
+      90,
+      41
+     ],
+     "center_px": [
+      604.0,
+      285.5
+     ],
+     "lat": 39.881602,
+     "lon": 32.845454,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.209
+      }
+     ],
+     "id": "img_007664_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8962,
+     "bbox_xywh": [
+      482,
+      181,
+      22,
+      20
+     ],
+     "center_px": [
+      493.0,
+      191.0
+     ],
+     "lat": 39.881731,
+     "lon": 32.845257,
+     "alt_labels": [],
+     "id": "img_007664_001"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.8853,
+     "bbox_xywh": [
+      596,
+      371,
+      68,
+      80
+     ],
+     "center_px": [
+      630.0,
+      411.0
+     ],
+     "lat": 39.881431,
+     "lon": 32.8455,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1559
+      }
+     ],
+     "id": "img_007664_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6491,
+     "bbox_xywh": [
+      756,
+      387,
+      104,
+      48
+     ],
+     "center_px": [
+      808.0,
+      411.0
+     ],
+     "lat": 39.881431,
+     "lon": 32.845816,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.2164
+      }
+     ],
+     "id": "img_007664_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5819,
+     "bbox_xywh": [
+      783,
+      411,
+      140,
+      75
+     ],
+     "center_px": [
+      853.0,
+      448.5
+     ],
+     "lat": 39.88138,
+     "lon": 32.845896,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1999
+      }
+     ],
+     "id": "img_007664_004"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.4156,
+     "bbox_xywh": [
+      448,
+      120,
+      25,
+      17
+     ],
+     "center_px": [
+      460.5,
+      128.5
+     ],
+     "lat": 39.881816,
+     "lon": 32.845199,
+     "alt_labels": [],
+     "id": "img_007664_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.314,
+     "bbox_xywh": [
+      687,
+      293,
+      85,
+      41
+     ],
+     "center_px": [
+      729.5,
+      313.5
+     ],
+     "lat": 39.881564,
+     "lon": 32.845677,
+     "alt_labels": [],
+     "id": "img_007664_006"
+    }
+   ]
+  },
+  {
+   "image_id": "img_008001",
+   "file": "images/img_008001.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:25",
+   "corner_coordinates": {
+    "top_left": [
+     39.925815,
+     32.903278
+    ],
+    "top_right": [
+     39.925815,
+     32.904528
+    ],
+    "bottom_left": [
+     39.925275,
+     32.903278
+    ],
+    "bottom_right": [
+     39.925275,
+     32.904528
+    ]
+   },
+   "counts": {
+    "car": 8,
+    "van": 0,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9306,
+     "bbox_xywh": [
+      320,
+      411,
+      48,
+      91
+     ],
+     "center_px": [
+      344.0,
+      456.5
+     ],
+     "lat": 39.925359,
+     "lon": 32.903726,
+     "alt_labels": [],
+     "id": "img_008001_000"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9054,
+     "bbox_xywh": [
+      312,
+      224,
+      29,
+      39
+     ],
+     "center_px": [
+      326.5,
+      243.5
+     ],
+     "lat": 39.925571,
+     "lon": 32.903703,
+     "alt_labels": [],
+     "id": "img_008001_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8994,
+     "bbox_xywh": [
+      529,
+      163,
+      47,
+      20
+     ],
+     "center_px": [
+      552.5,
+      173.0
+     ],
+     "lat": 39.925642,
+     "lon": 32.903997,
+     "alt_labels": [],
+     "id": "img_008001_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8703,
+     "bbox_xywh": [
+      465,
+      147,
+      25,
+      19
+     ],
+     "center_px": [
+      477.5,
+      156.5
+     ],
+     "lat": 39.925658,
+     "lon": 32.9039,
+     "alt_labels": [],
+     "id": "img_008001_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8679,
+     "bbox_xywh": [
+      217,
+      240,
+      34,
+      42
+     ],
+     "center_px": [
+      234.0,
+      261.0
+     ],
+     "lat": 39.925554,
+     "lon": 32.903583,
+     "alt_labels": [],
+     "id": "img_008001_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8667,
+     "bbox_xywh": [
+      534,
+      125,
+      24,
+      17
+     ],
+     "center_px": [
+      546.0,
+      133.5
+     ],
+     "lat": 39.925682,
+     "lon": 32.903989,
+     "alt_labels": [],
+     "id": "img_008001_005"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8619,
+     "bbox_xywh": [
+      479,
+      163,
+      24,
+      21
+     ],
+     "center_px": [
+      491.0,
+      173.5
+     ],
+     "lat": 39.925641,
+     "lon": 32.903917,
+     "alt_labels": [],
+     "id": "img_008001_006"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8309,
+     "bbox_xywh": [
+      223,
+      219,
+      31,
+      31
+     ],
+     "center_px": [
+      238.5,
+      234.5
+     ],
+     "lat": 39.925581,
+     "lon": 32.903589,
+     "alt_labels": [],
+     "id": "img_008001_007"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.3212,
+     "bbox_xywh": [
+      414,
+      100,
+      16,
+      20
+     ],
+     "center_px": [
+      422.0,
+      110.0
+     ],
+     "lat": 39.925705,
+     "lon": 32.903827,
+     "alt_labels": [
+      {
+       "label": "van",
+       "confidence": 0.1424
+      }
+     ],
+     "id": "img_008001_008"
+    }
+   ]
+  },
+  {
+   "image_id": "img_008333",
+   "file": "images/img_008333.jpg",
+   "width_px": 1360,
+   "height_px": 765,
+   "capture_time": "10:10",
+   "corner_coordinates": {
+    "top_left": [
+     39.940508,
+     32.871572
+    ],
+    "top_right": [
+     39.940508,
+     32.874722
+    ],
+    "bottom_left": [
+     39.93915,
+     32.871572
+    ],
+    "bottom_right": [
+     39.93915,
+     32.874722
+    ]
+   },
+   "counts": {
+    "car": 1,
+    "van": 3,
+    "truck": 1,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "van",
+     "confidence": 0.8711,
+     "bbox_xywh": [
+      749,
+      165,
+      56,
+      104
+     ],
+     "center_px": [
+      777.0,
+      217.0
+     ],
+     "lat": 39.940123,
+     "lon": 32.873372,
+     "alt_labels": [],
+     "id": "img_008333_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.8515,
+     "bbox_xywh": [
+      519,
+      149,
+      66,
+      113
+     ],
+     "center_px": [
+      552.0,
+      205.5
+     ],
+     "lat": 39.940143,
+     "lon": 32.872851,
+     "alt_labels": [],
+     "id": "img_008333_001"
+    },
+    {
+     "label": "truck",
+     "confidence": 0.7093,
+     "bbox_xywh": [
+      1028,
+      74,
+      77,
+      63
+     ],
+     "center_px": [
+      1066.5,
+      105.5
+     ],
+     "lat": 39.940321,
+     "lon": 32.874042,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.4355
+      }
+     ],
+     "id": "img_008333_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5972,
+     "bbox_xywh": [
+      1339,
+      0,
+      21,
+      28
+     ],
+     "center_px": [
+      1349.5,
+      14.0
+     ],
+     "lat": 39.940483,
+     "lon": 32.874698,
+     "alt_labels": [],
+     "id": "img_008333_003"
+    },
+    {
+     "label": "van",
+     "confidence": 0.5827,
+     "bbox_xywh": [
+      508,
+      85,
+      53,
+      79
+     ],
+     "center_px": [
+      534.5,
+      124.5
+     ],
+     "lat": 39.940287,
+     "lon": 32.87281,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.3953
+      }
+     ],
+     "id": "img_008333_004"
+    }
+   ]
+  },
+  {
+   "image_id": "img_008562",
+   "file": "images/img_008562.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "14:20",
+   "corner_coordinates": {
+    "top_left": [
+     39.895169,
+     32.873256
+    ],
+    "top_right": [
+     39.895169,
+     32.87454
+    ],
+    "bottom_left": [
+     39.894615,
+     32.873256
+    ],
+    "bottom_right": [
+     39.894615,
+     32.87454
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9387,
+     "bbox_xywh": [
+      21,
+      483,
+      55,
+      57
+     ],
+     "center_px": [
+      48.5,
+      511.5
+     ],
+     "lat": 39.894644,
+     "lon": 32.873321,
+     "alt_labels": [],
+     "id": "img_008562_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.904,
+     "bbox_xywh": [
+      232,
+      392,
+      57,
+      63
+     ],
+     "center_px": [
+      260.5,
+      423.5
+     ],
+     "lat": 39.894735,
+     "lon": 32.873604,
+     "alt_labels": [],
+     "id": "img_008562_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8935,
+     "bbox_xywh": [
+      175,
+      444,
+      58,
+      70
+     ],
+     "center_px": [
+      204.0,
+      479.0
+     ],
+     "lat": 39.894678,
+     "lon": 32.873529,
+     "alt_labels": [],
+     "id": "img_008562_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8889,
+     "bbox_xywh": [
+      723,
+      416,
+      74,
+      41
+     ],
+     "center_px": [
+      760.0,
+      436.5
+     ],
+     "lat": 39.894721,
+     "lon": 32.874273,
+     "alt_labels": [],
+     "id": "img_008562_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.6772,
+     "bbox_xywh": [
+      443,
+      174,
+      20,
+      23
+     ],
+     "center_px": [
+      453.0,
+      185.5
+     ],
+     "lat": 39.894979,
+     "lon": 32.873862,
+     "alt_labels": [],
+     "id": "img_008562_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.616,
+     "bbox_xywh": [
+      285,
+      323,
+      41,
+      45
+     ],
+     "center_px": [
+      305.5,
+      345.5
+     ],
+     "lat": 39.894815,
+     "lon": 32.873665,
+     "alt_labels": [],
+     "id": "img_008562_005"
+    }
+   ]
+  },
+  {
+   "image_id": "img_008589",
+   "file": "images/img_008589.jpg",
+   "width_px": 960,
+   "height_px": 540,
+   "capture_time": "10:40",
+   "corner_coordinates": {
+    "top_left": [
+     39.933505,
+     32.914076
+    ],
+    "top_right": [
+     39.933505,
+     32.915446
+    ],
+    "bottom_left": [
+     39.932915,
+     32.914076
+    ],
+    "bottom_right": [
+     39.932915,
+     32.915446
+    ]
+   },
+   "counts": {
+    "car": 5,
+    "van": 1,
+    "truck": 0,
+    "bus": 0
+   },
+   "detections": [
+    {
+     "label": "car",
+     "confidence": 0.9382,
+     "bbox_xywh": [
+      498,
+      386,
+      43,
+      54
+     ],
+     "center_px": [
+      519.5,
+      413.0
+     ],
+     "lat": 39.933054,
+     "lon": 32.914817,
+     "alt_labels": [],
+     "id": "img_008589_000"
+    },
+    {
+     "label": "van",
+     "confidence": 0.922,
+     "bbox_xywh": [
+      445,
+      343,
+      41,
+      64
+     ],
+     "center_px": [
+      465.5,
+      375.0
+     ],
+     "lat": 39.933095,
+     "lon": 32.91474,
+     "alt_labels": [],
+     "id": "img_008589_001"
+    },
+    {
+     "label": "car",
+     "confidence": 0.9084,
+     "bbox_xywh": [
+      372,
+      358,
+      42,
+      52
+     ],
+     "center_px": [
+      393.0,
+      384.0
+     ],
+     "lat": 39.933085,
+     "lon": 32.914637,
+     "alt_labels": [],
+     "id": "img_008589_002"
+    },
+    {
+     "label": "car",
+     "confidence": 0.8655,
+     "bbox_xywh": [
+      383,
+      448,
+      70,
+      91
+     ],
+     "center_px": [
+      418.0,
+      493.5
+     ],
+     "lat": 39.932966,
+     "lon": 32.914673,
+     "alt_labels": [],
+     "id": "img_008589_003"
+    },
+    {
+     "label": "car",
+     "confidence": 0.5541,
+     "bbox_xywh": [
+      410,
+      252,
+      24,
+      25
+     ],
+     "center_px": [
+      422.0,
+      264.5
+     ],
+     "lat": 39.933216,
+     "lon": 32.914678,
+     "alt_labels": [],
+     "id": "img_008589_004"
+    },
+    {
+     "label": "car",
+     "confidence": 0.3916,
+     "bbox_xywh": [
+      492,
+      228,
+      22,
+      21
+     ],
+     "center_px": [
+      503.0,
+      238.5
+     ],
+     "lat": 39.933244,
+     "lon": 32.914794,
+     "alt_labels": [
+      {
+       "label": "car",
+       "confidence": 0.2509
+      },
+      {
+       "label": "car",
+       "confidence": 0.1812
+      },
+      {
+       "label": "car",
+       "confidence": 0.1785
+      }
+     ],
+     "id": "img_008589_005"
+    }
+   ]
+  }
+ ]
+}

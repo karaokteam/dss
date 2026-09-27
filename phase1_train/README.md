@@ -133,3 +133,6 @@ YOLO_PY=/path/to/yolo/python RFDETR_PY=/path/to/rfdetr/python bash run_inference
 
 From scratch: `bash run_training.sh`, copy the checkpoints to `work/weights/` (names in `configs/pipeline.yaml`),
 then `run_inference.sh`. For new images: `bash run_inference.sh /path/to/images`.
+
+
+Ağırlıklara erişim için: https://drive.google.com/file/d/15mPOsIdSiHGsyTr4GtkHxfgts_QBof63/view?usp=sharing

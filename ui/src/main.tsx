@@ -6,6 +6,7 @@ import { api } from "./api";
 import Ops from "./pages/Ops";
 import Reports from "./pages/Reports";
 import ChatPanel from "./components/ChatPanel";
+import SearchBar from "./components/SearchBar";
 
 // Basit hash router: #/  ·  #/image/<id>  ·  #/reports
 function useHash() {
@@ -35,8 +36,9 @@ function App() {
   const [path, query = ""] = hash.split("?");
   const [, route, param] = path.split("/");
   const focusReport = new URLSearchParams(query).get("report");
+  const focusTrack = new URLSearchParams(query).get("track");
   const initialMode = new URLSearchParams(query).get("mode") === "all" ? "global" : "event";
-  const page = route === "reports" ? <Reports key={param ?? ""} initialStatus={param ?? ""} /> : <Ops id={route === "image" && param ? param : null} initialReport={focusReport} initialMode={initialMode} />;
+  const page = route === "reports" ? <Reports key={param ?? ""} initialStatus={param ?? ""} /> : <Ops id={route === "image" && param ? param : null} initialReport={focusReport} initialTrack={focusTrack} initialMode={initialMode} />;
   const active = (r: string) => (r === "reports" ? route === "reports" : route !== "reports") ? "active" : "";
   return (
     <>
@@ -46,6 +48,7 @@ function App() {
           <a href="#/" className={active("")}>Operasyon</a>
           <a href="#/reports" className={active("reports")}>Raporlar</a>
         </nav>
+        <SearchBar />
         <div className="spacer" />
         <Budget />
       </div>

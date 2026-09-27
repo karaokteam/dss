@@ -12,7 +12,7 @@ const NO_FOCUS: MapFocus = { report: null, zonePoints: [], subjects: [] };
 
 interface Detail { img: ImageDetail; dossier: Dossier; assessment: Assessment | null; reports: Report[]; tracks: TrackFull[] }
 
-export default function Ops({ id, initialReport, initialMode = "event" }: { id: string | null; initialReport?: string | null; initialMode?: "event" | "global" }) {
+export default function Ops({ id, initialReport, initialTrack, initialMode = "event" }: { id: string | null; initialReport?: string | null; initialTrack?: string | null; initialMode?: "event" | "global" }) {
   const [overview, setOverview] = useState<Overview | null>(null);
   const [d, setD] = useState<Detail | null>(null);
   const [time, setTime] = useState<number | null>(null);
@@ -90,8 +90,21 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
   useEffect(() => {
     if (!initialReport || !d || !overview) return;
     const r = d.reports.find((x) => x.id === initialReport);
-    if (r) focusReport(r);
+    if (r) { setMode("event"); focusReport(r); }
   }, [initialReport, d?.img.id, overview]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Aramadan gelen track (#/image/<id>?track=T0122): aracı seç ve haritayı izine sığdır
+  useEffect(() => {
+    if (!initialTrack || !d || !overview) return;
+    setMode("event"); setPlaying(false); setFocus(NO_FOCUS);
+    const v = d.dossier.vehicles.find((x) => x.track_id === initialTrack);
+    if (v) { setHighlight(null); selectVehicle(v.vehicle_id); return; }
+    // görüntüde araç olarak yoksa (örn. kare dışında biten iz) izi vurgula
+    api.track(initialTrack).then((t) => {
+      setHighlight({ title: `Arama: ${t.track_id}`, tracks: [t] });
+      setFitTo(t.points.map((p) => [p.lat, p.lon] as [number, number]));
+    }).catch(() => {});
+  }, [initialTrack, d?.img.id, overview]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Bekleyen chatbot aksiyonunu, ilgili olay yüklendiğinde uygula
   useEffect(() => {

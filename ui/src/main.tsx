@@ -7,6 +7,7 @@ import Ops from "./pages/Ops";
 import Reports from "./pages/Reports";
 import ChatPanel from "./components/ChatPanel";
 import SearchBar from "./components/SearchBar";
+import Intro from "./components/Intro";
 
 // Basit hash router: #/  ·  #/image/<id>  ·  #/reports
 function useHash() {
@@ -33,6 +34,8 @@ function Budget() {
 
 function App() {
   const hash = useHash();
+  // açılış animasyonu; hareket azaltma tercihinde gösterilmez
+  const [intro, setIntro] = useState(() => !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
   const [path, query = ""] = hash.split("?");
   const [, route, param] = path.split("/");
   const focusReport = new URLSearchParams(query).get("report");
@@ -54,6 +57,7 @@ function App() {
       </div>
       {page}
       <ChatPanel />
+      {intro && <Intro onDone={() => setIntro(false)} />}
     </>
   );
 }

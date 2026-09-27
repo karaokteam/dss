@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { rel } from "../api";
 
 // SSE canlı agent izi: /api/jobs/<id>/events
 interface Ev { id: number; type: string; [k: string]: unknown }
@@ -31,7 +32,7 @@ export default function AgentTrace({ eventsUrl, onFinished }: { eventsUrl: strin
   done.current = onFinished;
 
   useEffect(() => {
-    const es = new EventSource(eventsUrl);
+    const es = new EventSource(rel(eventsUrl));
     const types = Object.keys(ICON);
     const handler = (m: MessageEvent) => {
       const e = JSON.parse(m.data) as Ev;

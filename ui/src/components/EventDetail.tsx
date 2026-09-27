@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { ClipboardList, Eye, Microscope, Play, Truck } from "lucide-react";
-import type { Assessment, Dossier, ImageDetail, Level, Report } from "../api";
+import { rel, type Assessment, type Dossier, type ImageDetail, type Level, type Report } from "../api";
 import AgentTrace from "./AgentTrace";
 import {
   CLAIM_TR, LABEL_TR, MOTION_TR, RISK_COLOR, RISK_TR, STATUS_COLOR, STATUS_TR, VERDICT_TR, km, rank,
@@ -60,7 +60,7 @@ export default function EventDetail(p: Props) {
       <div className="overflow-y-auto flex-1">
         {/* fotoğraf + risk kutuları */}
         <div className="imgwrap">
-          <img src={img.urls[variant]} alt={img.id} />
+          <img src={rel(img.urls[variant])} alt={img.id} />
           {variant === "raw" && (
             <svg className="overlay" viewBox={`0 0 ${img.width_px} ${img.height_px}`} preserveAspectRatio="none">
               {img.detections.filter((d) => d.bbox_xywh).map((d) => {

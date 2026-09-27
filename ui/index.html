@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Üs Savunma DSS</title>
+    <script>
+      // Alt yolda (/proje/iş) sondaki "/" yoksa ekle: göreli varlık ve API yolları doğru çözülsün
+      (function (p) { if (!p.endsWith("/") && p.split("/").pop().indexOf(".") < 0) location.replace(p + "/" + location.search + location.hash); })(location.pathname);
+    </script>
   </head>
   <body>
     <div id="root"></div>

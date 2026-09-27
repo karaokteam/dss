@@ -36,7 +36,7 @@ export default function ChatPanel() {
     const next: Msg[] = [...msgs, { role: "user", content: text.trim() }];
     setMsgs(next); setInput(""); setBusy(true);
     try {
-      const r = await fetch("/api/chat", {
+      const r = await fetch("api/chat", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next.map(({ role, content }) => ({ role, content })), context: screenContext }),
       });

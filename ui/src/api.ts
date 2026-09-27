@@ -116,8 +116,11 @@ export interface AlertRuleResult {
   rule: { vehicle: string; max_dist_m: number | null; zone: string | null; time_from: string | null; time_to: string | null; circling_only: boolean };
 }
 
+// Göreli yol: uygulama Run:ai gibi bir alt yolda (/<proje>/<iş>/) sunulduğunda da doğru adrese gider
+export const rel = (url: string) => url.replace(/^\//, "");
+
 async function get<T>(url: string): Promise<T> {
-  const r = await fetch(url);
+  const r = await fetch(rel(url));
   if (!r.ok) {
     const body = await r.json().catch(() => ({}));
     throw new Error(body?.error?.message || `${r.status} ${url}`);
@@ -126,7 +129,7 @@ async function get<T>(url: string): Promise<T> {
 }
 
 async function post<T>(url: string, body: unknown = {}): Promise<T> {
-  const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const r = await fetch(rel(url), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
   if (!r.ok) throw new Error((await r.json().catch(() => ({})))?.error?.message || `${r.status} ${url}`);
   return r.json();
 }

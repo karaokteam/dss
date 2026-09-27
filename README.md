@@ -137,3 +137,5 @@ streamlit run app/streamlit_app.py
 
 ## Pushlanmayanlar
 `.env` (API anahtarı), `models/` (ağırlıklar), `cache/`, Kaggle 1. aşama verisi, sanal ortam ve IDE dosyaları. Liste: `.gitignore`.
+Ağırlıklara erişim için: https://drive.google.com/file/d/15mPOsIdSiHGsyTr4GtkHxfgts_QBof63/view?usp=sharing
+

@@ -91,4 +91,8 @@ select { background: var(--panel2); color: var(--text); border: 1px solid var(--
 .leaflet-container { background: #0b1017; height: 100%; width: 100%; }
 .base-tiles { filter: brightness(.55) contrast(1.05); }
 .leaflet-tooltip { background: var(--panel); color: var(--text); border: 1px solid var(--border); }
-.zone-label { color: #64748b; font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; text-align: center; }
+.zone-label { color: #64748b; font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; text-align: center; cursor: pointer; }
+.zone-label:hover { color: #cbd5e1; }
+.zone-label.active { font-size: 12px; font-weight: 800; text-shadow: 0 0 6px #000, 0 0 2px #000; }
+.leaflet-interactive.zone-sector { cursor: pointer; }
+.leaflet-interactive.zone-sector:hover { fill: #94a3b8; fill-opacity: .05; }

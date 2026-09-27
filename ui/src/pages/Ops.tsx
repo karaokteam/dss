@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Bus, Car, Pause, Play, RotateCcw, Truck, Van } from "lucide-react";
-import { api, type Assessment, type Dossier, type GlobalTrack, type ImageDetail, type Overview, type Report, type TrackFull } from "../api";
+import { api, type Assessment, type Dossier, type GlobalTrack, type ImageDetail, type Level, type Overview, type Report, type TrackFull } from "../api";
 import EventDetail from "../components/EventDetail";
 import EventList from "../components/EventList";
 import OpsMap, { type MapFocus } from "../components/OpsMap";
@@ -27,6 +27,7 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
   const [err, setErr] = useState<string | null>(null);
   const [pending, setPending] = useState<DssAction | null>(null);
   const [highlight, setHighlight] = useState<{ title: string; tracks: TrackFull[] } | null>(null);
+  const [zoneFilter, setZoneFilter] = useState<string | null>(null);   // haritada seçilen bölge dilimi
 
   // Chatbot aksiyonları
   useEffect(() => {
@@ -234,6 +235,11 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
   if (err) return <div className="page">Hata: {err} — Flask API (port 5000) çalışıyor mu?</div>;
   if (!overview) return <div className="page muted">Yükleniyor…</div>;
   const selectedSummary = overview.images.find((i) => i.id === id) ?? null;
+  // Vurgulanan dilim: haritada seçilen bölge (rengi = o bölgedeki en yüksek olay riski), yoksa seçili olayın bölgesi
+  const zoneMax = (name: string) => overview.images.filter((i) => i.zone === name)
+    .reduce<Level>((best, i) => (rank(i.max_risk) < rank(best) ? i.max_risk : best), "low");
+  const activeZone = zoneFilter ? { name: zoneFilter, color: RISK_COLOR[zoneMax(zoneFilter)] }
+    : mode === "event" && selectedSummary ? { name: selectedSummary.zone, color: RISK_COLOR[selectedSummary.max_risk] } : null;
 
   return (
     <div className="grid h-[calc(100vh-49px)]" style={{ gridTemplateColumns: "300px 1fr 500px" }}>
@@ -248,7 +254,8 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
         </div>
         <RulePanel />
         <div className="flex-1 min-h-0">
-          <EventList images={overview.images} selected={id} onSelect={(x) => (window.location.hash = `#/image/${x}`)} />
+          <EventList images={overview.images} selected={id} onSelect={(x) => (window.location.hash = `#/image/${x}`)}
+            zone={zoneFilter} onClearZone={() => setZoneFilter(null)} />
         </div>
       </aside>
 
@@ -259,7 +266,8 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
           onSelectImage={(x) => (window.location.hash = `#/image/${x}`)} onSelectTrack={selectTrackOnMap} onSelectReport={focusReport}
           highlight={highlight?.tracks ?? []}
           global={mode === "global" && allTracks && gTime != null ? { tracks: allTracks, time: gTime } : null}
-          onSelectGlobal={selectGlobal} />
+          onSelectGlobal={selectGlobal}
+          activeZone={activeZone} onSelectZone={(z) => setZoneFilter((cur) => (cur === z ? null : z))} />
 
         {/* Ne görüyorum? */}
         {band && (

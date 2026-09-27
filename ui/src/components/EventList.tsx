@@ -3,13 +3,15 @@ import type { ImageSummary } from "../api";
 import { RISK_COLOR, RISK_TR, rank } from "../risk";
 
 // Sol panel: 40 olay (drone görüntüsü) zaman sırasıyla — ana gezinme
-export default function EventList({ images, selected, onSelect }: {
+export default function EventList({ images, selected, onSelect, zone = null, onClearZone }: {
   images: ImageSummary[]; selected: string | null; onSelect: (id: string) => void;
+  zone?: string | null; onClearZone?: () => void;   // haritada seçilen bölge dilimi
 }) {
   const [onlyHigh, setOnlyHigh] = useState(false);
   const list = useMemo(() => images
     .filter((i) => !onlyHigh || rank(i.max_risk) <= 1)
-    .sort((a, b) => a.capture_time.localeCompare(b.capture_time) || a.id.localeCompare(b.id)), [images, onlyHigh]);
+    .filter((i) => !zone || i.zone === zone)
+    .sort((a, b) => a.capture_time.localeCompare(b.capture_time) || a.id.localeCompare(b.id)), [images, onlyHigh, zone]);
 
   return (
     <div className="flex flex-col h-full">
@@ -19,6 +21,12 @@ export default function EventList({ images, selected, onSelect }: {
           {onlyHigh ? "tümü" : "yüksek+"}
         </button>
       </div>
+      {zone && (
+        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-slate-800 bg-slate-900/60 text-xs">
+          <span className="flex-1">Bölge: <b>{zone}</b> <span className="text-slate-400">· {list.length} olay</span></span>
+          <button className="!py-0 !px-1.5 !text-[10px]" onClick={onClearZone} title="bölge filtresini kaldır">✕ tümü</button>
+        </div>
+      )}
       <div className="overflow-y-auto flex-1">
         {list.map((i) => {
           const sel = i.id === selected;

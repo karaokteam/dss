@@ -1,10 +1,13 @@
-import { Fragment, createElement, useEffect } from "react";
+import { Fragment, createElement, useEffect, useMemo } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Bus, Car, CircleHelp, Truck, Van, type LucideIcon } from "lucide-react";
 import { Circle, CircleMarker, MapContainer, Marker, Polygon, Polyline, Rectangle, TileLayer, Tooltip, useMap } from "react-leaflet";
 import L from "leaflet";
 import type { GlobalTrack, ImageSummary, Overview, Report, TrackFull, ZonePoint } from "../api";
-import { LABEL_TR, RISK_COLOR, RISK_TR, STATUS_COLOR, STATUS_TR, posAt, toMin, zoneWedge } from "../risk";
+import { LABEL_TR, RISK_COLOR, RISK_TR, STATUS_COLOR, STATUS_TR, posAt, sectorAngles, sectorPolygon, sectorSpoke, toMin, zoneWedge } from "../risk";
+
+const SECTOR_INNER_M = 300;     // üs işaretinin etrafı boş kalsın
+const SECTOR_OUTER_M = 8000;    // track'lerin en uzak başlangıcı ~7,9 km
 
 const baseIcon = L.divIcon({
   className: "",
@@ -73,12 +76,16 @@ interface Props {
   highlight: TrackFull[];
   global?: { tracks: GlobalTrack[]; time: number } | null;   // "Tüm gün" modu
   onSelectGlobal?: (t: GlobalTrack) => void;
+  activeZone?: { name: string; color: string } | null;       // vurgulanan bölge dilimi
+  onSelectZone?: (name: string) => void;                     // dilime / bölge adına tıklama
 }
 
 export default function OpsMap(p: Props) {
   const b = p.overview.base;
   const focusReport = p.focus.report;
   const zone = focusReport?.links.zone ? p.overview.zones.find((z) => z.name === focusReport.links.zone) : null;
+  const sectors = useMemo(() => sectorAngles(b, p.overview.zones), [b, p.overview.zones]);
+  const active = p.activeZone && sectors[p.activeZone.name] ? p.activeZone : null;
 
   return (
     <MapContainer center={[b.lat, b.lon]} zoom={13} zoomControl={false}>
@@ -86,16 +93,38 @@ export default function OpsMap(p: Props) {
         attribution="Esri" maxNativeZoom={16} maxZoom={18} className="base-tiles" />
       <Fit bounds={p.fitTo} />
 
+      {/* Bölge dilimleri: tıklanabilir alanlar (görünmez) + soluk sınır çizgileri + seçili dilim */}
+      {Object.entries(sectors).map(([name, ang]) => (
+        <Polygon key={"sec" + name} positions={sectorPolygon(b, ang, SECTOR_INNER_M, SECTOR_OUTER_M)}
+          eventHandlers={{ click: () => p.onSelectZone?.(name) }}
+          pathOptions={{ stroke: false, fillColor: "#000", fillOpacity: 0.01, className: "zone-sector" }} />
+      ))}
+      {Object.entries(sectors).map(([name, [a0]]) => (
+        <Polyline key={"spoke" + name} positions={sectorSpoke(b, a0, SECTOR_INNER_M, SECTOR_OUTER_M)} interactive={false}
+          pathOptions={{ color: "#64748b", weight: 1, opacity: 0.35, dashArray: "4 8" }} />
+      ))}
+      {active && (
+        <Polygon key={"active" + active.name + active.color} positions={sectorPolygon(b, sectors[active.name], SECTOR_INNER_M, SECTOR_OUTER_M)}
+          interactive={false}
+          pathOptions={{ color: active.color, weight: 2, opacity: 0.9, fillColor: active.color, fillOpacity: 0.12, className: "zone-sector-active" }} />
+      )}
+
       {/* Üs + halkalar */}
       {[2000, 3500, 5000].map((r) => (
         <Circle key={r} center={[b.lat, b.lon]} radius={r} interactive={false}
           pathOptions={{ color: "#64748b", weight: 1, opacity: 0.35, fill: false, dashArray: "4 8" }} />
       ))}
       <Marker position={[b.lat, b.lon]} icon={baseIcon}><Tooltip>{b.name}</Tooltip></Marker>
-      {p.overview.zones.map((z) => (
-        <Marker key={z.name} position={[z.lat, z.lon]} interactive={false}
-          icon={L.divIcon({ className: "", html: `<div class="zone-label">${z.name}</div>`, iconSize: [140, 14], iconAnchor: [70, 7] })} />
-      ))}
+      {p.overview.zones.map((z) => {
+        const on = active?.name === z.name;
+        return (
+          <Marker key={z.name + (on ? active!.color : "")} position={[z.lat, z.lon]} eventHandlers={{ click: () => p.onSelectZone?.(z.name) }}
+            icon={L.divIcon({
+              className: "", iconSize: [140, 14], iconAnchor: [70, 7],
+              html: `<div class="zone-label${on ? " active" : ""}"${on ? ` style="color:${active!.color}"` : ""}>${z.name}</div>`,
+            })} />
+        );
+      })}
 
       {/* Bölge raporu odağı: sektör + rapor anındaki araçlar */}
       {zone && focusReport?.category === "zone" && (

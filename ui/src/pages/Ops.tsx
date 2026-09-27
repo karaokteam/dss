@@ -4,6 +4,7 @@ import { api, type Assessment, type Dossier, type GlobalTrack, type ImageDetail,
 import EventDetail from "../components/EventDetail";
 import EventList from "../components/EventList";
 import OpsMap, { type MapFocus } from "../components/OpsMap";
+import RulePanel from "../components/RulePanel";
 import { screenContext, type DssAction } from "../components/ChatPanel";
 import { LABEL_TR, LEVELS, RISK_COLOR, RISK_TR, STATUS_COLOR, km, posAt, rank, toHHMM, toMin } from "../risk";
 
@@ -32,7 +33,11 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
     const on = (e: Event) => {
       const a = (e as CustomEvent<DssAction>).detail;
       if (a.action === "show_reports") { window.location.hash = `#/reports/${a.status ?? ""}`; return; }
+      // Alarm kuralı: tüm gün görünümünde alarm anına git
+      if (a.action === "goto_time" && a.time) { setPlaying(false); setFocus(NO_FOCUS); setMode("global"); setGTime(toMin(a.time)); return; }
+      if (a.action === "select_track") setMode("event");
       if (a.action === "highlight_tracks" && a.track_ids?.length) {
+        if (a.time) { setPlaying(false); setMode("global"); setGTime(toMin(a.time)); }   // alarm kuralı sonucu
         Promise.all(a.track_ids.map((t) => api.track(t))).then((tracks) => {
           setHighlight({ title: a.title || `${tracks.length} araç`, tracks });
           setFitTo(tracks.flatMap((t) => t.points.map((q) => [q.lat, q.lon] as [number, number])));
@@ -232,7 +237,7 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
 
   return (
     <div className="grid h-[calc(100vh-49px)]" style={{ gridTemplateColumns: "300px 1fr 500px" }}>
-      <aside className="border-r border-slate-800 bg-[var(--panel)] min-h-0">
+      <aside className="border-r border-slate-800 bg-[var(--panel)] min-h-0 flex flex-col">
         <div className="px-3 py-2 border-b border-slate-800 flex gap-1.5">
           {LEVELS.map((l) => (
             <div key={l} className="flex-1 rounded border px-1.5 py-1 text-center" style={{ borderColor: RISK_COLOR[l] + "80" }}>
@@ -241,7 +246,8 @@ export default function Ops({ id, initialReport, initialMode = "event" }: { id: 
             </div>
           ))}
         </div>
-        <div className="h-[calc(100%-58px)]">
+        <RulePanel />
+        <div className="flex-1 min-h-0">
           <EventList images={overview.images} selected={id} onSelect={(x) => (window.location.hash = `#/image/${x}`)} />
         </div>
       </aside>

@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // Analist Asistanı: /api/chat → cevap + UI aksiyonları (window 'dss-action' olayıyla Ops ekranına iletilir)
-export interface DssAction { action: string; image_id?: string; vehicle_id?: string | null; track_id?: string; report_id?: string; status?: string | null; track_ids?: string[]; title?: string | null }
+export interface DssAction { action: string; image_id?: string; vehicle_id?: string | null; track_id?: string; report_id?: string; status?: string | null; track_ids?: string[]; title?: string | null; time?: string }
 interface Msg { role: "user" | "assistant"; content: string; actions?: DssAction[] }
 
 // Ops ekranı seçili olay/araç/saat bilgisini buraya yazar (chatbot bağlamı)
@@ -15,6 +15,7 @@ const SUGGESTIONS = [
   "Bu olayda neye dikkat etmeliyim?",
   "Resmi raporların kaçı çelişkili?",
   "Üsse tutarlı yaklaşan araçları göster",
+  "Bir kamyon üsse 1 km'den fazla yaklaşırsa uyar",
 ];
 
 const ACTION_TR: Record<string, string> = {

@@ -147,6 +147,22 @@ def timeline():
     return jsonify({"events": events})
 
 
+@bp.post("/alert-rules/test")
+def alert_rule_test():
+    """Komutan alarm kuralı: {"text": "Bir kamyon üsse 1 km'den fazla yaklaşırsa uyar"} ya da {"rule": {...}}
+    → metni LLM kurala çevirir (yoksa kural ayrıştırıcı), kural tüm gün üzerinde kodla geriye dönük sınanır."""
+    from backend.engine.analysis.alert_rules import backtest, parse, rule_from_dict
+    body = request.get_json(silent=True) or {}
+    if isinstance(body.get("rule"), dict):
+        rule, notes, text, parsed_by = rule_from_dict(body["rule"]), [], None, "yapılandırılmış"
+    else:
+        text = str(body.get("text") or "").strip()
+        if not text:
+            raise ApiError(400, "bad_request", "text ya da rule gerekli")
+        rule, notes, parsed_by = parse(text)
+    return jsonify({"text": text, "notes": notes, "parsed_by": parsed_by, **backtest(rule)})
+
+
 @bp.post("/chat")
 def chat():
     """Analist Asistanı: {"messages": [{"role","content"}], "context": {...}} → {"reply", "actions", "tools"}"""

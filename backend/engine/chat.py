@@ -174,6 +174,36 @@ def zone_activity(zone: str, time: str) -> dict:
     return {"zone": zone, "time": time, "vehicles": len(rows), "heavy": heavy, "items": rows[:25]}
 
 
+def test_alert_rule(vehicle: Literal["any", "car", "van", "truck", "bus", "heavy"] = "any",
+                    max_dist_m: float | None = None, zone: str | None = None, time_from: str | None = None,
+                    time_to: str | None = None, circling_only: bool = False) -> dict:
+    """Komutanın alarm kuralını TÜM GÜN üzerinde geriye dönük sınar ve tetikleyen araçları haritada vurgular.
+    "... olursa uyar", "alarm kur", "haber ver" gibi isteklerde kullan. Örn. "Bir kamyon üsse 1 km'den fazla
+    yaklaşırsa uyar" → vehicle="truck", max_dist_m=1000; "üssün etrafında dönen olursa uyar" → circling_only=true
+    (max_dist_m verme). Üsse yaklaşma kuralında mesafe söylenmemişse max_dist_m=1000 ver. Sonuçta her araç için
+    ilk tetiklenme saati, en yakın geçiş ve ilk fotoğrafından kaç dakika önce uyarı verileceği (lead_min) var;
+    any_vehicle_total aynı kuralın araç tipi filtresi olmadan kaç araçta tetikleneceğidir (gürültü karşılaştırması).
+
+    Args:
+        vehicle: Araç tipi: any | car | van | truck | bus | heavy (kamyon + otobüs).
+        max_dist_m: Üsse bu mesafeden (metre) yakın gelince tetiklenir; verilmezse mesafe koşulu yok.
+        zone: İsteğe bağlı bölge adı, örn. "Kuzeybati Yolu".
+        time_from: İsteğe bağlı başlangıç "HH:MM".
+        time_to: İsteğe bağlı bitiş "HH:MM".
+        circling_only: Yalnızca üssün etrafında dönen araçlar.
+    """
+    from backend.engine.analysis.alert_rules import backtest, rule_from_dict
+    r = backtest(rule_from_dict({"vehicle": vehicle, "max_dist_m": max_dist_m, "zone": zone, "time_from": time_from,
+                                 "time_to": time_to, "circling_only": circling_only}))
+    hits = [{k: h[k] for k in ("track_id", "label", "trigger_time", "min_dist_m", "zone", "photo_time", "image_id",
+                               "lead_min", "circling")} for h in r["hits"][:12]]
+    return {"action": "highlight_tracks", "track_ids": [h["track_id"] for h in hits],
+            "time": hits[0]["trigger_time"] if hits else None,      # UI tüm gün görünümünde ilk alarm anına gider
+            "title": f"Alarm kuralı: {r['rule_text']} → {r['total']} araç",
+            "rule_text": r["rule_text"], "total": r["total"], "any_vehicle_total": r["any_vehicle_total"],
+            "unlabeled": r["unlabeled"], "median_lead_min": r["median_lead_min"], "hits": hits}
+
+
 # ---------------------------------------------------------------- UI aksiyonları
 
 def ui_open_event(image_id: str, vehicle_id: str | None = None) -> dict:
@@ -236,10 +266,11 @@ def ui_show_reports(status: Literal["verified", "partial", "contradicted", "unve
 
 
 REGISTRY: dict[str, ToolSpec] = {s.name: s for s in map(spec_of, [
-    find_alerts, get_event, get_vehicle, find_reports, zone_activity, vehicles_in_area, co_movement,
+    find_alerts, get_event, get_vehicle, find_reports, zone_activity, vehicles_in_area, co_movement, test_alert_rule,
     ui_open_event, ui_play_track, ui_focus_report, ui_highlight_tracks, ui_show_reports,
 ])}
-_ACTIONS = {"ui_open_event", "ui_play_track", "ui_focus_report", "ui_highlight_tracks", "ui_show_reports"}
+_ACTIONS = {"ui_open_event", "ui_play_track", "ui_focus_report", "ui_highlight_tracks", "ui_show_reports",
+            "test_alert_rule"}
 _MAX_ITERATIONS = 6        # son iterasyonda tool sunulmaz → model cevap vermek zorunda
 _MAX_TOOL_CALLS = 8        # tek soru için toplam tool çağrısı üst sınırı (sonsuz döngü / bütçe koruması)
 

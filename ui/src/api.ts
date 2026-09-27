@@ -104,6 +104,18 @@ export interface ZonePoint { track_id: string; lat: number; lon: number; zone: s
 
 export interface Job { job_id: string; status: string; events_url: string; progress: { done: number; total: number } }
 
+export interface AlertRuleHit {
+  track_id: string; label: string | null; image_id: string; trigger_time: string; trigger_dist_m: number;
+  min_dist_m: number; min_time: string; zone: string; inside_min: number; photo_time: string; photo_dist_m: number;
+  lead_min: number; circling: string | null; consistent_approach: boolean;
+}
+
+export interface AlertRuleResult {
+  text: string | null; notes: string[]; parsed_by: string; rule_text: string; total: number; any_vehicle_total: number; unlabeled: number;
+  by_label: Record<string, number>; median_lead_min: number | null; hits: AlertRuleHit[];
+  rule: { vehicle: string; max_dist_m: number | null; zone: string | null; time_from: string | null; time_to: string | null; circling_only: boolean };
+}
+
 async function get<T>(url: string): Promise<T> {
   const r = await fetch(url);
   if (!r.ok) {
@@ -134,4 +146,5 @@ export const api = {
   tracksForImage: (id: string) => get<{ items: TrackFull[] }>(`/api/tracks?image_id=${id}`),
   zoneTracks: (time: string, zone: string) => get<{ points: ZonePoint[] }>(`/api/tracks?time=${time}&zone=${encodeURIComponent(zone)}`),
   budget: () => get<{ spend_usd: number; max_budget_usd: number }>("/api/llm/budget").catch(() => null),
+  testAlertRule: (text: string) => post<AlertRuleResult>("/api/alert-rules/test", { text }),
 };

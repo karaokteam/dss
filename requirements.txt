@@ -1,0 +1,8 @@
+flask>=3.0
+flask-cors>=4.0
+openai>=1.40
+python-dotenv>=1.0
+numpy>=2.0
+scipy>=1.13
+pillow>=10.4
+pytest>=8.0

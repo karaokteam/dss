@@ -1,0 +1,258 @@
+{
+ "image_id": "img_008001",
+ "capture_time": "14:25",
+ "zone": "Dogu Yolu",
+ "overall_risk": "medium",
+ "summary": "Üsse 4,3 km mesafedeki bu noktada 7 hareketli araç (T0018, T0054, T0097, T0149, T0164, T0196, T0222) ve 2 park halinde araç (img_008001_001, img_008001_008) 14:25 itibarıyla birbirinden ~2-42 m mesafede yığılmış durumda; bağımsız hareketle aynı noktaya eşzamanlı varış olası bir toplanma/bekleme noktasına işaret ediyor. R106'nın anlattığı 'mavi, uzaklaşan otomobil' gözlemle çelişiyor (bölgede park halinde beyaz kamyonet ve otomobil var) — bu tür çelişen raporlar yönlendirme şüphesi taşır. Üsse tutarlı yaklaşan T0054 hızlı yaklaşıyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_008001_008",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck 0.32, görsel teyit: beyaz kapalı kasa kamyonet/panelvan, yüksüz) ve park halinde; üsse 4350 m. R117 raporuyla çelişki faktörü var. 300 m yarıçaplı taramada T0222'ye 24 m mesafede; toplanma noktasının parçası olabilir ancak hareketsiz ve üsse uzak.",
+   "evidence": [
+    "det:img_008001_008",
+    "report:R117",
+    "report:R106",
+    "image:img_008001"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_003",
+   "label": "car",
+   "track_id": "T0054",
+   "risk_level": "medium",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": "Temel low'dan medium'a yükseltildi: son 60 dakikada üsse 2251 m hızlı yaklaşma (≥2000 m eşiği) ve gruptaki en kısa ETA 116 dk; ayrıca toplanma noktasında T0196'ya 8 m, T0222'ye 2 m mesafede eşzamanlı varış.",
+   "rationale": "Track T0054: üsse 5763→4356 m (2 saat), 7 hareketin 6'sı yaklaşan, son hareket 75° açıyla. Bu hız ve tutarlılık tek başına 'son saatte yaklaştı' zayıf sinyalinden güçlü; co_movement sonucu T0222 ile 5 eşzamanlı hareket (chance_rate 0.188) gösteriyor.",
+   "evidence": [
+    "det:img_008001_003",
+    "track:T0054"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_000",
+   "label": "car",
+   "track_id": "T0018",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1020 m yaklaştı",
+   "evidence": [
+    "det:img_008001_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_001",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R106, R117",
+   "evidence": [
+    "det:img_008001_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_005",
+   "label": "car",
+   "track_id": "T0196",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1160 m yaklaştı",
+   "evidence": [
+    "det:img_008001_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_006",
+   "label": "car",
+   "track_id": "T0222",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 548 m yaklaştı",
+   "evidence": [
+    "det:img_008001_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_007",
+   "label": "car",
+   "track_id": "T0149",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1811 m yaklaştı",
+   "evidence": [
+    "det:img_008001_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_002",
+   "label": "car",
+   "track_id": "T0097",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3482 m uzaklaştı",
+   "evidence": [
+    "det:img_008001_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_004",
+   "label": "car",
+   "track_id": "T0164",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3770 m uzaklaştı",
+   "evidence": [
+    "det:img_008001_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_008001_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008001_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.20)",
+   "evidence": [
+    "det:img_008001_010"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Toplanma/bekleme noktası şüphesi (7 track + 2 park araç)",
+   "risk_level": "medium",
+   "rationale": "39.9255N 32.9039E çevresinde 300 m taramada 7 track'li araç (T0222, T0054, T0097, T0018, T0196, T0149, T0164; hepsi 14:25'te pencere içinde varmış, min mesafe 16-28 m) + 2 park halinde araç bulundu. Co_movement: 10 çiftin tamamı 'met_at_end' — bağımsız hareketle aynı anda aynı noktada buluşma; T0054-T0222 arası son mesafe 2 m, T0054-T0196 8 m. 580 çiftte ~%5'in ≥4 eşzamanlı hareket gösterdiği göz önüne alındığında koordinasyon kesin değil, ancak yığılma izlenmeli.",
+   "evidence": [
+    "track:T0054",
+    "track:T0018",
+    "track:T0097",
+    "track:T0149",
+    "track:T0164",
+    "track:T0196",
+    "track:T0222",
+    "report:R117"
+   ]
+  },
+  {
+   "title": "R106: çelişen araç tanımı — olası yönlendirme",
+   "risk_level": "medium",
+   "rationale": "R106 'mavi otomobil uzaklaşıyor' diyor; gözlemde 39.9254N 32.9037E yakınında hareketsiz beyaz kamyonet (img_008001_008, 24 m) ve park halinde otomobil (img_008001_001, 19 m) var, mavi uzaklaşan araç yok. Çelişen dost/olay iddiası gizleme veya dikkat dağıtma girişimi şüphesi taşıyabilir.",
+   "evidence": [
+    "report:R106",
+    "det:img_008001_008",
+    "det:img_008001_001",
+    "image:img_008001"
+   ]
+  },
+  {
+   "title": "R117 yoğunluk uyarısı 14:25'te gerçekleşmiş durumda",
+   "risk_level": "low",
+   "rationale": "R117 (13:15) yoğunluk iddiası o anda ÇELİŞKİLİ doğrulandı (150 m içinde 0 track + 2 park araç, olağan 4). Ancak 14:25'te çekilen görüntüde aynı noktada 7 track + 2 park araç var — iddia zaman içinde fiilen doğmuş; bölge izlenmeye devam edilmeli.",
+   "evidence": [
+    "report:R117",
+    "image:img_008001"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R106",
+   "verdict": "unreliable",
+   "note": "İddiaya konu 'mavi, uzaklaşan otomobil' bulunamadı; gözlem park halinde beyaz kamyonet ve otomobil gösteriyor. İhbar kaynaklı (third_party) ve tam çelişkili."
+  },
+  {
+   "report_id": "R117",
+   "verdict": "partly_reliable",
+   "note": "13:15'te yoğunluk iddiası çelişkiliydi (0 track + 2 park araç); ancak 14:25 itibarıyla 300 m içinde 7 track + 2 park araç tespit edildi — iddia fiilen gerçekleşti."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); hiçbir aracın riskini düşürmez ve gözlemle doğrulanamaz."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:04:11+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008001\",\"question\":\"Bu araç bir kamyon mu, otomobil mi? Rengi mavi mi? Üzerinde yük/örtü var mı?\",\"vehicle_id\":\"img_008001_008\"}",
+    "summary": "{\"image_id\": \"img_008001\", \"target\": \"img_008001_008 (truck, güven 0.32)\", \"crop_px\": [342, 30, 502, 190], \"result\": {\"answer\": \"Küçük kutu kasalı bir kamyon/panelvan gibi görünüyor; rengi beyaz, mavi degil. Kasa kapali (örtulu), ustunde yu…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9255,\"lon\":32.9039,\"radius_m\":300,\"time_from\":\"12:00\",\"time_to\":\"14:25\"}",
+    "summary": "{\"query\": {\"lat\": 39.9255, \"lon\": 32.9039, \"radius_m\": 300.0, \"window\": \"12:00–14:25\", \"vehicle_type\": null}, \"tracked_count\": 7, \"tracked\": [{\"track_id\": \"T0222\", \"label\": \"car\", \"detection_id\": \"img_008001_006\", \"image_id\": \"img_008001\", …"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0054\", \"T0018\", \"T0149\", \"T0196\", \"T0222\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0054\", \"T0018\"], \"relation\": \"met_at_end\", \"common_window\": \"12:25–14:25\", \"dist_m\": {\"min\": 36, \"max\": 13528, \"end\": 36}, \"synchronous_moves\": 3, \"same_direction_moves\": 3, \"chance_rate\": 0.188}, {\"tracks\": [\"T0054…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 11478,
+   "output": 3757,
+   "reasoning": 2081
+  },
+  "cost_usd": 0.002755,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 107.6
+ }
+}

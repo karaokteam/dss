@@ -1,0 +1,224 @@
+{
+ "image_id": "img_004318",
+ "capture_time": "15:45",
+ "zone": "Bati Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "En dikkat çekici unsur, T0081 track'li örtülü yüklü ağır aracın (truck/van) üsse tutarlı yaklaşması (6944→5201 m, ETA 186 dk) ve R102'nin park halindeki bir otomobil için sahte dost ikmal iddiası taşımasıdır. Ayrıca R133'ün bildirdiği kamyon T0081 olarak rapor noktasına 7 m mesafede teyit edildi ancak saat uyuşmuyor. Genel risk medium: tek başına kritik bir yaklaşma yok, ancak sahte dost iddiası örüntüsü ve örtülü yüklü ağır araç izlenmeli.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_004318_006",
+   "label": "truck",
+   "track_id": "T0081",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck 0.43, alt van 0.37; görsel teyit: beyaz, kapalı kasalı, kamyon olasılığı yüksek), track T0081 ile 2 saatte 6944→5201 m net yaklaşma, son 60 dk Δ-1680 m, ETA 186 dk, dolaşma düşük (1.9). R133'ün kamyon iddiası bu track ile 7 m mesafede eşleşti (saat farkı 14:40 vs 15:45). Örtülü yük nedeniyle içerik doğrulanamadı. Temel medium korunuyor.",
+   "evidence": [
+    "det:img_004318_006",
+    "track:T0081",
+    "report:R133",
+    "image:img_004318"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004318_001",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "car 0.91, park halinde, hareket kaydı yok (track:-). Görsel teyit: gri otomobil, tavanında yük/örtü yok. Üsse 5206 m uzakta ve durgun; kendisi hareket tehdidi değil. R102'nin 'bize bağlı unsur, üsse geliyor' dost iddiası identity ve motion başlıklarında ÇELİŞKİLİ — bu bir gizleme şüphesi sinyali olarak dikkat maddesine taşındı, ancak aracın gözlemlenen davranışı riski yükseltmiyor.",
+   "evidence": [
+    "det:img_004318_001",
+    "report:R102",
+    "image:img_004318"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004318_002",
+   "label": "car",
+   "track_id": "T0140",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "T0140: son 60 dk Δ+164 m, yanal hareket; dolaşma 5.6 yüksek ama net üsse yaklaşma yok, mesafe 5206 m. Temel low korunuyor.",
+   "evidence": [
+    "det:img_004318_002",
+    "track:T0140"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004318_004",
+   "label": "car",
+   "track_id": "T0022",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1516 m yaklaştı",
+   "evidence": [
+    "det:img_004318_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004318_000",
+   "label": "car",
+   "track_id": "T0152",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 2554 m uzaklaştı",
+   "evidence": [
+    "det:img_004318_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004318_003",
+   "label": "car",
+   "track_id": "T0203",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4147 m uzaklaştı",
+   "evidence": [
+    "det:img_004318_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004318_005",
+   "label": "car",
+   "track_id": "T0030",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 1386 m uzaklaştı; dolaşma: yol/yer değiştirme 5.0, 7 hareket",
+   "evidence": [
+    "det:img_004318_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004318_007",
+   "label": "car",
+   "track_id": "T0073",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4516 m uzaklaştı",
+   "evidence": [
+    "det:img_004318_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004318_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_004318_008"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Sahte dost ikmal iddiası (R102)",
+   "risk_level": "medium",
+   "rationale": "Resmi kaynaklı R102, park halindeki img_004318_001 için 'bize bağlı unsur, gelişi bildirildi' diyor; ancak araçta hareket kaydı yok (park halinde, 9-10 m mesafede) ve iddia motion ile çelişiyor. Konumsuz R112/R035 duyuruları da bu aracı korumaz. Çelişen dost iddiası gizleme girişimi olabilir; gerçek dost unsur bu görüntüde tespit edilememiş olabilir.",
+   "evidence": [
+    "report:R102",
+    "det:img_004318_001",
+    "report:R112",
+    "report:R035"
+   ]
+  },
+  {
+   "title": "Örtülü yüklü ağır araç üsse tutarlı yaklaşıyor (T0081)",
+   "risk_level": "medium",
+   "rationale": "T0081 son 60 dakikada 1680 m yaklaştı (6944→5201 m), ETA 186 dk, tip güveni düşük (truck 0.43) ve kasası örtülü olduğu için yük doğrulanamadı. R133'ün bildirdiği kamyonun bu track olduğu 7 m mesafe eşleşmesiyle güçlendi; saat uyuşmazlığı (14:40 rapor, 15:45 konum) takip gerektiriyor.",
+   "evidence": [
+    "track:T0081",
+    "det:img_004318_006",
+    "report:R133",
+    "image:img_004318"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R133",
+   "verdict": "partly_reliable",
+   "note": "Kamyon sayımı rapor anında (14:40) bölgede doğrulanamadı; ancak alan taramasında T0081 (truck) rapor noktasına 7 m'ye kadar yaklaşmış ve 15:45 görüntüsünde orada. Araç gerçek ama saat uyuşmuyor."
+  },
+  {
+   "report_id": "R102",
+   "verdict": "unreliable",
+   "note": "Identity ve motion başlıklarında gözlemle çelişiyor: iddia edilen araç (img_004318_001) park halinde, hareket kaydı yok. Sahte dost iddiası şüphesi var."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('bölgede dost unsurlar'); hiçbir aracı doğrulayamaz veya korumaz, gürültü olarak işlendi."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "R112 ile aynı konumsuz genel duyuru; doğrulanamaz, risk değerlendirmesine katkı sağlamaz."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:08:15+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9193,\"lon\":32.7922,\"radius_m\":600,\"time_from\":\"13:45\",\"time_to\":\"15:45\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.9193, \"lon\": 32.7922, \"radius_m\": 600.0, \"window\": \"13:45–15:45\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 2, \"tracked\": [{\"track_id\": \"T0081\", \"label\": \"truck\", \"detection_id\": \"img_004318_006\", \"image_id\": \"img_0043…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004318\",\"question\":\"Bu araç kamyon mu? Yükü/örtüsü var mı, rengi nedir?\",\"vehicle_id\":\"img_004318_006\"}",
+    "summary": "{\"image_id\": \"img_004318\", \"target\": \"img_004318_006 (truck, güven 0.43)\", \"crop_px\": [884, 319, 1044, 479], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"beyaz\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Ku…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004318\",\"question\":\"Bu araç gerçekten park halinde bir otomobil mi? İçinde kişi veya şüpheli bir örtü/yük var mı?\",\"vehicle_id\":\"img_004318_001\"}",
+    "summary": "{\"image_id\": \"img_004318\", \"target\": \"img_004318_001 (car, güven 0.91)\", \"crop_px\": [844, 416, 1004, 576], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": null, \"occluded\": false, \"answer\": \"Evet, bu park…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9489,
+   "output": 3248,
+   "reasoning": 1211
+  },
+  "cost_usd": 0.002425,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 99.7
+ }
+}

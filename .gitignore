@@ -1,0 +1,12 @@
+.env
+# Üretilen çıktılar: önbellek/log/kanıt dosyaları yeniden üretilebilir; agent sonuçları ve iddialar
+# demo için repoda tutulur (yeniden üretmek ~20-30 dk ve LLM bütçesi gerektirir)
+outputs/cache/
+outputs/logs/
+outputs/dossiers/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+__MACOSX/
+.DS_Store

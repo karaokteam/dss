@@ -1,0 +1,157 @@
+{
+ "image_id": "img_001230",
+ "capture_time": "15:15",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "high",
+ "summary": "Görüntüde üsse tutarlı yaklaşan 3 otomobil (T0031, T0131, T0056) sonunda birbirine 12–66 m mesafede buluşmuş durumda; bunlardan T0031'in konumu, aracı 'dost' ilan eden R007'nin koordinatlarıyla (3 m) neredeyse çakışıyor ve o noktada 14:15'te hiçbir track yoktu — dost iddiasının gerçek bir yaklaşan aracı meşrulaştırma girişimi olabileceği değerlendiriliyor. Ayrıca ağaç altında örtülü, track'siz bir beyaz araç tespit edildi.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001230_000",
+   "label": "car",
+   "track_id": "T0031",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": "Temel medium'dan high'a yükseltildi: track:T0031, R007'nin 'dost unsurdur' dediği koordinatın 3 m yakınında 15:10–15:15 arasında belirdi; 14:15'te orada track yoktu (anomali: en yakın track 828 m). Çelişen dost iddiası şüphe sinyalidir. Üsse 7376→2684 m tutarlı yaklaşma (son 60 dk Δ-3213 m, ETA 50 dk) ve co_movement'te T0131 ile sonunda 12 m'ye yaklaşma destekliyor.",
+   "rationale": "Üsse 2685 m; 2 saatte 7376→2684 m (son 60 dk -3213 m), 7 hareketin 5'i yaklaşan, ETA 50 dk, son hareket 36°. R007 dost iddiası bu aracın konumuyla çelişiyor; araç iddia saatinde yokken sonra aynı noktaya (3 m) geldi. track:T0031 ile T0131 arasında 3 eşzamanlı/3 aynı yönlü hareket (chance_rate 0.188) — olası koordinasyon.",
+   "evidence": [
+    "det:img_001230_000",
+    "track:T0031",
+    "report:R007"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_001",
+   "label": "car",
+   "track_id": "T0131",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2695 m; son 60 dk'da 1917 m yaklaştı, dolaşma 3.4 (6 hareket, 3 yaklaşan/3 uzaklaşan), son hareket 0° açıyla üsse doğru. co_movement: T0031 ile sonunda 12 m mesafede buluştu, 3 eşzamanlı hareket (chance_rate 0.188) — T0031 ile koordineli olma ihtimali izlenmeli.",
+   "evidence": [
+    "det:img_001230_001",
+    "track:T0131"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_002",
+   "label": "car",
+   "track_id": "T0056",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2723 m; 2 saatte 5967→2723 m (son 60 dk -2770 m, hızlı yaklaşma), 30 dk durma sonrası devam, dolaşma düşük (1.7). Diğer iki araçla ilişkisi bağımsız görünüyor (chance_rate 1.0), ancak diğeriyle aynı anda benzer noktaya yaklaşıyor.",
+   "evidence": [
+    "det:img_001230_002",
+    "track:T0056"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, 0.12 güvenli tespit; görsel inceleme aracın gerçekten var olduğunu (ağaç altında kısmen örtülü beyaz otomobil) düşük güvenle doğruladı (image:img_001230 incelemesi). Park halinde ve hareket kaydı yok; ancak 2683 m üsse yakın ve yaklaşan üç aracın buluştuğu noktanın yakınında olduğu için gözden kaçırılmamalı.",
+   "evidence": [
+    "det:img_001230_003",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Sahte dost iddiası örüntüsü (R007)",
+   "risk_level": "high",
+   "rationale": "R007 (14:15, official) 39.90152N 32.87029E'den gelen otomobili 'bağlı unsurdur, önceden bildirilmiştir' diye tanımlıyor; ancak o saatte koordinatın 60 m yakınında track yok, en yakın track 828 m. Doğrulama identity=ÇELİŞKİLİ. T0031 daha sonra (15:10–15:15) bu noktanın 3 m yakınına gelmiş durumda. Çelişen dost iddiası bir aracı gizleme/meşrulaştırma girişimi olabilir.",
+   "evidence": [
+    "report:R007",
+    "track:T0031"
+   ]
+  },
+  {
+   "title": "Olası koordineli yaklaşma: T0031 + T0131",
+   "risk_level": "medium",
+   "rationale": "İki araç sonunda 12 m mesafede buluştu, 3 eşzamanlı ve 3 aynı yönlü hareket (chance_rate 0.188). Tek başına kesin konvoy kanıtı değil (580 çiftin ~%5'i bu kadar eşzamanlı hareket gösterebilir), ama T0031'in dost iddiasıyla çakışmasıyla birlikte izlenmeli.",
+   "evidence": [
+    "track:T0031",
+    "track:T0131"
+   ]
+  },
+  {
+   "title": "Doğrulanamayan kamyon konvoyu iddiası (R087)",
+   "risk_level": "medium",
+   "rationale": "R087 (14:15) aynı koordinatlarda 3 araçlık kamyon konvoyu bildiriyor; bu görüntüde kamyon yok ve o noktada track bulunamadı (en yakın track 850 m). Ya yanlış ya da çekimde yakalanan (ağaç altındaki track'siz araç gibi) gözden kaçan bir araç olabilir.",
+   "evidence": [
+    "report:R087",
+    "det:img_001230_003"
+   ]
+  },
+  {
+   "title": "Track'siz örtülü araç (ağaç altı, beyaz)",
+   "risk_level": "low",
+   "rationale": "img_001230_003: 0.12 güvenle, ağaç örtüsü altında park halinde araç; görsel inceleme varlığını düşük güvenle doğruladı. Üsse 2683 m ve yaklaşan grubun buluşma noktasına yakın — düşük güvenli tespit nedeniyle hareket kaydı olmayabilir.",
+   "evidence": [
+    "det:img_001230_003",
+    "image:img_001230"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R007",
+   "verdict": "unreliable",
+   "note": "Dost/kimlik iddiası gözlemle çelişiyor: rapor saatinde koordinatta araç yok, T0031 sonradan aynı noktaya (3 m) geldi. Meşrulaştırma girişimi şüphesi."
+  },
+  {
+   "report_id": "R087",
+   "verdict": "unverifiable",
+   "note": "3 araçlık kamyon konvoyu iddiası doğrulanamadı: noktada ve görüntüde kamyon/track yok (en yakın track 850 m); yanlış veya gözden kaçan araç ihtimali açık."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:06:28+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9016,\"lon\":32.87025,\"radius_m\":2000,\"time_from\":\"13:15\",\"time_to\":\"16:15\"}",
+    "summary": "{\"query\": {\"lat\": 39.9016, \"lon\": 32.87025, \"radius_m\": 2000.0, \"window\": \"13:15–16:15\", \"vehicle_type\": null}, \"tracked_count\": 29, \"tracked\": [{\"track_id\": \"T0031\", \"label\": \"car\", \"detection_id\": \"img_001230_000\", \"image_id\": \"img_001230…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001230\",\"lat\":39.9016,\"lon\":32.87025,\"question\":\"img_001230_003 olarak etiketlenen, track'siz ve 0.12 güvenle tespit edilen bu nesne gerçekten bir araç mı? Tipi (otomobil/kamyonet/kamyon) nedir ve yüklü/örtülü mü?\",\"vehicle_id\":\"img_001230_003\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_003 (car, güven 0.12)\", \"crop_px\": [321, 144, 481, 304], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi …"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0031\", \"T0131\", \"T0056\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0031\", \"T0131\"], \"relation\": \"met_at_end\", \"common_window\": \"13:15–15:15\", \"dist_m\": {\"min\": 12, \"max\": 7297, \"end\": 12}, \"synchronous_moves\": 3, \"same_direction_moves\": 3, \"chance_rate\": 0.188}, {\"tracks\": [\"T0031\"…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 20225,
+   "output": 4925,
+   "reasoning": 1304
+  },
+  "cost_usd": 0.004559,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 106.8
+ }
+}

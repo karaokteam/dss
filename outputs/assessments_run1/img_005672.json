@@ -1,0 +1,209 @@
+{
+ "image_id": "img_005672",
+ "capture_time": "11:00",
+ "zone": "Guneybati Yolu",
+ "overall_risk": "high",
+ "summary": "Üsse ~1700 m mesafede üç hareketli araç (T0158, T0063, T0163) son 60 dakikada 2-5 km yol katederek tutarlı biçimde yaklaşıyor ve co_movement analizi üçünün de çekim anında birbirine 11-49 m mesafede buluştuğunu (met_at_end) gösteriyor; bu üsse yakın gruplaşma şüphesi yaratıyor. Ayrıca üsse 1696-1736 m aralığında 4 park halinde araç bulunuyor ve R135 bunların 1 saatten uzun süredir durağan olduğunu doğruluyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_005672_001",
+   "label": "car",
+   "track_id": "T0158",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "TEMEL 40 medium → high: T0158 ve T0163 ile çekim anında 37 m / 11 m mesafede buluşma (co_movement met_at_end) tespit edildi; 6-9 km uzaktan gelip üsse 1704 m kala üç aracın aynı noktada toplanması tesadüfi sayılamayacak bir gruplaşma sinyali. ETA 21 dk ile en kısa varış süresi.",
+   "rationale": "2 saatte üsse 6287→1704 m (Δ-4583 m), son 60 dk'da 4951 m yaklaştı; ETA 21 dk; 10 hareketin 6'sı yaklaşan. T0063 ile son konum mesafesi 37 m, T0163 ile 11 m (co_movement). Üsse yakın gruplaşma kuralı gereği high.",
+   "evidence": [
+    "det:img_005672_001",
+    "track:T0158",
+    "track:T0063",
+    "track:T0163",
+    "image:img_005672"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005672_002",
+   "label": "car",
+   "track_id": "T0063",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "TEMEL 40 medium → high: T0158 (37 m) ve T0163 (49 m) ile çekim anında birleşme; 10 hareketin 7'si yaklaşan, son 60 dk'da 5376 m yaklaşma ve ETA 19 dk ile görüntüdeki en hızlı/yerleşik yaklaşma örüntüsü; üç araç üsse 1700 m kala aynı noktada toplandı.",
+   "rationale": "2 saatte üsse 7384→1740 m, son 60 dk Δ-5376 m; ETA 19 dk; son hareket üsse 0° açıyla (doğrudan üsse yönelik). co_movement: T0158 ile 37 m, T0163 ile 49 m, ortak pencerede eşzamanlı 7 hareket (chance_rate 0.434 ama bitişte fiziksel buluşma bağımsız olarak belirleyici).",
+   "evidence": [
+    "det:img_005672_002",
+    "track:T0158",
+    "track:T0063",
+    "track:T0163",
+    "image:img_005672"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005672_004",
+   "label": "car",
+   "track_id": "T0163",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "TEMEL 40 medium → high: T0158 ile 11 m, T0063 ile 49 m mesafede çekim anında buluşma; 10:35-11:00 arasında T0158 ve T0063 ile aynı adımlarda (10:35,10:40,10:45,10:50,10:55,11:00) hareket ederek üsse 1693 m noktada toplanma, ETA 50 dk içinde üsse varma potansiyeli.",
+   "rationale": "2 saatte üsse 2916→1693 m, son 60 dk Δ-2022 m; 9 hareketin 5'i yaklaşan; son hareket üsse 0° açıyla. co_movement: T0158/T0063 ile 10:35'ten itibaren eşzamanlı hareket dizisi ve bitişte 11-49 m fiziksel yakınlık (gruplaşma).",
+   "evidence": [
+    "det:img_005672_004",
+    "track:T0158",
+    "track:T0063",
+    "track:T0163",
+    "image:img_005672"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005672_003",
+   "label": "car",
+   "track_id": "T0108",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "120 dk'dır üsse 1704 m mesafede durağan; R135 third_party stationary iddiası DOĞRULANDI (track kaydının başından beri 9 m içinde hareketsiz). Ağır araç değil, yaklaşma örüntüsü yok; ancak yaklaşan üç aracın toplandığı noktaya yakın olduğu için base medium korunuyor.",
+   "evidence": [
+    "det:img_005672_003",
+    "track:T0108",
+    "report:R135",
+    "image:img_005672"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005672_000",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1697 m",
+   "evidence": [
+    "det:img_005672_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_005672_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1716 m",
+   "evidence": [
+    "det:img_005672_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_005672_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1736 m",
+   "evidence": [
+    "det:img_005672_006"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse yakın üç araç koordineli toplanma şüphesi",
+   "risk_level": "high",
+   "rationale": "T0158, T0063, T0163 bağımsız başlangıçlardan (9-10 km arası farklı mesafelerden) gelip 10:35-11:00 arasında eşzamanlı hareketle üsse 1693-1740 m kala birbirine 11-49 m mesafede toplandı. Buluşma noktası üsse ~1700 m (görüntünün çekildiği bölge); ETA'lar 19-50 dk. Üsse yakın gruplaşma, yüksek tehdit sinyallerinden biridir; olası keşif/koordineli yaklaşma senaryosu için izlenmeli.",
+   "evidence": [
+    "track:T0158",
+    "track:T0063",
+    "track:T0163",
+    "det:img_005672_001",
+    "det:img_005672_002",
+    "det:img_005672_004",
+    "image:img_005672"
+   ]
+  },
+  {
+   "title": "Üsse ~1700 m'de 7 araçlık yoğun küme (4'ü park halinde)",
+   "risk_level": "medium",
+   "rationale": "Görüntüdeki 7 aracın tamamı üsse 1693-1740 m bandında; 4'ü track'siz park halinde (img_005672_000, _005, _006) ve T0108 120 dk'dır durağan. R135 (09:35, third_party) bu durağanlığı DOĞRULADI. Durağan kümenin kendisi düşük riskli ancak yaklaşan üç aracın bu kümenin yanında toplanması, bölgede bir buluşma/aktarma noktası olabileceğine işaret ediyor; araç içerikleri/yükleri görsel olarak teyit edilmedi.",
+   "evidence": [
+    "report:R135",
+    "det:img_005672_000",
+    "det:img_005672_005",
+    "det:img_005672_006",
+    "det:img_005672_003",
+    "image:img_005672"
+   ]
+  },
+  {
+   "title": "R012 'yalnızca binek araçlar' iddiası ile bölge geçmişi arasında çelişki",
+   "risk_level": "medium",
+   "rationale": "R012 (10:35, official) bölgede ağır araç yok, yalnızca binek araç var demiş ve DOĞRULANDI; bu görüntüdeki 7 tespitin tümü car ile tutarlı. Ancak R093 (09:30, third_party) önceki gece bölgede araç hareketliliği ihbarı içeriyor ve DOĞRULANAMAZ. Bölge 24 saat içinde önce hareketlilik ihbarı, sonra olağandışı yok raporu, şimdi ise yoğun toplanma gösteriyor; izleme sürdürülmeli.",
+   "evidence": [
+    "report:R012",
+    "report:R093",
+    "report:R008",
+    "image:img_005672"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R135",
+   "verdict": "reliable",
+   "note": "stationary iddiası DOĞRULANDI: T0108 kayıt başından beri 9 m içinde durağan, _000/_005/_006 park halinde track'siz; gözlem raporla tutarlı."
+  },
+  {
+   "report_id": "R093",
+   "verdict": "unverifiable",
+   "note": "Önceki gece araç hareketliliği ihbarı doğrulanamadı; şu anki 3 aracın 2 saatlik yaklaşması bu ihbarı destekleyecek kadar doğrudan değil ama tamamen dışlamak da mümkün değil."
+  },
+  {
+   "report_id": "R008",
+   "verdict": "reliable",
+   "note": "10:30'da olağandışı durum yok bildirimi; 11:00 görüntüsündeki park halindeki kümeyle çelişmiyor, ancak 10:35 sonrası yaklaşan üç aracın toplanması bu raporun kapsamı dışında."
+  },
+  {
+   "report_id": "R012",
+   "verdict": "partly_reliable",
+   "note": "'Yalnızca binek araçlar' kısmı bu görüntüyle tutarlı (7/7 car); ancak 'agir arac hareketi yok' ifadesi bölgenin tümü için kanıtlanmış değil ve rapor yaklaşan üç aracın gruplaşmasını yansıtmıyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T21:52:58+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0158\", \"T0063\", \"T0163\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0158\", \"T0063\"], \"relation\": \"met_at_end\", \"common_window\": \"09:00–11:00\", \"dist_m\": {\"min\": 37, \"max\": 6125, \"end\": 37}, \"synchronous_moves\": 7, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0158\"…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 17210,
+   "output": 5393,
+   "reasoning": 782
+  },
+  "cost_usd": 0.003819,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 135.4
+ }
+}

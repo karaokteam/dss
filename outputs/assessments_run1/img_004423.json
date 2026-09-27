@@ -1,0 +1,262 @@
+{
+ "image_id": "img_004423",
+ "capture_time": "15:50",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Bölgede üsse ~5.2 km mesafede, en az üç ağır aracın (kamyon) uzun süredir park halinde beklediği bir gruplaşma var; resmi rapor R127'nin '3 kamyon' sayımı gözlemle kısmen tutuyor ve düşük güvenli ek kamyon tespitleri (img_004423_007, _009) üçüncü kamyonun varlığını destekliyor. Yükleri örtülü olduğu için içerik belirlenemiyor; ancak genel tabloda tutarlı yaklaşan araç yok ve hareketli araçlar üsten uzaklaşıyor, bu yüzden risk yüksek değil ama gözlem altında tutulmalı.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_004423_003",
+   "label": "truck",
+   "track_id": "T0076",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 33,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck) ve 2 saattir hareketsiz: üsse 5212→5217 m, son 60 dk Δ-0 m, 120 dk durma. 100 m içinde 3 ağır araç gruplaşması var. R040 'hareketsiz kamyon' iddiası DOĞRULANDI (35 dk durağan, 14 m). R127 sayımı KISMEN. Üsse 5.2 km uzak ve genel tabloda tutarlı yaklaşan araç 0 olduğu için yüksek değil.",
+   "evidence": [
+    "det:img_004423_003",
+    "track:T0076",
+    "report:R040",
+    "report:R127"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_005",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 33,
+   "override_reason": null,
+   "rationale": "Park halinde kamyon (truck 0.33, track yok), üsse 5219 m; hareket kaydı olmadığı için niyeti izlenemiyor. 100 m içinde 3 ağır araç gruplaşması. R040 iddiası bu aracı 5 m mesafeyle doğruluyor. Görsel inceleme: araç var ancak ağaç örtüsü nedeniyle kamyon/yük belirsiz (düşük güven).",
+   "evidence": [
+    "det:img_004423_005",
+    "report:R040",
+    "report:R127",
+    "image:img_004423"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_007",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": "Temel low (15) → medium: park halinde track'siz kamyon, görsel incelemede kırmızı kasalı ve örtülü yük teyit edildi; R127'nin eksik kalan 3. kamyonu bu olabilir, izlenemiyor.",
+   "rationale": "Track yok, tespit güveni 0.15; üsse 5185 m'de park halinde. 100 m içinde 3 ağır araç gruplaşmasının parçası. Görsel inceleme araç varlığını ve örtülü kasayı doğruladı ama güven düşük. R127 '3 kamyon' derken gözlenen 2 kamyonun dışında bu tespit üçüncü kamyon adayı.",
+   "evidence": [
+    "det:img_004423_007",
+    "report:R127",
+    "image:img_004423"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_009",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": "Temel low (15) → medium: park halinde track'siz kamyon, görsel incelemede örtülü yüklü uzun kasalı kamyon olarak teyit edildi; R127'nin eksik 3. kamyonu alternatif adayı, izlenemiyor.",
+   "rationale": "Track yok, tespit güveni 0.11; üsse 5190 m'de park halinde. Görsel inceleme araç varlığını ve mavi örtülü yükü doğruladı (düşük güven). Gruplaşmanın parçası; R127 sayımıyla ilişkili olabilir.",
+   "evidence": [
+    "det:img_004423_009",
+    "report:R127",
+    "image:img_004423"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_004",
+   "label": "truck",
+   "track_id": "T0170",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": null,
+   "rationale": "Üsten net uzaklaşıyor: 2819→5192 m, son 60 dk Δ+2927 m, 5/6 hareket uzaklaşan. Kamyon olsa da tehdit yönü ters.",
+   "evidence": [
+    "det:img_004423_004",
+    "track:T0170"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_008",
+   "label": "bus",
+   "track_id": "T0216",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": null,
+   "rationale": "Üsten uzaklaşıyor (son 60 dk Δ+1262 m), dolaşma 2.9 ile düzensiz ama net bir tehdit örüntüsü yok; güven düşük (0.12).",
+   "evidence": [
+    "det:img_004423_008",
+    "track:T0216"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_001",
+   "label": "car",
+   "track_id": "T0083",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Yaklaşıyor (son 60 dk Δ-1497 m) ama sivil otomobil profili (car 0.89), ETA 207 dk, dolaşma 1.8; tutarlı yaklaşma örüntüsü yok (4 yaklaşan/3 uzaklaşan).",
+   "evidence": [
+    "det:img_004423_001",
+    "track:T0083"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_000",
+   "label": "car",
+   "track_id": "T0086",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Yanal hareket, tutarlı tehdit örüntüsü yok, temel risk 0.",
+   "evidence": [
+    "det:img_004423_000",
+    "track:T0086"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_002",
+   "label": "car",
+   "track_id": "T0143",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsten uzaklaşıyor (son 60 dk Δ+1723 m).",
+   "evidence": [
+    "det:img_004423_002",
+    "track:T0143"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004423_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Park halinde otomobil (car 0.31), ağır araç değil, tehdit göstergesi yok.",
+   "evidence": [
+    "det:img_004423_006"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse yakın park halinde ağır araç gruplaşması ve izlenemeyen track'siz kamyonlar",
+   "risk_level": "medium",
+   "rationale": "100 m içinde 3 ağır araç: T0076 (2 saattir durağan) ve en az bir track'siz kamyon (img_004423_005; ayrıca 007/009 düşük güvenli adaylar). Yükler örtülü olduğu için içerik belirlenemiyor. Üsse mesafe ~5.2 km, genel tabloda tutarlı yaklaşan 0 araç — yüksek değil ama izlenmeli.",
+   "evidence": [
+    "det:img_004423_003",
+    "det:img_004423_005",
+    "det:img_004423_007",
+    "det:img_004423_009",
+    "image:img_004423"
+   ]
+  },
+  {
+   "title": "R127 sayım uyuşmazlığı: 3. kamyonun kimliği belirsiz",
+   "risk_level": "medium",
+   "rationale": "R127 '3 kamyon' bildirdi; gözlem 2 kamyon + 1 otomobil sayıyor. Düşük güvenli truck tespitleri 007 (kırmızı, örtülü) ve 009 (mavi örtülü yük) üçüncü kamyonun varlığını destekliyor; hangisi olduğundan emin olunamıyor.",
+   "evidence": [
+    "report:R127",
+    "det:img_004423_007",
+    "det:img_004423_009"
+   ]
+  },
+  {
+   "title": "R042 bölge raporu çelişkisi",
+   "risk_level": "medium",
+   "rationale": "R042 (15:00) 'Kuzeybatı Yolu çevresinde kayda değer hareketlilik yok' diyor; oysa bölgede 2 saatlik hareketsiz ağır araç grubu ve yaklaşıyor işaretli 1 araç (T0083) var. Resmi bölge raporu gözlemle çelişiyor, güvenilirliği düşük.",
+   "evidence": [
+    "report:R042",
+    "det:img_004423_003",
+    "det:img_004423_001"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R040",
+   "verdict": "reliable",
+   "note": "'Kamyon uzun süredir hareketsiz' iddiası DOĞRULANDI: T0076 35 dk durağan (14 m) ve img_004423_005 park halinde (5 m)."
+  },
+  {
+   "report_id": "R127",
+   "verdict": "partly_reliable",
+   "note": "'3 kamyon' sayımı KISMEN: gözlem 2 kamyon + 1 otomobil; 3. kamyon muhtemelen düşük güvenli 007/009 tespitlerinden biri, kesin değil."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel tatbikat duyurusu; hiçbir aracın riskini düşürmez, doğrulanamaz."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel tatbikat duyurusu; doğrulanamaz ve risk düşürücü değil."
+  },
+  {
+   "report_id": "R042",
+   "verdict": "unreliable",
+   "note": "'Hareketsizlik yok' iddiası gözlemle çelişiyor: bölgede 2 saatlik durağan kamyon grubu (T0076, img_004423_005) ve 1 yaklaşan araç var."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:08:51+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit bir kamyon mu yoksa başka bir araç tipi mi? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_004423_007\"}",
+    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_007 (truck, güven 0.15)\", \"crop_px\": [861, 38, 960, 198], \"result\": {\"vehicle_type\": \"truck\", \"color\": \"kirmizi\", \"cargo\": \"covered\", \"occluded\": false, \"vehicle_present\": true, \"answer\": \"Ki…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit bir kamyon mu yoksa başka bir araç tipi mi? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_004423_009\"}",
+    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_009 (truck, güven 0.11)\", \"crop_px\": [806, 22, 960, 194], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"mavi\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Kirmi…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit bir kamyon mu? Kasasında yük veya örtü var mı?\",\"vehicle_id\":\"img_004423_005\"}",
+    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_005 (truck, güven 0.33)\", \"crop_px\": [440, 28, 600, 188], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 14749,
+   "output": 3296,
+   "reasoning": 879
+  },
+  "cost_usd": 0.002409,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 104.5
+ }
+}

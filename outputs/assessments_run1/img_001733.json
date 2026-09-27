@@ -1,0 +1,165 @@
+{
+ "image_id": "img_001733",
+ "capture_time": "15:05",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "high",
+ "summary": "Kuzeybati Yolu'nda üsse tutarlı yaklaşan T0121 (7614→2676 m, 4/4 hareket yaklaşan, ETA ~50 dk) ana tehdit; ayrıca 4 araç son konumlarında 26–92 m içinde aynı noktada toplanmış durumda (~2650 m). R042'nin 'hareketlilik yok' beyanı gözlemle çelişiyor; tatbikat duyuruları (R112, R035) konumsuz genel bildirim olduğundan riski düşürmüyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001733_003",
+   "label": "van",
+   "track_id": "T0121",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "TUTARLI YAKLAŞMA: 2 saatte 4 hareketin hepsi üsse yaklaştırdı (7614→2676 m); son 60 dk'da 3242 m hızlı yaklaşma, ETA ~50 dk, son hareket üsse 0° açıyla (track:T0121). Van 0.53 tespiti görsel incelemede otomobil/SUV olarak göründü (orta güven, image:img_001733) — tip belirsiz ama tehdit göstergeleri ağır basıyor.",
+   "evidence": [
+    "det:img_001733_003",
+    "track:T0121",
+    "image:img_001733"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_001",
+   "label": "car",
+   "track_id": "T0125",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2643 m; son 60 dk'da 1490 m yaklaşma; dolaşma 4.3 (8 hareket, 5 yaklaşan/3 uzaklaşan) — yol/yer değiştirme örüntüsü (track:T0125). Üsse sonunda T0121'e 60 m mesafede.",
+   "evidence": [
+    "det:img_001733_001",
+    "track:T0125"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_000",
+   "label": "car",
+   "track_id": "T0206",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2635 m, 6498→2635 m yaklaşma (son 60 dk Δ-1553 m) ancak 8 hareketin 2'si uzaklaşan, dolaşma 1.1, tutarlı yaklaşma ve ağır araç yok; temel risk low korunuyor (track:T0206).",
+   "evidence": [
+    "det:img_001733_000",
+    "track:T0206"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_002",
+   "label": "car",
+   "track_id": "T0101",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2695 m, 5163→2695 m; son 60 dk'da yalnızca 989 m yaklaşma, 6 hareketin 2'si uzaklaşan, dolaşma 1.2, ETA 164 dk; temel low (track:T0101).",
+   "evidence": [
+    "det:img_001733_002",
+    "track:T0101"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_004",
+   "label": "van",
+   "track_id": "T0208",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsten uzaklaşıyor (1088→2694 m, son 60 dk Δ+1612 m, 6 hareketin 4'ü uzaklaşan); dolaşma 3.6 hafif ama tehdit sinyali yok; temel low (track:T0208).",
+   "evidence": [
+    "det:img_001733_004",
+    "track:T0208"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse ~2.65 km mesafede 4 aracın aynı noktada toplanması",
+   "risk_level": "medium",
+   "rationale": "T0121, T0125, T0206, T0101 kamera anında birbirine 26–92 m mesafede buluşmuş durumda (co_movement: tüm çiftler met_at_end). Hareketler bağımsız ve chance_rate 0.434–1.0 olduğundan konvoy kanıtı zayıf; ancak üsse tutarlı yaklaşan T0121'in de bu kümeye katılması, önceden planlı bir buluşma olasılığını dışlamıyor. Yakın izleme önerilir.",
+   "evidence": [
+    "track:T0121",
+    "track:T0125",
+    "track:T0206",
+    "track:T0101",
+    "det:img_001733_003",
+    "det:img_001733_001",
+    "det:img_001733_000",
+    "det:img_001733_002"
+   ]
+  },
+  {
+   "title": "Konumsuz 'dost unsurlar' duyuruları riski düşürmüyor",
+   "risk_level": "medium",
+   "rationale": "R112 ve R035 ('planlı tatbikat, dost unsurlar') konumsuz genel duyurulardır, doğrulaması yok ve hiçbir aracın riskini düşürmez; üsse tutarlı yaklaşan T0121 ile çelişen dost iddiası gizleme girişimi ihtimalini akılda tutulmalı.",
+   "evidence": [
+    "report:R112",
+    "report:R035",
+    "track:T0121"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "Kuzeybati Yolu ihbarı doğrulanamamış; bu görüntüdeki araç hareketleriyle teyit veya çürütme yapılamıyor."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulama verisi yok, araç riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "R112 ile aynı metnin tekrarı; konumsuz, doğrulanamaz."
+  },
+  {
+   "report_id": "R042",
+   "verdict": "unreliable",
+   "note": "'Kayda değer hareketlilik yok' iddiası gözlemle çelişiyor: bölgede üsse tutarlı yaklaşan 1 araç (T0121, 7614→2676 m) ve toplam 4 aracın buluştuğu bir küme var (zone_report_mismatch)."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:05:33+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0121\", \"T0125\", \"T0206\", \"T0101\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0121\", \"T0125\"], \"relation\": \"met_at_end\", \"common_window\": \"13:05–15:05\", \"dist_m\": {\"min\": 60, \"max\": 11735, \"end\": 60}, \"synchronous_moves\": 2, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0121…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001733\",\"question\":\"img_001733_003 olarak işaretli araç bir minibüs (van) mı? Yük veya örtü var mı, rengi ne?\",\"vehicle_id\":\"img_001733_003\"}",
+    "summary": "{\"image_id\": \"img_001733\", \"target\": \"img_001733_003 (van, güven 0.53)\", \"crop_px\": [546, 220, 790, 464], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": null, \"occluded\": false, \"answer\": \"Araç van degil…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9210,
+   "output": 2717,
+   "reasoning": 636
+  },
+  "cost_usd": 0.002433,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 54.8
+ }
+}

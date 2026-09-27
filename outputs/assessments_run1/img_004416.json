@@ -1,0 +1,273 @@
+{
+ "image_id": "img_004416",
+ "capture_time": "14:15",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "low",
+ "summary": "Görüntüde üsse gerçek tehdit oluşturan durum yok: en yakın hareketli araçlar bile üsse ~4,4 km uzaklıkta ve iki hızlı yaklaşan otomobil (T0162, T0142) koordine değil, bağımsız hareket ediyor. R038 raporundaki '2 kamyon' iddiası gözlemle çelişiyor (bölgede ağır araç yok) ve güvenilir değil; dikkat edilecek tek nokta bu çelişen üçüncü taraf raporu ile devriye telsiz iletişiminin kesikliği (R067) gibi doğrulanamayan sinyallerdir.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_004416_000",
+   "label": "car",
+   "track_id": "T0162",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 2366 m yaklaştı; 2366 m ≥ 2000 m",
+   "evidence": [
+    "det:img_004416_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_002",
+   "label": "car",
+   "track_id": "T0142",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 2283 m yaklaştı; 2283 m ≥ 2000 m",
+   "evidence": [
+    "det:img_004416_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_005",
+   "label": "truck",
+   "track_id": "T0002",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": null,
+   "rationale": "ağır araç (truck); son 60 dk'da üsten 326 m uzaklaştı; dolaşma: yol/yer değiştirme 5.2, 7 hareket",
+   "evidence": [
+    "det:img_004416_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_003",
+   "label": "car",
+   "track_id": "T0178",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R038",
+   "evidence": [
+    "det:img_004416_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_004",
+   "label": "van",
+   "track_id": "T0013",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R038",
+   "evidence": [
+    "det:img_004416_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_001",
+   "label": "car",
+   "track_id": "T0220",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_004416_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_004416_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_004416_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.26)",
+   "evidence": [
+    "det:img_004416_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_004416_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.22)",
+   "evidence": [
+    "det:img_004416_010"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_011",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.19)",
+   "evidence": [
+    "det:img_004416_011"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_004416_012",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.19)",
+   "evidence": [
+    "det:img_004416_012"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R038 çelişen kamyon iddiası",
+   "risk_level": "low",
+   "rationale": "R038 (12:25) 39.8876N 32.8813E civarında 2 kamyon bildiriyor; ancak 12:15–12:35 aralığında 500 m yarıçapta araç tipi=heavy araması 0 sonuç döndürdü ve görüntüde en yakın araçlar T0178 (car, 12 m) ile T0013 (van, 16 m). Rapordaki sayı ve tip gözlemle çelişiyor; büyük olasılıkla yanlış tip tespiti, ayrıca gizli araç ihtimali düşük çünkü tüm yakın track'ler hesapta.",
+   "evidence": [
+    "report:R038",
+    "track:T0178",
+    "track:T0013",
+    "det:img_004416_003",
+    "det:img_004416_004"
+   ]
+  },
+  {
+   "title": "Yaklaşan iki otomobilin bağımsızlığı teyit edildi",
+   "risk_level": "low",
+   "rationale": "T0162 (son 60 dk Δ-2366 m) ve T0142 (Δ-2283 m) hızlı yaklaşsalar da co_movement analizi üç çiftin de 'met_at_end' (bağımsız, hareketleri eşzamanlı değil; chance_rate 0.188–0.633) olduğunu gösterdi; konvoy/koordineli yaklaşma kanıtı yok ve üsse mesafe ~4,45 km, ETA >110 dk.",
+   "evidence": [
+    "track:T0162",
+    "track:T0142",
+    "track:T0002"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R038",
+   "verdict": "unreliable",
+   "note": "2 kamyon iddiası gözlemle çelişiyor: 12:15–12:35'te 500 m içinde heavy araç yok; en yakın araçlar car (T0178) ve van (T0013)."
+  },
+  {
+   "report_id": "R109",
+   "verdict": "reliable",
+   "note": "Trafik akışı normal: görüntüdeki araçların çoğu park halinde, hareketliler bağımsız ve üsse uzak; bölge durumu gözlemle uyumlu."
+  },
+  {
+   "report_id": "R067",
+   "verdict": "unverifiable",
+   "note": "Devriye telsiz bağlantısı iddiası bu görüntü verisiyle ne doğrulanabilir ne çürütülebilir; izlemeye alınmalı."
+  },
+  {
+   "report_id": "R119",
+   "verdict": "unverifiable",
+   "note": "Dün geceki araç hareketliliği ihbarı doğrulanamıyor; bugünkü görüntüde anormallik yok (ANOMALİLER: yok)."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiyerarşi gereği hiçbir aracın riskini düşürmez, gözlemle de doğrulanamadı."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:03:24+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8876,\"lon\":32.8813,\"radius_m\":500,\"time_from\":\"12:15\",\"time_to\":\"12:35\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.8876, \"lon\": 32.8813, \"radius_m\": 500.0, \"window\": \"12:15–12:35\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 0, \"tracked\": [], \"parked_count\": 0, \"parked\": [], \"note\": \"Track'siz araçlar yalnızca bu aralıkta çekilmiş gö…"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0162\", \"T0142\", \"T0002\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0162\", \"T0142\"], \"relation\": \"met_at_end\", \"common_window\": \"12:15–14:15\", \"dist_m\": {\"min\": 12, \"max\": 6120, \"end\": 12}, \"synchronous_moves\": 2, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0162\"…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 10028,
+   "output": 1728,
+   "reasoning": 803
+  },
+  "cost_usd": 0.001508,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 42.9
+ }
+}

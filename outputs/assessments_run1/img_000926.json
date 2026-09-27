@@ -1,0 +1,244 @@
+{
+ "image_id": "img_000926",
+ "capture_time": "11:35",
+ "zone": "Kuzeydogu Kavsagi",
+ "overall_risk": "high",
+ "summary": "Kuzeydoğu Kavşağında üsse 1650–1693 m mesafede 9 araç var: üç araç (T0168, T0185, T0172) son 60 dakikada 2300–4700 m tutarlı hızlı yaklaşma yapıyor; T0168 ile T0185 ayrı yerlerden eşzamanlı aynı yöne hareketle birleşmiş (chance_rate 0.053). R078'in 'planlı ikmal/kimlik teyitli' iddiası gözlemle çelişiyor; 4 düşük güvenli park halindeki araç ve R092'nin 'ağır araç yok' çelişkisi ek dikkat gerektiriyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000926_008",
+   "label": "car",
+   "track_id": "T0154",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "Üsse 1650 m'de 120 dakikadır durağan; dost/ikmal iddiası içeren R078'in motion ve identity beyanları hareket kaydıyla çelişiyor (rapordan çekime üsse uzaklık -13 m, rapor anında stationary). Görsel incelemede sivil binek (beyaz), askeri/ikmal özelliği yok; ancak dost iddiasının gözlemle çelişmesi kendi başına şüphe sinyali.",
+   "evidence": [
+    "det:img_000926_008",
+    "track:T0154",
+    "report:R078",
+    "image:img_000926"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_005",
+   "label": "car",
+   "track_id": "T0168",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "Temel medium'dan high'a yükseltildi: 2 saatte üsse 7937→1660 m, son 60 dk Δ-4699 m, 9 harekette 8'i yaklaşan, ETA 21 dk; T0185 ile ayrı yerlerden converging_in_step (4 eşzamanlı aynı yön hareketi, chance_rate 0.053) — üsse yakın koordineli yaklaşma olasılığı.",
+   "rationale": "Üsse 1659 m; tüm hareketlerinde tutarlı yaklaşan en hızlı araç (ETA 21 dk). T0185 ile eşzamanlı hareketle üsse 37 m mesafede birleşmiş; T0172 ile de üsse 43 m mesafede buluşuyor.",
+   "evidence": [
+    "det:img_000926_005",
+    "track:T0168",
+    "track:T0185",
+    "track:T0172"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_000",
+   "label": "car",
+   "track_id": "T0172",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1693 m; 2 saatte 5186→1693 m, son 60 dk Δ-2308 m (≥2000 m hızlı yaklaşma), ETA 44 dk. Son hareketi üsse 180° (base'e göre uzaklaşan yönde) olsa da genel eğilim tutarlı yaklaşma; T0168 ve T0179 ile üsse 17–43 m mesafede buluşuyor ancak hareketleri bağımsız (met_at_end, chance_rate 0.188–0.633).",
+   "evidence": [
+    "det:img_000926_000",
+    "track:T0172",
+    "track:T0168",
+    "track:T0179"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_002",
+   "label": "car",
+   "track_id": "T0185",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1687 m; 2 saatte 4102→1687 m, son 60 dk Δ-2925 m (≥2000 m hızlı yaklaşma), ETA 35 dk, son hareket üsse 0° (doğrudan). T0168 ile ayrı yerlerden eşzamanlı aynı yöne hareketle birleşmiş (co_movement chance_rate 0.053); takip edilmeli.",
+   "evidence": [
+    "det:img_000926_002",
+    "track:T0185",
+    "track:T0168"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1688 m'de park halinde; track yok. R078'in motion iddiası bu park halindeki araca işaret ediyor ve gözlemle çelişiyor — düşük güvenli tespit (0.33) olsa da dost ikmal iddiasının bağlı olduğu araç olması nedeniyle orta seviyede tutuldu.",
+   "evidence": [
+    "det:img_000926_003",
+    "report:R078"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_001",
+   "label": "car",
+   "track_id": "T0179",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 1680 m'de yanal hareket; 2 saatlik kayıtta mesafe değişimi yalnızca +1 m (1679→1680) ancak dolaşma 6.6 ve 11 hareket ile loitering davranışı. T0172, T0185, T0168 ile üsse 11–26 m mesafede buluşuyor (co_movement); gruplaşma izlenmeli.",
+   "evidence": [
+    "det:img_000926_001",
+    "track:T0179",
+    "track:T0168"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 1687 m; track'siz ve düşük güvenli tespit (0.28)",
+   "evidence": [
+    "det:img_000926_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000926_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 1658 m; track'siz ve düşük güvenli tespit (0.19)",
+   "evidence": [
+    "det:img_000926_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000926_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 1636 m; track'siz ve düşük güvenli tespit (0.17)",
+   "evidence": [
+    "det:img_000926_007"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Çelişen 'planlı ikmal / kimlik teyitli' dost iddiası",
+   "risk_level": "high",
+   "rationale": "R078 (10:40, official) T0154'ü planlı ikmal aracı olarak tanımlıyor; ancak hareket kaydı rapor anında stationary ve rapordan çekime üsse uzaklık değişimi yalnızca -13 m — yalnızca 9 m hareket. Kimlik teyidi iddiası gözlemle doğrulanamıyor; dost iddiasıyla gizleme girişimi olabilir. Konumsuz genel duyuru R122 bu riski düşürmez.",
+   "evidence": [
+    "report:R078",
+    "track:T0154",
+    "det:img_000926_003",
+    "report:R122"
+   ]
+  },
+  {
+   "title": "Koordineli yaklaşma olasılığı: T0168 + T0185",
+   "risk_level": "medium",
+   "rationale": "co_movement sonucu 'converged_in_step': ayrı yerlerden 4 kez eşzamanlı ve aynı yöne hareketle üsse 37 m mesafede birleştiler (chance_rate 0.053). Her ikisi de tutarlı hızlı yaklaşma yapıyor (Δ-4699 m ve Δ-2925 m son 60 dk). Diğer çiftler met_at_end olup bağımsız; bu tek çift izlenmeli ancak tek başına konvoy kanıtı değildir (580 çiftin ~%5'i tesadüfen benzer gösterir).",
+   "evidence": [
+    "track:T0168",
+    "track:T0185"
+   ]
+  },
+  {
+   "title": "Bölge raporu çelişkisi (R092) ve ağır araç tespitleri",
+   "risk_level": "medium",
+   "rationale": "R092 (09:35) bölgede ağır araç olmadığını söylüyor; ancak bölge görüntülerinde 2 ağır araç tespiti var (rapor saatinde 0 ağır track). Rapor iddiası gözlemle çelişiyor — hiyerarşi gereği gözlem esas alınır; rapora itibar edilmemeli.",
+   "evidence": [
+    "report:R092"
+   ]
+  },
+  {
+   "title": "Üsse yakın track'siz park halinde 4 araç",
+   "risk_level": "medium",
+   "rationale": "img_000926_004 (0.28), _006 (0.19), _007 (0.17), _003 (0.33) — hepsi üsse 1636–1688 m aralığında park halinde, hareket kaydı yok, tespit güvenleri düşük. T0154'ün 120 dakikalık durağanlığıyla birlikte üsse yakın sessiz araç toplanması; en yakın araç T0048 1876 m dışında olduğundan bunlar track sisteminde görünmüyor (kaçırılmış olasılığı).",
+   "evidence": [
+    "det:img_000926_003",
+    "det:img_000926_004",
+    "det:img_000926_006",
+    "det:img_000926_007",
+    "track:T0154"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R078",
+   "verdict": "unreliable",
+   "note": "identity ve motion iddiaları ÇELİŞKİLİ: T0154 rapor anında stationary, rapordan çekime üsse uzaklık değişimi yalnızca -13 m; 'planlı ikmal / kimlik teyidi' gözlemle doğrulanamıyor."
+  },
+  {
+   "report_id": "R092",
+   "verdict": "unreliable",
+   "note": "Bölgede 'ağır araç yok' iddiası ÇELİŞKİLİ: bölge görüntülerinde 2 ağır araç tespiti var."
+  },
+  {
+   "report_id": "R024",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbara atıf; gözlemle ne doğrulanıyor ne çürütülüyor."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar bulunacak'); hiçbir aracın riskini düşürmez ve R078'in çelişen dost iddiasını desteklemez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T21:56:05+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0172\", \"T0185\", \"T0168\", \"T0179\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0172\", \"T0185\"], \"relation\": \"met_at_end\", \"common_window\": \"09:35–11:35\", \"dist_m\": {\"min\": 7, \"max\": 10216, \"end\": 7}, \"synchronous_moves\": 4, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0172\",…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000926\",\"question\":\"Bu araç bir askeri/ikmal aracına mı benziyor yoksa sivil binek otomobil mi? Üzerinde işaret, yük veya örtü var mı?\",\"vehicle_id\":\"img_000926_008\"}",
+    "summary": "{\"image_id\": \"img_000926\", \"target\": \"img_000926_008 (car, güven 0.16)\", \"crop_px\": [707, 0, 935, 131], \"result\": {\"answer\": \"Sivil binek otomobile benziyor; askeri/ikmal özelliği, yük veya örtü yok. Kismen çit arkasinda.\", \"cargo\": \"unknow…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 19107,
+   "output": 6243,
+   "reasoning": 1316
+  },
+  "cost_usd": 0.005365,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 137.9
+ }
+}

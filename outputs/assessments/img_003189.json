@@ -1,0 +1,156 @@
+{
+ "image_id": "img_003189",
+ "capture_time": "13:20",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Görüntüde dikkat çeken iki araç var: T0007 (2 saatte 7385→3456 m, son 60 dk'da 3963 m yaklaştı, 8 hareketten 7'si yaklaşan, ETA 52 dk) ve T0041 (son 60 dk'da 2422 m yaklaştı, ETA 86 dk; dolaşma 3.1 ile davranışı düzensiz). İkisi de üsse 0° açıyla yaklaşmasına rağmen co_movement bağımsız hareket ediyor; T0041–T0007 çifti 'met_at_end' (chance_rate %43.4) — koordinasyon kanıtı yok. R039'un kamyon iddiası görsel incelemeyle çürütüldü: araç siyah binek otomobil; park halinde olma bilgisi doğru.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003189_000",
+   "label": "car",
+   "track_id": "T0041",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0041: üsse 3476 m, son 60 dk'da 2422 m yaklaştı (4802→3476 m), 6 hareketten 4'ü yaklaşan / 2'si uzaklaşan, ETA 86 dk. Son hareket üsse 0° açıyla. Dolaşma 3.1 (6 hareket, yol/yer değiştirme) davranışın düzensizliğini gösteriyor. T0007 ile ilişki 'met_at_end' (chance_rate %43.4) — koordinasyon kanıtı yok.",
+   "evidence": [
+    "det:img_003189_000",
+    "track:T0041"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_003",
+   "label": "car",
+   "track_id": "T0007",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Track T0007: üsse 3456 m, 2 saatte 7385→3456 m; son 60 dk'da 3963 m yaklaştı, 8 hareketin 7'si yaklaşan / 1'i uzaklaşan, ETA 52 dk — bölgedeki en hızlı ve en fazla yaklaşımla gelen araç. Son hareket üsse 0° açıyla. T0041 ile ilişki 'met_at_end' (chance_rate %43.4), koordinasyon kanıtı bulunmuyor; ETA 52 dk ile kısa varış süresi yakından izlenmeli.",
+   "evidence": [
+    "det:img_003189_003",
+    "track:T0007"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_001",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 18,
+   "override_reason": null,
+   "rationale": "Park halinde, hareket kaydı yok, üsse 3450 m. R039 kısmen tutuyordu: park halinde olma bilgisi doğru, ancak görsel inceleme aracın kamyon değil siyah binek otomobil olduğunu yüksek güvenle gösterdi — raporun tehdit içeren kısmı çürütüldü, hareket tehdidi yok.",
+   "evidence": [
+    "det:img_003189_001",
+    "report:R039",
+    "image:img_003189"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_002",
+   "label": "car",
+   "track_id": "T0033",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track T0033: üsten uzaklaşıyor (748→3471 m, son 60 dk +2700 m), 5 hareketin 5'i uzaklaşan, tehdit sinyali yok.",
+   "evidence": [
+    "det:img_003189_002",
+    "track:T0033"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse 0° açıyla paralel yaklaşan iki araç (T0007, T0041)",
+   "risk_level": "medium",
+   "rationale": "Her iki araç da son hareketlerinde üsse 0° açıyla yaklaşıyor ve son 60 dk'da önemli mesafe katediyor (T0007: -3963 m, 7/8 yaklaşan, ETA 52 dk; T0041: -2422 m, 4/6 yaklaşan, ETA 86 dk). Ancak co_movement ilişkisi 'met_at_end' (chance_rate %43.4) — koordinasyon kanıtı yok, hareketler bağımsız. Ayrı ayrı izlenmeli.",
+   "evidence": [
+    "det:img_003189_000",
+    "det:img_003189_003",
+    "track:T0007",
+    "track:T0041"
+   ]
+  },
+  {
+   "title": "R039 kamyon iddiasının görsel incelemeyle çürütülmesi",
+   "risk_level": "low",
+   "rationale": "R039 kamyon bildiriyordu; inspect_image yüksek güvenle siyah binek otomobil tespit etti. Park halinde olma bilgisi doğruydu. Tehdit değerlendirmesini değiştirmiyor ancak third_party rapor doğruluğuna dair dikkat sinyali.",
+   "evidence": [
+    "report:R039",
+    "image:img_003189",
+    "det:img_003189_001"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R039",
+   "verdict": "partly_reliable",
+   "note": "Park halinde olma bilgisi gözlemle tutarlı; kamyon iddiası yanlış — görsel inceleme siyah binek otomobil gösteriyor (yüksek güven)."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "R122'nin üçüncü taraf kopyası; doğrulanamaz, genel duyuru."
+  },
+  {
+   "report_id": "R048",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbar aktarımı; görüntüdeki bulgularla bağımsız teyit yok."
+  },
+  {
+   "report_id": "R121",
+   "verdict": "unreliable",
+   "note": "'Olağandışı durum yok' bildirimi, T0007 ve T0041'in hızlı üsse yaklaşımıyla çelişiyor; devriye gözlemi eksik görünüyor."
+  },
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "Doğrulanamadı şeklinde resmi sonuç; ek bilgi sağlamıyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-26T23:59:05+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003189\",\"question\":\"Bu araç bir kamyon mu yoksa binek otomobil mi? R039 kamyon iddia ediyor, tespit car diyor. Renk ve tip nedir?\",\"vehicle_id\":\"img_003189_001\"}",
+    "summary": "{\"image_id\": \"img_003189\", \"target\": \"img_003189_001 (car, güven 0.89)\", \"crop_px\": [951, 146, 1423, 618], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": false, \"answer\": \"Bu bir bine…"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0041\", \"T0007\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0041\", \"T0007\"], \"relation\": \"met_at_end\", \"common_window\": \"11:20–13:20\", \"dist_m\": {\"min\": 34, \"max\": 5872, \"end\": 34}, \"synchronous_moves\": 3, \"same_direction_moves\": 2, \"chance_rate\": 0.434}], \"chance_rate_note\"…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 15342,
+   "output": 3452,
+   "reasoning": 466
+  },
+  "cost_usd": 0.003175,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 69.7
+ }
+}

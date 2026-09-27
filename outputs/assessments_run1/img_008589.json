@@ -1,0 +1,230 @@
+{
+ "image_id": "img_008589",
+ "capture_time": "10:40",
+ "zone": "Dogu Yolu",
+ "overall_risk": "low",
+ "summary": "Üsse 5.4 km mesafedeki Dogu Yolu bölgesinde kritik tehdit yok: genel tabloda tutarlı yaklaşan araç sayısı 0, iki araç (T0082, T0161) yaklaşıyor ama ETA'ları 141-323 dk gibi uzun. Dikkat edilmesi gerekenler: T0046'nın tespit edilememesi (ağaç altında olası araç) ve R114'ün doğrulanamayan kamyon iddiası.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_008589_003",
+   "label": "car",
+   "track_id": "T0082",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1002 m yaklaştı; dolaşma: yol/yer değiştirme 5.3, 7 hareket",
+   "evidence": [
+    "det:img_008589_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_004",
+   "label": "car",
+   "track_id": "T0161",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 2305 m yaklaştı; 2305 m ≥ 2000 m",
+   "evidence": [
+    "det:img_008589_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R114",
+   "evidence": [
+    "det:img_008589_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "track:T0046",
+   "label": null,
+   "track_id": "T0046",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1882 m yaklaştı",
+   "evidence": [
+    "track:T0046"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_000",
+   "label": "car",
+   "track_id": "T0155",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4276 m uzaklaştı",
+   "evidence": [
+    "det:img_008589_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_001",
+   "label": "van",
+   "track_id": "T0191",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4470 m uzaklaştı",
+   "evidence": [
+    "det:img_008589_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_002",
+   "label": "car",
+   "track_id": "T0017",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 502 m uzaklaştı; dolaşma: yol/yer değiştirme 3.7, 6 hareket",
+   "evidence": [
+    "det:img_008589_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_008589_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.18)",
+   "evidence": [
+    "det:img_008589_006"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "T0046 tespit edilemedi (possible_missed_detection)",
+   "risk_level": "low",
+   "rationale": "T0046 2 saatte üsse 7375→5391 m yaklaştı (son 60 dk -1882 m), ETA 172 dk, 7 hareketin 5'i yaklaşan. Çekim anında görüntüde olması gerekirken eşleşen tespit yok; eşik altı ham tahminler (car 0.09/0.04/0.04) var. Görsel inceleme ağaç yaprakları altında belirsiz beyazımsı bir şekil gösterdi (düşük güven). Ağaç örtüsü tespit kaçırma riskini artırıyor, izlenmeli.",
+   "evidence": [
+    "track:T0046",
+    "image:img_008589"
+   ]
+  },
+  {
+   "title": "R114 kamyon iddiası çelişkili",
+   "risk_level": "low",
+   "rationale": "R114 (10:10, official) 39.9331N 32.9147E civarında 1 kamyon bildirdi ancak bu tipte araç tespit edilmedi. vehicles_in_area sorgusu aynı noktaya 13-76 m mesafede T0046 ve T0224'ün bu zaman penceresinde geldiğini, T0201'in ise 266 m'de bulunduğunu gösterdi. Görsel incelemede img_008589_005 kamyon değil otomobil (ağaç altında, düşük güven), nokta incelemesinde kutu biçimli beyaz panelvan görüldü (orta güven). Kamyon tipi doğrulanamadı; ancak T0046'nın ağaç altında gizlenmiş büyük araç olma olasılığı tamamen dışlanamıyor, T0046 takipte tutulmalı.",
+   "evidence": [
+    "report:R114",
+    "track:T0046",
+    "track:T0201",
+    "image:img_008589"
+   ]
+  },
+  {
+   "title": "T0082 ve T0161 eşzamanlı hareket (olası koordinasyon)",
+   "risk_level": "low",
+   "rationale": "T0082-T0161 çifti sonunda 28 m mesafede buluştu, 4 eşzamanlı hareket; T0161-T0046 çifti 4 aynı yönlü eşzamanlı hareketle 15 m'de buluştu (chance_rate 0.053). Ancak chance_rate notu gereği tek başına kanıt sayılmaz; her iki araç da üsse 5.4 km uzaklıkta ve ETA'ları uzun (323 dk / 141 dk). Şimdilik düşük risk, izleme önerilir.",
+   "evidence": [
+    "track:T0082",
+    "track:T0161",
+    "track:T0046"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R081",
+   "verdict": "reliable",
+   "note": "Dogu Yolu bölgesinde olağandışı durum bildirilmediği bilgisi mevcut gözlemlerle (düşük risk, tutarlı yaklaşan 0 araç) uyumlu."
+  },
+  {
+   "report_id": "R013",
+   "verdict": "unverifiable",
+   "note": "Dünkü gece hareketliliği ihbarı doğrulanamaz; bugünkü 10:40 görüntüsünde tutarlı yaklaşan araç yok."
+  },
+  {
+   "report_id": "R070",
+   "verdict": "unverifiable",
+   "note": "İhbar incelenmiş ama doğrulanamamış; görüntüde destekleyici veya çürüten kanıt bulunamadı."
+  },
+  {
+   "report_id": "R114",
+   "verdict": "unreliable",
+   "note": "Kamyon iddiası doğrulanamadı: bu noktada truck tipi tespit yok; img_008589_005 ve nokta incelemesi otomobil/panelvan gösteriyor (ağaç altı, düşük-orta güven). Konumda T0046/T0201/T0224 bulunuyor; T0046'nın ağaç örtüsü altında olması tam dışlama yapmayı engelliyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T21:52:45+00:00",
+  "reasoning_effort": "high",
+  "iterations": 6,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9331,\"lon\":32.9147,\"radius_m\":1000,\"time_from\":\"08:00\",\"time_to\":\"10:40\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.9331, \"lon\": 32.9147, \"radius_m\": 1000.0, \"window\": \"08:00–10:40\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 3, \"tracked\": [{\"track_id\": \"T0046\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_008589\", \"present\"…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008589\",\"question\":\"Bu araç kamyon mu (yük taşıyan büyük araç) yoksa otomobil/kamyonet mi? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_008589_005\"}",
+    "summary": "{\"image_id\": \"img_008589\", \"target\": \"img_008589_005 (car, güven 0.39)\", \"crop_px\": [423, 158, 583, 318], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Agacin a…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008589\",\"question\":\"Bu konumdaki araç gerçekten var mı ve kamyon/büyük araç mı, yoksa otomobil mi?\",\"lat\":39.9331,\"lon\":32.9147}",
+    "summary": "{\"image_id\": \"img_008589\", \"target\": \"nokta 39.93310, 32.91470\", \"crop_px\": [357, 290, 517, 450], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kırmızı artının…"
+   },
+   {
+    "iteration": 3,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0046\", \"T0082\", \"T0161\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0046\", \"T0082\"], \"relation\": \"met_at_end\", \"common_window\": \"08:40–10:40\", \"dist_m\": {\"min\": 21, \"max\": 5319, \"end\": 21}, \"synchronous_moves\": 3, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0046\"…"
+   },
+   {
+    "iteration": 4,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008589\",\"question\":\"Bu noktadaki tespitsiz araç (track:T0046) gerçekten görünüyor mu? Kamyon/otobüs gibi büyük bir araç mı, yoksa otomobil mi?\",\"vehicle_id\":\"track:T0046\"}",
+    "summary": "{\"image_id\": \"img_008589\", \"target\": \"track:T0046 (eşik altı aday kutusu)\", \"crop_px\": [231, 240, 447, 456], \"result\": {\"vehicle_present\": null, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": true, \"answer\": \"Kirmizi cercev…"
+   },
+   {
+    "iteration": 5,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008589\",\"question\":\"Bu araç park halinde mi duruyor, üzerinde/kapasında yük veya örtü görünüyor mu, tipi otomobil mi kamyonet mi?\",\"vehicle_id\":\"img_008589_005\"}",
+    "summary": "{\"image_id\": \"img_008589\", \"target\": \"img_008589_005 (car, güven 0.39)\", \"crop_px\": [423, 158, 583, 318], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Aracın a…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 31173,
+   "output": 3863,
+   "reasoning": 2327
+  },
+  "cost_usd": 0.004495,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 124.4
+ }
+}

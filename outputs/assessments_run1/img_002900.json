@@ -1,0 +1,212 @@
+{
+ "image_id": "img_002900",
+ "capture_time": "13:50",
+ "zone": "Bati Yerlesimi",
+ "overall_risk": "high",
+ "summary": "Dört hareketli araç (T0188, T0198, T0069, T0027) üsse 1552–1631 m mesafede, birbirine ~26–81 m yakınlıkta kümelenmiş durumda; T0188–T0069 ve T0188–T0027 çiftleri eşzamanlı, aynı yönlü hareketlerle ayrı yerlerden buluşmuş (tesadüf oranı 0.009 ve 0.053) ve ETA'ları 18–45 dk. Ayrıca T0188 ve T0027 için tespit kaçırma şüphesi var; R068'in anlattığı ağır araç bulunamadı. Üsse tutarlı yaklaşan, sonunda bir araya gelen bu grubun 20 dk içinde varış potansiyeli nedeniyle yüksek dikkat gerektirir.",
+ "vehicles": [
+  {
+   "vehicle_id": "track:T0188",
+   "label": null,
+   "track_id": "T0188",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "2 saatte 5708→1631 m yaklaşmış, son 60 dk'da 4822 m yaklaşma (hızlı), ETA 20 dk, dolaşma 3.1 ile 7 harekette 5 yaklaşma. Tespit yok (olası kaçırma); görsel inceleme ağaç örtüsü nedeniyle kesin sonuç veremedi (düşük güven). T0027 ile eşzamanlı birleşme (chance 0.053), T0069 ile 5 eşzamanlı aynı yönlü hareketle buluşma (chance 0.009) koordineli yaklaşma sinyali. R068 koordinatına 13:45–13:50 arası 22 m yaklaşmış.",
+   "evidence": [
+    "track:T0188",
+    "image:img_002900",
+    "report:R068"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "track:T0027",
+   "label": null,
+   "track_id": "T0027",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "Temel medium → high: 7 harekette 6 yaklaşma (grubun en tutarlısı), 2 saatte 6052→1613 m, son 60 dk'da 4355 m yaklaşma, ETA 22 dk; T0188 ile eşzamanlı buluşma (chance 0.053) ve görsel incelemede noktada beyaz araç silueti teyit edildi (düşük güvenli). Ayrıca possible_missed_detection bayrağı mevcut.",
+   "rationale": "Üsse 1613 m, ETA 22 dk, 6/7 tutarlı yaklaşma. Tespit eşleşmesi yok ama eşik altı aday noktasında görsel inceleme beyaz otomobil/panelvan silueti gösterdi. T0188 ile aynı anda aynı yönde hareket ederek 26 m'ye kadar yaklaşmış.",
+   "evidence": [
+    "track:T0027",
+    "image:img_002900"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002900_000",
+   "label": "car",
+   "track_id": "T0198",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Car 0.94 güvenli tespit, track T0198 ile eşleşmiş. Üsse 1611 m, 2 saatte 6019→1611 m, son 60 dk'da 2146 m yaklaşma, ETA 45 dk. Son hareketi 180° açıyla (üsse göre uzaklaşan yön) olduğundan T0188/T0069 kadar baskın sinyal değil; grup içinde (T0188'e 45 m) ancak bağımsız hareket örüntüsü (met_at_end) gösteriyor.",
+   "evidence": [
+    "det:img_002900_000",
+    "track:T0198"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002900_001",
+   "label": "car",
+   "track_id": "T0069",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Tespit güveni düşük (car 0.38) ancak track T0069 hareket kaydı tutarlı: 2 saatte 6832→1553 m, son 60 dk'da 5258 m yaklaşma, ETA 18 dk (grubun en kısa varış süresi). T0188 ile 5 eşzamanlı aynı yönlü hareketle buluşmuş (chance 0.009); sonunda T0188'e 81 m, T0027'ye 70 m. Tespit güveni düşük olsa da hareket kanıtı güçlü; base medium korunuyor.",
+   "evidence": [
+    "det:img_002900_001",
+    "track:T0069"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002900_002",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, track yok, tespit güveni 0.13. Görsel inceleme ağaçlar arasında kısmen beyaz otomobil gösterdi (düşük güven); hareket kaydı olmadığından tehdit davranışı yok. Üsse 1557 m yakın olması izlenmeye değer ancak tek başına risk düşürücü değil.",
+   "evidence": [
+    "det:img_002900_002",
+    "image:img_002900"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002900_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Tespit güveni 0.12, track yok. Görsel inceleme kesin araç göstergesi veremedi (bulanık yatay beyaz iz; hareket bulanıklığı/artefakt olasılığı). Tehdit davranışı kanıtı yok.",
+   "evidence": [
+    "det:img_002900_003",
+    "image:img_002900"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse koordineli yaklaşan araç grubu (T0188, T0069, T0027, T0198)",
+   "risk_level": "high",
+   "rationale": "Dört araç çekim anında 26–81 m yarıçapta kümelenmiş, hepsi üsse 1552–1631 m mesafede ve ETA 18–45 dk. T0188–T0069 çifti ayrı yerlerden 5 eşzamanlı aynı yönlü hareketle buluştu (chance 0.009, ~%5'in altında), T0188–T0027 de benzer (chance 0.053). Bu, bağımsız trafikten çok planlı bir yaklaşma/buluşma örüntüsüyle uyumlu; üsse yakın gruplaşma en güçlü tehdit sinyallerindendir.",
+   "evidence": [
+    "track:T0188",
+    "track:T0069",
+    "track:T0027",
+    "track:T0198"
+   ]
+  },
+  {
+   "title": "Tespit kaçırma şüphesi: T0188 ve T0027 görüntüde ama tespitsiz",
+   "risk_level": "medium",
+   "rationale": "Her iki track için de eşik altı ham tahmin var (T0188: car 0.04/van 0.02/truck 0.00; T0027: car 0.08/van 0.04/car 0.03). Görsel inceleme T0027 noktasında beyaz araç silueti buldu; T0188 noktası ağaç örtüsü altında kesin sonuç verilemedi (düşük güven). Nesne tespitinin bu iki yüksek riskli aracı kaçırmış olması izleme kör noktası oluşturur.",
+   "evidence": [
+    "track:T0188",
+    "track:T0027",
+    "image:img_002900"
+   ]
+  },
+  {
+   "title": "R068 ağır araç iddiası doğrulanamadı ancak bölgeye yüksek riskli araçlar sonradan geldi",
+   "risk_level": "medium",
+   "rationale": "R068 (12:15) 39.92043N 32.83416E'de ağır araç beklemesini bildiriyor; rapor saatinde 60 m içinde track yok (en yakın 1142 m) ve görselde orada track'siz araç görülmedi. Ancak 2000 m yarıçaplı taramada T0188 ve T0027'nin 13:45–13:50 arasında bu koordinata 22 m ve 37 m yaklaştığı görüldü — yani anlatılan nokta, şu an üsse yaklaşan grubun buluşma bölgesi olabilir. Ağır araç (kamyon) iddiası görsel olarak teyit edilemedi (T0188 örtü altında); doğrulanamayan ama coğrafi olarak anlamlı bir iddia.",
+   "evidence": [
+    "report:R068",
+    "track:T0188",
+    "track:T0027",
+    "image:img_002900"
+   ]
+  },
+  {
+   "title": "'Planlı tatbikat / dost unsurlar' duyurusu riski düşürmüyor",
+   "risk_level": "low",
+   "rationale": "R003 konumsuz genel duyurudur ve doğrulanamaz; kural gereği hiçbir aracın riskini düşürmez. Gözlemlenen tutarlı yaklaşma örüntüsü bu duyuruyla açıklanamaz — tatbikat iddiası gözlemle (ETA 18–45 dk, üsse 1552–1631 m gruplaşma) çelişen bir dost planına dair kanıt içermiyor.",
+   "evidence": [
+    "report:R003",
+    "track:T0188",
+    "track:T0069",
+    "track:T0027"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R068",
+   "verdict": "unverifiable",
+   "note": "12:15'te bildirilen koordinatın 60 m yakınında track yok (en yakın 1142 m); stationary iddiası doğrulanamıyor. Ancak T0188 ve T0027 13:45–13:50'de bu noktaya 22–37 m yaklaşmış; ağır araç kimliği görsel olarak teyit edilemedi (örtü/düşük güven)."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('bölgede dost unsurlar'), doğrulanamaz ve kural gereği hiçbir aracın risk seviyesini düşürmez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:01:30+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0188\", \"T0198\", \"T0069\", \"T0027\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0188\", \"T0198\"], \"relation\": \"met_at_end\", \"common_window\": \"11:50–13:50\", \"dist_m\": {\"min\": 45, \"max\": 6625, \"end\": 45}, \"synchronous_moves\": 4, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0188\"…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_002900\",\"question\":\"Bu noktada bir araç var mı? Varsa tipi nedir (otomobil/van/kamyon/otobüs), rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"track:T0188\"}",
+    "summary": "{\"image_id\": \"img_002900\", \"target\": \"track:T0188 (eşik altı aday kutusu)\", \"crop_px\": [423, 259, 691, 527], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": true, \"answer\": \"Kirmizi cerce…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_002900\",\"question\":\"Bu noktada bir araç var mı? Varsa tipi nedir (otomobil/van/kamyon/otobüs), rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"track:T0027\"}",
+    "summary": "{\"image_id\": \"img_002900\", \"target\": \"track:T0027 (eşik altı aday kutusu)\", \"crop_px\": [561, 148, 785, 372], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Bula…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_002900\",\"question\":\"Bu tespit gerçek bir araç mı? Park halinde otomobil mi, yoksa görüntü artefaktı mı? Yükü/örtüsü var mı?\",\"vehicle_id\":\"img_002900_002\"}",
+    "summary": "{\"image_id\": \"img_002900\", \"target\": \"img_002900_002 (car, güven 0.13)\", \"crop_px\": [942, 265, 1222, 545], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Ağaçlar…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_002900\",\"question\":\"Bu tespit gerçek bir araç mı? Park halinde otomobil mi, yoksa görüntü artefaktı mı? Yükü/örtüsü var mı?\",\"vehicle_id\":\"img_002900_003\"}",
+    "summary": "{\"image_id\": \"img_002900\", \"target\": \"img_002900_003 (car, güven 0.12)\", \"crop_px\": [370, 232, 582, 444], \"result\": {\"vehicle_present\": null, \"vehicle_type\": null, \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": null, \"answer\": \"Kirmizi c…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.92043,\"lon\":32.83416,\"radius_m\":2000,\"time_from\":\"11:45\",\"time_to\":\"13:50\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.92043, \"lon\": 32.83416, \"radius_m\": 2000.0, \"window\": \"11:45–13:50\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 6, \"tracked\": [{\"track_id\": \"T0188\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_002900\", \"presen…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9921,
+   "output": 5039,
+   "reasoning": 2101
+  },
+  "cost_usd": 0.004,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 114.2
+ }
+}

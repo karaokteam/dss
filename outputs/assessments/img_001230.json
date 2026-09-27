@@ -1,0 +1,158 @@
+{
+ "image_id": "img_001230",
+ "capture_time": "15:15",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Üç otomobil (T0031, T0131, T0056) üsse 2685–2723 m mesafede, son 60 dakikada 1917–3213 m yaklaşmış durumda; T0131'de 3.4'lük dolaşma (loitering) dikkat çekiyor. Üsse 2683 m'de track'siz, düşük güvenli (0.12) bir tespit var; görsel inceleme ağaç örtüsü nedeniyle belirsiz (düşük güven), temel 'low' seviyesini değiştirecek somut kanıt yok. R007 ve R087'nin anlattığı araçlar hem 60 m yakında track hem görüntüde tespit olarak doğrulanamadı (en yakın track 828–850 m), bu yüzden dost/konvoy iddiaları güvenilmez; genel duyurular araca özgü olmadığından risk düşürücü değil.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001230_000",
+   "label": "car",
+   "track_id": "T0031",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2685 m (mid_base +10). Hızlı yaklaşma: son 60 dakikada 7376→2684 m, Δ-3213 m ≥ 2000 m (fast_approach +10). 7 harekette 5'i yaklaşan, 2'si uzaklaşan; ETA 50 dk, dolaşma 2.2. Temel faktörlerin dışında yeni bulgu yok, seviye korunuyor.",
+   "evidence": [
+    "det:img_001230_000",
+    "track:T0031",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_001",
+   "label": "car",
+   "track_id": "T0131",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2695 m (mid_base +10). Son 60 dk Δ-1917 m (approaching +10) ve 6 harekette 3 yaklaşan/3 uzaklaşan, dolaşma 3.4 ile loitering (+10). Dolaşma yüksek olsa da tek başına seviye yükseltmeye yetecek yeni somut kanıt yok; temel medium korunuyor.",
+   "evidence": [
+    "det:img_001230_001",
+    "track:T0131",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_002",
+   "label": "car",
+   "track_id": "T0056",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2723 m (mid_base +10). Son 60 dk Δ-2770 m ≥ 2000 m (fast_approach +10), 6 harekette 4'ü yaklaşan, 30 dk durma, dolaşma 1.7. Temel skorun kapsadığı faktörler; yeni bulgu yok.",
+   "evidence": [
+    "det:img_001230_002",
+    "track:T0056",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track yok, tespit güveni 0.12 (low_confidence -10). inspect_image: ağaç örtüsü nedeniyle araç varlığı belirsiz, düşük güvenli sonuç; iddiayı doğrulayacak veya çürütecek net kanıt yok. Temel low korunuyor, izlenmeye devam edilmeli.",
+   "evidence": [
+    "det:img_001230_003",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Track'siz düşük güvenli tespit (img_001230_003)",
+   "risk_level": "low",
+   "rationale": "Üsse 2683 m'de park halinde track'siz araç tespiti (güven 0.12). Görsel inceleme ağaç örtüsü nedeniyle belirsiz kaldı (vehicle_present: null, confidence: low). Yanlış tespit olma ihtimali yüksek ama net dışlanamadı.",
+   "evidence": [
+    "det:img_001230_003",
+    "image:img_001230"
+   ]
+  },
+  {
+   "title": "R087 konvoy iddiası kısmen doğrulanıyor: yakın ağır araçlar",
+   "risk_level": "medium",
+   "rationale": "R087'nin koordinatında (39.9017N 32.8702E) araç bulunamadı (en yakın track 850 m), ancak 2000 m yarıçaplı alanda 13:15–15:15 aralığında 7 ağır araç track'i bulundu; T0039 ve T0023 çekim anında (15:15) 98–109 m mesafede bölgede. Ancak co_movement bağımsız gösterdi (chance_rate 0.633, konvoy değil) ve bu araçlar bu görüntüde değil; R087'nin '3 araçlı konvoy' iddiası doğrudan doğrulanamıyor.",
+   "evidence": [
+    "report:R087",
+    "track:T0039",
+    "track:T0023",
+    "image:img_001230"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R007",
+   "verdict": "unreliable",
+   "note": "Dost iddiası: rapor saatinde koordinatın 60 m yakınında track yok, en yakın track 828 m; çekimde orada araç görülmedi. Kimlik iddiası gözlemle çelişiyor; motion doğrulanamaz."
+  },
+  {
+   "report_id": "R087",
+   "verdict": "unreliable",
+   "note": "Anlattığı koordinatta araç bulunamadı (en yakın track 850 m). 2 km içinde ağır araçlar var (T0039, T0023) ama co_movement bağımsız, konvoy kanıtı yok; count ve motion doğrulanamaz."
+  },
+  {
+   "report_id": "R119",
+   "verdict": "unverifiable",
+   "note": "Gece hareketliliği ihbarı; bu görüntüden doğrulanabilir somut veri yok."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru, hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru, hiçbir aracın riskini düşürmez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T00:06:14+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001230\",\"question\":\"Bu noktada gerçekten bir otomobil var mı? Park halinde mi, tipi ve rengi nedir?\",\"vehicle_id\":\"img_001230_003\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_003 (car, güven 0.12)\", \"crop_px\": [321, 144, 481, 304], \"result\": {\"vehicle_present\": null, \"vehicle_type\": \"car\", \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Belirsiz: h…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9017,\"lon\":32.8702,\"radius_m\":2000,\"time_from\":\"13:15\",\"time_to\":\"15:15\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9017, \"lon\": 32.8702, \"radius_m\": 2000.0, \"window\": \"13:15–15:15\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 7, \"tracked\": [{\"track_id\": \"T0039\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_001230\", \"present\"…"
+   },
+   {
+    "iteration": 2,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0039\", \"T0023\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0039\", \"T0023\"], \"relation\": \"independent\", \"common_window\": \"13:15–15:15\", \"dist_m\": {\"min\": 193, \"max\": 13574, \"end\": 193}, \"synchronous_moves\": 4, \"same_direction_moves\": 1, \"chance_rate\": 0.633}], \"chance_rate_n…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 15570,
+   "output": 3004,
+   "reasoning": 1183
+  },
+  "cost_usd": 0.002601,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 79.6
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "image_id": "img_003880",
+ "capture_time": "14:35",
+ "zone": "Kuzeydogu Kavsagi",
+ "overall_risk": "low",
+ "summary": "Görüntüde dört binek araç var; üçü durağan, iki track (T0211, T0103) üsse net biçimde uzaklaşıyor. R023'ün kırmızı otomobil durağanlık iddiası T0021 kaydıyla doğrulandı; R043'ün yüklü kamyon iddiası ise görüntüde ve kayıtlarda araç bulunamadığı için doğrulanamadı.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003880_000",
+   "label": "car",
+   "track_id": "T0211",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0211: 2 saatte üsse 1036→5438 m, son 60 dk Δ+4380 m uzaklaşma, 6 hareketin 2'si yaklaşan/4'ü uzaklaşan; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_003880_000",
+    "track:T0211"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003880_001",
+   "label": "car",
+   "track_id": "T0021",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0021: 120 dk durağan, son 60 dk Δ+5 m; R023'ün 'kırmızı otomobil beklemede' iddiası (track T0021, 35 m) DOĞRULANDI. Durağanlık beklendiği gibi; dost/planlı iddia yalnızca tutarlı gözlemle kullanıldı.",
+   "evidence": [
+    "det:img_003880_001",
+    "track:T0021",
+    "report:R023"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003880_002",
+   "label": "car",
+   "track_id": "T0126",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0126: 120 dk durağan, son 60 dk Δ+15 m, hareket yok; düşük risk.",
+   "evidence": [
+    "det:img_003880_002",
+    "track:T0126"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003880_003",
+   "label": "car",
+   "track_id": "T0103",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0103: 2 saatte üsse 1146→5422 m, son 60 dk Δ+4284 m, 3/3 hareket uzaklaşan; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_003880_003",
+    "track:T0103"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [],
+ "report_notes": [
+  {
+   "report_id": "R023",
+   "verdict": "reliable",
+   "note": "Kırmızı otomobil durağanlık iddiası T0021 kaydıyla (35 m) doğrulandı."
+  },
+  {
+   "report_id": "R043",
+   "verdict": "unreliable",
+   "note": "Rapor ettiği 39.95238,32.90158 konumunda yüklü kamyon izi yok; görüntü incelemesinde o noktada araç bulunamadı (güven: yüksek). stationary/count DOĞRULANAMAZ, araç kayda geçmedi."
+  },
+  {
+   "report_id": "R073",
+   "verdict": "reliable",
+   "note": "Kuzeydoğu Kavşağında olağandışı durum yok iddiası görsel ve hareket verisiyle tutarlı (tüm araçlar durağan/uzaklaşan)."
+  },
+  {
+   "report_id": "R069",
+   "verdict": "unverifiable",
+   "note": "Önceki gece hareketliliği iddiası kanıtlanamadı."
+  },
+  {
+   "report_id": "R128",
+   "verdict": "unverifiable",
+   "note": "Devriyeyle telsiz bağlantı kopukluğu bölgesel veri dışında, doğrulanamadı."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Genel duyuru; konumsuz, araç bazında doğrulanamadı."
+  },
+  {
+   "report_id": "R016",
+   "verdict": "reliable",
+   "note": "Bölgede ağır araç yok, yalnızca binek araç iddiası mevcut dört tespitle (tümü car) tutarlı."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Genel duyuru; konumsuz, doğrulanamadı."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T00:04:54+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003880\",\"lat\":39.95238,\"lon\":32.90158,\"question\":\"Bu konumda uzun suredir park halinde yuklu bir kamyon var mı? Varsa tipi ve yuku nedir?\"}",
+    "summary": "{\"image_id\": \"img_003880\", \"target\": \"nokta 39.95238, 32.90158\", \"crop_px\": [313, 619, 473, 779], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": false, \"answer\": \"Hedefte araç yok, sadec…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 8779,
+   "output": 1240,
+   "reasoning": 234
+  },
+  "cost_usd": 0.001215,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 37.7
+ }
+}

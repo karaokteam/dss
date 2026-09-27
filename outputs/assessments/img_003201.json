@@ -1,0 +1,252 @@
+{
+ "image_id": "img_003201",
+ "capture_time": "14:55",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "Guney Kapisi Yaklasiminda en dikkat cekici unsur, uesse yanal hareket edip dolasan agir arac (T0213, bus) ve R129'un gozlemle celisen 'planli ikmal, kimlik teyitli' dost iddiasidir. R130'un agir arac iddiasi rapor aninda dogrulanamadi, ancak T0213'un 13:35'te ayni noktaya 3 m'ye kadar yaklasmasi iddiayi kismen acikliyor; bolge raporlari da 'normal' derken tutarli yaklasan arac var.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003201_004",
+   "label": "bus",
+   "track_id": "T0213",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Bus (0.44) tip etiketi goruntude kutu gorunumlu, otomobilden belirgin buyuk arac olarak dogrulandi (dusuk guven); agir arac faktoru gecerli. 2 saatte uesse 5617→5406 m, yanal hareket; son 60 dk Delta+15 m; 6 hareket (4 yakinlasan/2 uzaklasan), dolasma 7.1; son hareket uesse 0° acıyla. Genis alan taramasi (1500 m, 13:00-14:55, heavy): 13:35'te bu konuma girip 3 m'ye kadar yaklasti. Temel medium korunuyor.",
+   "evidence": [
+    "det:img_003201_004",
+    "track:T0213",
+    "image:img_003201"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_003",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R129, R130; dost/ikmal iddiası gözlemle çelişiyor: R129",
+   "evidence": [
+    "det:img_003201_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_005",
+   "label": "van",
+   "track_id": "T0156",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 456 m yaklaştı; dolaşma: yol/yer değiştirme 3.6, 7 hareket",
+   "evidence": [
+    "det:img_003201_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_001",
+   "label": "car",
+   "track_id": "T0080",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R130",
+   "evidence": [
+    "det:img_003201_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_002",
+   "label": "car",
+   "track_id": "T0077",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "dolaşma: yol/yer değiştirme 4.1, 5 hareket",
+   "evidence": [
+    "det:img_003201_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_000",
+   "label": "car",
+   "track_id": "T0204",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4429 m uzaklaştı",
+   "evidence": [
+    "det:img_003201_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_003201_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_003201_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_003201_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.11)",
+   "evidence": [
+    "det:img_003201_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.10)",
+   "evidence": [
+    "det:img_003201_010"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Sahte dost/ikmal iddiasi (R129)",
+   "risk_level": "medium",
+   "rationale": "R129, img_003201_003 (van, park halinde) icin 'planli ikmal aracidir, kimlik teyidi yapilmistir' diyor; identity ve motion iddialari GOZLEMLE CELISIYOR (hareket kaydi yok, 13:55 rapor aninda ve cekimde duruyor). Goruntude arac agac altinda net secilemiyor (dusuk guven), dost iddiasini gozlem dogrulamiyor. Dost iddiasinin gozlemle celismesi bir araci gizleme girisimi olabilir; aracin kendisi tehdit faktoru tasi madigindan madde medium.",
+   "evidence": [
+    "det:img_003201_003",
+    "report:R129",
+    "image:img_003201"
+   ]
+  },
+  {
+   "title": "R130 agir arac iddiasinin yer/zaman celiskisi",
+   "risk_level": "low",
+   "rationale": "R130 (13:15) 39.8732N 32.8522E'de 1 agir arac iddia etti; o noktada tespit edilen arac car (T0080) ve park halinde van img_003201_003. Genis alan taramasi (1500 m, 13:00-14:55, heavy) agir arac T0213'un 13:35'te bu noktaya girdigini ve 3 m'ye yaklastigini gosterdi; iddia rapor aninda dogru degildi ama arac sonradan gelmis olabilir. Yeni agir tehdit ortaya cikmadi.",
+   "evidence": [
+    "det:img_003201_001",
+    "track:T0080",
+    "track:T0213",
+    "report:R130"
+   ]
+  },
+  {
+   "title": "Bolge raporu uyuusmazligi (R098, R105)",
+   "risk_level": "low",
+   "rationale": "R098 (13:30) ve R105 (13:55) Guney Kapisi Yaklasimi icin 'trafik akisi normal' diyor; ancak ayni aralikta bolgede uesse tutarli yakinlasan 1 arac (T0060) var ve bu goruntude dolasma yapan agir arac T0213 bulunuyor. Resmi bolge raporlari gozlemle tam uyusmuyor; rapor guvenilirligi sinirli.",
+   "evidence": [
+    "report:R098",
+    "report:R105",
+    "track:T0213"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R130",
+   "verdict": "partly_reliable",
+   "note": "Rapor aninda iddia edilen noktada agir arac yoktu (count=CELISKILI); ancak T0213 (bus) 13:35'te ayni konuma 3 m'ye kadar yaklasti, arac yer degistirmis olabilir."
+  },
+  {
+   "report_id": "R019",
+   "verdict": "reliable",
+   "note": "Hareketsiz otomobil iddiası DOGRULANDI: T0080 kayit basindan (25 dk) beri durağan, yanindaki park halinde van da hareketsiz."
+  },
+  {
+   "report_id": "R129",
+   "verdict": "unreliable",
+   "note": "identity ve motion iddialari CELISKILI: img_003201_003 park halinde, hareket kaydi yok; 'planli ikmal, kimlik teyitli' dost iddiasini gozlem desteklemiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T00:05:16+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003201\",\"question\":\"Bu araç gerçekten otobüs veya başka bir ağır araç (kamyon) mı, yoksa hafif bir araç (otomobil/van) mı? Tipini ve rengini doğrula.\",\"vehicle_id\":\"img_003201_004\"}",
+    "summary": "{\"image_id\": \"img_003201\", \"target\": \"img_003201_004 (bus, güven 0.44)\", \"crop_px\": [377, 151, 537, 311], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"bus\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kirmi…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003201\",\"question\":\"Bu park halindeki araç gerçekten panelvan (ikmal aracı) mı? Üzerinde yük, örtü veya ticari/işaret unsuru var mı? Tipini ve rengini doğrula.\",\"vehicle_id\":\"img_003201_003\"}",
+    "summary": "{\"image_id\": \"img_003201\", \"target\": \"img_003201_003 (van, güven 0.49)\", \"crop_px\": [559, 227, 719, 387], \"result\": {\"vehicle_present\": null, \"vehicle_type\": null, \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi cerc…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8732,\"lon\":32.8522,\"radius_m\":1500,\"time_from\":\"13:00\",\"time_to\":\"14:55\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.8732, \"lon\": 32.8522, \"radius_m\": 1500.0, \"window\": \"13:00–14:55\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 4, \"tracked\": [{\"track_id\": \"T0213\", \"label\": \"bus\", \"detection_id\": \"img_003201_004\", \"image_id\": \"img_00320…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 20068,
+   "output": 4417,
+   "reasoning": 1156
+  },
+  "cost_usd": 0.003445,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 107.7
+ }
+}

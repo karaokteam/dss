@@ -1,0 +1,261 @@
+{
+ "image_id": "img_003201",
+ "capture_time": "14:55",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "high",
+ "summary": "Guney Kapisi Yaklasimi'nda kritik tehdit yok; ancak resmi R129'un 'kimliği teyitli, üsse ilerleyen panelvan' iddiası gözlemle çelişiyor — ilgili van park halinde ve ağaçlar altında örtülü, bu bir gizleme/güven istismarı sinyali. Ayrıca bölgede dolaşan kırmızı otobüs (T0213) izlenmeli.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003201_004",
+   "label": "bus",
+   "track_id": "T0213",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Ağır araç (otobüs, görsel teyit: kırmızı, büyük/uzun gövde; görüntü güveni düşük). Üsse 5617→5406 m, yanal hareket, dolaşma 7.1, 6 hareket; 13:00–14:55 penceresinde rapor noktasının 3 m yakınından geçmiş. Üsse 5406 m mesafede ve yaklaşma tutarlılığı düşük; base medium korunuyor.",
+   "evidence": [
+    "det:img_003201_004",
+    "track:T0213",
+    "report:R130",
+    "image:img_003201"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_003",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": "Base low (20) → medium yükseltildi: resmi R129 bu park halindeki van için 'kimlik teyitli planlı ikmal, üsse ilerleyen' diyor; gözlemde hareket kaydı yok, araç park halinde ve ağaçlar altında örtülü (görsel inceleme düşük güvenli). Çelişen dost kimlik iddiası şüphe sinyalidir.",
+   "rationale": "Track yok, park halinde; üsse 5415 m. R129 identity ve motion iddiaları ÇELİŞKİLİ; R130 heavy count iddiası bu noktada doğrulanamadı (yakındakiler yalnızca T0080 car ve bu van). Van kısmen gizlenmiş; kimlik/yük belirsiz.",
+   "evidence": [
+    "det:img_003201_003",
+    "report:R129",
+    "report:R130",
+    "image:img_003201"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_005",
+   "label": "van",
+   "track_id": "T0156",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "T0156 (van): üsse 6185→5414 m, son 60 dk Δ-456 m; ancak ETA 713 dk, dolaşma 3.6, 7 hareket (4 yaklaşan/3 uzaklaşan) — tutarlı yaklaşma yok. Üsse 5414 m uzaklıkta tehdit sinyali zayıf.",
+   "evidence": [
+    "det:img_003201_005",
+    "track:T0156"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_001",
+   "label": "car",
+   "track_id": "T0080",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "T0080: 120 dakikadır durağan, üsse 5415 m; R019 stationary iddiası DOĞRULANDI. R130 heavy iddiası bu noktada doğrulanamadı ancak aracın kendisi düşük riskli.",
+   "evidence": [
+    "det:img_003201_001",
+    "track:T0080",
+    "report:R019",
+    "report:R130"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_002",
+   "label": "car",
+   "track_id": "T0077",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "T0077: üsse 3733→5411 m, hafif yaklaşma (Δ-228 m) ama 2 yaklaşan/3 uzaklaşan hareket; dolaşma 4.1 düşük-orta. Ağır değil, uzaklık 5411 m.",
+   "evidence": [
+    "det:img_003201_002",
+    "track:T0077"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_000",
+   "label": "car",
+   "track_id": "T0204",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4429 m uzaklaştı",
+   "evidence": [
+    "det:img_003201_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_003201_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_003201_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_003201_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.11)",
+   "evidence": [
+    "det:img_003201_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.10)",
+   "evidence": [
+    "det:img_003201_010"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Şüpheli dost ikmal kimliği iddiası (R129)",
+   "risk_level": "high",
+   "rationale": "Resmi rapor, park halindeki ve ağaçlar altında örtülü bir vanı 'kimliği teyitli, üsse ilerleyen planlı ikmal aracı' olarak tanımlıyor; hareket kaydı yok ve gözlem bunu çürütüyor. Kimlik gizleme/güven istismarı olasılığı — araç yerinde fiziksel olarak doğrulanmalı.",
+   "evidence": [
+    "det:img_003201_003",
+    "report:R129",
+    "image:img_003201"
+   ]
+  },
+  {
+   "title": "Dolaşan ağır araç (kırmızı otobüs) kapı yaklaşımında",
+   "risk_level": "medium",
+   "rationale": "T0213 üsse 5406 m'de yanal/dolaşan hareket (7.1) yapıyor, 13:00–14:55 penceresinde rapor noktasının 3 m yakınına gelmiş; görsel inceleme otobüs olduğunu (kırmızı, büyük gövde) düşük güvenle destekliyor. Üsse tutarlı yaklaşma yok ama ağır araç izlenmeli.",
+   "evidence": [
+    "det:img_003201_004",
+    "track:T0213",
+    "image:img_003201"
+   ]
+  },
+  {
+   "title": "Bölge raporu uyuşmazlığı (R098, R105)",
+   "risk_level": "medium",
+   "rationale": "Her iki resmi rapor 'trafik akışı normal' diyor; oysa bölgede üsse tutarlı yaklaşan 1 araç ve dolaşan bir otobüs var. Resmi bölge raporlarının gözlemle uyuşmadığı örüntüsü dikkat gerektiriyor.",
+   "evidence": [
+    "report:R098",
+    "report:R105",
+    "track:T0213",
+    "track:T0156"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R130",
+   "verdict": "partly_reliable",
+   "note": "Noktada o anda ağır araç doğrulanmadı (yalnızca car T0080 ve park halinde van); ancak 13:00–14:55 penceresinde ağır otobüs T0213 noktanın 3 m yakınından geçmiş — ağır araç iddiası geniş alanda kısmen destekleniyor."
+  },
+  {
+   "report_id": "R019",
+   "verdict": "reliable",
+   "note": "T0080'un 25+ dakikadır durağan olduğu gözlemle DOĞRULANDI."
+  },
+  {
+   "report_id": "R129",
+   "verdict": "unreliable",
+   "note": "identity ve motion iddiaları ÇELİŞKİLİ: van park halinde, hareket kaydı yok, ağaç altında örtülü; 'kimlik teyitli planlı ikmal' ifadesi gözlemle uyuşmuyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:05:03+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003201\",\"question\":\"Bu araç otobüs/kamyon gibi ağır bir araç mı, yoksa panelvan/ticari araç mı? Renk ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_003201_004\"}",
+    "summary": "{\"image_id\": \"img_003201\", \"target\": \"img_003201_004 (bus, güven 0.44)\", \"crop_px\": [377, 151, 537, 311], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"bus\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kirmi…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003201\",\"question\":\"Bu araç bir panelvan mı? Renk, yük/örtü, işaretleri görünüyor mu? Park halinde mi duruyor?\",\"vehicle_id\":\"img_003201_003\"}",
+    "summary": "{\"image_id\": \"img_003201\", \"target\": \"img_003201_003 (van, güven 0.49)\", \"crop_px\": [559, 227, 719, 387], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi cer…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8732,\"lon\":32.8522,\"radius_m\":800,\"time_from\":\"13:00\",\"time_to\":\"14:55\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.8732, \"lon\": 32.8522, \"radius_m\": 800.0, \"window\": \"13:00–14:55\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 1, \"tracked\": [{\"track_id\": \"T0213\", \"label\": \"bus\", \"detection_id\": \"img_003201_004\", \"image_id\": \"img_003201…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 17958,
+   "output": 4751,
+   "reasoning": 1265
+  },
+  "cost_usd": 0.004439,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 99.9
+ }
+}

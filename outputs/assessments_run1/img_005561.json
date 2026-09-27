@@ -1,0 +1,240 @@
+{
+ "image_id": "img_005561",
+ "capture_time": "12:10",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "img_005561_003 (T0042) hızlı ve tutarlı biçimde üsse yaklaşıyor (2 saatte 6967→2716 m, son 60 dk Δ-3170 m, ETA 51 dk) ve çekim anında T0067/T0048 ile 8-13 m mesafede buluşuyor; konvoy kanıtı güçlü olmasa da gruplaşma izlenir. R017 bölge raporuyla anomali mevcut; düşük güvenli tespitlerden biri (img_005561_007) görsel olarak araç değil (muhtemelen klima/fan), diğeri (img_005561_006) gölgeli park halinde beyaz binek olarak doğrulandı.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_005561_003",
+   "label": "car",
+   "track_id": "T0042",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2716 m, son 60 dakikada 3170 m tutarlı yaklaşma (7 hareketin 5'i yaklaşan), ETA 51 dk. Çekim anında T0048'e 8 m, T0067'ye 13 m mesafede; ancak eşzamanlı hareket örüntüsü 'met_at_end' (bağımsız hareket), konvoy kanıtı yetersiz. Temel risk medium korunuyor; ağır araç sinyali yok.",
+   "evidence": [
+    "det:img_005561_003",
+    "track:T0042"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_000",
+   "label": "car",
+   "track_id": "T0067",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m, son 60 dk Δ-1768 m, ETA 92 dk, dolaşma düşük (1.0). Yaklaşıyor ancak hızlı yaklaşma eşiğini aşmıyor.",
+   "evidence": [
+    "det:img_005561_000",
+    "track:T0067"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_005",
+   "label": "car",
+   "track_id": "T0048",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m, son 60 dk Δ-1294 m, ETA 126 dk, dolaşma 1.1. Yaklaşma hızı ılımlı.",
+   "evidence": [
+    "det:img_005561_005",
+    "track:T0048"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_002",
+   "label": "car",
+   "track_id": "T0150",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m ancak uzaklaşıyor (son 60 dk Δ+2051 m). Dolaşma 3.7 yüksek fakat üsden uzaklaşma deseni tehdit sinyali değil; tip belirsizliği (car 0.72 / van 0.15) izlenmeye değer.",
+   "evidence": [
+    "det:img_005561_002",
+    "track:T0150"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Track'siz park halinde araç, üsse 2716 m. Hareket kaydı yok, aktif tehdit göstergesi yok.",
+   "evidence": [
+    "det:img_005561_004"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_001",
+   "label": "car",
+   "track_id": "T0025",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m, son 60 dk Δ+344 m uzaklaşıyor; temel düşük.",
+   "evidence": [
+    "det:img_005561_001",
+    "track:T0025"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Tespit güveni 0.14 düşük ancak görsel incelemede araç mevcut: bina gölgesinde park halinde beyaz binek; olası yük/bagaj benzeri nesne düşük çözünürlük nedeniyle kesin değil. Park halinde, hareket yok.",
+   "evidence": [
+    "det:img_005561_006",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Güven 0.13; görsel incelemede kırmızı çerçevede araç bulunamadı — bina çatısındaki klima/havalandırma fanleri yanlış tespit sebebi olabilir (medium güven). Track yok, risk düşük.",
+   "evidence": [
+    "det:img_005561_007",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse yaklaşan üç aracın kapıya yakın buluşması",
+   "risk_level": "medium",
+   "rationale": "T0042, T0067 ve T0048 çekim anında birbirine 8-13 m mesafede ve üçü de üsse yaklaşım halinde (T0042: son 60 dk Δ-3170 m, ETA 51 dk). Eşzamanlı hareket ilişkisi 'met_at_end' ve chance_rate değerleri (0.633/0.188/0.434) koordinasyonu kesinleştirmiyor; ancak kapı yaklaşımında gruplaşma, T0042'nin hızlı yaklaşımıyla birleşince izlenmeli.",
+   "evidence": [
+    "track:T0042",
+    "track:T0067",
+    "track:T0048",
+    "det:img_005561_003",
+    "det:img_005561_000",
+    "det:img_005561_005"
+   ]
+  },
+  {
+   "title": "R017 bölge raporu ile ağır araç track'i uyuşmazlığı",
+   "risk_level": "medium",
+   "rationale": "R017 (10:20) bölgede ağır araç olmadığını söylüyor; ancak rapor saatinde 1 ağır araç track'i mevcut (zone_report_mismatch). Resmi rapor gözlemle çelişiyor — veri hiyerarşisinde gözlem esas alınmalı; R017 güvenilmez, bölge geçmişinde ağır araç hareketi var. Aynı metinli R100 ise sonradan doğrulanmış (binek araclar goruluyor → 0 ağır araç tespiti).",
+   "evidence": [
+    "report:R017",
+    "report:R100"
+   ]
+  },
+  {
+   "title": "'Planlı tatbikat dost unsurlar' duyuruları doğrulanamıyor",
+   "risk_level": "low",
+   "rationale": "R122 (11:35) ve R003 (11:55) konumsuz genel duyuru; hiçbir aracın riskini düşürmez ve gözlemle eşleştirilemedi (DOĞRULANAMAZ). Dost iddiası bu görüntüdeki hiçbir araca bağlanamıyor.",
+   "evidence": [
+    "report:R122",
+    "report:R003"
+   ]
+  },
+  {
+   "title": "Düşük güvenli tespitlerin görsel doğrulaması",
+   "risk_level": "low",
+   "rationale": "img_005561_007 görselde araç çıkmadı (yanlış tespit, muhtemelen klima/fan); img_005561_006 beyaz park halinde binek olarak doğrulandı, gölge nedeniyle olası yük net değil — sürveyansta kontrol edilebilir.",
+   "evidence": [
+    "det:img_005561_006",
+    "det:img_005561_007",
+    "image:img_005561"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R017",
+   "verdict": "unreliable",
+   "note": "Ağır araç yok iddiası, rapor saatindeki 1 ağır araç track'iyle çelişiyor (zone_report_mismatch)."
+  },
+  {
+   "report_id": "R021",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamadı; bu görüntüde doğrulayıcı gözlem yok."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir araca bağlanamadı."
+  },
+  {
+   "report_id": "R100",
+   "verdict": "reliable",
+   "note": "Binek araç görüldüğü iddiası görüntüdeki 8 tespitle uyumlu; ağır araç yok ifadesi bu görüntüyle tutarlı (ancak 10:20'deki R017 çelişkisi not edilmeli)."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; gözlemle eşleşmedi."
+  },
+  {
+   "report_id": "R031",
+   "verdict": "reliable",
+   "note": "Olağandışı durum yok bildirimi, görüntüdeki tabloyla (aktif tehdit yok, temel risk medium) uyumlu."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T21:56:20+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0042\", \"T0067\", \"T0048\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0042\", \"T0067\"], \"relation\": \"met_at_end\", \"common_window\": \"10:10–12:10\", \"dist_m\": {\"min\": 13, \"max\": 11406, \"end\": 13}, \"synchronous_moves\": 4, \"same_direction_moves\": 1, \"chance_rate\": 0.633}, {\"tracks\": [\"T0042…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005561\",\"question\":\"Bu düşük güvenli tespit (0.14) gerçekten bir binek araç mı? Ne tür bir araç ve dikkat çekici bir özelliği (ör. örtülü yük) var mı?\",\"vehicle_id\":\"img_005561_006\"}",
+    "summary": "{\"image_id\": \"img_005561\", \"target\": \"img_005561_006 (car, güven 0.14)\", \"crop_px\": [799, 390, 959, 550], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Bina gol…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005561\",\"question\":\"Bu düşük güvenli tespit (0.13) gerçekten bir binek araç mı? Ne tür bir araç ve dikkat çekici bir özelliği (ör. örtülü yük) var mı?\",\"vehicle_id\":\"img_005561_007\"}",
+    "summary": "{\"image_id\": \"img_005561\", \"target\": \"img_005561_007 (car, güven 0.13)\", \"crop_px\": [825, 379, 1001, 555], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": false, \"answer\": \"Kirmizi cercev…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9633,
+   "output": 3283,
+   "reasoning": 845
+  },
+  "cost_usd": 0.002457,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 87.7
+ }
+}

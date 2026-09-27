@@ -1,0 +1,211 @@
+{
+ "image_id": "img_000860",
+ "capture_time": "14:10",
+ "zone": "Dogu Yolu",
+ "overall_risk": "critical",
+ "summary": "Dogu Yolu hattında 6 izli araç üsse tutarlı yaklaşarak 1.6 km mesafeye gelmiş durumda; T0192-T0032 çifti aynı adımlarda aynı yönde hareket ederek (chance_rate 0.053) buluşmuş, kamyon T0122 görüntüde gerçekten yüklü kamyon olarak teyit edildi ve ETA'sı 26 dk. R120 ve R126 resmi raporları anlattıkları araçlar sahadaki izlerle doğrulanamadığından güvenilmez; 'dost' ve 'olagan' iddiaları bu bakımdan sahte dost gizleme şüphesi olarak ciddiye alınmalı, genel tatbikat duyurusu (R112) konumsuz olduğundan hiçbir aracın riskini düşürmez.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000860_006",
+   "label": "truck",
+   "track_id": "T0122",
+   "risk_level": "critical",
+   "baseline_level": "critical",
+   "baseline_score": 75,
+   "override_reason": null,
+   "rationale": "Tespit güveni düşük (0.10) ama görüntü incelemesi gerçek ve yüklü bir kamyonu doğruladı; 2 saatte 5 hareketin tamamı üsse yaklaşma (5958→1647 m), son 60 dk Δ-3828 m, ETA 26 dk, son hareket 0° açıyla. Üsse 1.6 km mesafedeki ağır ve tutarlı yaklaşan araç kritik tehdit; R126'nın 'ağır araç, hareketleri olagan' iddiası doğrulanamadığından riski düşürmez.",
+   "evidence": [
+    "det:img_000860_006",
+    "track:T0122",
+    "image:img_000860",
+    "report:R126"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_000",
+   "label": "car",
+   "track_id": "T0020",
+   "risk_level": "critical",
+   "baseline_level": "high",
+   "baseline_score": 60,
+   "override_reason": "Temel seviye high'dan critical'a yükseltildi: 2 saatte 7/7 hareket tutarlı üsse yaklaşma (7829→1603 m), son 60 dk Δ-3263 m, ETA bilgisi verilmese de şu an 1603 m ve kritik eşikte; kritik eşikteki tutarlı yaklaşan araç high yerine critical olarak değerlendirilmeli.",
+   "rationale": "Otomobil (güven 0.94), üsse 1603 m; 7 hareketin hepsi yaklaştıran TUTARLI YAKLAŞMA, 50 dk duraklama sonrası yeniden hareket, son hareket 0° açıyla. R120'nin bu hatta 'bağlı unsur' dost iddiası doğrulanamadı (koordinat civarında iz yok) ve konumsuz R112 duyurusu riski düşürmediğinden high→critical yükseltildi.",
+   "evidence": [
+    "det:img_000860_000",
+    "track:T0020",
+    "report:R120",
+    "report:R112",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_002",
+   "label": "car",
+   "track_id": "T0192",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "Temel seviye medium'dan high'a yükseltildi: T0032 ile aynı adımlarda aynı yönde hareket ederek üsse yakın noktada buluşan çiftin bir üyesi (converged_in_step, chance_rate 0.053) ve son 60 dk Δ-4350 m ile ETA 22 dk; gruplanma ve hızlı yaklaşma medium düzeyini aşıyor.",
+   "rationale": "Otomobil (güven 0.92), üsse 1604 m; 7 hareketin 6'sı yaklaştıran (7079→1604 m), son 60 dk Δ-4350 m, ETA 22 dk. T0032 ile converged_in_step (4 eşzamanlı hareket, son mesafe 6 m, chance_rate 0.053); koordineli buluşma ve 20 dk civarı varış süresi riski high'a taşıyor.",
+   "evidence": [
+    "det:img_000860_002",
+    "track:T0192",
+    "track:T0032",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_003",
+   "label": "car",
+   "track_id": "T0032",
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "Temel seviye medium'dan high'a yükseltildi: T0192 ile aynı adımlarda aynı yönde hareket ederek üsse 6 m mesafede buluşan çiftin diğer üyesi (converged_in_step, chance_rate 0.053) ve son 60 dk Δ-4805 m ile ETA 20 dk; koordineli gruplanma medium düzeyini aşıyor.",
+   "rationale": "Otomobil (güven 0.80), üsse 1609 m; 6 hareketin 5'i yaklaştıran (7613→1609 m), son 60 dk Δ-4805 m (6 aracın en hızlısı), ETA 20 dk. T0192 ile converged_in_step buluşması ve 20 dk'lık kısa varış süresi riski high'a taşıyor.",
+   "evidence": [
+    "det:img_000860_003",
+    "track:T0032",
+    "track:T0192",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_001",
+   "label": "car",
+   "track_id": "T0092",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Otomobil (güven 0.93), üsse 1602 m; 4 hareketin 3'ü yaklaştıran (4258→1601 m), son 60 dk Δ-2522 m, ETA 38 dk. Diğer üç kritik araçla yalnızca son noktada temas (independent benzeri, chance_rate 0.43-1.00) olduğundan medium seviyesi korundu.",
+   "evidence": [
+    "det:img_000860_001",
+    "track:T0092",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_004",
+   "label": "car",
+   "track_id": "T0127",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Otomobil (güven 0.34, düşük), üsse 1605 m; 7 hareketin 5'i yaklaştıran (7380→1605 m), son 60 dk Δ-3835 m, ETA 25 dk, son hareket 60° açıyla (hatsız dolaşmalı). Diğer izlerle bağımsız hareket ettiğinden (chance_rate 0.43-1.00) medium korundu.",
+   "evidence": [
+    "det:img_000860_004",
+    "track:T0127",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000860_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": "Temel seviye low'dan medium'a yükseltildi: Görüntü incelemesi tespit güveni 0.14 olmasına rağmen gerçek bir mavi araç olduğunu doğruladı; üsse 1605 m kritik mesafede ve izlenemeyen (track'siz) araç olarak davranışı bilinmediğinden low düzeyi yetersiz.",
+   "rationale": "Kırpılan görüntüde gerçek, park halinde mavi araç teyit edildi (güven medium, otokar değil); ancak hareket kaydı olmadığından niyeti ve dolaşma/geçmişi bilinmiyor. Üsse 1605 m mesafede izlenemeyen araç olarak dikkatle takip edilmeli, medium seviyesi uygun.",
+   "evidence": [
+    "det:img_000860_005",
+    "image:img_000860"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Koordineli buluşma şüphesi: T0192 + T0032",
+   "risk_level": "high",
+   "rationale": "İki araç 4 kez aynı anda aynı yönde hareket ederek üsse 6 m mesafede buluştu (chance_rate 0.053); her ikisi de 20-22 dk içinde üsse varabilecek konumda (1604-1609 m). Bu, tesadüfi bir birliktelik olmaktan çıkıp küçük çaplı koordineli gruplanma ihtimalini güçlendiriyor; ayrıca T0122 ve T0020 ile de son noktada 41-46 m mesafede temas ediyorlar, ancak bu ikiliyle eşzamanlılık zayıf (chance_rate 0.43-1.00).",
+   "evidence": [
+    "track:T0192",
+    "track:T0032",
+    "track:T0122",
+    "track:T0020",
+    "image:img_000860"
+   ]
+  },
+  {
+   "title": "Doğrulanamayan resmi 'dost/olagan' iddiaları (R120, R126) ve sahte dost gizleme şüphesi",
+   "risk_level": "high",
+   "rationale": "Resmi raporlar R120 (bağlı otomobil) ve R126 (ağır araç, hareketleri olagan) anlattıkları araçları sahadaki izlerle doğrulatamıyor; R120'nin koordinatı çevresinde iz yok (en yakın track 729 m), R126'da da 400 m yarıçapta 12:00-14:10 arasında yalnızca T0122 var, o da o koordinata uymuyor ve R126'nın anlattığı araç olarak doğrulanamıyor. Konumsuz R112 duyurusu ('dost unsurlar') tek başına hiçbir aracın riskini düşürmez. Bu örüntü, dost kimliği iddiasının bir aracı gizleme girişimi olabileceği şüphesini destekliyor; aynı hatta tutarlı yaklaşan T0020-T0122-T0092-T0192-T0032-T0127 grubuna bu şüpheyle yaklaşılmalı.",
+   "evidence": [
+    "report:R120",
+    "report:R126",
+    "report:R112",
+    "track:T0122",
+    "image:img_000860"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R120",
+   "verdict": "unreliable",
+   "note": "Resmi 'bağlı unsur, önceden bildirildi' iddiası sahadaki izlerle doğrulanamadı; koordinat çevresinde iz yok ve çekimde orada araç görülmedi."
+  },
+  {
+   "report_id": "R126",
+   "verdict": "unreliable",
+   "note": "Resmi 'ağır araç, hareketleri olagan' iddiasındaki araç izleriyle doğrulanamadı; 400 m yarıçapta 12:00-14:10 arasında tek iz T0122, o da rapordaki konuma uymuyor."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); herhangi bir araca bağlanamadığından doğrulanamaz ve risk azaltıcı kabul edilmez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:03:08+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000860\",\"question\":\"Bu araç gerçekten kamyon/ağır araç mı? Tipi ve yükü/örtüsü nedir?\",\"vehicle_id\":\"img_000860_006\"}",
+    "summary": "{\"image_id\": \"img_000860\", \"target\": \"img_000860_006 (truck, güven 0.10)\", \"crop_px\": [634, 180, 874, 420], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"gri\", \"cargo\": \"loaded\", \"occluded\": false, \"answer\": \"Kirmiz…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000860\",\"question\":\"Bu noktada track'siz görünen araç gerçekten araç mı, tipi nedir, park halinde mi?\",\"vehicle_id\":\"img_000860_005\"}",
+    "summary": "{\"image_id\": \"img_000860\", \"target\": \"img_000860_005 (car, güven 0.14)\", \"crop_px\": [331, 377, 579, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"other\", \"color\": \"mavi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet g…"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0020\", \"T0122\", \"T0092\", \"T0192\", \"T0032\", \"T0127\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0020\", \"T0122\"], \"relation\": \"met_at_end\", \"common_window\": \"12:10–14:10\", \"dist_m\": {\"min\": 45, \"max\": 11061, \"end\": 45}, \"synchronous_moves\": 2, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0020…"
+   },
+   {
+    "iteration": 2,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9253,\"lon\":32.8718,\"radius_m\":400,\"time_from\":\"12:00\",\"time_to\":\"14:10\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9253, \"lon\": 32.8718, \"radius_m\": 400.0, \"window\": \"12:00–14:10\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 2, \"tracked\": [{\"track_id\": \"T0122\", \"label\": \"truck\", \"detection_id\": \"img_000860_006\", \"image_id\": \"img_0008…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 18111,
+   "output": 3805,
+   "reasoning": 914
+  },
+  "cost_usd": 0.003506,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 114.2
+ }
+}

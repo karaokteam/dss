@@ -1,0 +1,190 @@
+{
+ "image_id": "img_006591",
+ "capture_time": "11:15",
+ "zone": "Bati Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Bölgede üsse tutarlı yaklaşan araç yok; en dikkat çekici araç T0118 (beyaz binek, üsse 2641 m, son 60 dakikada 2123 m yaklaşıp 55 dakika duruyor). Resmî rapor R051'in bu noktadaki '2 kamyon' iddiası gözlemle çelişiyor: görsel teyit üç yakın aracın da binek/van olduğunu gösteriyor; geniş alan taramasında kamyonlar yalnızca ~1,4 km uzakta ve farklı noktalarda bulundu.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_006591_002",
+   "label": "car",
+   "track_id": "T0118",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Beyaz binek otomobil (görsel teyit: kamyon değil, yük yok, güven yüksek; image:img_006591). Track T0118: 2 saatte üsse 7899→2641 m, son 60 dk Δ-2123 m (hızlı yaklaşma), sonrasında 55 dk duruyor; 5 hareketin 4'ü yaklaşan. Temel riskteki faktörler (mid_base, approaching, fast_approach, R051 çelişkisi) korundu; görsel tip teyidi riski değiştirmedi.",
+   "evidence": [
+    "det:img_006591_002",
+    "track:T0118",
+    "report:R051",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_005",
+   "label": "car",
+   "track_id": "T0051",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Ağaç altında kısmen gizli koyu renkli araç; tespit güveni düşük (0,52) ve görsel incelemede van ihtimali net ayırt edilemiyor (güven düşük). Track T0051: 120 dakikadır üsse 2626 m mesafede durağan, hareket yok. Uzun süreli üsse yakın durağanlık + tip belirsizliği temel medium seviyesini doğruluyor; ek somut bulgu olmadığından seviye değişmedi.",
+   "evidence": [
+    "det:img_006591_005",
+    "track:T0051",
+    "report:R051",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_000",
+   "label": "van",
+   "track_id": "T0003",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2606 m; son 60 dk'da üsse 1442 m yaklaştı",
+   "evidence": [
+    "det:img_006591_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_006591_001",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2632 m; çelişen rapor: R051",
+   "evidence": [
+    "det:img_006591_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_006591_004",
+   "label": "car",
+   "track_id": "T0015",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2605 m; dolaşma: yol/yer değiştirme 6.6, 12 hareket",
+   "evidence": [
+    "det:img_006591_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_006591_003",
+   "label": "car",
+   "track_id": "T0219",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 2546 m; son 60 dk'da üsten 1861 m uzaklaştı; dolaşma: yol/yer değiştirme 5.9, 7 hareket",
+   "evidence": [
+    "det:img_006591_003"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R051 sahte/yanlış kamyon iddiası örüntüsü",
+   "risk_level": "medium",
+   "rationale": "Official rapor R051 (10:40) 39.9248N 32.8226E civarında 2 kamyon iddia ediyor; bu görüntüde noktadaki üç yakın aracın tümü binek/van (görsel teyit: det:img_006591_002 beyaz car, det:img_006591_001 van, det:img_006591_005 muhtemel car). 2 km yarıçaplı geniş alan taramasında (10:20–11:15) kamyonlar yalnızca ~1,4 km uzakta ve farklı noktalarda (ör. T0120 min 950 m, T0223 min 997 m, 10:35'te ~1400–1484 m) bulundu; iddia edilen noktada ve anda 2 kamyon yok. Resmî kaynağın gözlemle çelişen raporu şüphe sinyalidir; araç tehdidi taşımadığı için madde medium ile sınırlıdır.",
+   "evidence": [
+    "report:R051",
+    "det:img_006591_002",
+    "det:img_006591_001",
+    "det:img_006591_005",
+    "track:T0120",
+    "track:T0223"
+   ]
+  },
+  {
+   "title": "Üsse yakın uzun süreli durağan araç, tipi görsel olarak kesinleşmedi",
+   "risk_level": "medium",
+   "rationale": "Track T0051 (det:img_006591_005) 120 dakikadır üsse 2626 m mesafede hareketsiz; araç ağaç yaprakları altında kısmen gizli, tespit güveni 0,52 ve görsel inceleme düşük güvenli (van/car ayrımı netleşmedi). R051 çelişkisi bu araca da bağlıyor. Ek veri gelene kadar izlenmeli.",
+   "evidence": [
+    "track:T0051",
+    "det:img_006591_005",
+    "image:img_006591",
+    "report:R051"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R051",
+   "verdict": "unreliable",
+   "note": "İddia edilen noktada 2 kamyon yok; görsel teyit üç yakın aracın da binek/van olduğunu doğruladı. Geniş alandaki kamyonlar ~1,4 km uzakta ve farklı noktalarla bağlanıyor."
+  },
+  {
+   "report_id": "R088",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbar; bu görüntüde gece hareketliliğini destekleyen gözlem yok."
+  },
+  {
+   "report_id": "R136",
+   "verdict": "reliable",
+   "note": "Trafik akışı normal ifadesi gözlemle uyumlu: üsse tutarlı yaklaşan araç 0, çoğu araç yanal/uzaklaşan."
+  },
+  {
+   "report_id": "R111",
+   "verdict": "unverifiable",
+   "note": "Devriye telsiz bağlantısı iddiası bu veri kümesinde doğrulanamıyor veya çürütülemiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-26T23:55:55+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006591\",\"question\":\"Bu araç gerçekten binek otomobil mi, yoksa yük taşıyan kamyon/otobüs mü? Yükü veya örtüsü var mı, rengi nedir?\",\"vehicle_id\":\"img_006591_002\"}",
+    "summary": "{\"image_id\": \"img_006591\", \"target\": \"img_006591_002 (car, güven 0.89)\", \"crop_px\": [0, 377, 251, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kirmizi c…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006591\",\"question\":\"Park halindeki bu araç gerçekten van mı, yoksa kamyon benzeri ağır araç mı? Yükü/örtüsü var mı?\",\"vehicle_id\":\"img_006591_001\"}",
+    "summary": "{\"image_id\": \"img_006591\", \"target\": \"img_006591_001 (van, güven 0.92)\", \"crop_px\": [39, 312, 315, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, kutu…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006591\",\"question\":\"Bu araç bir binek otomobil mi, başka bir tip olabilir mi (van/kamyon)? Yük veya örtü var mı?\",\"vehicle_id\":\"img_006591_005\"}",
+    "summary": "{\"image_id\": \"img_006591\", \"target\": \"img_006591_005 (car, güven 0.52)\", \"crop_px\": [120, 264, 324, 468], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi …"
+   },
+   {
+    "iteration": 2,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9248,\"lon\":32.8226,\"radius_m\":2000,\"time_from\":\"10:20\",\"time_to\":\"11:15\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9248, \"lon\": 32.8226, \"radius_m\": 2000.0, \"window\": \"10:20–11:15\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 9, \"tracked\": [{\"track_id\": \"T0205\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_005788\", \"present\"…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 15993,
+   "output": 3109,
+   "reasoning": 1409
+  },
+  "cost_usd": 0.002433,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 92.8
+ }
+}

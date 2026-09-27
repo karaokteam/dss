@@ -1,0 +1,234 @@
+{
+ "image_id": "img_000531",
+ "capture_time": "12:05",
+ "zone": "Guneybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Görüntüde 10 binek araç var; hiç ağır araç yok ve üsse en yakın hareket eden araçlar bile 4.3–4.5 km uzakta, ETA 100+ dk (T0113/T0099/T0098 tutarlı yaklaşan binekler). R132 ve R046 dost/kimlik teyitli iddiaları gözlemle çelişiyor ve anlatılan araçlar bulunamadı — bu sahte dost iddiası örüntüsü bölgeyi orta düzey dikkat gerektirir; araç bazında tehdit düşük.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000531_001",
+   "label": "car",
+   "track_id": "T0113",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "T0113: son 60 dk'da üsse 2627 m yaklaştı, ETA 100 dk; ancak üsse hâlâ 4373 m uzakta, binek araç, dolaşma düşük (2.4) ve konvoy kanıtı yok (co_movement: T0099/T0098 ile 'met_at_end', chance_rate 0.434).",
+   "evidence": [
+    "det:img_000531_001",
+    "track:T0113",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_002",
+   "label": "car",
+   "track_id": "T0099",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "T0099: son 60 dk'da 2395 m yaklaştı, ETA 112 dk; üsse 4485 m uzaklıkta binek araç; hareketler bağımsız (met_at_end, chance_rate 0.188–0.434), koordineli yaklaşma kanıtı yok.",
+   "evidence": [
+    "det:img_000531_002",
+    "track:T0099",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_005",
+   "label": "car",
+   "track_id": "T0098",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "T0098: son 60 dk'da 2027 m yaklaştı, 6/8 hareket yaklaşan; üsse 4359 m uzakta binek araç, varış süresi 129 dk, gruplaşma kanıtı yok.",
+   "evidence": [
+    "det:img_000531_005",
+    "track:T0098",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_000",
+   "label": "car",
+   "track_id": "T0189",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 1093 m yaklaştı",
+   "evidence": [
+    "det:img_000531_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_007",
+   "label": "car",
+   "track_id": "T0197",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "dolaşma: yol/yer değiştirme 4.6, 10 hareket",
+   "evidence": [
+    "det:img_000531_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_003",
+   "label": "car",
+   "track_id": "T0110",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3875 m uzaklaştı",
+   "evidence": [
+    "det:img_000531_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_004",
+   "label": "car",
+   "track_id": "T0139",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 957 m uzaklaştı",
+   "evidence": [
+    "det:img_000531_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_006",
+   "label": "car",
+   "track_id": "T0037",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3562 m uzaklaştı",
+   "evidence": [
+    "det:img_000531_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_000531_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000531_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_000531_009"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Bulunamayan araçlara dayanan dost kimlik iddiaları",
+   "risk_level": "medium",
+   "rationale": "R132 (10:15) ve R046 (11:40) 'kimlik teyitli' dost araç iddia ediyor; ancak her iki rapor saatinde koordinatın 60 m yakınında track yok, çekimde track'siz araç da görülmedi (en yakın track sırasıyla 1058 m ve 677 m). Gözlem raporu geçersiz kılıyor; tekrar eden sahte dost iddiası örüntüsü izlenmeli.",
+   "evidence": [
+    "report:R132",
+    "report:R046",
+    "image:img_000531"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R132",
+   "verdict": "unreliable",
+   "note": "Kimlik iddiası ÇELİŞKİLİ; anlatılan araç koordinat 60 m yakınında bulunamadı (en yakın track 1058 m)."
+  },
+  {
+   "report_id": "R046",
+   "verdict": "unreliable",
+   "note": "Mavi araç devriye iddiası ÇELİŞKİLİ; araç izi bulunamadı (en yakın track 677 m)."
+  },
+  {
+   "report_id": "R008",
+   "verdict": "reliable",
+   "note": "Bölgede olağandışı durum yok iddiası DOĞRULANDI; görüntüdeki tablo (yalnız binek, düşük risk) ile uyumlu."
+  },
+  {
+   "report_id": "R012",
+   "verdict": "reliable",
+   "note": "'Ağır araç yok, yalnız binek' DOĞRULANDI; görüntüde 10 binek araç var, ağır yok."
+  },
+  {
+   "report_id": "R137",
+   "verdict": "reliable",
+   "note": "'Ağır araç yok' DOĞRULANDI; görüntüyle uyumlu."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulanamaz, risk değerlendirmesine etki etmez."
+  },
+  {
+   "report_id": "R090",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamadı; ek kanıt yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T21:56:19+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0113\", \"T0099\", \"T0098\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0113\", \"T0099\"], \"relation\": \"met_at_end\", \"common_window\": \"10:05–12:05\", \"dist_m\": {\"min\": 112, \"max\": 3280, \"end\": 112}, \"synchronous_moves\": 4, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T011…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 16468,
+   "output": 3131,
+   "reasoning": 987
+  },
+  "cost_usd": 0.002538,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 83.6
+ }
+}

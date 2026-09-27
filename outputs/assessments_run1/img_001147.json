@@ -1,0 +1,210 @@
+{
+ "image_id": "img_001147",
+ "capture_time": "15:20",
+ "zone": "Guneybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Guneybati Yolu'nda üsse 3.5 km mesafede iki hareketli araç dikkat çekiyor: T0060 tutarlı yaklaşıyor (6/6 hareket, ETA 99 dk), T0078 hızlı yaklaşıyor ve kamyon (ETA 48 dk). Ayrıca iki farklı kaynak (R022, R055) aynı koordinatta kamyon bildirirken görsel incelemede bölgede kamyon yok; park halinde kırmızı otomobil var — sahte/çelişen rapor örüntüsü şüphe sinyali.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001147_003",
+   "label": "car",
+   "track_id": "T0060",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "T0060: 2 saatte 6 hareketin hepsi üsse yaklaştırdı (6819→3559 m), son 60 dk Δ-2158 m, TUTARLI YAKLAŞMA, ETA 99 dk. Temel 40 (medium) yerinde; mesafe hâlâ 3559 m olduğu için high yapılmadı.",
+   "evidence": [
+    "det:img_001147_003",
+    "track:T0060"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001147_004",
+   "label": "truck",
+   "track_id": "T0078",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 35,
+   "override_reason": null,
+   "rationale": "T0078: ağır araç (truck, 0.74), son 60 dk üsse 4431 m hızlı yaklaşma, ETA 48 dk (kısa varış). Temel 35 (medium) yerinde; tutarlı yaklaşma yok (4/6) ve konvoy kanıtı bulunmadığı için high'a çıkılmadı.",
+   "evidence": [
+    "det:img_001147_004",
+    "track:T0078"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001147_000",
+   "label": "car",
+   "track_id": "T0029",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R055",
+   "evidence": [
+    "det:img_001147_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_002",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R022, R055",
+   "evidence": [
+    "det:img_001147_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R022, R055",
+   "evidence": [
+    "det:img_001147_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_007",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 5,
+   "override_reason": null,
+   "rationale": "ağır araç (truck); track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_001147_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_001",
+   "label": "car",
+   "track_id": "T0107",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 468 m uzaklaştı; dolaşma: yol/yer değiştirme 3.9, 8 hareket",
+   "evidence": [
+    "det:img_001147_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_001147_006"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Çelişen kamyon raporu örüntüsü (R022 + R055)",
+   "risk_level": "medium",
+   "rationale": "Hem third_party R022 hem official R055 aynı koordinatta (39.8960N 32.8292E) kamyon bildiriyor; ancak tespitlerde bu tipte araç yok ve görsel inceleme çevrede kamyon/ağır araç olmadığını, park halinde kırmızı bir otomobil bulunduğunu doğruladı (güven medium). Official kaynağın gözlemle çelişmesi tek başına şüphe sinyalidir; ancak tespit edilen araçların risk seviyesi buna göre yükseltilmedi (park halinde, track'siz, hareket yok).",
+   "evidence": [
+    "report:R022",
+    "report:R055",
+    "det:img_001147_005",
+    "det:img_001147_002",
+    "image:img_001147"
+   ]
+  },
+  {
+   "title": "T0060-T0078 eşzamanlı yaklaşma ancak konvoy kanıtı yok",
+   "risk_level": "low",
+   "rationale": "co_movement: sonunda 38 m'ye buluşuyorlar ('met_at_end') ve 15:10-15:20 arasında eşzamanlı hareketler var; ancak chance_rate 0.434 ve hareket örüntüsü bağımsız — koordinasyon/konvoy iddiası bu veriyle desteklenmiyor. Yine de her iki aracın da aynı anda üsse yönelmesi izlenmeye devam edilmeli.",
+   "evidence": [
+    "track:T0060",
+    "track:T0078"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R022",
+   "verdict": "unreliable",
+   "note": "Hareket iddiası (kamyon uzaklaşıyor) park halindeki araçlarla çelişiyor; görsel incelemede kamyon yok, kırmızı otomobil mevcut — tip de yanlış."
+  },
+  {
+   "report_id": "R055",
+   "verdict": "partly_reliable",
+   "note": "count=ÇELİŞKİLİ (kamyon yok), stationary=KISMEN (konumda araçlar var ve duruyor ancak tip uyuşmuyor). Konum kısmen doğru, araç tanımı hatalı."
+  },
+  {
+   "report_id": "R086",
+   "verdict": "reliable",
+   "note": "Sabah devriyesi olagandışı durum bildirmemiş; zone_status doğrulandı, ancak sabah bilgisi 15:20 durumu hakkında güncel veri vermiyor."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); hiçbir aracın riskini düşürmez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "2c483dfdf533",
+  "created_at": "2026-09-26T22:06:43+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0060\", \"T0078\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0060\", \"T0078\"], \"relation\": \"met_at_end\", \"common_window\": \"13:20–15:20\", \"dist_m\": {\"min\": 38, \"max\": 12935, \"end\": 38}, \"synchronous_moves\": 3, \"same_direction_moves\": 2, \"chance_rate\": 0.434}], \"chance_rate_note…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"Bu araç gerçekten kamyon/ağır araç mı, yoksa otomobil mi? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_001147_007\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_007 (truck, güven 0.16)\", \"crop_px\": [792, 198, 960, 394], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Cok k…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"lat\":39.8960,\"lon\":32.8292,\"question\":\"Bu noktanın çevresinde kamyon/ağır araç var mı, yoksa yalnızca otomobil mi görünüyor? Park halinde araçların rengi ve tipi nedir?\",\"vehicle_id\":\"img_001147_005\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_005 (car, güven 0.69)\", \"crop_px\": [305, 196, 465, 356], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": null, \"occluded\": false, \"answer\": \"Cevrede ka…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 16320,
+   "output": 3857,
+   "reasoning": 2367
+  },
+  "cost_usd": 0.003447,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 128.4
+ }
+}

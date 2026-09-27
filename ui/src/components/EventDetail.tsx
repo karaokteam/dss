@@ -110,6 +110,7 @@ export default function EventDetail(p: Props) {
                   <span className="w-2.5 h-2.5 rounded-full" style={{ background: RISK_COLOR[levelOf[x.vehicle_id]] }} />
                   <b className="w-14">{x.track_id ?? "?"}</b>
                   <span className="text-slate-400 flex-1">{x.label ? LABEL_TR[x.label] ?? x.label : "tespitsiz"}</span>
+                  {x.kinematics?.circling && <span title={`üssün etrafında döndü ${x.kinematics.circling_window}`} className="text-red-400 text-xs">↻</span>}
                   {x.kinematics?.consistent_approach && <span title="tutarlı yaklaşma" className="text-red-400 text-xs">⇣⇣</span>}
                   <span className="text-xs text-slate-500 font-mono">{km(x.dist_to_base_m)}</span>
                 </div>
@@ -157,6 +158,8 @@ export default function EventDetail(p: Props) {
                     <Stat k="Son 60 dk" v={`${MOTION_TR[v.kinematics.motion] ?? v.kinematics.motion}`} />
                     <Stat k="Hareket ↓/↑" v={`${v.kinematics.approach_moves} / ${v.kinematics.recede_moves}`} />
                     <Stat k="Tutarlı yaklaşma" v={v.kinematics.consistent_approach ? "EVET" : "hayır"} red={v.kinematics.consistent_approach} />
+                    {v.kinematics.circling && <Stat k="Üssün etrafında döndü" v={`${v.kinematics.circling_window} · ~${Math.round(v.kinematics.circling_radius_m ?? 0)} m`} red />}
+                    {!v.kinematics.circling && v.kinematics.min_dist_to_base_m < v.kinematics.dist_to_base_m - 200 && <Stat k="Üsse en yakın" v={km(v.kinematics.min_dist_to_base_m)} red={v.kinematics.min_dist_to_base_m < 1000} />}
                     <Stat k="Duruyor" v={`${v.kinematics.stationary_min} dk`} />
                     <Stat k="ETA" v={v.kinematics.eta_min != null ? `${Math.round(v.kinematics.eta_min)} dk` : "-"} />
                   </div>

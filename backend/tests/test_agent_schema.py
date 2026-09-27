@@ -30,7 +30,7 @@ def _valid(dossier):
         "summary": "Doğu Yolu'nda 2 saattir duran bir kamyon; hakkındaki ikmal iddiası çelişkili.",
         "vehicles": [{"vehicle_id": v.vehicle_id, "risk_level": v.baseline_risk.level.value, "override_reason": None,
                       "rationale": "temel seviye uygun", "evidence": [f"det:{v.vehicle_id}"]} for v in medium],
-        "attention_items": [{"title": "Sahte ikmal iddiası", "risk_level": "medium",
+        "attention_items": [{"title": "Gözlemle çelişen ikmal iddiası", "risk_level": "medium",
                              "rationale": "R083 otomobil diyor, orada duran kamyon var.",
                              "evidence": ["report:R083", "track:T0045"]}],
         "report_notes": [{"report_id": "R083", "verdict": "unreliable", "note": "tip ve hareket çelişiyor"}],
@@ -39,6 +39,15 @@ def _valid(dossier):
 
 def test_valid_output_passes(dossier):
     assert validate(_valid(dossier), dossier) == []
+
+
+def test_upgrade_on_ruled_out_signal_rejected(dossier):
+    out = copy.deepcopy(_valid(dossier))
+    v = out["vehicles"][0]
+    v.update(risk_level="critical", override_reason="Araçlar son adımda bir araya geliyor, chance_rate düşük.")
+    assert any("elenmiş" in e for e in validate(out, dossier))
+    v.update(override_reason="Görsel teyit: yüklü kamyon; son adımda bir araya geliyor.")
+    assert not any("elenmiş" in e for e in validate(out, dossier))
 
 
 @pytest.mark.parametrize("mutate, expected", [
@@ -108,3 +117,28 @@ def test_consistent_approach_guardrail_ignores_negations():
     assert not f("Tutarlı yaklaşma işareti yok; temel skor korunuyor")
     assert not f("tutarlı yaklaşma değil, yalnızca yaklaşıyor")
     assert not f("hareketleri tutarlı yaklaşma sayılmaz")
+
+
+def test_consistent_guardrail_in_free_text():
+    from backend.engine.agent.schemas import _misused_consistent as f
+    assert f("T0011 üsse tutarlı yaklaşıyor.", {"T0122"}) == ["T0011"]
+    assert f("T0122 tutarlı yaklaşan kamyon; T0092 ise yalnızca yaklaşıyor.", {"T0122"}) == []
+    assert f("T0092 için tutarlı yaklaşma işareti yok.", {"T0122"}) == []
+
+
+def test_normalize_refs_and_fake_word(dossier):
+    from backend.engine.agent.schemas import normalize_refs
+    out = _valid(dossier)
+    out["vehicles"][0]["evidence"] = [f"image:{out['vehicles'][0]['vehicle_id']}", "T0045"]
+    normalize_refs(out)
+    assert out["vehicles"][0]["evidence"] == [f"det:{out['vehicles'][0]['vehicle_id']}", "track:T0045"]
+    assert validate(out, dossier) == []
+    out["summary"] = "R083 sahte bir ikmal iddiası."
+    assert any("sahte" in e for e in validate(out, dossier))
+
+
+def test_consistent_guard_attributes_to_following_track():
+    from backend.engine.agent.schemas import _misused_consistent
+    text = "T0057 tespiti doğrulanamadı ve R002 derken tutarlı yaklaşan T0184'ü görmezden geliyor."
+    assert _misused_consistent(text, {"T0184"}) == []
+    assert _misused_consistent("T0057 tutarlı yaklaşma gösteriyor.", {"T0184"}) == ["T0057"]

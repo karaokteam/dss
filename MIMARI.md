@@ -12,7 +12,7 @@
 2. **Mimari karar:** **Hibrit iki katman.** Katman 1, LLM kullanmadan her görüntü için eksiksiz bir *kanıt dosyası* üretir (tespit ↔ track füzyonu, kinematik, rapor doğrulama, kural tabanlı risk). Katman 2'de bir LLM agent bu dosyayı okur, **yalnızca belirsiz noktalarda** tool'larla soruşturma yapar ve son kararı gerekçesiyle verir.
 3. **Neden böyle:** Zorunlu kanıtın LLM'in insiyatifine kalması, sessiz kaçırmalara yol açar. Deterministik iş LLM'e yaptırıldığında hem pahalı hem tekrarlanamaz olur. LLM'in gerçek değeri belirsizliği çözmek ve gerekçe yazmaktır.
 4. **Güvence:** Kanıt hiyerarşisi (tespit > hareket > rapor), şema doğrulayıcısı, iterasyon ve tool sınırları, bütçe freni ve kural tabanlı yedek. Sistem hiçbir durumda sonuçsuz kalmaz ve her iddia bir kanıt kimliğine bağlanır.
-5. **Sonuç:** 40/40 görüntü 0,17 USD'ye değerlendirildi. 18 dost iddiasının 16'sı gözlemle çelişiyor. İki kritik tehdit bulundu; biri, YOLO'nun **ağaç altında kaldığı için göremediği** ve füzyonla yakalanan bir araç. Operatör sonucu tek ekranda, haritada ve sohbet asistanıyla inceleyebiliyor.
+5. **Sonuç:** 40/40 görüntü ~0,15 USD'ye değerlendirildi. 18 dost iddiasının 16'sı gözlemle çelişiyor. En kritik tehdit üsse her hareketinde yaklaşan bir kamyon (T0122); yüksek riskli bir araç da YOLO'nun **ağaç altında kaldığı için göremediği**, füzyonla yakalanan T0188. Operatör sonucu tek ekranda, haritada ve sohbet asistanıyla inceleyebiliyor.
 
 ---
 
@@ -138,6 +138,8 @@ Bu katman LLM olmadan çalışır. Anahtar olmasa bile 40 görüntünün kanıt 
   - *"Yakınsama" (araçların aynı noktaya gelmesi) sinyal olarak reddedildi.* 226 track'in 184'ü son 5 dakikada bulunduğu noktaya varmış, yani bu durum olağan.
   - *"Son 1 saatte yaklaştı" etiketi zayıf bir sinyal.* 121 araçta var, çünkü görüntüler track başlangıçlarından üsse daha yakın.
   - Güçlü sinyal **tutarlı yaklaşma**: yalnızca **7 araçta** var.
+  - **Üssün etrafında dönme:** ardışık ≥ 3 noktada üsse uzaklık ±30 m bantta, üsse < 1,5 km ve açısal tarama ≥ 120°. **5 araçta** var (T0043, T0158, T0172, T0198 otomobil; T0034 kamyon), hepsi 527–875 m yarıçapta 330°'den fazla tur atmış. Görüntüler arasında olduğu için fotoğrafta görünmez; yalnızca hareket kaydından bulunur.
+  - **Yakın geçiş:** kayıt içinde üsse < 1 km yaklaşıp sonra uzaklaşan araç (+10).
   - **ETA yalnızca hâlâ hareket eden araçlara** veriliyor. 30 dakikadan uzun süredir duran bir araç için ortalama hıza dayalı ETA yanıltıcı olurdu.
 - **Rapor doğrulama için:** `track_state_at(t)` aracın bir andaki durumunu **yalnızca o ana kadarki kayıtla** hesaplar. Böylece "rapor saatinde araç ne yapıyordu" sorusu geleceği görmeden cevaplanır.
 
@@ -157,26 +159,32 @@ Bu katman LLM olmadan çalışır. Anahtar olmasa bile 40 görüntünün kanıt 
   - **20'sinde 150 m içinde hiç araç yok**: yanlış rapor ya da park halinde araç.
 
 ### 4.6 İddia doğrulama: "özne" kavramı
-- **Özne:** Raporun anlattığı olası araç. İki türü var:
-  - **tracked:** rapor saatinde yakında bulunan track.
-  - **parked:** görüntüde koordinata yakın, track'i olmayan ve güveni en az 0,30 olan tespit.
+- **Rapor koordinatı = aracın GÖRÜNTÜDEKİ konumu.** Koordinatlı rapor, anlattığı aracın fotoğraftaki yerini verir (5 ondalıklı koordinatların 31/35'i görüntüdeki bir araca ≤ 3 m; rapor saatindeki konuma yakın olan 0/35). Bu yüzden özne **görüntüde** aranır; iddia ise o aracın **rapordan önceki 30 dakikadaki** davranışıyla yargılanır. Tolerans: koordinat hassasiyetine göre (5 hane ~3 m, 4 hane ~12 m).
+- **Özne:** Görüntüde koordinata en yakın araç, tip uyuşan tercih edilir.
+  - **tracked:** görüntüde biten track'i olan araç (hareket geçmişi var).
+  - **parked:** track'i olmayan, güveni en az 0,30 olan tespit.
 - Her iddia tipinin kendi doğrulama fonksiyonu var. Sonuç dört değerden biri: **doğrulandı / kısmen / çelişkili / doğrulanamaz**. Her sonucun yanında sayılara dayanan bir gerekçe ve kanıt kimlikleri var.
 - **Özel kurallar:**
-  - **Dost / ikmal iddiası veriden doğrudan teyit edilemez.** Varlık, tip ve hareket tutarlıysa "fiziksel olarak tutarlı" sayılır. Renk iddiası görsel kontrol gerektirdiği için en fazla "kısmen" olabilir.
-  - **Anlatılan araç yoksa:** dost iddiası "çelişkili" sayılır, çünkü riski düşürmeye yönelik bir iddiada ispat yükü rapordadır. Diğer iddialar "doğrulanamaz" sayılır, çünkü park halindeki bir araç görüntü dışında kalmış olabilir.
-  - Kayıt başından beri duran bir araçta süre iddiası **alt sınır** olarak değerlendirilir.
+  - **Dost / ikmal / "hareketleri olağan" iddiaları riski ASLA düşürmez.** Kimlik drone ve hareket verisinden teyit edilemez; bu yüzden dost iddiası en fazla "kısmen" olur. Fiziksel ayrıntı (tip, hareket) çelişirse "çelişkili".
+  - **Güven verici iddia + üsse yaklaşan araç = şüphe.** Araç rapordan önce ya da rapordan sonra çekime kadar üsse yaklaşmışsa iddia bayraklanır (`reassuring_claim`, +10). Rapor anında doğru olsa bile ("hareketleri olağan" dendiğinde duruyordu, sonra 4,3 km yaklaştı) hüküm "kısmen" olur.
+  - **Rapordan sonraki yaklaşma hükmü yumuşatmaz**; rapordan önce uzaklaşan araç için "üsse geliyor" iddiası çelişkilidir. Rapordan önce duran, sonra yaklaşan araç için "kısmen".
+  - **Kısmi kapsama:** İddia edilen sürenin yalnız bir kısmı veride varsa ve o kısımda durağansa "kısmen".
+  - **Sayı:** Görülen, iddianın yarısından azsa "çelişkili" (ciddi şişirme); daha azsa "kısmen".
+  - **Bölge raporları** rapor anı ve önceki 15 dakikadaki track'lerle kontrol edilir. Ağır araç / dönen araç görülürse çelişkili. Yokluk tam doğrulamaz (park halindeki araçların track'i olmayabilir): "kısmen".
 - **Bulgular (sunum için):**
 
 | Kalıp | Örnek | Sonuç |
 |---|---|---|
-| Sayı şişirme | "5 kamyon durdu" → 1 kamyon | kısmen |
-| Yanlış tip | img_003201 "ağır araç" → yalnızca otomobiller | çelişkili |
-| Sahte ikmal hikâyesi | "üsse ilerleyen ikmal otomobili" → orada duran bir kamyon var | çelişkili |
-| Araç yok | "üsse gelen dost otomobil" → rapor anında orada araç yok | çelişkili |
-| Bölge raporu | "Kuzeydoğu'da ağır araç yok" → bölgede kamyonlar var | çelişkili |
+| Güven verici iddia, yaklaşan araç | R126 "hareketleri olağan" (12:35) → T0122 kamyonu sonra üsse 4,3 km yaklaşıyor | kısmen + şüphe |
+| Dost iddiası, yaklaşan araç | R113 "bize bağlı" → T0124 30 dk'da üsse 3,2 km yaklaşmış | kısmen + şüphe |
+| Ters yön | R007 "üsse gelen dost otomobil" → T0131 rapordan önce 1,9 km uzaklaşıyor | çelişkili |
+| Bölge raporu | R017 "ağır araç yok" (10:20) → bölgede T0174 kamyonu | çelişkili |
+| "Olağan" bölge, dönen araç | R042 "Kuzeybatı'da olağandışı yok" (15:00) → T0034 kamyonu üssün etrafında 527 m'de dönüyor | çelişkili |
+| Sayı şişirme | R018 "5 kamyon durdu" → görüntüde 1 | çelişkili |
 
-  - **18 dost iddiasının 16'sı gözlemle çelişiyor.** Kalan 2'si renk iddiası içerdiği için görsel kontrol bekliyor. Yani bu veride dost iddiası **şüphe sinyali**.
-  - **Koordinatlı raporlarda official olanların %57'si (28/49), third_party olanların %39'u (9/23) çelişkili.** Bu yüzden kaynak türü güvenilirlik göstergesi olarak kullanılmıyor. Rapor, yalnızca gözlemle doğrulandığı ölçüde ağırlık alıyor.
+  - **18 dost iddiasının 17'si üsse yaklaşan bir araca iliştirilmiş.** Bu veride dost iddiası **şüphe sinyali**; hiçbiri riski düşürmez.
+  - **Koordinatlı raporlarda official olanların %18'i (9/49), third_party olanların %30'u (7/23) çelişkili.** Kaynak türü güvenilirlik göstergesi olarak kullanılmıyor.
+  - **Elle etiketli altın küme (23 rapor, ekip):** Katman 1 hüküm doğruluğu **22/23 (%96)**, kritik track atfı %89. `python -m backend.cli eval`.
 
 ### 4.7 Kural tabanlı risk skoru
 - **Ne:** 0–100 arası skor ve seviye (kritik ≥ 70, yüksek ≥ 50, orta ≥ 25). Skor, **her biri açıklamalı** 16 faktörün toplamı.
@@ -185,12 +193,12 @@ Bu katman LLM olmadan çalışır. Anahtar olmasa bile 40 görüntünün kanıt 
 |---|---|
 | Konum | üsse < 2 km (+20), < 3,5 km (+10) |
 | Tip | ağır araç (+15), ≥3 ağır araçlık grup (+10) |
-| Hareket | **tutarlı yaklaşma (+20)**, son 60 dk yaklaşma (+10), ≥2 km hızlı yaklaşma (+10), ETA < 15 dk (+15), üsse yakın uzun bekleme (+10), dolaşma (+10), uzaklaşma (−10) |
-| Rapor | çelişen rapor (+10), kısmen tutan rapor (+8), çelişen dost iddiası (+10), doğrulanmış dost iddiası (−15) |
+| Hareket | **üssün etrafında dönme (+35)**, **tutarlı yaklaşma (+20)**, son 60 dk yaklaşma (+10), ≥2 km hızlı yaklaşma (+10), ETA < 15 dk (+15), üsse yakın geçiş (+10), üsse yakın uzun bekleme (+10), dolaşma (+10), uzaklaşma (−10) |
+| Rapor | yalnızca **güven verici iddia** (dost / "olağan" / "uzaklaşıyor") çelişirse ya da üsse yaklaşan araca iliştirilmişse (+10). Hiçbir rapor riski düşürmez; yanlış bir tehdit iddiası (şişirilmiş sayı) aracın riskini artırmaz. |
 | Tespit | track'siz ve düşük güvenli tespit (−10) |
 
 - **Ağırlık ilkesi:** Fiziksel tehdit rapor çelişkisinden ağır basar; rapor çelişkisi tek başına kritik seviye üretemez. İlk kalibrasyonda duran ama raporla çelişen kamyonlar, üsse tutarlı yaklaşan kamyonla aynı skoru alıyordu. Ağırlıklar düzeltildi: tutarlı yaklaşma 15'ten 20'ye çıktı, rapor çelişkisi 15'ten 10'a indi.
-- **Doğrulanmamış dost iddiası riski asla düşürmez.** Bu kural testle korunuyor.
+- **Hiçbir rapor riski düşürmez.** Bu kural testle korunuyor.
 
 ### 4.8 Kanıt dosyası (dossier)
 Her görüntü için tek bir JSON:
@@ -257,22 +265,31 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
   - Temel seviyeden sapan her kararın gerekçesi olmalı.
   - **Her kanıt kimliği veride gerçekten var olmalı** (uydurma kimlik reddedilir).
   - Genel risk, araçların en yüksek seviyesinden düşük olamaz.
-- **Deterministik koruma:** Agent, kanıt dosyasında tutarlı yaklaşma işareti olmayan bir araç için "tutarlı yaklaşma" derse çıktı reddedilir ve düzeltme istenir. Olumsuz cümleler ("tutarlı yaklaşma işareti yok") muaf tutulur. Yani bilinen bir hata türü prompt'a güvenmek yerine **kodla** engelleniyor.
+- **Deterministik korumalar:** Bilinen hata türleri prompt'a güvenmek yerine **kodla** engelleniyor:
+  - Kanıt dosyasında işareti olmayan araç için "tutarlı yaklaşma" denirse çıktı reddedilir (olumsuz cümleler muaf).
+  - Riski yükseltme gerekçesi yalnızca veride tesadüften ayırt edilemediği gösterilmiş sinyallere dayanıyorsa (tesadüf oranı, toplanma, "son adımda vardı") reddedilir; görsel teyit gibi somut yeni bulgu gerekir.
+  - "sahte" kelimesi yasak (doğrulanamaz ≠ sahte).
 
 ### 5.6 Sonuçlar ve iyileştirme döngüsü
 İlk tam çalıştırmada (run1) agent'ın **aşırı yorum** yaptığı görüldü: tesadüfi hareket çakışmalarına "koordinasyon" dedi ve riskleri gereksiz yükseltti. Prompt kuralları ve koruma eklendikten sonraki durum (run2):
 
-| | run1 | run2 |
-|---|---|---|
-| Agent'ın temel seviyeyi değiştirdiği araç | 40 (38'i yükseltme) | **11 (8'i yükseltme)** |
-| "Koordinasyon" dikkat maddesi olan görüntü | 22 | **8** |
-| Görüntü riski (kritik / yüksek / orta / düşük) | 1 / 19 / 15 / 5 | **2 / 7 / 25 / 6** |
-| Yedek sonuç | 0 | 0 |
+| | run1 | run2 (prompt kuralları) | run3 (öz denetim) | **run4 (dış gözden geçirme sonrası)** |
+|---|---|---|---|---|
+| Agent'ın temel seviyeyi değiştirdiği araç | 40 (38'i yükseltme) | 11 (8'i yükseltme) | 2 | **3** (hepsi görsel teyide dayalı) |
+| "Koordinasyon / toplanma" dikkat maddesi | 22 görüntü | 8–9 | 2 | **0** (ifadeler "koordinasyon kanıtı yok") |
+| "Sahte" nitelemesi | – | 12 | 0 | **0** |
+| Görüntü riski (kritik / yüksek / orta / düşük) | 1 / 19 / 15 / 5 | 2 / 7 / 25 / 6 | 1 / 8 / 27 / 4 | **6 / 8 / 24 / 2** |
+| Agent rapor hükmü, altın küme (23) | – | – | 13/23 | **21/23** |
+| Yedek sonuç | 0 | 0 | 0 | **0** (2 görüntü doğrulayıcı düzeltmesiyle) |
 
-- **Maliyet:** 40 görüntü için run başına ~0,17 USD. Görüntü başına ortalama ~100 saniye (düşünme dahil, 4 paralel istek). Tool kullanımı: 74 görsel teyit, 25 alan sorgusu, 16 birlikte hareket sınaması.
-- **İki kritik tehdit:**
-  1. **T0122 (img_000860, 14:10):** 2 saatte her hareketinde üsse yaklaşan, 6 km'den 1,6 km'ye gelen kamyon. Tespit güveni yalnızca 0,10, ama agent görsel teyitle aracın yüklü bir kamyon olduğunu doğruladı. ETA ~26 dk. Hakkındaki "dost otomobil" raporu gözlemle çelişiyor.
-  2. **T0188 (img_002900, 13:50):** **YOLO'nun görmediği** araç. Ağaç altında kalıyor; hareket kaydı sayesinde yakalandı. 5,7 km'den 1,6 km'ye yaklaşmış, ETA ~20 dk. Agent görsel teyitle örtülmeyi doğruladı ve seviyeyi yüksekten kritiğe çıkardı.
+- **Maliyet:** 40 görüntü için run başına ~0,14–0,17 USD (run4: 0,14 USD, ~17 dk). Run4 tool kullanımı: 50 görsel teyit, 21 alan sorgusu, 10 birlikte hareket sınaması.
+- **Run4'te düzeltilen iki doğrulayıcı açığı:** (1) "tutarlı yaklaşan T0184" ifadesi aynı cümlede önce geçen başka bir track'e atfediliyordu; artık ifadeden sonraki kimlik esas. (2) Genel risk araçların en yüksek seviyesinden düşük yazılınca cevap reddediliyordu; bu mekanik tutarsızlık artık otomatik düzeltiliyor.
+- **Görsel teyit kararlı değil:** T0122 kırpması run3'te "yüklü kamyon", run4'te "araç seçilemiyor" dendi. Karar ikisinde de kritik, çünkü dayanak hareket kaydı; ajan belirsiz görsel sonucu riski düşürmek için kullanmıyor.
+- **Yorum:** Agent artık temel riskle çoğunlukla hemfikir. Seviyeyi yalnızca somut bir bulguyla değiştiriyor. Katkısı gerekçe yazmak, raporları hükme bağlamak, görsel teyit yapmak ve belirsiz raporları soruşturmak.
+- **Öne çıkan tehditler:**
+  1. **T0122 (img_000860, 14:10), KRİTİK:** 2 saatte her hareketinde üsse yaklaşan, 6 km'den 1,6 km'ye gelen kamyon. Tespit güveni yalnızca 0,10 ve görsel teyit belirsiz; karar hareket kaydına dayanıyor. ETA ~26 dk. 12:35'teki "hareketleri olağan" raporu (R126) bu kamyona ait; rapordan sonra üsse 4,3 km yaklaştı → şüphe.
+  2. **Üssün etrafında dönen 5 araç (KRİTİK):** T0043, T0158, T0172, T0198 otomobil; T0034 kamyon (14:45–15:05, 527 m). R042 "Kuzeybatı'da olağandışı yok" (15:00) bu turla çelişiyor.
+  3. **T0188 (img_002900, 13:50), YÜKSEK:** **YOLO'nun görmediği** araç. Ağaç altında kalıyor, yalnızca hareket kaydı sayesinde yakalandı. 5,7 km'den 1,6 km'ye yaklaşmış (7 hareketin 5'i yaklaşan), ETA ~20 dk. Görsel teyit örtülmeyi doğruladı.
 
 ---
 
@@ -285,7 +302,7 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
 | Maliyet bulgusu | Yanıt header'ındaki istek maliyeti gerçek harcamanın ~1/3'ü çıktı; takip gerçek harcama üzerinden yapılıyor | Yanlış maliyet tahmini riski |
 | `prompt_loader.py` | Şablon doldurma ve prompt sürüm hash'i | Prompt değişince önbellekteki eski sonuçlar "eski" sayılır |
 
-**Toplam harcama:** tüm geliştirme, 2 tam çalıştırma, testler ve chatbot dahil **~0,54 / 15 USD**.
+**Toplam harcama:** tüm geliştirme, 3 tam çalıştırma, testler ve chatbot dahil **~0,71 / 15 USD**.
 
 ---
 
@@ -314,7 +331,7 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
 ---
 
 ## 8. Güvenilirlik ve test
-- **114 otomatik test (ağsız):**
+- **117 otomatik test (ağsız):**
   - Veri sayımları; PDF'teki dönüşüm örneği; 202 eşleşme; kinematik vakaları (T0045 durağan, T0020 tutarlı yaklaşma).
   - Bilinen rapor vakaları (R053 doğrulandı, img_003201'deki çelişkiler).
   - Tool hata güvenliği.
@@ -335,6 +352,17 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
 
 ---
 
+## 8b. Öz denetim
+Sistem, bir analist gözüyle kendi kararlarına karşı denetlendi (ayrıntı: FINDINGS.md §D).
+Bulunan ve kapatılan açıklar:
+1. **Rapor koordinatının anlamı (dış gözden geçirme):** Koordinat, aracın rapor saatindeki değil **görüntüdeki** konumu (5 ondalıklı koordinatların 31/35'i görüntüdeki araca ≤ 3 m). Eski eşleştirme rapor saatindeki konuma bakıyordu; dost iddialarının çoğu yanlış araca bağlanıp "araç yok, çelişkili" sayılıyordu. Yeni eşleştirme özneyi görüntüde bulur, iddiayı rapordan önceki 30 dakikayla yargılar. Sonuç: dost iddialarının 17/18'i üsse yaklaşan araçta; T0122'ye iliştirilen "hareketleri olağan" (R126) raporu yakalandı.
+2. **Kaçırılan sinyal: üssün etrafında dönme.** Önceki denetimde "üsse yaklaşıp uzaklaşan araçlar olağan trafik" denmişti (D9). Daha dar bir desen, sabit yarıçapta tur atma, 5 araçta bulundu ve en güçlü risk faktörü yapıldı; R042 "Kuzeybatı'da olağandışı yok" raporu T0034'ün turuyla çelişiyor.
+3. **Elenmiş sinyallerle yükseltme:** Agent tesadüf oranı ya da "son adımda vardı" gibi elenmiş sinyallerle riski yükseltiyordu; doğrulayıcı artık bunu reddediyor.
+4. **Gelecek bilgisi sızıntısı:** "Trafik normal" kontrolü track'in sonundaki durumu kullanıyordu; artık rapor anındaki durum (`track_state_at`).
+5. **Agent aşırı yorumu:** "toplanma" ve "doğrulanamaz = sahte" gibi yorumlar prompt kuralı + kod korumasıyla engellendi.
+
+Ekibin elle etiketlediği 23 raporluk altın kümeyle ölçüm: Katman 1 **22/23**. Tek fark R040: "uzun süredir" için eşik bizde 30 dk, etikette 60 dk (belirsiz ifade).
+
 ## 9. Tasarım kararları ve reddedilen alternatifler
 
 | Karar | Alternatif | Neden bu |
@@ -345,7 +373,7 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
 | Birebir atama (Macar algoritması) | En yakın track | Yan yana araçlarda aynı track birden fazla araca bağlanıyor |
 | Rapor saatinde bağlama | Çekim anında bağlama | Rapor, aracın geçmişteki bir anını anlatıyor |
 | Tutarlı yaklaşma | Yakınsama / "yeni gelmiş olmak" | 184/226 track son adımda varmış; tutarlı yaklaşan yalnızca 7 |
-| Kaynak türüne ağırlık yok | Official raporlara daha çok güvenmek | Official raporların %57'si çelişkili, third_party'lerin %39'u |
+| Kaynak türüne ağırlık yok | Official raporlara daha çok güvenmek | official raporların %18'i, third_party'lerin %30'u çelişkili; kaynak hükmü belirlemiyor |
 | Koordineli varış anomalisi yok | Eşzamanlı hareket eden araç çiftlerini işaretlemek | Çoklu karşılaştırma: 24 bulgu, ~29 tesadüfi beklenti |
 | 3 tool | 11 tool | Tool yalnızca belirsizlik soruşturması içindir |
 | Kod içinde koruma | Yalnızca prompt kuralı | Bilinen hata türünü prompt'a bırakmamak |
@@ -367,11 +395,12 @@ limit aşıldı / bütçe freni / ağ hatası → KURAL TABANLI YEDEK (trace.fal
 |---|---|
 | Girdi | 40 görüntü · 323 tespit · 226 track · 137 rapor |
 | Füzyon | 202 birebir eşleşme · 4 kaçırılmış araç (hepsi örtülü, füzyonla yakalandı) · koordinat farkı < 0,07 m |
-| Rapor | 137/137 parser uyumu · 72/72 bağlama · dost iddialarının 16/18'i çelişkili · official %57 çelişkili |
-| Agent | 40/40 değerlendirme · 0 yedek · run başına 0,17 USD · sapma 40 → 11 (iyileştirme sonrası) |
-| Tehdit | 2 kritik: T0122 (tutarlı yaklaşan kamyon), T0188 (YOLO'nun kaçırdığı, ağaç altındaki araç) |
-| Kalite | 114 test · her iddia kanıt kimliğiyle · her sonuçta prompt sürümü |
-| Maliyet | toplam ~0,54 / 15 USD |
+| Rapor | 137/137 parser uyumu · 72/72 bağlama · altın küme 22/23 · dost iddialarının 17/18'i üsse yaklaşan araçta |
+| Agent | 40/40 değerlendirme · 0 yedek · run başına ~0,15 USD · temelden sapma 40 → 11 → 2 (iki iyileştirme turu) |
+| Tehdit | Kritik: T0122 (tutarlı yaklaşan kamyon) · Yüksek: T0188 (YOLO'nun kaçırdığı, ağaç altındaki araç) |
+| Öz denetim | 10 kontrol · 4 açık kapatıldı (zaman kayması, gelecek bilgisi, katı eşik, aşırı yorum) |
+| Kalite | 117 test · her iddia kanıt kimliğiyle · her sonuçta prompt sürümü |
+| Maliyet | toplam ~0,71 / 15 USD |
 
 ## Ek B: Kod haritası
 ```
@@ -389,6 +418,6 @@ backend/
     pipeline.py           motorun dış kapısı
   api/                    Flask: app · serializers · jobs (SSE) · routes/
   prompts/                agent_system · vision_inspect · claim_parser · chat_system
-  tests/                  114 test
+  tests/                  117 test
 ui/src/                   React: Ops (tek ekran) · OpsMap · EventDetail · EventList · ChatPanel · Reports
 ```

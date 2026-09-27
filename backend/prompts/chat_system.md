@@ -6,6 +6,8 @@ Her araç için kural tabanlı ve (varsa) agent tarafından belirlenmiş bir ris
 critical=kritik, high=yüksek, medium=orta, low=düşük. Rapor sonuçları raporun DOĞRULUĞUDUR (risk değil):
 verified=doğrulandı, partial=kısmen, contradicted=çelişkili, unverifiable=doğrulanamaz.
 "Tutarlı yaklaşma" = aracın 2 saatteki TÜM hareketleri üsse yaklaştırdı (en güçlü tehdit sinyali).
+"Üssün etrafında dönme" = araç üsse sabit uzaklıkta tur attı (görüntüler arasında olur, fotoğrafta görünmez; 5 araç).
+Dost / "olağan" raporları riski asla düşürmez; üsse yaklaşan araca iliştirilmişse şüphe sinyalidir.
 
 Kurallar:
 - Sayıları, kimlikleri ve bulguları YALNIZCA araç sonuçlarından al; bilmiyorsan araç çağır, uydurma.

@@ -1,0 +1,248 @@
+{
+ "image_id": "img_007664",
+ "capture_time": "15:25",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "Guney Kapisi Yaklasiminda park halinde 2 truck dahil agir araç gruplaşması ve gözlemle çelişen resmi dost ikmal iddiası (R124) dikkat gerektiriyor; ancak üsse tutarlı yaklaşan ağır araç yok ve tehdit oluşturan tek track (T0004) üsten uzaklaşıyor. R074'ün 4 kamyon iddiası gözlemle kısmen örtüşüyor, bölge raporları 'normal' derken yaklaşan araç var.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_007664_005",
+   "label": "truck",
+   "track_id": "T0034",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 35,
+   "override_reason": null,
+   "rationale": "Truck (0.42), track T0034; 2 saatte üsse 4560→4501 m, son 60 dk Δ-922 m; ancak 14 hareketin 7'si yaklaşan/7'si uzaklaşan, dolaşma 1.6, ETA 293 dk ve son hareket üsse 180° (uzaklaşma yönünde). Tutarlı yaklaşma yok; base medium (35) yerinde.",
+   "evidence": [
+    "det:img_007664_005",
+    "track:T0034",
+    "image:img_007664"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_007664_002",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 33,
+   "override_reason": null,
+   "rationale": "Truck 0.89 (alt van 0.16), track yok, park halinde, üsse 4539 m; 100 m içinde 3 ağır araç gruplaşması. R074'ün '4 kamyon' iddiasına kısmen uyan tek truck bu (19 m). Hareket kaydı olmadığından amaç belirsiz; base medium (33) korunuyor.",
+   "evidence": [
+    "det:img_007664_002",
+    "report:R074",
+    "image:img_007664"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_007664_000",
+   "label": "truck",
+   "track_id": "T0004",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Truck 0.90, track T0004; 2 saat önce üsse 648 m kadar gelmiş, son 60 dk Δ+3883 m ile uzaklaşıyor, son hareket üsse 69° (dışa). Dolaşma 3.3 ve ağır araç gruplaşması sürüyor; base medium (25) korunuyor.",
+   "evidence": [
+    "det:img_007664_000",
+    "track:T0004",
+    "image:img_007664"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_007664_001",
+   "label": "car",
+   "track_id": "T0210",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 2944 m yaklaştı; 2944 m ≥ 2000 m",
+   "evidence": [
+    "det:img_007664_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_007664_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R124; dost/ikmal iddiası gözlemle çelişiyor: R124",
+   "evidence": [
+    "det:img_007664_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_007664_007",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 15,
+   "override_reason": null,
+   "rationale": "ağır araç (truck); 100 m içinde 3 ağır araç; track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_007664_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_007664_003",
+   "label": "car",
+   "track_id": "T0160",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_007664_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_007664_004",
+   "label": "car",
+   "track_id": "T0024",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_007664_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_007664_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.12)",
+   "evidence": [
+    "det:img_007664_008"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Çelişen resmi dost/ikmal iddiası (R124)",
+   "risk_level": "medium",
+   "rationale": "R124 (14:40, official) 'üsse ilerleyen otomobil planlı ikmal, kimlik teyitli' diyor; ancak rapor anında orada hareket kayıtlı araç yok, 45 dk sonraki görüntüde yalnızca track'siz park halinde araçlar (img_007664_002 truck, 39 m; img_007664_006 car, 40 m) var. Kimlik=ÇELİŞKİLİ, motion=DOĞRULANAMAZ. Görsel inceleme (img_007664_006) ağaç altında, düşük güvenli sivil otomobil benzeri siluet gösterdi — ikmal teyidi doğrulanamadı. Çelişen dost iddiası gizleme girişimi olabilir.",
+   "evidence": [
+    "report:R124",
+    "det:img_007664_006",
+    "det:img_007664_002",
+    "image:img_007664"
+   ]
+  },
+  {
+   "title": "R074 kamyon sayısı uyuşmazlığı ve ağır araç gruplaşması",
+   "risk_level": "medium",
+   "rationale": "R074 (14:35, third_party) 4 kamyon ihbar ediyor; gözlem 1 truck (img_007664_002). Geniş alan taraması (2000 m, 14:30–15:25) yaklaşıkta başka truck bulmadı; bölgede park halinde 1 truck + hareketli T0004/T0034 truck'ları var. 100 m içinde 3 ağır araç gruplaşması üsse 4,5 km mesafede izlenmeli.",
+   "evidence": [
+    "report:R074",
+    "det:img_007664_002",
+    "det:img_007664_000",
+    "det:img_007664_005",
+    "image:img_007664"
+   ]
+  },
+  {
+   "title": "Bölge raporu çelişkisi (R098/R105)",
+   "risk_level": "medium",
+   "rationale": "R098 (13:30) ve R105 (13:55) 'trafik akışı normal' diyor; oysa bölgede üsse tutarlı yaklaşan araç mevcut (zone_report_mismatch). Resmi bölge raporlarının gözlemle uyumsuzluğu yerel durum bilgisinin güvenilirliğini düşürüyor.",
+   "evidence": [
+    "report:R098",
+    "report:R105",
+    "image:img_007664"
+   ]
+  },
+  {
+   "title": "Tespitsiz track T0171 (olası kaçırılmış araç)",
+   "risk_level": "low",
+   "rationale": "vehicles_in_area taraması, img_007664 zamanında (15:25) bölgede (min mesafe 69 m) bulunan ama bu görüntüde tespit eşleşmesi olmayan track:T0171 (etiketsiz) buldu; 14:30–15:25 aralığında içeride hareket etti. Tespit kaçırılmış araç ihtimali düşük seviyede izlenmeli.",
+   "evidence": [
+    "track:T0171",
+    "image:img_007664"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R074",
+   "verdict": "partly_reliable",
+   "note": "Count=KISMEN: 4 kamyon iddiasına karşın 1 truck gözlendi (img_007664_002); 2000 m taramada ek truck bulunamadı."
+  },
+  {
+   "report_id": "R124",
+   "verdict": "unreliable",
+   "note": "Kimlik ÇELİŞKİLİ, hareket DOĞRULANAMAZ: rapor anında orada hareket kayıtlı araç yok; dost/ikmal iddiası gözlemle çelişiyor."
+  },
+  {
+   "report_id": "R098",
+   "verdict": "partly_reliable",
+   "note": "Zone_status=KISMEN: 'normal' ifadesi bölgedeki tutarlı yaklaşan araçla uyuşmuyor (zone_report_mismatch)."
+  },
+  {
+   "report_id": "R105",
+   "verdict": "partly_reliable",
+   "note": "Zone_status=KISMEN: 13:55'te 'normal' deniyor, bölgede tutarlı yaklaşan araç var (zone_report_mismatch)."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('tatbikat nedeniyle dost unsurlar') hiçbir aracın doğrulanamıyor; riski düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulanamaz ve gözlemsel kanıtla desteklenmiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T01:52:19+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8816,\"lon\":32.8455,\"radius_m\":2000,\"time_from\":\"14:30\",\"time_to\":\"15:25\"}",
+    "summary": "{\"query\": {\"lat\": 39.8816, \"lon\": 32.8455, \"radius_m\": 2000.0, \"window\": \"14:30–15:25\", \"vehicle_type\": null}, \"tracked_count\": 18, \"tracked\": [{\"track_id\": \"T0004\", \"label\": \"truck\", \"detection_id\": \"img_007664_000\", \"image_id\": \"img_00766…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_007664\",\"question\":\"Bu park halindeki araç sivil otomobil mi, yoksa askeri ikmal/devriye aracına mı benziyor?\",\"vehicle_id\":\"img_007664_006\"}",
+    "summary": "{\"image_id\": \"img_007664\", \"target\": \"img_007664_006 (car, güven 0.31)\", \"crop_px\": [559, 143, 899, 483], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Hedef agacl…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 12415,
+   "output": 3455,
+   "reasoning": 1610
+  },
+  "cost_usd": 0.002622,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 100.8
+ }
+}

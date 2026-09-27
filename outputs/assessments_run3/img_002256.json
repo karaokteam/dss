@@ -1,0 +1,313 @@
+{
+ "image_id": "img_002256",
+ "capture_time": "14:05",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Kuzeybatı Yolu'nda üsse 4442–4521 m mesafede hızla yaklaşan iki araç (T0088, T0169; son 60 dk'da ~3000 m yaklaşıp dolaşma davranışı gösteren) dikkat gerektiriyor; dört yaklaşan araç arasında konvoy/koordinasyon bulgusu yok. En önemli şüphe sinyali, durağan park halindeki araçlar için verilen resmi dost iddiası (R044) ile gözlemin çelişmesidir.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_002256_001",
+   "label": "car",
+   "track_id": "T0088",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "track:T0088 — 2 saatte üsse 7758→4442 m; son 60 dk'da 3359 m yaklaştı (≥2000 m hızlı yaklaşma eşiği); 7 hareketin 5'i yaklaşan, dolaşma 4.2, ETA 79 dk. Temel faktörler dışında yeni somut bulgu yok, seviye korunuyor.",
+   "evidence": [
+    "det:img_002256_001",
+    "track:T0088"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_007",
+   "label": "car",
+   "track_id": "T0169",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "track:T0169 — 2 saatte üsse 5963→4521 m; son 60 dk'da 2999 m yaklaştı; 5 hareketin 3'ü yaklaşan, dolaşma 5.0, ETA 90 dk; tespit güveni düşük (car 0.60). Temel faktörler dışında yeni bulgu yok, seviye korunuyor.",
+   "evidence": [
+    "det:img_002256_007",
+    "track:T0169"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_000",
+   "label": "car",
+   "track_id": "T0199",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "track:T0199 — yaklaşan (son 60 dk Δ-2987 m) ancak dolaşma düşük (1.7), hareket örüntüsü düzenli (6 yaklaşan/2 uzaklaşan). Temel seviye korunuyor.",
+   "evidence": [
+    "det:img_002256_000",
+    "track:T0199"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_002",
+   "label": "car",
+   "track_id": "T0114",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "track:T0114 — 120 dk'dır durağan (üsse 4462→4468 m, +9 m), R107'nin stationary iddiası DOĞRULANDI. R026 ve R044 iddiaları gözlemle çelişiyor (raporda approaching_base hareketi iddia edilmiş; gerçekte 25 dakikadır yerinde). Tehlike hareketi yok; çelişki dikkat maddesinde değerlendirildi.",
+   "evidence": [
+    "det:img_002256_002",
+    "track:T0114",
+    "report:R107",
+    "report:R026",
+    "report:R044"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_005",
+   "label": "van",
+   "track_id": "T0217",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "track:T0217 — van, yaklaşan (son 60 dk Δ-3133 m) ancak dolaşma çok düşük (1.3), son hareket 79° açıyla. Temel seviye korunuyor.",
+   "evidence": [
+    "det:img_002256_005",
+    "track:T0217"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Hareket kaydı yok, park halinde (üsse 4462 m). Görsel teyit (image:img_002256, düşük güven): otomobil, yük/örtü ayırt edilemiyor — R026'nın '2 kamyon' iddiasını doğrulamıyor. R044'ün dost/motion iddiaları bu araç için de gözlemle çelişiyor.",
+   "evidence": [
+    "det:img_002256_008",
+    "image:img_002256",
+    "report:R026",
+    "report:R044"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_002256_003",
+   "label": "car",
+   "track_id": "T0071",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3676 m uzaklaştı",
+   "evidence": [
+    "det:img_002256_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_004",
+   "label": "van",
+   "track_id": "T0009",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 3665 m uzaklaştı",
+   "evidence": [
+    "det:img_002256_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_006",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_002256_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "belirgin risk faktörü yok",
+   "evidence": [
+    "det:img_002256_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_010",
+   "label": "car",
+   "track_id": "T0200",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 561 m uzaklaştı",
+   "evidence": [
+    "det:img_002256_010"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_011",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.15)",
+   "evidence": [
+    "det:img_002256_011"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_002256_012",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.12)",
+   "evidence": [
+    "det:img_002256_012"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Gözlemle çelişen resmi dost iddiası (R044)",
+   "risk_level": "medium",
+   "rationale": "13:55 tarihli resmi rapor R044, üsse gelen otomobilin 'bağlı unsur ve gelişinin önceden bildirildiğini' iddia ediyor; ancak img:img_002256_002 (track:T0114) çekim anında 120 dk'dır durağan ve img_002256_008 park halinde — approaching_base hareket iddiası gözlemle ÇELİŞİYOR. Çelişen dost iddiası bir aracı gizleme girişimi olabilir; araç tehdidi olmadığı için seviye medium ile sınırlı.",
+   "evidence": [
+    "report:R044",
+    "track:T0114",
+    "det:img_002256_002",
+    "det:img_002256_008",
+    "image:img_002256"
+   ]
+  },
+  {
+   "title": "R026 kamyon iddiası doğrulanamıyor",
+   "risk_level": "low",
+   "rationale": "R026 (13:50) 39.9446N 32.8095E civarında '2 kamyon' bildiriyor; bölgede kamyon tipi araç yok, en yakın iki tespit otomobil (T0114, 37 m; img_002256_008, 58 m). Görsel inceleme de kamyon görünümü doğrulamadı (düşük güven). İhbar yanlış ya da yanıltıcı olabilir.",
+   "evidence": [
+    "report:R026",
+    "track:T0114",
+    "det:img_002256_008",
+    "image:img_002256"
+   ]
+  },
+  {
+   "title": "Hızlı yaklaşan iki araçta dolaşma örüntüsü",
+   "risk_level": "medium",
+   "rationale": "track:T0088 ve track:T0169 son 60 dakikada sırasıyla 3359 m ve 2999 m yaklaşıp aynı zamanda yüksek dolaşma (4.2 / 5.0) gösteriyor; ETA 79–90 dk. Konvoy/koordinasyon bulgusu YOK (tüm çift ilişkileri 'met_at_end', chance_rate 0.19–0.43), bu nedenle ayrı dikkat maddesi olarak izlenmeli, koordinasyon iddiası olarak sunulmamalı.",
+   "evidence": [
+    "track:T0088",
+    "track:T0169"
+   ]
+  },
+  {
+   "title": "Bölge ihbarlarının doğrulanamaması",
+   "risk_level": "low",
+   "rationale": "R048 ('dün gece araç hareketliliği' ihbarı) ve R062 ('ihbar incelendi, doğrulanamadı') doğrulanamaz durumda; R121 (devriye olağandışı durum görmedi) doğrulandı. R048'in anlattığı geçmiş hareketlilik bu görüntüde doğrulanmıyor — görüntüdeki park halindeki araçlar (img_002256_006, _009, _011, _012) hareket kayıtsız ve tehdit sinyali taşımıyor.",
+   "evidence": [
+    "report:R048",
+    "report:R062",
+    "report:R121",
+    "det:img_002256_006",
+    "det:img_002256_009",
+    "det:img_002256_011",
+    "det:img_002256_012"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R107",
+   "verdict": "reliable",
+   "note": "12:30 stationary iddiası DOĞRULANDI: T0114 kayıt başından (25 dk) beri 17 m mesafede durağan."
+  },
+  {
+   "report_id": "R026",
+   "verdict": "unreliable",
+   "note": "'2 kamyon' iddiası ÇELİŞKİLİ: bölgede kamyon yok, en yakın araçlar otomobil; görsel inceleme de desteklemiyor."
+  },
+  {
+   "report_id": "R044",
+   "verdict": "unreliable",
+   "note": "Dost kimliği ve hareket iddiaları ÇELİŞKİLİ: T0114 rapor anında stationary, img_002256_008 park halinde; approaching_base iddiası gözlemle uyuşmuyor."
+  },
+  {
+   "report_id": "R048",
+   "verdict": "unverifiable",
+   "note": "Gece hareketliliği ihbarı gözlemle desteklenmiyor; bu görüntüde doğrulayıcı bulgu yok."
+  },
+  {
+   "report_id": "R121",
+   "verdict": "reliable",
+   "note": "Devriyenin olağandışı durum bildirmediği bilgisi görüntü tablosuyla uyumlu."
+  },
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "Rapor kendisi doğrulanamadığını belirtiyor; gözlemle desteklenmiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:07:56+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0088\", \"T0169\", \"T0199\", \"T0217\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0088\", \"T0169\"], \"relation\": \"met_at_end\", \"common_window\": \"12:05–14:05\", \"dist_m\": {\"min\": 93, \"max\": 1891, \"end\": 93}, \"synchronous_moves\": 3, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0088\"…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_002256\",\"question\":\"Bu araç kamyon mu, otomobil mi? Üzerinde yük veya örtü var mı?\",\"vehicle_id\":\"img_002256_008\"}",
+    "summary": "{\"image_id\": \"img_002256\", \"target\": \"img_002256_008 (car, güven 0.59)\", \"crop_px\": [908, 0, 1104, 113], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Otumobil g…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 12786,
+   "output": 3520,
+   "reasoning": 1000
+  },
+  "cost_usd": 0.002603,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 89.9
+ }
+}

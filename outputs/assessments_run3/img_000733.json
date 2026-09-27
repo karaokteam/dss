@@ -1,0 +1,256 @@
+{
+ "image_id": "img_000733",
+ "capture_time": "13:00",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "En dikkat çekici husus img_000733_002 (T0190): üsse 3464 m'de 120 dakikadır hareketsiz ve R113'teki 'dost unsur, gelişi bildirildi' iddiası gözlemle açıkça çelişiyor — bu bir gizleme girişimi olabilir. Ayrıca img_000733_000 (T0124) son 60 dakikada 1463 m hızla yaklaşırken dolaşma örüntüsü sergiliyor; her ikisi de izlenmeli.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000733_002",
+   "label": "car",
+   "track_id": "T0190",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 3464 m'de 120 dakikadır hareketsiz (3477→3464 m, hareket yok). R052 (11:00, official) 'uzun süredir hareketsiz' iddiası ÇELİŞKİLİ (rapor saatinde 0.0 m/s ile hareketli); R113 (12:15, official) dost unsurluk iddiası ÇELİŞKİLİ — hem kimlik hem hareket iddiası gözlemle uyuşmuyor (rapordan çekime üsse uzaklık -10 m, rapor anında stationary). Çelişen dost iddiası şüphe sinyalidir; aracın izlenmesi önerilir.",
+   "evidence": [
+    "det:img_000733_002",
+    "track:T0190",
+    "report:R052",
+    "report:R113"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000733_000",
+   "label": "car",
+   "track_id": "T0124",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 6040→3499 m yaklaşmış (2 saat), son 60 dakikada 1463 m hızlı yaklaşma, 10 harekette 6 yaklaşan/4 uzaklaşan ile dolaşma (3.0) örüntüsü, ETA 144 dk. Üsse 3499 m mesafede hızlı yaklaşan ve dolaşan bir araç; yakın takip gerekçesiyle medium.",
+   "evidence": [
+    "det:img_000733_000",
+    "track:T0124"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000733_001",
+   "label": "car",
+   "track_id": "T0072",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 2955 m yaklaştı; 2955 m ≥ 2000 m",
+   "evidence": [
+    "det:img_000733_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 3442 m",
+   "evidence": [
+    "det:img_000733_003"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_004",
+   "label": "car",
+   "track_id": "T0159",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 3482 m; son 60 dk'da üsten 809 m uzaklaştı; dolaşma: yol/yer değiştirme 5.0, 8 hareket",
+   "evidence": [
+    "det:img_000733_004"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3457 m; track'siz ve düşük güvenli tespit (0.15)",
+   "evidence": [
+    "det:img_000733_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3446 m; track'siz ve düşük güvenli tespit (0.14)",
+   "evidence": [
+    "det:img_000733_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3443 m; track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_000733_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_008",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3446 m; track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_000733_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3443 m; track'siz ve düşük güvenli tespit (0.12)",
+   "evidence": [
+    "det:img_000733_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_000733_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "üsse 3445 m; track'siz ve düşük güvenli tespit (0.10)",
+   "evidence": [
+    "det:img_000733_010"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Gözlemle çelişen dost iddiası örüntüsü (R113)",
+   "risk_level": "medium",
+   "rationale": "R113, T0190'ın bağlı unsur olduğunu ve gelişinin bildirildiğini iddia ediyor; ancak hareket kaydı iddia ile çelişiyor (kimlik ve hareket iddiaları ÇELİŞKİLİ). Kanıt hiyerarşisine göre çelişen dost iddiası bir gizleme girişimi şüphesidir; T0190 (3464 m'de 120 dk hareketsiz) fiziksel olarak incelenmeli/izlenmelidir.",
+   "evidence": [
+    "report:R113",
+    "track:T0190",
+    "det:img_000733_002"
+   ]
+  },
+  {
+   "title": "R052 ile T0190 arasındaki gözlem-rapor çelişkisi",
+   "risk_level": "low",
+   "rationale": "R052 (official, 11:00) 'uzun süredir hareketsiz otomobil' diyor; T0190'ın hareket kaydı rapor saatinde 0.0 m/s ile hareket halinde olduğunu gösteriyor. Gözlem esas alınır; bu, bölgedeki raporların doğruluk oranına dair bir güvensizlik sinyalidir.",
+   "evidence": [
+    "report:R052",
+    "track:T0190"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R052",
+   "verdict": "unreliable",
+   "note": "Hareketsizlik iddiası T0190'ın hareket kaydıyla çelişiyor (rapor saatinde 0.0 m/s ile hareketli)."
+  },
+  {
+   "report_id": "R113",
+   "verdict": "unreliable",
+   "note": "Dost unsurluk ve hareket iddiaları T0190'ın gözlemiyle çelişiyor; kimlik ve motion doğrulamaları ÇELİŞKİLİ."
+  },
+  {
+   "report_id": "R021",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamamış; gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R100",
+   "verdict": "reliable",
+   "note": "'Yalnızca binek araçlar' iddiası görüntüyle uyumlu (tüm tespitler car/van, ağır araç yok)."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R031",
+   "verdict": "reliable",
+   "note": "Sabah devriyesi olagandışı durum bildirmemiş; görsel tespitlerle çelişmiyor (12:00 öncesi duruma atıf)."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:28:22+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000733\",\"question\":\"img_000733_005 konumundaki tespit gerçekten bir araç mı, tipi ve rengi nedir?\",\"vehicle_id\":\"img_000733_005\"}",
+    "summary": "{\"image_id\": \"img_000733\", \"target\": \"img_000733_005 (car, güven 0.15)\", \"crop_px\": [569, 87, 729, 247], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": null, \"occluded\": false, \"answer\": \"Evet, kisasi yo…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000733\",\"question\":\"img_000733_008 tespiti van mı car mı, gerçek bir araç mı?\",\"vehicle_id\":\"img_000733_008\"}",
+    "summary": "{\"image_id\": \"img_000733\", \"target\": \"img_000733_008 (van, güven 0.13)\", \"crop_px\": [834, 52, 994, 212], \"result\": {\"vehicle_present\": null, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": true, \"answer\": \"Kirmizi cercevedek…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 17868,
+   "output": 4120,
+   "reasoning": 1457
+  },
+  "cost_usd": 0.001737,
+  "cached_calls": 2,
+  "fallback": false,
+  "duration_s": 34.3
+ }
+}

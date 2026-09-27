@@ -1,0 +1,275 @@
+{
+ "image_id": "img_000531",
+ "capture_time": "12:05",
+ "zone": "Guneybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Bölgede ağır araç yok ve tüm tespitler binek araç; ancak iki resmi rapor (R132 planlı ikmal, R046 mavi devriye aracı) dost kimliği iddiasında bulunuyor ve anlattıkları araç gözlemde bulunamıyor. Görsel teyit, görüntüde mavi aracın bulunmadığını (park halindeki araçlar kırmızı ve beyaz/gri) gösteriyor; bu çelişkili dost iddiası örüntüsü bir aracı gizleme girişimi olabilir ve dikkat gerektiriyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000531_001",
+   "label": "car",
+   "track_id": "T0113",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 4373 m; son 60 dakikada 2627 m yaklaştı (7 hareketin 5'i yaklaşan), ETA ~100 dk. Binek araç, görsel teyitte kırmızı/bordo, devriye ekipmanı yok. R132'nin planlı ikmal iddiası bu araca bağlanamıyor (araç bulunamadı).",
+   "evidence": [
+    "det:img_000531_001",
+    "track:T0113",
+    "report:R132",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_002",
+   "label": "car",
+   "track_id": "T0099",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 4485 m; son 60 dakikada 2395 m yaklaştı (6 hareketin 4'ü yaklaşan), ETA ~112 dk. Binek araç.",
+   "evidence": [
+    "det:img_000531_002",
+    "track:T0099"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_005",
+   "label": "car",
+   "track_id": "T0098",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 4359 m; son 60 dakikada 2027 m yaklaştı (8 hareketin 6'sı yaklaşan), ETA ~129 dk. Binek araç.",
+   "evidence": [
+    "det:img_000531_005",
+    "track:T0098"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_000",
+   "label": "car",
+   "track_id": "T0189",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsse 4464 m; son 60 dakikada 1093 m yaklaştı (6 hareketin 4'ü yaklaşan), ETA ~245 dk, dolaşma 2.8. Binek araç.",
+   "evidence": [
+    "det:img_000531_000",
+    "track:T0189"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_007",
+   "label": "car",
+   "track_id": "T0197",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsse 4413 m, yanal hareket; 2 saatte net yer değiştirme +8 m, 10 hareket, dolaşma 4.6 (loitering). Binek araç, tespit güveni 0.77.",
+   "evidence": [
+    "det:img_000531_007",
+    "track:T0197"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_003",
+   "label": "car",
+   "track_id": "T0110",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsse 4530 m; son 60 dakikada 3875 m uzaklaştı (5 hareketin 3'ü uzaklaşan). Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_000531_003",
+    "track:T0110"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_004",
+   "label": "car",
+   "track_id": "T0139",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsse 4477 m; son 60 dakikada 957 m uzaklaştı. Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_000531_004",
+    "track:T0139"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_006",
+   "label": "car",
+   "track_id": "T0037",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsse 4495 m; son 60 dakikada 3562 m uzaklaştı (6 hareketin 5'i uzaklaşan). Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_000531_006",
+    "track:T0037"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz park halinde araç; görsel teyitte araç mevcut, kırmızı binek, yük/örtü yok, mavi değil. Hareket kaydı olmadığından izlenmesi yeterli.",
+   "evidence": [
+    "det:img_000531_008",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, düşük güvenli tespit (0.16); görsel teyitte araç mevcut ancak görüntü flu, gri/beyaz binek, mavi değil, yük yok. R046'nın 'mavi araç' iddiasıyla eşleşmiyor.",
+   "evidence": [
+    "det:img_000531_009",
+    "report:R046",
+    "image:img_000531"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Çelişkili dost/planlı ikmal iddiası örüntüsü (R132, R046)",
+   "risk_level": "medium",
+   "rationale": "R132 (10:15) planlı ikmal aracı olduğunu ve kimlik teyidi yapıldığını iddia ediyor; ancak rapor koordinatının 60 m yakınında track yok, en yakın track 1058 m. R046 (11:40) mavi devriye aracı iddia ediyor; 60 m yakında track yok (en yakın 677 m) ve görsel teyitte görüntüde mavi araç yok (park halindeki araçlar kırmızı ve beyaz/gri; img_000531_001 de kırmızı/bordo, devriye ekipmanı yok). İki resmi raporun gözlemle çelişen dost kimliği iddiası, bir aracı gizleme girişimi olabilir; bölgede dost iddiaları yalnızca gözlemle doğrulanırsa risk düşürülmelidir.",
+   "evidence": [
+    "report:R132",
+    "report:R046",
+    "image:img_000531"
+   ]
+  },
+  {
+   "title": "Üsse tutarlı yaklaşan üç binek araç (T0113, T0099, T0098)",
+   "risk_level": "low",
+   "rationale": "Son 60 dakikada üsse sırasıyla 2627 m, 2395 m ve 2027 m yaklaşan, hareketlerinin çoğu yaklaşan üç binek araç; ETA 100–129 dk, hepsi 4360–4490 m mesafede. Ağır araç yok (R012/R137 doğrulandı), tekil riskler low; ancak izleme sürdürülmeli.",
+   "evidence": [
+    "track:T0113",
+    "track:T0099",
+    "track:T0098",
+    "report:R012",
+    "report:R137"
+   ]
+  },
+  {
+   "title": "Track'siz park halinde araçlar",
+   "risk_level": "low",
+   "rationale": "img_000531_008 (güven 0.69, kırmızı) ve img_000531_009 (güven 0.16, gri/beyaz) hareket kaydı olmadan park halinde. Görsel teyitte ikisi de gerçekten araç, yük/örtü yok. Özellikle 0.16 güvenli tespit flu görüntüde; hareket başlarsa track eşleşmesi yapılmalı.",
+   "evidence": [
+    "det:img_000531_008",
+    "det:img_000531_009",
+    "image:img_000531"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R132",
+   "verdict": "unreliable",
+   "note": "Planlı ikmal/kimlik teyidi iddiası ÇELİŞKİLİ: rapor koordinatının 60 m yakınında track yok, en yakın track 1058 m; anlatılan araç bulunamadı."
+  },
+  {
+   "report_id": "R046",
+   "verdict": "unreliable",
+   "note": "Mavi devriye aracı iddiası ÇELİŞKİLİ: 60 m yakında track yok (en yakın 677 m) ve görsel teyitte görüntüde mavi araç yok; park halindeki araçlar kırmızı ve beyaz/gri."
+  },
+  {
+   "report_id": "R008",
+   "verdict": "reliable",
+   "note": "Guneybati Yolu'nda olağandışı durum yok iddiası gözlemle uyumlu; bölgede tehdit aracı görünmüyor."
+  },
+  {
+   "report_id": "R012",
+   "verdict": "reliable",
+   "note": "Ağır araç yok, yalnızca binek araç iddiası: görüntüdeki 10 tespitin tamamı car, doğrulandı."
+  },
+  {
+   "report_id": "R137",
+   "verdict": "reliable",
+   "note": "Ağır araç yok iddiası: görüntüdeki tüm araçlar binek, doğrulandı."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar bulunacak'); hiçbir aracın riskini düşürmez ve gözlemle eşleştirilemez."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulanabilir gözlem içermiyor, risk değerlendirmesine etki etmez."
+  },
+  {
+   "report_id": "R090",
+   "verdict": "unverifiable",
+   "note": "İhbar incelenmiş ancak doğrulanamamış; gözlemle ne doğrulanıyor ne çürütülüyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-26T23:56:41+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, mavi bir binek araç mı, üzerinde herhangi bir yük/örtü var mı?\",\"vehicle_id\":\"img_000531_009\"}",
+    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_009 (car, güven 0.16)\", \"crop_px\": [537, 0, 873, 177], \"result\": {\"answer\": \"Kirmizi cercevede bir arac gorunuyor; gri/beyaz tonunda bir binek arac gibi duruyor, mavi degil. Uzerinde yuk veya…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, mavi bir binek araç mı, üzerinde herhangi bir yük/örtü var mı?\",\"vehicle_id\":\"img_000531_008\"}",
+    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_008 (car, güven 0.69)\", \"crop_px\": [0, 0, 160, 255], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, bir…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu aracın rengi mavi mi? Devriye/birlik aracına benziyor mu (işaret, tepe lambası, çatı ekipmanı var mı)?\",\"vehicle_id\":\"img_000531_001\"}",
+    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_001 (car, güven 0.91)\", \"crop_px\": [895, 0, 1279, 342], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Arac m…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 16664,
+   "output": 5959,
+   "reasoning": 2905
+  },
+  "cost_usd": 0.003851,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 143.9
+ }
+}

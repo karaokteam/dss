@@ -2,10 +2,13 @@
 
 Kanıt hiyerarşisi: tespit > track > rapor. Rapor, gözlemle doğrulandığı ölçüde ağırlık alır.
 
-"Özne" = raporun anlattığı olası araç:
-  - tracked: rapor saatinde koordinata ≤ track_close_m olan track (+ çekimde eşleştiği tespit)
-  - parked : bağlı görüntüde koordinata ≤ track_close_m olan, track'i olmayan ve güveni ≥ low_confidence
-             tespit (park halinde kabul edilir; düşük güvenli track'siz tespitler yanlış pozitif olabilir)
+Rapor ↔ araç eşleştirmesi (veriden ve görev tanımındaki örnekten):
+  Rapor koordinatı, anlatılan aracın GÖRÜNTÜDEKİ (çekim anındaki) konumudur: 5 ondalıklı koordinatların
+  31/35'i görüntüdeki araca ≤3 m (medyan 0,4 m); rapor anındaki konuma 0/35. Bu yüzden:
+  1. Özne = bağlı görüntüde koordinata tolerans içinde (5 ondalık ≈3 m, 4 ondalık ≈12 m) duran araç.
+  2. İddia, o aracın RAPORDAN ÖNCEKİ 30 DAKİKADAKİ davranışıyla değerlendirilir (hareket kaydından).
+Kimlik (dost / ikmal) veriden teyit edilemez: en fazla "kısmen"; üsse yaklaşan araca iliştirilmişse
+"güven verici iddia yaklaşan araçta" diye işaretlenir ve riski ASLA düşürmez.
 """
 
 from __future__ import annotations
@@ -28,6 +31,7 @@ from backend.engine.reports.linker import link_all
 
 S = ClaimStatus
 HEAVY = {"truck", "bus"}
+REASSURING_MOTIONS = ("approaching_base", "leaving_area", "normal_activity")   # riski düşürmeye yönelik iddialar
 
 
 # ---------------------------------------------------------------- kanıt bağlamı
@@ -84,29 +88,60 @@ def _label_matches(claimed: str | None, label: str | None) -> bool:
     return label in (HEAVY if claimed == "heavy" else {claimed})
 
 
-# ---------------------------------------------------------------- özneler
+# ---------------------------------------------------------------- özneler (görüntüdeki araçlar)
 
-def resolve_subjects(ctx: EvidenceContext, links: ReportLinks) -> list[Subject]:
-    close = settings.reports.track_close_m
-    subjects = []
-    for tl in links.tracks:
-        if tl.dist_m > close:
-            continue
-        det = ctx.track_det.get(tl.track_id)
-        subjects.append(Subject(kind="tracked", detection_id=det, track_id=tl.track_id,
-                                label=ctx.repo.detection(det).label if det else None, dist_m=tl.dist_m))
-    for dl in _parked(ctx, links):
-        if dl.dist_m <= close:
-            subjects.append(Subject(kind="parked", detection_id=dl.detection_id, track_id=None,
-                                    label=dl.label, dist_m=dl.dist_m))
-    return subjects
+def _tolerance(claim: Claim) -> float:
+    """Koordinat hassasiyetine göre eşleştirme toleransı: 5 ondalık ≈3 m, 4 ondalık ≈12 m."""
+    return max(settings.reports.subject_tolerance_min_m, 2 * (claim.coord_precision_m or 0) + 1)
 
 
-def _parked(ctx: EvidenceContext, links: ReportLinks) -> list:
-    """Bağlı tespitlerden track'i olmayan ve yeterince güvenli olanlar."""
-    floor = settings.match.low_confidence
-    return [d for d in links.detections
-            if d.detection_id not in ctx.det_track and ctx.repo.detection(d.detection_id).confidence >= floor]
+def image_vehicles(ctx: EvidenceContext, image_id: str) -> list[Subject]:
+    """Görüntüdeki araçlar: tespitler (track'li ya da park halinde) + görüntü içindeki tespitsiz track'ler.
+    dist_m burada 0; çağıran koordinata uzaklığı doldurur."""
+    repo, floor = ctx.repo, settings.match.low_confidence
+    out = []
+    for d in repo.detections_for(image_id):
+        tid = ctx.det_track.get(d.id)
+        if tid is None and d.confidence < floor:
+            continue   # track'siz, düşük güvenli tespit: yanlış pozitif olabilir
+        out.append(Subject(kind="tracked" if tid else "parked", detection_id=d.id, track_id=tid,
+                           label=d.label, dist_m=0.0))
+    for u in ctx.matches[image_id].unmatched_tracks:
+        if u.in_frame:
+            out.append(Subject(kind="tracked", detection_id=None, track_id=u.track_id, label=None, dist_m=0.0))
+    return out
+
+
+def _position(ctx: EvidenceContext, s: Subject) -> tuple[float, float]:
+    if s.detection_id:
+        d = ctx.repo.detection(s.detection_id)
+        return d.lat, d.lon
+    last = ctx.repo.track(s.track_id).last
+    return last.lat, last.lon
+
+
+def resolve_subjects(ctx: EvidenceContext, claim: Claim, links: ReportLinks, radius: float | None = None) -> list[Subject]:
+    """Koordinata `radius` (varsayılan: tolerans) içindeki görüntü araçları, uzaklığa göre sıralı."""
+    if claim.lat is None or not links.images:
+        return []
+    radius = _tolerance(claim) if radius is None else radius
+    found = []
+    for il in links.images:
+        for v in image_vehicles(ctx, il.image_id):
+            lat, lon = _position(ctx, v)
+            d = distance_m(claim.lat, claim.lon, lat, lon)
+            if d <= radius:
+                found.append(Subject(kind=v.kind, detection_id=v.detection_id, track_id=v.track_id,
+                                     label=v.label, dist_m=round(d, 1)))
+    return sorted(found, key=lambda x: x.dist_m)
+
+
+def _primary(subjects: list[Subject], claimed_type: str | None) -> Subject | None:
+    """Raporun anlattığı araç: tolerans içindekilerden tip uyumlu en yakın, yoksa en yakın."""
+    if not subjects:
+        return None
+    typed = [s for s in subjects if s.label and _label_matches(claimed_type, s.label)]
+    return (typed or subjects)[0]
 
 
 def _refs(subjects: list[Subject]) -> tuple[str, ...]:
@@ -122,22 +157,66 @@ def _refs(subjects: list[Subject]) -> tuple[str, ...]:
 def _describe(s: Subject) -> str:
     who = s.track_id or s.detection_id
     what = s.label or "etiketsiz"
-    return f"{who} ({what}, {'park halinde' if s.kind == 'parked' else 'track'}, {s.dist_m:.0f} m)"
+    return f"{who} ({what}{', park halinde' if s.kind == 'parked' else ''})"
+
+
+# ---------------------------------------------------------------- rapordan önceki davranış
+
+@dataclass(frozen=True)
+class Behavior:
+    covered: bool             # rapor anında aracın kaydı var mı
+    window_min: int           # değerlendirilen pencere (≤30 dk)
+    base_delta_m: float       # pencerede üsse uzaklık değişimi (negatif = yaklaştı)
+    moved: bool               # pencerede hareket adımı var mı
+    state: Kinematics | None  # rapor anındaki durum (yalnızca o ana kadarki kayıtla)
+
+
+def behavior(ctx: EvidenceContext, track_id: str, t: int) -> Behavior:
+    tr, base, cfg = ctx.repo.track(track_id), ctx.repo.base, settings.kinematics
+    end = tr.position_at(t)
+    if end is None:
+        return Behavior(False, 0, 0.0, False, None)
+    start_t = max(tr.start_min, t - settings.reports.behavior_window_min)
+    if t - start_t < 10:
+        return Behavior(False, t - start_t, 0.0, False, None)   # rapordan önce en az 10 dk kayıt gerekir
+    start = tr.position_at(start_t)
+    pts = [start] + [p for p in tr.points if start_t < p.t < t] + [end]
+    moved = any(distance_m(a.lat, a.lon, b.lat, b.lon) > cfg.move_step_m for a, b in zip(pts, pts[1:]))
+    delta = dist_to_base_m(base, end.lat, end.lon) - dist_to_base_m(base, start.lat, start.lon)
+    return Behavior(True, t - start_t, round(delta, 1), moved, track_state_at(tr, base, t))
+
+
+def approach_after(ctx: EvidenceContext, track_id: str, t: int) -> tuple[bool, float]:
+    """Araç rapordan SONRA (çekime kadar) üsse belirgin yaklaştı mı? → (bayrak, uzaklık değişimi)"""
+    tr, base = ctx.repo.track(track_id), ctx.repo.base
+    at = tr.position_at(t)
+    if at is None:
+        return False, 0.0
+    delta = dist_to_base_m(base, tr.last.lat, tr.last.lon) - dist_to_base_m(base, at.lat, at.lon)
+    end = ctx.kinematics[track_id]
+    return (delta <= -settings.reports.after_approach_m or (end.consistent_approach and delta < 0)), round(delta, 1)
+
+
+def _behavior_text(b: Behavior) -> str:
+    if not b.covered:
+        return "rapordan önce aracın yeterli hareket kaydı yok"
+    if not b.moved:
+        return f"rapordan önceki {b.window_min} dk yerinde duruyor"
+    return f"rapordan önceki {b.window_min} dk'da üsse uzaklık {b.base_delta_m:+.0f} m"
 
 
 # ---------------------------------------------------------------- dış arayüz
 
 def check_report(ctx: EvidenceContext, report: Report) -> tuple[ClaimCheck, ...]:
     claim, links = ctx.claims[report.id], ctx.links[report.id]
-    subjects = resolve_subjects(ctx, links) if claim.category == "coordinate" else []
     checks = []
     for ct in claim.claim_types:
         fn = _CHECKS.get(ct, _check_unverifiable)
-        status, reason, observed, extra_refs = fn(ctx, report, claim, links, subjects)
+        status, reason, observed, subjects = fn(ctx, report, claim, links)
         checks.append(ClaimCheck(
             report_id=report.id, time=report.time, source=report.source.value, claim_type=ct,
             status=status, reason=reason, subjects=tuple(subjects), observed=observed,
-            evidence=(f"report:{report.id}",) + _refs(subjects) + tuple(extra_refs),
+            evidence=(f"report:{report.id}",) + _refs(subjects),
         ))
     return tuple(checks)
 
@@ -149,179 +228,221 @@ def report_status(checks: tuple[ClaimCheck, ...]) -> ClaimStatus:
 
 
 # ---------------------------------------------------------------- iddia tipleri
+# Her kontrol → (durum, gerekçe, gözlem sözlüğü, ilgili özneler)
 
-def _no_subject(links: ReportLinks) -> tuple:
-    near = f"; en yakın track {links.nearest_track_m:.0f} m" if links.nearest_track_m is not None else ""
-    return (S.UNVERIFIABLE,
-            f"Rapor saatinde koordinatın {settings.reports.track_close_m:.0f} m yakınında track yok ve "
-            f"çekimde orada track'siz araç görülmedi{near}. Anlatılan araç bulunamadı.",
-            {"subjects": 0, "nearest_track_m": links.nearest_track_m}, ())
+def _no_subject(ctx, claim, links) -> tuple:
+    near = resolve_subjects(ctx, claim, links, radius=settings.reports.track_close_m)
+    hint = f"; {near[0].dist_m:.0f} m ötede {_describe(near[0])}" if near else ""
+    return (S.UNVERIFIABLE, f"Görüntüde koordinatta ({_tolerance(claim):.0f} m) araç yok{hint}. "
+            "Anlatılan araç bulunamadı.", {"subjects": 0}, [])
 
 
-def _check_stationary(ctx, report, claim, links, subjects):
-    if not subjects:
-        return _no_subject(links)
+def _check_stationary(ctx, report, claim, links):
+    # "7 kamyon duruyor" gibi grup iddiasında özne, sayım yarıçapındaki araçlardan seçilir
+    radius = settings.reports.track_close_m if (claim.count or 0) > 1 else None
+    p = _primary(resolve_subjects(ctx, claim, links, radius=radius), claim.vehicle_type)
+    if p is None:
+        return _no_subject(ctx, claim, links)
+    type_note = "" if _label_matches(claim.vehicle_type, p.label) or not p.label else \
+        f"; tip uyuşmuyor (iddia {claim.vehicle_type}, tespit {p.label})"
+    if p.kind == "parked":
+        st = S.VERIFIED if not type_note else S.PARTIAL
+        return st, f"{_describe(p)}: hareket kaydı yok, çekimde yerinde{type_note}.", {}, [p]
+    b = behavior(ctx, p.track_id, report.t)
+    if not b.covered:
+        return S.UNVERIFIABLE, f"{_describe(p)}: {_behavior_text(b)}.", {}, [p]
     required = claim.stationary_min or settings.reports.long_stationary_min
-    results = []
-    for s in subjects:
-        type_ok = _label_matches(claim.vehicle_type, s.label) if s.label else None
-        if s.kind == "parked":
-            results.append((S.VERIFIED if type_ok is not False else S.PARTIAL, s,
-                            f"{_describe(s)}: track'i yok, park halinde"))
-            continue
-        k = track_state_at(ctx.repo.track(s.track_id), ctx.repo.base, report.t)
-        whole = k.stationary_min == k.observed_min and k.observed_min > 0
-        if k.stationary_min >= required or whole:
-            st = S.VERIFIED if type_ok is not False else S.PARTIAL
-            note = (f"kayıt başından ({k.observed_min} dk) beri durağan" if whole and k.stationary_min < required
-                    else f"{k.stationary_min} dk durağan")
-        elif k.stationary_min > 0:
-            st, note = S.PARTIAL, f"yalnızca {k.stationary_min} dk durağan (iddia ≥ {required} dk)"
-        else:
-            st, note = S.CONTRADICTED, f"rapor saatinde hareket halinde ({k.speed_mps:.1f} m/s)"
-        if type_ok is False:
-            note += f"; tip uyuşmuyor (iddia {claim.vehicle_type}, tespit {s.label})"
-        results.append((st, s, f"{_describe(s)}: {note}"))
-    best = _best(results, claim.vehicle_type)
-    return best[0], "; ".join(r[2] for r in results), {"required_min": required}, ()
+    k = b.state
+    whole = k.stationary_min == k.observed_min and k.observed_min > 0
+    if k.stationary_min >= required:
+        st = S.VERIFIED if not type_note else S.PARTIAL
+        note = f"rapor anında {k.stationary_min} dk durağan"
+    elif whole:     # kaydın kapsadığı sürenin tamamında durağan; iddianın geri kalanı görülemiyor
+        st, note = S.PARTIAL, (f"kaydın kapsadığı {k.observed_min} dk boyunca durağan; iddia edilen {required} dk'nın "
+                               f"kalanı veride yok")
+    elif k.stationary_min > 0:
+        st, note = S.PARTIAL, f"rapor anında yalnızca {k.stationary_min} dk durağan (iddia ≥ {required} dk)"
+    else:
+        st, note = S.CONTRADICTED, "rapor anında hareket halinde"
+    return st, f"{_describe(p)}: {note}{type_note}.", {"required_min": required}, [p]
 
 
-def _check_count(ctx, report, claim, links, subjects):
+def _check_count(ctx, report, claim, links):
     if claim.count is None:
-        return S.UNVERIFIABLE, "Sayı belirtilmemiş.", {}, ()
-    if not subjects:
-        return _no_subject(links)
-    matching = [s for s in subjects if s.label and _label_matches(claim.vehicle_type, s.label)]
-    unlabeled = [s for s in subjects if not s.label]
+        return S.UNVERIFIABLE, "Sayı belirtilmemiş.", {}, []
+    around = resolve_subjects(ctx, claim, links, radius=settings.reports.track_close_m)
+    if not around:
+        return _no_subject(ctx, claim, links)
+    matching = [s for s in around if s.label and _label_matches(claim.vehicle_type, s.label)]
+    unlabeled = [s for s in around if not s.label]
     observed = len(matching)
-    obs = {"claimed": claim.count, "observed": observed, "subjects": len(subjects)}
-    kinds = ", ".join(_describe(s) for s in subjects)
+    obs = {"claimed": claim.count, "observed": observed, "nearby": len(around)}
+    listing = ", ".join(_describe(s) for s in around[:6])
+    radius = settings.reports.track_close_m
     if observed == claim.count:
-        return S.VERIFIED, f"İddia {claim.count} {claim.vehicle_type}; gözlenen {observed}: {kinds}.", obs, ()
+        return S.VERIFIED, f"İddia {claim.count} {claim.vehicle_type}; görüntüde {radius:.0f} m içinde {observed}.", obs, matching
     if observed == 0 and not unlabeled:
-        return (S.CONTRADICTED,
-                f"İddia {claim.count} {claim.vehicle_type}; bu tipte araç yok. Yakındakiler: {kinds}.", obs, ())
-    return (S.PARTIAL,
-            f"İddia {claim.count} {claim.vehicle_type}; gözlenen {observed}"
-            f"{f' (+{len(unlabeled)} etiketsiz track)' if unlabeled else ''}: {kinds}.", obs, ())
+        return (S.CONTRADICTED, f"İddia {claim.count} {claim.vehicle_type}; görüntüde {radius:.0f} m içinde bu tipte "
+                f"araç yok ({listing}).", obs, around)
+    if (observed + len(unlabeled)) * 2 < claim.count:
+        return (S.CONTRADICTED, f"İddia {claim.count} {claim.vehicle_type}; görüntüde {radius:.0f} m içinde yalnızca "
+                f"{observed}{f' (+{len(unlabeled)} etiketsiz)' if unlabeled else ''} — sayı ciddi şişirilmiş.",
+                obs, matching or around)
+    return (S.PARTIAL, f"İddia {claim.count} {claim.vehicle_type}; görüntüde {radius:.0f} m içinde {observed}"
+            f"{f' (+{len(unlabeled)} etiketsiz)' if unlabeled else ''}.", obs, matching or around)
 
 
-def _check_motion(ctx, report, claim, links, subjects):
-    motion = claim.motion
-    if motion in (None, "stationary"):
-        return S.UNVERIFIABLE, "Hareket iddiası yok.", {}, ()
-    if not subjects:
-        return _no_subject(links)
-    cfg = settings.kinematics
-    results = []
-    for s in subjects:
-        if s.kind == "parked":
-            results.append((S.CONTRADICTED, s, f"{_describe(s)}: hareket kaydı yok, park halinde"))
-            continue
-        track = ctx.repo.track(s.track_id)
-        at = track_state_at(track, ctx.repo.base, report.t)
-        end = ctx.kinematics[s.track_id]
-        after = end.dist_to_base_m - at.dist_to_base_m          # rapordan çekime üsse uzaklık değişimi
-        moved_after = any(seg.kind == "move" and seg.end > report.time for seg in end.segments)
-        moving_now = at.state == "moving" or at.stationary_min < cfg.speed_window_min
-        if motion == "approaching_base":
-            ok = (at.motion == "approaching" and moving_now) or after <= -cfg.approach_net_m
-            bad = after >= cfg.approach_net_m or (not moved_after and not moving_now)
-            note = f"rapordan çekime üsse uzaklık {after:+.0f} m; rapor anında {at.motion}"
-        elif motion == "leaving_area":
-            away = distance_m(claim.lat, claim.lon, end.lat, end.lon)
-            ok, bad = away > settings.reports.link_radius_m, not moved_after
-            note = f"çekimde rapor noktasına {away:.0f} m uzakta"
-        elif motion in ("transit", "moving"):
-            ok, bad = moving_now or moved_after, not (moving_now or moved_after)
-            note = "rapordan sonra hareket etti" if moved_after else "rapordan sonra hareket etmedi"
-        else:  # normal_activity
-            ok, bad = not end.consistent_approach, end.consistent_approach
-            note = "üsse tutarlı yaklaşma var" if bad else "belirgin tehdit hareketi yok"
-        st = S.VERIFIED if ok and not bad else S.CONTRADICTED if bad and not ok else S.PARTIAL
-        results.append((st, s, f"{_describe(s)}: {note}"))
-    best = _best(results, claim.vehicle_type)
-    return best[0], "; ".join(r[2] for r in results), {"claimed_motion": motion}, ()
+def _motion_verdict(claim: Claim, b: Behavior) -> tuple[ClaimStatus, str]:
+    net = settings.kinematics.approach_net_m
+    m = claim.motion
+    if m == "approaching_base":
+        if b.base_delta_m <= -net:
+            return S.VERIFIED, "üsse yaklaşıyordu"
+        if b.base_delta_m >= net or not b.moved:
+            return S.CONTRADICTED, "üsse yaklaşmıyordu"
+        return S.PARTIAL, "belirgin yaklaşma yok"
+    if m == "leaving_area":
+        if b.base_delta_m >= net:
+            return S.VERIFIED, "üsten uzaklaşıyordu"
+        if b.base_delta_m <= -net:
+            return S.CONTRADICTED, "tersine üsse yaklaşıyordu"
+        return (S.CONTRADICTED if not b.moved else S.PARTIAL), "uzaklaşma görülmüyor"
+    if m in ("transit", "moving"):
+        return (S.VERIFIED, "hareket halindeydi") if b.moved else (S.CONTRADICTED, "hareket etmiyordu")
+    # normal_activity ("hareketleri olağan")
+    if (b.state and b.state.consistent_approach) or b.base_delta_m <= -3 * net:
+        return S.CONTRADICTED, "üsse belirgin/tutarlı yaklaşma var; 'olağan' değil"
+    return S.VERIFIED, "belirgin tehdit hareketi yok"
 
 
-def _check_identity(ctx, report, claim, links, subjects):
-    """Dost/ikmal iddiası veriden doğrudan teyit edilemez. Fiziksel ayrıntılar (varlık, tip, hareket) tutarlıysa
-    'verified' = 'fiziksel olarak tutarlı'; renk iddiası görsel kontrol gerektirdiğinden en fazla 'partial'."""
-    if not subjects:
-        st, reason, obs, refs = _no_subject(links)
-        return S.CONTRADICTED, "Dost iddiası: " + reason, obs, refs
-    typed = [s for s in subjects if s.label]
-    type_ok = any(_label_matches(claim.vehicle_type, s.label) for s in typed) if typed else None
-    motion_status = None
-    if claim.motion and claim.motion != "stationary":
-        motion_status = _check_motion(ctx, report, claim, links, subjects)[0]
+def _flat(b: Behavior) -> bool:
+    """Rapordan önceki pencerede üsse uzaklık belirgin değişmedi (duruyor / yanal)."""
+    return abs(b.base_delta_m) < settings.kinematics.approach_net_m
+
+
+def _check_motion(ctx, report, claim, links):
+    if claim.motion in (None, "stationary"):
+        return S.UNVERIFIABLE, "Hareket iddiası yok.", {}, []
+    p = _primary(resolve_subjects(ctx, claim, links), claim.vehicle_type)
+    if p is None:
+        return _no_subject(ctx, claim, links)
+    if p.kind == "parked":
+        if claim.motion == "normal_activity":
+            return S.VERIFIED, f"{_describe(p)}: hareket kaydı yok, yerinde.", {}, [p]
+        return S.UNVERIFIABLE, f"{_describe(p)}: hareket kaydı yok; iddia edilen hareket sınanamıyor.", {}, [p]
+    b = behavior(ctx, p.track_id, report.t)
+    reassuring = claim.motion in ("leaving_area", "normal_activity")
+    after_flag, after_delta = approach_after(ctx, p.track_id, report.t)
+    if not b.covered:
+        note = f"; rapordan sonra çekime kadar üsse {after_delta:+.0f} m" if reassuring and after_flag else ""
+        return (S.UNVERIFIABLE, f"{_describe(p)}: {_behavior_text(b)}{note}.",
+                {"claimed_motion": claim.motion, "after_delta_m": after_delta,
+                 "reassuring_on_approach": reassuring and after_flag}, [p])
+    st, verdict = _motion_verdict(claim, b)
+    if st == S.CONTRADICTED and claim.motion == "approaching_base" and after_flag and _flat(b):
+        st, verdict = S.PARTIAL, verdict + f"; ama rapordan sonra çekime kadar üsse {after_delta:+.0f} m yaklaştı"
+    flag = reassuring and (b.base_delta_m <= -settings.kinematics.approach_net_m or after_flag)
+    if flag and st == S.VERIFIED:      # rapor anında doğru olsa da güven verici iddia, sonra üsse yaklaşan araçta
+        st = S.PARTIAL
+    note = f"; rapordan sonra çekime kadar üsse {after_delta:+.0f} m" if reassuring and after_flag else ""
+    obs = {"claimed_motion": claim.motion, "base_delta_m": b.base_delta_m, "window_min": b.window_min,
+           "after_delta_m": after_delta, "reassuring_on_approach": flag}
+    return st, f"{_describe(p)}: {_behavior_text(b)} ({verdict}){note}.", obs, [p]
+
+
+def _check_identity(ctx, report, claim, links):
+    """Dost / ikmal / "bize bağlı" iddiası: kimlik veriden teyit EDİLEMEZ → en fazla 'kısmen'.
+    Fiziksel ayrıntılar (tip, hareket) çelişirse 'çelişkili'. Üsse yaklaşan araca iliştirilmişse bayrak."""
+    p = _primary(resolve_subjects(ctx, claim, links), claim.vehicle_type)
+    if p is None:
+        st, reason, obs, _ = _no_subject(ctx, claim, links)
+        return S.UNVERIFIABLE, "Dost iddiası: " + reason, obs, []
     problems = []
-    if type_ok is False:
-        problems.append(f"tip uyuşmuyor (iddia {claim.vehicle_type}, tespit {', '.join(s.label for s in typed)})")
-    if motion_status == S.CONTRADICTED:
-        problems.append(f"hareket iddiası ({claim.motion}) gözlemle çelişiyor")
+    if p.label and not _label_matches(claim.vehicle_type, p.label):
+        problems.append(f"tip uyuşmuyor (iddia {claim.vehicle_type}, tespit {p.label})")
+    approaching, beh = False, ""
+    if p.kind == "tracked":
+        b = behavior(ctx, p.track_id, report.t)
+        after_flag, after_delta = approach_after(ctx, p.track_id, report.t)
+        if after_flag:
+            approaching, beh = True, f"rapordan sonra çekime kadar üsse {after_delta:+.0f} m"
+        if b.covered:
+            beh = _behavior_text(b) + (f"; {beh}" if beh else "")
+            approaching = approaching or b.base_delta_m <= -settings.kinematics.approach_net_m
+            if claim.motion and claim.motion != "stationary":
+                st, verdict = _motion_verdict(claim, b)
+                if st == S.CONTRADICTED and not (claim.motion == "approaching_base" and after_flag and _flat(b)):
+                    problems.append(f"hareket iddiası tutmuyor ({verdict})")
+    obs = {"reassuring_on_approach": approaching}
     if problems:
-        return S.CONTRADICTED, "Dost iddiası şüpheli: " + "; ".join(problems) + ".", {}, ()
-    if claim.color:
-        return (S.PARTIAL, f"Varlık ve tip tutarlı; '{claim.color}' renk iddiası görsel kontrol gerektirir.",
-                {"needs_visual": True}, ())
-    if motion_status == S.PARTIAL or type_ok is None:
-        return S.PARTIAL, "Dost iddiası kısmen tutarlı; kimlik veriden teyit edilemez.", {}, ()
-    return S.VERIFIED, "Varlık, tip ve hareket tutarlı (kimliğin kendisi veriden teyit edilemez).", {}, ()
+        return S.CONTRADICTED, f"Dost iddiası {_describe(p)} için gözlemle çelişiyor: " + "; ".join(problems) + ".", obs, [p]
+    if approaching:
+        return (S.PARTIAL, f"Güven verici iddia ÜSSE YAKLAŞAN araca iliştirilmiş: {_describe(p)}, {beh}. "
+                "Kimlik veriden teyit edilemez; risk düşürülmez.", obs, [p])
+    color = f"; '{claim.color}' renk iddiası görsel kontrol gerektirir" if claim.color else ""
+    return (S.PARTIAL, f"Dost iddiası {_describe(p)} ile fiziksel olarak tutarlı{f' ({beh})' if beh else ''}{color}; "
+            "kimlik veriden teyit edilemez.", obs, [p])
 
 
-def _check_density(ctx, report, claim, links, subjects):
+def _check_density(ctx, report, claim, links):
     radius = settings.reports.track_link_radius_m
-    tracked = [t for t in links.tracks if t.dist_m <= radius]
-    parked = _parked(ctx, links)
-    observed = len(tracked) + len(parked)
-    normal = claim.normal_count
+    around = resolve_subjects(ctx, claim, links, radius=radius)
+    normal, observed = claim.normal_count, len(around)
     obs = {"normal": normal, "observed": observed, "radius_m": radius}
+    detail = f"görüntüde {radius:.0f} m içinde {observed} araç (olağan {normal})"
     if normal is None:
-        return S.UNVERIFIABLE, f"Olağan sayı belirtilmemiş; {radius:.0f} m içinde {observed} araç.", obs, ()
-    detail = f"{radius:.0f} m içinde {len(tracked)} track + {len(parked)} park halinde araç = {observed} (olağan {normal})"
+        return S.UNVERIFIABLE, f"Olağan sayı belirtilmemiş; {detail}.", obs, around
     if observed > normal:
-        return S.VERIFIED, f"Yoğunluk doğrulandı: {detail}.", obs, ()
+        return S.VERIFIED, f"Yoğunluk doğrulandı: {detail}.", obs, around
     if observed == normal:
-        return S.PARTIAL, f"Olağan düzeyde: {detail}.", obs, ()
-    return S.CONTRADICTED, f"Olağanın altında: {detail}.", obs, ()
+        return S.PARTIAL, f"Olağan düzeyde: {detail}.", obs, around
+    return S.CONTRADICTED, f"Olağanın altında: {detail}.", obs, around
 
 
-def _check_zone_status(ctx, report, claim, links, subjects):
-    status = claim.zone_status
+def _check_zone_status(ctx, report, claim, links):
+    """Bölge raporu (koordinatsız): rapor saatinde bölgede kaydı olan track'lerle yargılanır."""
+    status, repo = claim.zone_status, ctx.repo
+    look = settings.reports.zone_lookback_min
+    recent = [tr.id for tr in repo.tracks() if any(
+        report.t - look <= p.t <= report.t and nearest_zone(p.lat, p.lon, repo.zones)[0].name == claim.zone
+        for p in tr.points)]
     if status == "no_heavy":
-        heavy = []
-        for il in links.images:
-            heavy += [d.id for d in ctx.repo.detections_for(il.image_id) if d.label in HEAVY]
-        heavy_tracks = [t for t in links.zone_tracks if ctx.label_of_track(t) in HEAVY]
-        obs = {"heavy_detections": len(heavy), "heavy_tracks": len(heavy_tracks)}
-        refs = tuple(f"det:{d}" for d in heavy) + tuple(f"track:{t}" for t in heavy_tracks)
-        if heavy or heavy_tracks:
-            return (S.CONTRADICTED, f"'{claim.zone}' bölgesinde ağır araç yok deniyor; bölge görüntülerinde "
-                    f"{len(heavy)} ağır araç tespiti, rapor saatinde {len(heavy_tracks)} ağır araç track'i var.",
-                    obs, refs)
-        return S.VERIFIED, f"'{claim.zone}' bölgesinde ağır araç görülmedi.", obs, ()
+        heavy_now = [t for t in dict.fromkeys(list(links.zone_tracks) + recent) if ctx.label_of_track(t) in HEAVY]
+        subj = [Subject(kind="tracked", detection_id=ctx.track_det.get(t), track_id=t, label=ctx.label_of_track(t),
+                        dist_m=0.0) for t in heavy_now]
+        obs = {"heavy_tracks_at_report": len(heavy_now)}
+        if heavy_now:
+            return (S.CONTRADICTED, f"'{claim.zone}' bölgesinde ağır araç yok deniyor; rapor anında ({report.time}) "
+                    f"ve önceki {look} dk'da bölgede {len(heavy_now)} ağır araç kaydı var: {', '.join(heavy_now)}.", obs, subj)
+        return (S.PARTIAL, f"Rapor anında ({report.time}) '{claim.zone}' bölgesinde ağır araç kaydı yok; park halindeki "
+                "araçların track'i olmayabileceği için yokluk tam doğrulanamaz.", obs, [])
     if status == "normal":
-        approachers = [t for t in links.zone_tracks if ctx.kinematics[t].consistent_approach]
-        if approachers:
-            return (S.PARTIAL, f"'{claim.zone}' için 'normal' deniyor; bölgede üsse tutarlı yaklaşan "
-                    f"{len(approachers)} araç var.", {"consistent_approachers": len(approachers)},
-                    tuple(f"track:{t}" for t in approachers))
-        return S.VERIFIED, f"'{claim.zone}' bölgesinde üsse tutarlı yaklaşan araç yok.", {}, ()
-    return S.UNVERIFIABLE, "Bölge bağlamı (ihbar / iletişim durumu); gözlemle doğrulanamaz.", {}, ()
+        flagged, circling = [], []
+        for t in dict.fromkeys(list(links.zone_tracks) + recent):
+            k = track_state_at(repo.track(t), repo.base, report.t)
+            if k is None:
+                continue
+            if k.circling:
+                circling.append(t)
+            elif k.consistent_approach:
+                flagged.append(t)
+        subj = [Subject(kind="tracked", detection_id=ctx.track_det.get(t), track_id=t, label=ctx.label_of_track(t),
+                        dist_m=0.0) for t in circling + flagged]
+        if circling:
+            return (S.CONTRADICTED, f"'{claim.zone}' için 'olağandışı durum yok' deniyor; rapor anında bölgede ÜSSÜN "
+                    f"ETRAFINDA DÖNEN araç var (son {look} dk): {', '.join(circling)}.", {"circling": len(circling)}, subj)
+        if flagged:
+            return (S.PARTIAL, f"'{claim.zone}' için 'normal' deniyor; rapor anında bölgede üsse tutarlı yaklaşan "
+                    f"{len(flagged)} araç var: {', '.join(flagged)}.", {"consistent_approachers": len(flagged)}, subj)
+        return S.VERIFIED, f"Rapor anında '{claim.zone}' bölgesinde olağandışı hareket yok.", {}, []
+    return S.UNVERIFIABLE, "Bölge bağlamı (ihbar / iletişim durumu); gözlemle doğrulanamaz.", {}, []
 
 
-def _check_unverifiable(ctx, report, claim, links, subjects):
+def _check_unverifiable(ctx, report, claim, links):
     if claim.blanket_friendly:
         return (S.UNVERIFIABLE, "Konumsuz genel dost duyurusu; hiçbir aracın riskini tek başına düşürmez.",
-                {"blanket_friendly": True}, ())
-    return S.UNVERIFIABLE, "Genel bilgi; araç/konum iddiası yok.", {}, ()
-
-
-def _best(results: list, claimed_type: str | None):
-    """Birden fazla özne varsa raporun anlattığına en çok benzeyeni (tip uyumlu + en iyi durum) seç."""
-    order = [S.VERIFIED, S.PARTIAL, S.CONTRADICTED, S.UNVERIFIABLE]
-    return min(results, key=lambda r: (not _label_matches(claimed_type, r[1].label), order.index(r[0])))
+                {"blanket_friendly": True}, [])
+    return S.UNVERIFIABLE, "Genel bilgi; araç/konum iddiası yok.", {}, []
 
 
 _CHECKS = {

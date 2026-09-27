@@ -19,7 +19,7 @@ from typing import Callable
 from backend.config import settings
 from backend.engine.agent import tools as tool_registry
 from backend.engine.agent.prompts import build_messages, repair_message
-from backend.engine.agent.schemas import fallback, finalize, validate
+from backend.engine.agent.schemas import fallback, finalize, normalize_refs, validate
 from backend.engine.models import ImageDossier
 
 EventCallback = Callable[[dict], None]
@@ -101,7 +101,7 @@ def run_agent(dossier: ImageDossier, client=None, on_event: EventCallback | None
 
             # ---- son yanıt
             try:
-                raw = result.json()
+                raw = normalize_refs(result.json())
                 errors = validate(raw, dossier)
             except ValueError as e:
                 raw, errors = None, [f"yanıt JSON olarak ayrıştırılamadı ({e})"

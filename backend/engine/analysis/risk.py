@@ -27,6 +27,14 @@ class RiskInput:
     heavy_group_size: int = 0        # aynı görüntüde bu aracın yakınındaki ağır araç sayısı (kendisi dahil)
 
 
+def _is_reassuring(c: ClaimCheck) -> bool:
+    """Riski düşürmeye yönelik iddia: dost/ikmal kimliği ya da "olağan" / "uzaklaşıyor" hareketi."""
+    if c.claim_type == ClaimType.IDENTITY:
+        return True
+    return c.claim_type == ClaimType.MOTION and (c.observed or {}).get("claimed_motion") in ("leaving_area",
+                                                                                          "normal_activity")
+
+
 def level_for(score: int) -> RiskLevel:
     cfg = settings.risk
     if score >= cfg.critical_at:
@@ -75,25 +83,23 @@ def score(inp: RiskInput) -> BaselineRisk:
             add("receding", f"son {settings.kinematics.radial_window_min} dk'da üsten {rc:.0f} m uzaklaştı")
         if k.stationary_min >= cfg.long_stationary_min and d < cfg.mid_base_m:
             add("long_stationary_near_base", f"{k.stationary_min} dk durağan, üsse {d:.0f} m")
+        if k.circling:
+            add("circling_base", f"üssün etrafında {k.circling_radius_m:.0f} m yarıçapta döndü ({k.circling_window}, "
+                                 f"{k.circling_sweep_deg:.0f}° tarama)")
+        elif k.min_dist_to_base_m < settings.kinematics.close_pass_m and k.min_dist_to_base_m < d - 200:
+            add("close_pass", f"kayıt içinde üsse {k.min_dist_to_base_m:.0f} m'ye kadar yaklaştı")
         if (k.tortuosity is not None and k.tortuosity >= cfg.loiter_tortuosity
                 and k.moves >= cfg.loiter_min_moves):
             add("loitering", f"dolaşma: yol/yer değiştirme {k.tortuosity:.1f}, {k.moves} hareket")
 
-    # ---- raporlar
-    non_identity = [c for c in inp.claims if c.claim_type != ClaimType.IDENTITY]
-    identity = [c for c in inp.claims if c.claim_type == ClaimType.IDENTITY]
-    contradicted = [c for c in inp.claims if c.status == ClaimStatus.CONTRADICTED]
-    partial = [c for c in non_identity if c.status == ClaimStatus.PARTIAL]
-    if contradicted:
-        add("report_contradiction", "çelişen rapor: " + ", ".join(sorted({c.report_id for c in contradicted})))
-    elif partial:
-        add("report_partial_contradiction", "kısmen tutan rapor: " + ", ".join(sorted({c.report_id for c in partial})))
-    if any(c.status == ClaimStatus.CONTRADICTED for c in identity):
-        add("unverified_friendly_claim", "dost/ikmal iddiası gözlemle çelişiyor: "
-            + ", ".join(sorted({c.report_id for c in identity if c.status == ClaimStatus.CONTRADICTED})))
-    elif identity and all(c.status == ClaimStatus.VERIFIED for c in identity):
-        add("verified_friendly_claim", "dost iddiası fiziksel olarak tutarlı: "
-            + ", ".join(sorted({c.report_id for c in identity})))
+    # ---- raporlar: yalnızca riski DÜŞÜRMEYE yönelik iddialar (dost / "olağan" / "uzaklaşıyor") risk etkiler.
+    # Gözlemle çelişirlerse ya da üsse yaklaşan araca iliştirilmişlerse şüphe sinyalidir. Hiçbir iddia riski düşürmez;
+    # yanlış bir tehdit iddiası (ör. şişirilmiş kamyon sayısı) aracın riskini artırmaz.
+    misleading = sorted({c.report_id for c in inp.claims if _is_reassuring(c) and (
+        c.status == ClaimStatus.CONTRADICTED or (c.observed or {}).get("reassuring_on_approach"))})
+    if misleading:
+        add("reassuring_claim", "güven verici iddia gözlemle çelişiyor ya da üsse yaklaşan araca iliştirilmiş: "
+            + ", ".join(misleading))
 
     # ---- tespit güveni
     if not inp.has_track and inp.confidence is not None and inp.confidence < settings.match.low_confidence:

@@ -117,6 +117,7 @@ def alerts():
                 "lat": ev.lat if ev else None, "lon": ev.lon if ev else None,
                 "dist_to_base_m": ev.dist_to_base_m if ev else None,
                 "eta_min": k.eta_min if k else None, "consistent_approach": k.consistent_approach if k else False,
+                "circling": k.circling if k else False,
                 "headline": row["rationale"].split(". ")[0][:200],
             })
     items.sort(key=lambda x: (level_rank(x["risk_level"]), -x["score"], x["capture_time"]))

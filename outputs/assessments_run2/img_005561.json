@@ -1,0 +1,209 @@
+{
+ "image_id": "img_005561",
+ "capture_time": "12:10",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "Bu görüntüde 8 araç tespit edilmiş; en dikkat çekici olanı img_005561_003 (track T0042) — son 60 dakikada üsse 3170 m yaklaşıp ETA'sı 51 dakikaya inmiş, hızlı yaklaşma örüntüsü var. Diğer araçlar ya uzaklaşıyor ya da park halinde; genel risk bu araç nedeniyle medium seviyesinde.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_005561_003",
+   "label": "car",
+   "track_id": "T0042",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 2716 m mesafede yaklaşıyor: 2 saatte 6967→2716 m, son 60 dk Δ-3170 m. 7 hareketin 5'i yaklaşan (2 uzaklaşan) yönde, ETA 51 dk, dolaşma 2.8, son hareket üsse 16° açıyla — hızlı yaklaşma profili.",
+   "evidence": [
+    "det:img_005561_003",
+    "track:T0042",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_000",
+   "label": "car",
+   "track_id": "T0067",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m, son 60 dk'da 1768 m yaklaşıyor; ancak son hareket açısı 123° (tutarlı değil), dolaşma düşük (1.0), ETA 92 dk — tek başına yüksek tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_000",
+    "track:T0067",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_005",
+   "label": "car",
+   "track_id": "T0048",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m, son 60 dk'da 1294 m yaklaşıyor; ETA 126 dk, dolaşma 1.1, son hareket 173° — yaklaşma temposu img_005561_003'ün yanında yavaş, aciliyet sinyali yok.",
+   "evidence": [
+    "det:img_005561_005",
+    "track:T0048",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_002",
+   "label": "car",
+   "track_id": "T0150",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsse 2717 m ancak son 60 dk'da 2051 m uzaklaşmış (receding); dolaşma 3.7 ile hafif loitering izi var ama net yönelim üstten uzaklaşma yönünde.",
+   "evidence": [
+    "det:img_005561_002",
+    "track:T0150",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, hareket kaydı yok, üsse 2716 m. Belirsiz ama yakın tehdit sinyali üretilmiyor.",
+   "evidence": [
+    "det:img_005561_004",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_001",
+   "label": "car",
+   "track_id": "T0025",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 344 m uzaklaşmış, dolaşma 1.0, hareket örüntüsü nötr — tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_001",
+    "track:T0025",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Düşük güvenli tespit (0.14) ama görsel teyitle park halinde gri/koyu renkli otomobil olarak doğrulandı — ağır araç değil, park durumu (parked flag) ile uyumlu.",
+   "evidence": [
+    "det:img_005561_006",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Düşük güvenli tespit (0.13); görsel teyitte park halinde koyu renkli otomobil görüldü, ağır araç değil — parked ve low_confidence bayraklarıyla tutarlı, ek tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_007",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Bölge raporu çelişkisi: R017 ağır araç iddiası",
+   "risk_level": "medium",
+   "rationale": "R017 (10:20, official) bölgede ağır araç olmadığını söylüyor; ancak anomaly kaydı rapor saatinde 1 ağır araç track'i mevcut. R100 (11:40) aynı bölgede yalnızca binek araç bildirip DOĞRULANDI statüsü aldı. 10:20–11:40 arasındaki ağır araç varlığı/kaybolması açıklanamıyor — bölgede tanımlanmamış ağır araç geçişi ihtimali izlenmeli.",
+   "evidence": [
+    "report:R017",
+    "report:R100",
+    "image:img_005561"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R017",
+   "verdict": "unreliable",
+   "note": "Bölgede ağır araç yok diyor; anomaly kaydı rapor saatinde 1 ağır araç track'i ile çelişiyor."
+  },
+  {
+   "report_id": "R021",
+   "verdict": "unverifiable",
+   "note": "Üçüncü taraf ihbar doğrulanamadı; gözlemsel veriyle eşleşen bir araç yok."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel tatbikat duyurusu; görüntüdeki hiçbir aracın dost statüsünü tek başına doğrulamaz."
+  },
+  {
+   "report_id": "R100",
+   "verdict": "reliable",
+   "note": "Bölgede yalnızca binek araç bildirimi; mevcut 8 tespitin tamamı car, ağır araç yok — gözlemle tutarlı, DOĞRULANDI."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "R122 ile aynı içerikli konumsuz duyuru; araç bazında doğrulanamaz."
+  },
+  {
+   "report_id": "R031",
+   "verdict": "reliable",
+   "note": "Devriye olağandışı durum bildirmedi; bölgedeki mevcut tablo (binek araçlar, ağır araç yok) ile uyumlu, DOĞRULANDI."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-26T23:57:28+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005561\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, ağır araç (kamyon/otobüs) benziyor mu?\",\"vehicle_id\":\"img_005561_006\"}",
+    "summary": "{\"image_id\": \"img_005561\", \"target\": \"img_005561_006 (car, güven 0.14)\", \"crop_px\": [799, 390, 959, 550], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": null, \"occluded\": false, \"answer\": \"Evet, kirmizi …"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005561\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, ağır araç (kamyon/otobüs) benziyor mu?\",\"vehicle_id\":\"img_005561_007\"}",
+    "summary": "{\"image_id\": \"img_005561\", \"target\": \"img_005561_007 (car, güven 0.13)\", \"crop_px\": [825, 379, 1001, 555], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": true, \"answer\": \"Kirmizi cerc…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 16972,
+   "output": 4370,
+   "reasoning": 563
+  },
+  "cost_usd": 0.003456,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 88.3
+ }
+}

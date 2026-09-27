@@ -1,0 +1,188 @@
+{
+ "image_id": "img_005561",
+ "capture_time": "12:10",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "img_005561'de (12:10) temel en yüksek risk medium'dur; img_005561_003 (T0042) son 60 dakikada 3170 m tutarlı hızlı yaklaşma ile en dikkat çekici araçtır. Bölgedeki ağır araç iddiasına dair bölge raporları birbiriyle çelişmektedir (R017 çelişkili, R100 doğrulanmış); planlı tatbikat duyuruları doğrulanamadığından hiçbir aracın riskini düşürmez.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_005561_003",
+   "label": "car",
+   "track_id": "T0042",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "track:T0042, 2 saatte üsse 6967→2716 m yaklaştı; son 60 dakikada Δ-3170 m, 7 hareketin 5'i yaklaşan, ETA 51 dk, dolaşma 2.8. Mid_base(+10), approaching(+10), fast_approach(+10) faktörleri temel skoru 30 medium yapar; temel seviyesini değiştiren yeni bulgu yok.",
+   "evidence": [
+    "det:img_005561_003",
+    "track:T0042",
+    "image:img_005561"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_000",
+   "label": "car",
+   "track_id": "T0067",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "track:T0067, 2 saatte 5678→2717 m, son 60 dakikada Δ-1768 m (4 yaklaşan/2 uzaklaşan), ETA 92 dk, dolaşma 1.0. Yaklaşıyor ancak tutarlı yaklaşma işareti yok; temel low korunur.",
+   "evidence": [
+    "det:img_005561_000",
+    "track:T0067"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_005",
+   "label": "car",
+   "track_id": "T0048",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "track:T0048, 2 saatte 5745→2717 m, son 60 dakikada Δ-1294 m (5 yaklaşan/3 uzaklaşan), ETA 126 dk, dolaşma 1.1. Yaklaşıyor ancak tutarlı yaklaşma işareti yok; temel low korunur.",
+   "evidence": [
+    "det:img_005561_005",
+    "track:T0048"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_002",
+   "label": "car",
+   "track_id": "T0150",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "track:T0150, üsse 629→2717 m uzaklaşıyor, son 60 dakikada Δ+2051 m, 6 hareket (3 yaklaşan/3 uzaklaşan), dolaşma 3.7. Uzaklaşma loitering dolaşmasını dengeleyerek temel skoru 10 low'ta tutar.",
+   "evidence": [
+    "det:img_005561_002",
+    "track:T0150"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "det:img_005561_004, track yok (parked), üsse 2716 m, yalnızca mid_base(+10). Hareket kaydı olmadığından tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_004"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_001",
+   "label": "car",
+   "track_id": "T0025",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track:T0025, üsse 3794→2716 m, son 60 dakikada Δ+344 m uzaklaşıyor, 5 hareket (3 yaklaşan/2 uzaklaşan). Temel skor 0 low.",
+   "evidence": [
+    "det:img_005561_001",
+    "track:T0025"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "det:img_005561_006, parked, düşük güvenli tespit (0.14), track yok. low_confidence(-10) ile temel 0 low; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_006"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005561_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "det:img_005561_007, parked, düşük güvenli tespit (0.13), track yok. low_confidence(-10) ile temel 0 low; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_005561_007"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Bölge raporlarında ağır araç çelişkisi",
+   "risk_level": "medium",
+   "rationale": "R017 (10:20) 'ağır araç yok' diyor ancak anomali kaydına göre aynı anda bölgede 1 ağır araç (T0174) kayıtlı; aynı iddiayı 11:40'ta yineleyen R100 ise doğrulanmış. Bu, bölgesel raporların anlık gözlemle çelişebildiğini gösterir; araç tabanlı tehdit yok, bu yüzden rapor güvenilirliği maddesi olarak medium'u geçmez.",
+   "evidence": [
+    "report:R017",
+    "report:R100"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R017",
+   "verdict": "unreliable",
+   "note": "Ağır araç yok iddiası, rapor anında bölgede kayıtlı 1 ağır araç (T0174) ile çelişiyor; anomali kaydı çelişkiyi doğruluyor."
+  },
+  {
+   "report_id": "R021",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamadı; gözlemle desteklenmiyor, tek başına risk gerekçesi yapılmaz."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); hiçbir aracın gözlemine bağlanamadı, riski düşürmez."
+  },
+  {
+   "report_id": "R100",
+   "verdict": "reliable",
+   "note": "11:40 itibarıyla bölgede yalnızca binek araç görüldüğü iddiası doğrulanmış; bu görüntüdeki 8 tespitin tamamı binek."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); doğrulanamadı, riski düşürmez."
+  },
+  {
+   "report_id": "R031",
+   "verdict": "reliable",
+   "note": "Devriyenin olağandışı durum bildirmediği bilgisi doğrulanmış; görüntüde ağır araç yok, bu görselle tutarlı."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:03:39+00:00",
+  "reasoning_effort": "high",
+  "iterations": 1,
+  "tool_calls": [],
+  "repairs": 0,
+  "tokens": {
+   "input": 4792,
+   "output": 2017,
+   "reasoning": 475
+  },
+  "cost_usd": 0.001343,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 51.1
+ }
+}

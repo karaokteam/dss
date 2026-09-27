@@ -39,7 +39,7 @@
   Yani model bu araçları büyük ölçüde **örtülme** yüzünden kaçırmış; track aracın orada olduğunu söylüyor.
 
 ### A7 🟡 Rapor kaynağının ağırlığı
-- **Bulgu:** Koordinatlı raporlarda **official raporların %57'si (28/49) çelişkili**, third_party raporlarda ise **%39 (9/23)**. Çelişkilerin çoğunu official kaynaklı dost/ikmal iddiaları oluşturuyor.
+- **Bulgu (görüntü konumu eşleştirmesiyle, E1):** Koordinatlı raporlarda official raporların **%18'i (9/49)**, third_party raporların **%30'u (7/23)** çelişkili. (Eski eşleştirmedeki %51 / %26 yanlış araca bağlamadan geliyordu.)
 - **Karar:** Kaynak türü (official / third_party) güvenilirlik göstergesi olarak kullanılmasın. Raporlar yalnızca gözlemle doğrulandığı ölçüde ağırlık alsın. Kaynak bilgisi agent'a gösterilir ama puanı etkilemez.
 - **Öneri:** Kaynak puanı etkilemesin (şu anki durum).
 
@@ -60,6 +60,35 @@
 - **Bütçe durumu (27.09):** harcanan ~0,23 USD / 15 USD. 40 görüntünün agent değerlendirmesi için tahmin ~0,3–0,6 USD.
 - **Koruma:** görüntü başına en fazla 8 LLM çağrısı ve 6 tool çağrısı; bütçe freni 13 USD; tüm yanıtlar önbellekli (tekrar çalıştırma ücretsiz, prompt değişmedikçe).
 
+## D. Öz denetim ("insan gibi düşün")
+Amaç: sistemin kendi kararlarında yanlış hüküm ve yönlendirme var mı? Tetikleyen vaka insan değerlendirmesinden geldi: R114.
+
+| # | Denetim | Bulgu | Düzeltme |
+|---|---|---|---|
+| D1 | **Zaman kayması:** rapor anı, sonraki bir anın kanıtıyla yargılanıyor mu? | R114 "1 kamyon görüldü" (10:10), 30 dk sonraki fotoğraftaki park halindeki otomobil yüzünden "çelişkili" sayılmıştı. Aynı hata 9 raporda vardı. | Anlık gözlem kuralı: rapor anındaki tek kanıt sonraki fotoğraftaki park halinde araçlarsa → **doğrulanamaz** |
+| D2 | **Bölge raporları** | R092 "Kuzeydoğu'da ağır araç yok" (09:35), 35 dk ve 2 sa sonraki görüntülerdeki kamyonlar yüzünden "çelişkili" sayılmıştı. Rapor anında bölgede ağır araç **yoktu**; rapor doğru. | Bölge raporları yalnızca rapor anındaki track'lerle yargılanıyor. Sonraki görüntüdeki park halindeki ağır araç = kısmen; sonradan gelen = kanıt değil |
+| D3 | **"Trafik normal"** kontrolü hangi ana göre? | Tutarlı yaklaşma track'in sonundaki duruma göre hesaplanıyordu (gelecek bilgisi). 4 rapor ters işaretlenmişti. | Rapor anındaki duruma göre (`track_state_at`) |
+| D4 | **60 m eşiği hareketli araçlar için katı mı?** | R124 "üsse ilerleyen ikmal otomobili": 134 m ötede T0131 rapordan sonra üsse 1,9 km yaklaşıyor. "Araç yok, çelişkili" denmişti. | 60 m içinde araç yoksa 150 m içindeki adaylar iddia edilen hareketle sınanıyor. Uyuşan varsa **kısmen (olası eşleşme)**. Tüm "araç bulunamadı" gerekçeleri en yakın adayları da yazıyor |
+| D5 | **Agent'ın uydurduğu kimlik var mı?** | Özetlerde kanıt dosyasında olmayan 10 track kimliği geçiyor. **Hepsi gerçek**, agent'ın alan sorgusu tool'uyla bulunmuş. | Sorun yok |
+| D6 | **"Toplanma / kümelenme" yorumu** | Agent, araçların aynı noktaya gelmesini dikkat maddesi yapıyordu. Veride bu olağan (184/226 son adımda varmış). | Prompt kuralı 9 |
+| D7 | **"Tutarlı yaklaşma" özet/dikkat maddelerinde** | Koruma yalnızca araç gerekçelerine bakıyordu; img_006444 özetinde T0011 için yanlış kullanılmıştı. | Koruma özet ve dikkat maddelerine genişletildi |
+| D8 | **Tutarlı yaklaşma tanımı (≥3 hareket)** kimseyi kaçırıyor mu? | 1–2 hareketle >2,5 km tutarlı yaklaşan araç yok. | Değişiklik gerekmedi |
+| D9 | **Üssün yakınından geçip uzaklaşanlar** | 47/226 araç (%21) kayıt içinde üsse 0,5–1,5 km yaklaşıp uzaklaşmış; üs şehir merkezinde, bu olağan trafik. | Risk faktörü yapılmadı (yanlış alarm üretir); bilinçli karar |
+| D10 | Yanlış yönlendirme: "doğrulanamaz" raporların "sahte" diye nitelenmesi | Agent bazı doğrulanamaz raporlar için "sahte dost iddiası" diyordu. | Prompt kuralı 10: doğrulanamaz ≠ sahte |
+
+Etkisi: 9 + 13 rapor hükmü düzeldi; kaynak istatistiği official %51 / third_party %26 çelişkili; tüm görüntüler yeni kurallarla yeniden değerlendirildi (run3). Önceki sonuçlar `outputs/assessments_run2/`.
+
+## E. Dış gözden geçirme (27.09) — rapor koordinatının anlamı
+Bir dış gözden geçiren üç açık buldu; veriyle doğrulandı ve kapatıldı.
+
+| # | Bulgu | Doğrulama | Düzeltme |
+|---|---|---|---|
+| E1 | Rapor koordinatı aracın **görüntüdeki** konumu; biz rapor saatindeki konuma bakıyorduk | 5 ondalıklı koordinatların 31/35'i görüntüdeki araca ≤ 3 m, rapor saatindeki konuma 0/35 | Özne görüntüde aranır; iddia rapordan önceki 30 dk davranışla yargılanır; rapordan sonra yaklaşma bayraklanır. **D1 (anlık gözlem kuralı) ve D2'nin "rapor anı ilkesi" bu kuralla geçersiz**; D4'teki olası eşleşme gereksiz kaldı |
+| E2 | Dost iddiası riski düşürebiliyordu | Doğru eşleştirmeyle 18 dost iddiasının 17'si üsse yaklaşan araçta | Kimlik asla doğrulanmaz (en fazla kısmen); güven verici iddia yaklaşan araçta = `reassuring_claim` (+10). Rapor kaynaklı diğer faktörler kaldırıldı: yanlış bir tehdit iddiası aracın riskini artırmaz |
+| E3 | Üssün etrafında dönen araçlar kaçırılıyordu (D9 fazla geniş bakmıştı) | 5 araç 527–875 m yarıçapta 330°+ tur atmış | `circling_base` (+35) faktörü ve anomalisi, genel tabloda dönen araçlar; R042 "olağan" bölge raporu T0034 ile çelişiyor |
+| E4 | Agent, elenmiş sinyallerle (tesadüf oranı, toplanma, "son adımda vardı") riski yükseltiyordu | run3 gerekçeleri | Doğrulayıcı kuralı: somut yeni bulgu yoksa yükseltme reddedilir |
+| E5 | Ekibin 23 elle etiketi (`main` dalı) kullanılmıyordu | — | `eval/gold_reports.json` + `python -m backend.cli eval`. Katman 1: 16/23 → **22/23** (kısmi kapsama → kısmen, yokluk → kısmen, ciddi sayı şişirme → çelişkili, bölge ±15 dk) |
+
 ## B. Karar günlüğü
 
 | Tarih | Karar | Gerekçe |
@@ -79,7 +108,10 @@
 | 2026-09-27 | ✅ `co_movement` "buluştular" eşiği ≥ 4 eşzamanlı hareket, çıktıda tesadüf oranı | Rastgele çiftlerde ≥2 %43, ≥3 %19–24, ≥4 %2–5 |
 | 2026-09-27 | ✅ Görüntü içi koordineli varış anomalisi eklenmedi (A4) | 24 bulgu vs ~29 tesadüfi beklenti |
 | 2026-09-27 | ✅ Vision tool: hedef kırmızıyla işaretli, büyütülmüş kırpma; `occluded` alanı | Görüntülerin bir kısmı eğik açılı; kaçırılan araçlar pano/ağaç altında |
+| 2026-09-27 | ✅ Anlık gözlem kuralı (EVAL, R114): rapor anındaki tek kanıt sonraki fotoğraftaki park halinde araçlarsa tip/hareket uyuşmazlığı → doğrulanamaz | 30 dk sonraki fotoğrafta kamyon olmaması "1 kamyon görüldü" iddiasını yanlışlamaz; 9 rapor düzeldi, 7 görüntü yeniden değerlendirildi |
 | 2026-09-27 | ✅ Agent döngüsü: son iterasyon her zaman cevaba ayrılır; tool üst sınırı 12 → 6 | Testte tool hakkı iterasyonlardan önce bitmediği için model cevap veremeden yedeğe düşüyordu |
+| 2026-09-27 | ⛔ (E1 ile geçersiz) Anlık gözlem kuralı ve rapor anı ilkesi | Rapor koordinatı görüntü konumu; özne görüntüde aranır |
+| 2026-09-27 | ✅ Görüntü konumu eşleştirmesi, dost iddiası asla risk düşürmez, üssün etrafında dönme faktörü, elenmiş sinyal koruması, altın küme ölçümü (E1–E5) | Dış gözden geçirme; tüm görüntüler yeniden değerlendirildi (run4) |
 | 2026-09-27 | ✅ Agent çıktısı: yalnızca önemli araçlar yazılır, gerisi temel seviyeyle eklenir; sapma gerekçe ister; kanıt kimlikleri veride doğrulanır | Kısa çıktı + denetlenebilirlik |
 
 ---
@@ -94,7 +126,9 @@
 Eklenenler: prompt kuralları 5–8 + deterministik koruma ("tutarlı yaklaşma" yalnızca işaretli araçlar için; olumsuz ifadeler hariç).
 Maliyet: run2 0,165 USD; toplam harcama ~0,53 / 15 USD. Önceki sonuçlar `outputs/assessments_run1/`.
 
+**run3 (öz denetim sonrası, prompt `0d4fd6ade975`):** sapma 2, toplanma maddesi 2, "sahte" 0, yedek 0; görüntü riski 1 kritik / 8 yüksek / 27 orta / 4 düşük. Ek doğrulayıcı kuralları: kanıt öneki otomatik düzeltme, "sahte" kelimesi yasak. Toplam harcama ~0,71 USD.
+
 ## C. Step 9 elle inceleme notları (toplu çalıştırma bitince prompt ayarı)
 - **img_000860:** Agent, T0192–T0032 çiftini `chance_rate` 0,053'e dayanarak **yüksek** seviyeli "koordineli buluşma şüphesi" yaptı; tool çıktısındaki çoklu karşılaştırma uyarısını dikkate almadı. Ayrıca "6 araç tutarlı yaklaşarak" demiş, oysa kanıt dosyasında tutarlı yaklaşan yalnızca T0122 ve T0020 var. → Prompt: tesadüf oranı tek başına dikkat maddesi olamaz; "tutarlı yaklaşma" ifadesi yalnızca `TUTARLI YAKLAŞMA` işaretli araçlar için kullanılabilir.
 - **img_000267 (Step 8 denemesi):** T0226 için "tutarlı yaklaşma" demiş, oysa aracın 8 hareketinin 2'si uzaklaşan (aynı sorun).
-- **Olumlu:** T0122'nin tespit güveni yalnızca 0,10; agent vision ile aracın gerçekten yüklü bir kamyon olduğunu teyit etti ve seviyeyi kritik tuttu.
+- **Olumlu:** T0122'nin tespit güveni yalnızca 0,10; agent vision ile aracın gerçekten yüklü bir kamyon olduğunu teyit etti ve seviyeyi kritik tuttu. (run4: aynı kırpmada görsel teyit belirsiz çıktı; karar yine kritik, dayanak hareket kaydı.)

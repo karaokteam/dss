@@ -1,0 +1,254 @@
+{
+ "image_id": "img_003201",
+ "capture_time": "14:55",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "Guney Kapisi Yaklasiminda en dikkat cekici bulgu, resmi bir raporun (R129) 'planli ikmal, kimlik teyitli' dost iddiasinin gozlemle celismesi: konumdaki van park halinde ve hareket kaydi yok. Ayrica agir arac (R130) iddiasi gozlemle desteklenmiyor. En yuksek riskli arac, dolasan otobus benzeri agir aractir (img_003201_004, medium).",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003201_004",
+   "label": "bus",
+   "track_id": "T0213",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Agir arac (bus 0.44) ve dolasma faktorleri temel riski medium yapmis (25). Uesse 5617→5406 m (2 saat), son 60 dk Δ+15 m, 6 hareket (4 yaklasan/2 uzaklasan), dolasma 7.1; yonelsel hareketi izleniyor ancak dogrudan yaklasma egilimi zayif. Gorsel inceleme aracin gercekten var oldugunu ve uzun duz tavaniyla otobus olabilecegini (dusuk guvenle buyuk van olasiligi) dogruladi; seviye degisikligi icin yeni bulgu yok.",
+   "evidence": [
+    "det:img_003201_004",
+    "track:T0213",
+    "image:img_003201"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_003",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Track'siz park halinde van. Temel riski yukselten iki celisme: R130'un '1 agir arac' iddiasi bu tipte arac bulamadi (en yakin: T0080 car 24 m, bu van 23 m) ve R129'un dost/ikmal kimlik iddiasinin hareket beyani gozlemle (park halinde) celisiyor. Bu faktorler temel skorda (20 low) zaten hesaba katilmis; seviye degisikligi icin yeni bulgu yok ancak rapor celismeleri dikkat maddesi olarak izlenmeli.",
+   "evidence": [
+    "det:img_003201_003",
+    "report:R129",
+    "report:R130"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003201_005",
+   "label": "van",
+   "track_id": "T0156",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsse 456 m yaklaştı; dolaşma: yol/yer değiştirme 3.6, 7 hareket",
+   "evidence": [
+    "det:img_003201_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_001",
+   "label": "car",
+   "track_id": "T0080",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R130",
+   "evidence": [
+    "det:img_003201_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_002",
+   "label": "car",
+   "track_id": "T0077",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "dolaşma: yol/yer değiştirme 4.1, 5 hareket",
+   "evidence": [
+    "det:img_003201_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_000",
+   "label": "car",
+   "track_id": "T0204",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 4429 m uzaklaştı",
+   "evidence": [
+    "det:img_003201_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.23)",
+   "evidence": [
+    "det:img_003201_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_003201_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_008",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.13)",
+   "evidence": [
+    "det:img_003201_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.11)",
+   "evidence": [
+    "det:img_003201_009"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_003201_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.10)",
+   "evidence": [
+    "det:img_003201_010"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Dost/ikmal kimlik iddiasi gozlemle celisiyor (R129)",
+   "risk_level": "medium",
+   "rationale": "Resmi rapor R129 (13:55), 39.87316N 32.85198E konumundan usse ilerleyen panelvanin 'planli ikmal araci, kimlik teyitli' oldugunu iddia ediyor; ancak o konumdaki img_003201_003 (van) park halinde, hareket kaydi yok ve T0080 de duragan. Celisen dost iddiasi bir araci gizleme girisimi olabilir; genel duyurular (R112, R035 - dogrulanamaz) bu riski dusuremez. Aracin kendisi track'siz/veri yok oldugundan madde rapor guvenilirligi sinirinda medium.",
+   "evidence": [
+    "report:R129",
+    "det:img_003201_003",
+    "track:T0080",
+    "report:R112",
+    "report:R035"
+   ]
+  },
+  {
+   "title": "Agir arac iddiasinin dogrulanamamasi (R130)",
+   "risk_level": "medium",
+   "rationale": "Resmi rapor R130 (13:15) 39.8732N 32.8522E civarinda 1 agir arac (kamyon/otobus) bildirdi; dogrulama bu konumda bu tipte arac bulamadi (en yakin: T0080 car 24 m, img_003201_003 van 23 m). Goruntudeki tek agir aday img_003201_004 ise 5406 m mesafede ve dusuk guvenli (0.44) tespit. Iddia gozlemle desteklenmiyor.",
+   "evidence": [
+    "report:R130",
+    "track:T0080",
+    "det:img_003201_003",
+    "det:img_003201_004"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R130",
+   "verdict": "unreliable",
+   "note": "Agir arac sayi iddiası gozlemle celisiyor: konumda bu tipte arac yok (T0080 car, park halinde van)."
+  },
+  {
+   "report_id": "R019",
+   "verdict": "reliable",
+   "note": "Hareketsiz otomobil iddiası dogrulandi: T0080 kayit basindan beri durağan."
+  },
+  {
+   "report_id": "R129",
+   "verdict": "unreliable",
+   "note": "Kimlik ve hareket iddialari gozlemle celisiyor: van park halinde, track yok; dost/ikmal iddiasi gozlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R098",
+   "verdict": "reliable",
+   "note": "Bolge trafiginin normal akisi dogrulandi."
+  },
+  {
+   "report_id": "R105",
+   "verdict": "reliable",
+   "note": "Bolge trafiginin normal akisi dogrulandi."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; dogrulanamaz, arac riskini dusuremez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; dogrulanamaz, arac riskini dusuremez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:28:22+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003201\",\"question\":\"Bu araç gerçekten otobüs (ağır araç) mu, yoksa kamyonet/van gibi daha küçük bir araç mı? Tipini ve yükü/örtüsü olup olmadığını belirt.\",\"vehicle_id\":\"img_003201_004\"}",
+    "summary": "{\"image_id\": \"img_003201\", \"target\": \"img_003201_004 (bus, güven 0.44)\", \"crop_px\": [377, 151, 537, 311], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"bus\", \"color\": \"pembe\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kirmizi…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 18274,
+   "output": 4378,
+   "reasoning": 1604
+  },
+  "cost_usd": 0.001753,
+  "cached_calls": 2,
+  "fallback": false,
+  "duration_s": 20.4
+ }
+}

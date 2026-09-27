@@ -1,0 +1,155 @@
+{
+ "image_id": "img_003189",
+ "capture_time": "13:20",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "medium",
+ "summary": "En dikkat gerektiren araçlar T0041 ve T0007: ikisi de son 60 dakikada 2.400-3.900 m hızlı yaklaşımla üsse 3,5 km mesafede ve T0041 ayrıca dolaşıyor (dolaşma 3.1). Ayrıca geniş alan taraması görüntüde kanıt dosyasında listelenmeyen iki kamyon (T0225, T0050) ortaya çıkardı; R039'un 'yüklü kamyon park halinde' iddiası ise görsel teyitle çürütüldü (araç yüksüz bir otomobil).",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003189_000",
+   "label": "car",
+   "track_id": "T0041",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "track:T0041 son 60 dk'da üsse 2422 m yaklaştı (4802→3476 m, ETA 86 dk), 6 hareketin 4'ü yaklaşan ancak 2'si uzaklaşan — tutarlı yaklaşma yok, dolaşma 3.1. Üsse 0° açıyla son hareket. Temel risk 40 (medium) yerinde; yeni çürütücü/doğrulayıcı bulgu yok.",
+   "evidence": [
+    "det:img_003189_000",
+    "track:T0041"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_003",
+   "label": "car",
+   "track_id": "T0007",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "track:T0007 son 60 dk'da üsse 3963 m yaklaştı (7385→3456 m, 8 hareketin 7'si yaklaşan, ETA 52 dk), dolaşma düşük (1.7). Hızlı yaklaşma faktörleri temel skorda zaten hesaplı (30, medium); seviye değişikliği gerekmiyor.",
+   "evidence": [
+    "det:img_003189_003",
+    "track:T0007"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_001",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 18,
+   "override_reason": null,
+   "rationale": "Araç park halinde, hareket kaydı yok (track'siz). Görsel inceleme (image:img_003189): siyah sedan, yük yok, kamyon değil — R039'un 'yüklü kamyon' iddiası doğrulanmadı. Park halinde olması R039'un 'stationary' kısmıyla tutuyor.",
+   "evidence": [
+    "det:img_003189_001",
+    "image:img_003189",
+    "report:R039"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003189_002",
+   "label": "car",
+   "track_id": "T0033",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track:T0033 son 60 dk'da üsten 2700 m uzaklaştı (748→3471 m, 5 hareketin tamamı uzaklaşan, 118° açı). Üsse yaklaşan bir tehdit sinyali yok; temel 0 (low) yerinde.",
+   "evidence": [
+    "det:img_003189_002",
+    "track:T0033"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Kanıt dosyasında listelenmeyen iki kamyon görüntüde bulundu",
+   "risk_level": "medium",
+   "rationale": "800 m yarıçaplı geniş tarama (39.94643N 32.82861E, 12:00-13:20), img_003189'da hareket kayıtlı iki kamyon ortaya çıkardı: track:T0225 (tarama merkezine 113 m) ve track:T0050 (127 m), ikisi de 13:20'de mevcut ve pencere içinde varmış. Bu araçların hareket özeti ve temel riski kanıt dosyasında yok; ağır araç oldukları ve üsse orta mesafede (görüntü merkezi ~3450 m) bulundukları için takip listesine alınmalı. Konvoy/koordinasyon hipotezi hareket verisi olmadan ileri sürülemez.",
+   "evidence": [
+    "track:T0225",
+    "track:T0050",
+    "image:img_003189"
+   ]
+  },
+  {
+   "title": "R039 'yüklü kamyon' iddiası görsel teyitle çürütüldü",
+   "risk_level": "low",
+   "rationale": "R039 (12:25, third_party) 39.94643N 32.82861E konumunda yüklü kamyon bildiriyordu; görsel inceleme (image:img_003189, yüksek güven) bu noktadaki img_003189_001'in yüksüz siyah bir otomobil olduğunu gösterdi. 800 m taramada park halinde kamyon da bulunamadı (parked_count 0). Rapordaki kamyon/yük kısmına dayanarak risk yükseltilmemeli.",
+   "evidence": [
+    "report:R039",
+    "image:img_003189",
+    "det:img_003189_001"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R039",
+   "verdict": "partly_reliable",
+   "note": "'Stationary' kısmı doğrulandı (img_003189_001 park halinde, 34 m) ancak 'yüklü kamyon' kısmı görsel teyitle çürütüldü: araç yüksüz otomobil. Kısmen tutan rapor."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru (tatbikat/dost unsurlar); hiçbir aracın riskini düşürmez, doğrulanamaz."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "R122 ile aynı konumsuz duyurunun third_party kopyası; gözlemle eşleşen bir teyit yok."
+  },
+  {
+   "report_id": "R048",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbara atıf; görüntüdeki hareket tablosu (1 tutarlı yaklaşan araç dışında ağırlıklı uzaklaşan/park araçlar) gece hareketliliği iddiasını desteklemiyor."
+  },
+  {
+   "report_id": "R121",
+   "verdict": "reliable",
+   "note": "Sabah devriyesinin olağandışı durum bildirmediği bilgisi doğrulandı; mevcut görüntüde kritik bir olağandışı durum görseline rastlanmadı (yeni bulunan iki kamyon izlenmeli)."
+  },
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "İhbarın incelenip doğrulanamadığı belirtilmiş; gözlemle desteklenmiyor, sahte/yanlış denemez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:06:07+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003189\",\"lat\":39.94643,\"lon\":32.82861,\"question\":\"Bu noktadaki araç kamyon mu yoksa otomobil mi? Üzerinde yükyok, açıklayıcı detay ver.\",\"vehicle_id\":\"img_003189_001\"}",
+    "summary": "{\"image_id\": \"img_003189\", \"target\": \"img_003189_001 (car, güven 0.89)\", \"crop_px\": [951, 146, 1423, 618], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": false, \"answer\": \"Bu bir otom…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.94643,\"lon\":32.82861,\"radius_m\":800,\"time_from\":\"12:00\",\"time_to\":\"13:20\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.94643, \"lon\": 32.82861, \"radius_m\": 800.0, \"window\": \"12:00–13:20\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 2, \"tracked\": [{\"track_id\": \"T0225\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_003189\", \"present…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 16669,
+   "output": 6100,
+   "reasoning": 1748
+  },
+  "cost_usd": 0.005166,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 146.6
+ }
+}

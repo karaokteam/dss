@@ -2,8 +2,8 @@
  "image_id": "img_005611",
  "capture_time": "13:45",
  "zone": "Bati Yerlesimi",
- "overall_risk": "low",
- "summary": "Görüntüdeki 4 araç üsse 4,3 km'den uzakta ve riskleri düşük; en dikkat çeken araç T0123 (son 60 dakikada 2.603 m tutarlı hızlı yaklaşma, ETA ~102 dk) ama yakınlık ve tehdit göstergesi yok. R071'in 12:50'de bildirdiği 'üzeri örtülü ağır araç' 60 m çevresinde hem track hem görsel olarak doğrulanamadı — bölgede yalnızca 5 track (tümü bu görüntüdeki düşük riskli araçlar) bulundu, raporun koordinatındaki nokta görüş alanı dışında/kapalı. R003 konumsuz genel duyuru, riski düşürmez.",
+ "overall_risk": "medium",
+ "summary": "Bu görüntüdeki dört araç düşük riskli; ancak komşu bölgede 13:30–13:45 arasında üssün ~823 m'sinde dönen T0198 (car) bu veri setindeki en dikkat çekici tehdit sinyalidir ve genel riski medium'a taşır. Ayrıca R071'in 'örtülü ağır araç bekliyor' iddiası gerek alan taraması gerek görsel incelemeyle doğrulanamadı; yakın geçiş yapmış T0093 şu an üsten uzaklaşıyor ve görsel olarak örtüsüz, yüksüz bir otomobil çıktı.",
  "vehicles": [
   {
    "vehicle_id": "img_005611_001",
@@ -13,7 +13,7 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Track T0123: son 60 dakikada 2.603 m yaklaşılmış (tutarlı hızlı yaklaşma), ETA ~102 dk, 5/7 hareket yaklaşan; ancak üsse 4.442 m mesafe, ağır araç değil ve görüntüde küçük/uzak — tek başına tehdit göstergesi yok.",
+   "rationale": "T0123: son 60 dk'da üsse 2603 m yaklaştı (7 hareketin 5'i yaklaşan), üsse ~4442 m, ETA ~102 dk; hızlı yaklaşma faktörü temel skorda zaten hesaplandı, ek sinyal yok.",
    "evidence": [
     "det:img_005611_001",
     "track:T0123"
@@ -28,7 +28,7 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "Track T0038: son 60 dakikada 1.032 m yaklaşma, ETA ~250 dk, dolaşma 2.3; üsse 4.295 m, tehdit göstergesi yok.",
+   "rationale": "T0038: son 60 dk'da üsse 1032 m yaklaştı (4 yaklaşan/3 uzaklaşan), üsse ~4295 m, ETA ~250 dk; davranış dengeli, tehdit göstergesi yok.",
    "evidence": [
     "det:img_005611_000",
     "track:T0038"
@@ -43,11 +43,10 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "Track T0106: son 60 dakikada 1.910 m yaklaşma, ETA ~139 dk, 5/6 hareket yaklaşan; görsel teyit van tipi, üzeri örtüsüz, ağır araç değil; üsse 4.431 m.",
+   "rationale": "T0106: tip tespiti kararsız (van 0.49 / car 0.47) ama ağır araç sinyali yok; son 60 dk'da 1910 m yaklaşmış (5 yaklaşan/1 uzaklaşan), üsse ~4431 m, ETA ~139 dk; temel skor düşük.",
    "evidence": [
     "det:img_005611_003",
-    "track:T0106",
-    "image:img_005611"
+    "track:T0106"
    ],
    "source": "agent"
   },
@@ -59,91 +58,88 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Track T0093: üsten 3.673 m uzaklaşıyor (son 60 dk Δ+3.673 m), 7/7 hareket uzaklaşan; tehdit göstergesi yok.",
+   "rationale": "T0093: kayıtta üsse 623 m'ye kadar yaklaşmış (close_pass) ancak şu an üsten uzaklaşıyor (son 60 dk +3673 m, 7 hareketin 7'si uzaklaşan); görsel inceleme aracın beyaz, yüksüz bir otomobil olduğunu, örtü veya yük olmadığını doğruladı. R071'in 'örtülü ağır araç' iddiası bu araçla eşleşmiyor.",
    "evidence": [
     "det:img_005611_002",
-    "track:T0093"
+    "track:T0093",
+    "image:img_005611"
    ],
    "source": "agent"
   }
  ],
  "attention_items": [
   {
-   "title": "R071 anlattığı araç bulunamadı (ortulu agir arac iddiası)",
-   "risk_level": "low",
-   "rationale": "R071 (12:50) 39.91309N 32.80343E civarında 'üzeri örtülü ağır araç bekliyor' diyor; 600 m yarıçaplı aramada 11:30–14:00 arasında yalnızca bu görüntüdeki 4 düşük riskli araç + T0207 bulundu, hiçbiri ağır araç değil ve rapor koordinatındaki nokta görsel olarak doğrulanamadı (bina/tabela görüşü kapattı). Raporun anlattığı araçla eşleşen bir iz yok; bu görüntüde tehdit olarak yorumlanamadı, ancak raporun kendisi güvenilmez/o doğrulanamaz işaretlendi.",
+   "title": "Üssün etrafında dönen araç T0198 (komşu bölge)",
+   "risk_level": "medium",
+   "rationale": "13:30–13:45 arasında T0198 (car) üssün ~823 m'sinde dönmekte; bu görüntüdeki araçlarla ilgisi bu veriden teyit edilemiyor ancak sabit yarıçapta dönüş güçlü tehdit sinyalidir ve izlenmelidir. Bu araç bu görüntüde olmadığı için genel riski medium düzeyiyle sınırlar.",
    "evidence": [
-    "report:R071",
-    "track:T0093",
-    "track:T0038",
-    "track:T0106",
-    "track:T0123",
-    "image:img_005611"
+    "track:T0198"
    ]
   },
   {
-   "title": "T0207 tanımsız iz, ağır araç değil",
+   "title": "R071'deki 'örtülü ağır araç' doğrulanamadı",
    "risk_level": "low",
-   "rationale": "T0207 rapor koordinatına 74 m mesafede görünüyor ama tip etiketi yok, ağır araç değil; R071'in 'ağır araç' iddiasıyla eşleşmiyor. Görüntü dışında olduğu için görsel teyit yapılamadı.",
+   "rationale": "R071 (12:50) 39.91309N 32.80343E'de örtülü ağır araç iddia ediyor; 200 m yarıçaplı alan taraması (12:35–13:10) hiçbir araç bulamadı, görüntüde koordinattaki en yakın araç 46 m ötedeki T0093 ve görsel incelemede otomobil, örtüsüz ve yüksüz çıktı. Rapor gözlemle desteklenmiyor.",
    "evidence": [
-    "track:T0207",
-    "report:R071"
+    "report:R071",
+    "image:img_005611",
+    "track:T0093"
    ]
   }
  ],
  "report_notes": [
   {
    "report_id": "R071",
-   "verdict": "unverifiable",
-   "note": "Üzeri örtülü ağır araç iddiası 60 m çevresinde ne track ne görsel olarak doğrulanabildi; bölgedeki en yakın iz 74 m'de (T0207) ve ağır araç değil."
+   "verdict": "unreliable",
+   "note": "İddia edilen koordinatta ve çevresinde (200 m, 12:35–13:10) araç bulunamadı; en yakın araç 46 m ötede ve görsel olarak örtüsüz, yüksüz otomobil. Anlatılan araç gözlemle doğrulanamıyor."
   },
   {
    "report_id": "R003",
    "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru, hiçbir araca bağlanamadı; kanıt hiyerarşisinde gözlemi etkilemez."
+   "note": "Konumsuz genel dost unsurlar duyurusu; hiçbir aracın riskini düşürmez, doğrulama kapsamı dışında."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:00:29+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:31:25+00:00",
   "reasoning_effort": "high",
   "iterations": 4,
   "tool_calls": [
    {
     "iteration": 1,
-    "tool": "vehicles_in_area",
-    "args": "{\"lat\":39.91309,\"lon\":32.80343,\"radius_m\":600,\"time_from\":\"11:30\",\"time_to\":\"14:00\"}",
-    "summary": "{\"query\": {\"lat\": 39.91309, \"lon\": 32.80343, \"radius_m\": 600.0, \"window\": \"11:30–14:00\", \"vehicle_type\": null}, \"tracked_count\": 5, \"tracked\": [{\"track_id\": \"T0093\", \"label\": \"car\", \"detection_id\": \"img_005611_002\", \"image_id\": \"img_005611\"…"
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005611\",\"question\":\"Bu araç (T0093) bir otomobil mi, yoksa üzeri örtülü/branda ile kaplı ağır bir araç (kamyon/van) olabilir mi? Üzerinde örtü veya yük görünüyor mu?\",\"vehicle_id\":\"img_005611_002\"}",
+    "summary": "{\"image_id\": \"img_005611\", \"target\": \"img_005611_002 (car, güven 0.88)\", \"crop_px\": [961, 145, 1360, 569], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": false, \"answer\": \"Bu bir otom…"
    },
    {
     "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_005611\",\"lat\":39.91309,\"lon\":32.80343,\"question\":\"Bu koordinatta üzeri örtülü ağır bir araç (kamyon/otobüs) bekliyor mu? Görüntüdeki o noktada araç veya örtü var mı?\"}",
-    "summary": "{\"image_id\": \"img_005611\", \"target\": \"nokta 39.91309, 32.80343\", \"crop_px\": [804, 516, 964, 676], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": true, \"answer\": \"Kırmızı işaret bina çatı…"
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.91309,\"lon\":32.80343,\"radius_m\":200,\"time_from\":\"12:35\",\"time_to\":\"13:10\"}",
+    "summary": "{\"query\": {\"lat\": 39.91309, \"lon\": 32.80343, \"radius_m\": 200.0, \"window\": \"12:35–13:10\", \"vehicle_type\": null}, \"tracked_count\": 0, \"tracked\": [], \"parked_count\": 0, \"parked\": [], \"note\": \"Track'siz araçlar yalnızca bu aralıkta çekilmiş gör…"
    },
    {
     "iteration": 2,
     "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_005611\",\"question\":\"track:T0207 konumunda gerçekten bir araç var mı? Varsa tipi ve üzeri örtülü mü (örtü/branda var mı)?\",\"vehicle_id\":\"track:T0207\"}",
-    "summary": "{\"error\": \"hedef görüntünün dışında\"}"
+    "args": "{\"image_id\":\"img_005611\",\"question\":\"Bu araç (T0093) bir otomobil mi, yoksa üzeri örtülü/branda ile kaplı ağır bir araç (kamyon/van) olabilir mi? Üzerinde örtü veya yük görünüyor mu?\",\"vehicle_id\":\"img_005611_002\"}",
+    "summary": "{\"image_id\": \"img_005611\", \"target\": \"img_005611_002 (car, güven 0.88)\", \"crop_px\": [961, 145, 1360, 569], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": false, \"answer\": \"Bu bir otom…"
    },
    {
-    "iteration": 3,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_005611\",\"question\":\"Bu tespit img_005611_003 bir van mı yoksa car mı? Üzerinde örtü/branda gibi bir yükleme var mı?\",\"vehicle_id\":\"img_005611_003\"}",
-    "summary": "{\"image_id\": \"img_005611\", \"target\": \"img_005611_003 (van, güven 0.49)\", \"crop_px\": [0, 219, 380, 743], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"koyu kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Ku…"
+    "iteration": 2,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.91309,\"lon\":32.80343,\"radius_m\":200,\"time_from\":\"12:35\",\"time_to\":\"13:10\"}",
+    "summary": "{\"query\": {\"lat\": 39.91309, \"lon\": 32.80343, \"radius_m\": 200.0, \"window\": \"12:35–13:10\", \"vehicle_type\": null}, \"tracked_count\": 0, \"tracked\": [], \"parked_count\": 0, \"parked\": [], \"note\": \"Track'siz araçlar yalnızca bu aralıkta çekilmiş gör…"
    }
   ],
-  "repairs": 0,
+  "repairs": 1,
   "tokens": {
-   "input": 19072,
-   "output": 1911,
-   "reasoning": 492
+   "input": 20837,
+   "output": 3793,
+   "reasoning": 1252
   },
-  "cost_usd": 0.002618,
+  "cost_usd": 0.003647,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 64.3
+  "duration_s": 126.1
  }
 }

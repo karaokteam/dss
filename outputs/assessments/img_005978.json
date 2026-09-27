@@ -2,9 +2,24 @@
  "image_id": "img_005978",
  "capture_time": "10:20",
  "zone": "Guneybati Yolu",
- "overall_risk": "medium",
- "summary": "Görüntüde kritik tehdit sinyali yok: yaklaşan iki araç (T0079, T0049) hafif araç ve üsse 2,5 km'den uzak; diğer takipli araçlar üsten uzaklaşıyor. Dikkat gereken iki nokta: R125'in 'sarı dost devriye' iddiası görsel kontrolde doğrulanamadı (araç beyaz/gri görünüyor) ve 39.9094N 32.8281E çevresinde olağandan yüksek yoğunluk (8 araç) doğrulandı; ikisi de tekil araç tehdidi düşük olsa da izlenmeli.",
+ "overall_risk": "low",
+ "summary": "Görüntüdeki 19 aracın tamamı 'low' temel riskte; yaklaşılan araçlar (T0079, T0049) sinyalleri zayıf, yakın geçmişte üsse yaklaşmış sonra uzaklaşan araçların dolaşma örüntüsü kural gereği olağan karşılanıyor. Tek dikkat noktası R125'in dost devriye kimliği iddiasının hareket verisiyle teyit edilememesi; sarı renk görsel olarak doğrulandı.",
  "vehicles": [
+  {
+   "vehicle_id": "img_005978_001",
+   "label": "car",
+   "track_id": "T0059",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 1566 m uzaklaştı (receding), kayıt içinde en yakın 971 m ve 3.4 dolaşma faktörleri temel skorda zaten hesaba katıldı; yeni bulgu yok.",
+   "evidence": [
+    "det:img_005978_001",
+    "track:T0059"
+   ],
+   "source": "agent"
+  },
   {
    "vehicle_id": "img_005978_004",
    "label": "car",
@@ -13,11 +28,12 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "üsse 2568 m; son 60 dk'da üsse 1176 m yaklaştı",
+   "rationale": "Üsse 2568 m, son 60 dk'da 1176 m yaklaştı, 7 harekette 5'i yaklaşan, ETA 131 dk; mid_base + approaching faktörleriyle temel low yeterli.",
    "evidence": [
-    "det:img_005978_004"
+    "det:img_005978_004",
+    "track:T0079"
    ],
-   "source": "baseline"
+   "source": "agent"
   },
   {
    "vehicle_id": "img_005978_005",
@@ -27,9 +43,40 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "üsse 2545 m; son 60 dk'da üsse 522 m yaklaştı",
+   "rationale": "Üsse 2545 m, son 60 dk'da 522 m yaklaştı, ETA 293 dk; yakın tehdit sinyali yok. R125'in 'sari' iddiası görsel teyit edildi (img_005978_005), ancak 'dost devriye' kimliği veriyle doğrulanamadı — bu iddia riski düşürmez, low seviyesi korunur.",
    "evidence": [
-    "det:img_005978_005"
+    "det:img_005978_005",
+    "track:T0049",
+    "report:R125",
+    "image:img_005978"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005978_006",
+   "label": "car",
+   "track_id": "T0193",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2535 m; son 60 dk'da üsten 2019 m uzaklaştı; kayıt içinde üsse 507 m'ye kadar yaklaştı; dolaşma: yol/yer değiştirme 3.5, 6 hareket",
+   "evidence": [
+    "det:img_005978_006"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_005978_008",
+   "label": "car",
+   "track_id": "T0036",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2533 m; son 60 dk'da üsten 1921 m uzaklaştı; kayıt içinde üsse 597 m'ye kadar yaklaştı; dolaşma: yol/yer değiştirme 3.0, 4 hareket",
+   "evidence": [
+    "det:img_005978_008"
    ],
    "source": "baseline"
   },
@@ -41,28 +88,25 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "120 dk'dır üsse 2538 m'de durağan (T0153); R020 yoğunluk ve R054 durağanlık iddiaları gözlemle DOĞRULANDI. R125'in 'sarı dost devriye' kimlik iddiası kısmen: görsel kontrolde araç beyaz/gri, askeri işaret yok (düşük güven) — dost iddiası risk düşürücü olarak kullanılamaz ama aracın hareketsizliği nedeniyle tehdit sinyali de yok.",
+   "rationale": "120 dk'dır üsse 2538 m'de durağan; R054 durağanlık iddiası DOĞRULANDI. Park etmiş araç örüntüsü, tek başına tehdit göstergesi değil.",
    "evidence": [
     "det:img_005978_010",
     "track:T0153",
-    "report:R020",
-    "report:R054",
-    "report:R125",
-    "image:img_005978"
+    "report:R054"
    ],
    "source": "agent"
   },
   {
-   "vehicle_id": "img_005978_001",
+   "vehicle_id": "img_005978_000",
    "label": "car",
-   "track_id": "T0059",
+   "track_id": "T0202",
    "risk_level": "low",
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "üsse 2544 m; son 60 dk'da üsten 1566 m uzaklaştı; dolaşma: yol/yer değiştirme 3.4, 4 hareket",
+   "rationale": "üsse 2554 m; son 60 dk'da üsten 1949 m uzaklaştı; kayıt içinde üsse 600 m'ye kadar yaklaştı",
    "evidence": [
-    "det:img_005978_001"
+    "det:img_005978_000"
    ],
    "source": "baseline"
   },
@@ -81,16 +125,16 @@
    "source": "baseline"
   },
   {
-   "vehicle_id": "img_005978_006",
+   "vehicle_id": "img_005978_003",
    "label": "car",
-   "track_id": "T0193",
+   "track_id": "T0012",
    "risk_level": "low",
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "üsse 2535 m; son 60 dk'da üsten 2019 m uzaklaştı; dolaşma: yol/yer değiştirme 3.5, 6 hareket",
+   "rationale": "üsse 2538 m; son 60 dk'da üsten 1706 m uzaklaştı; kayıt içinde üsse 800 m'ye kadar yaklaştı",
    "evidence": [
-    "det:img_005978_006"
+    "det:img_005978_003"
    ],
    "source": "baseline"
   },
@@ -105,20 +149,6 @@
    "rationale": "üsse 2553 m",
    "evidence": [
     "det:img_005978_007"
-   ],
-   "source": "baseline"
-  },
-  {
-   "vehicle_id": "img_005978_008",
-   "label": "car",
-   "track_id": "T0036",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 10,
-   "override_reason": null,
-   "rationale": "üsse 2533 m; son 60 dk'da üsten 1921 m uzaklaştı; dolaşma: yol/yer değiştirme 3.0, 4 hareket",
-   "evidence": [
-    "det:img_005978_008"
    ],
    "source": "baseline"
   },
@@ -193,34 +223,6 @@
    "source": "baseline"
   },
   {
-   "vehicle_id": "img_005978_000",
-   "label": "car",
-   "track_id": "T0202",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 0,
-   "override_reason": null,
-   "rationale": "üsse 2554 m; son 60 dk'da üsten 1949 m uzaklaştı",
-   "evidence": [
-    "det:img_005978_000"
-   ],
-   "source": "baseline"
-  },
-  {
-   "vehicle_id": "img_005978_003",
-   "label": "car",
-   "track_id": "T0012",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 0,
-   "override_reason": null,
-   "rationale": "üsse 2538 m; son 60 dk'da üsten 1706 m uzaklaştı",
-   "evidence": [
-    "det:img_005978_003"
-   ],
-   "source": "baseline"
-  },
-  {
    "vehicle_id": "img_005978_015",
    "label": "car",
    "track_id": null,
@@ -279,31 +281,22 @@
  ],
  "attention_items": [
   {
-   "title": "Doğrulanamayan 'dost devriye' kimlik iddiası",
-   "risk_level": "medium",
-   "rationale": "R125 (10:15, official) 39.9091N 32.8282E civarındaki sarı aracın kimliği teyitli dost devriye olduğunu iddia ediyor; iddia KISMEN — görsel kontrolde araç sarı değil, beyaz/gri ve askeri işaret/teçhizat ayırt edilemiyor (güven düşük). Çelişen dost iddiası şüphe sinyali; ancak araç (T0153) 120 dk durağan ve üsse 2538 m uzakta olduğu için araç tehdidi yok, madde rapor güvenilirliği düzeyinde medium.",
+   "title": "Doğrulanamayan dost devriye kimliği (R125)",
+   "risk_level": "low",
+   "rationale": "R125, T0049'un 'dost devriye' olduğunu iddia ediyor; kimlik drone/hareket verisinden teyit edilemiyor ve araç üsse yaklaşan bir araç. Sarı renk iddiası görsel teyit edildi (güven düşük) ancak dostluk iddiası riski düşürmez. Araç temel riski low olduğu için maddenin seviyesi low olarak bırakıldı.",
    "evidence": [
     "report:R125",
-    "track:T0153",
-    "det:img_005978_010",
-    "image:img_005978"
+    "det:img_005978_005",
+    "track:T0049"
    ]
   },
   {
-   "title": "Olağan dışı araç yoğunluğu (durağan küme)",
+   "title": "Doğrulanamaz bölge ihbarı (R093)",
    "risk_level": "low",
-   "rationale": "R020 (08:40) ve R054 (09:30) DOĞRULANDI: 39.9094N 32.8281E çevresinde 1 takipli (T0153) + 7 park halinde araç = 8 araç (bölgede olağan 4). Kümenin tamamı 2,5 km'den uzakta, ağır araç yok, tümü park halinde/durağan; izlenmesi yeterli.",
+   "rationale": "Guneybati Yolu çevresindeki araç hareketliliği ihbarı doğrulanamaz durumda ve bu görüntüdeki tespitlerle desteklenmiyor (anomali yok, tüm araçlar low risk); izlemeye devam edilmeli ancak tek başına tehdit değil.",
    "evidence": [
-    "report:R020",
-    "report:R054",
-    "track:T0153",
-    "det:img_005978_002",
-    "det:img_005978_007",
-    "det:img_005978_009",
-    "det:img_005978_011",
-    "det:img_005978_012",
-    "det:img_005978_013",
-    "det:img_005978_014"
+    "report:R093",
+    "image:img_005978"
    ]
   }
  ],
@@ -311,59 +304,47 @@
   {
    "report_id": "R020",
    "verdict": "reliable",
-   "note": "Yoğunluk iddiası gözlemle doğrulandı: 150 m içinde 8 araç (1 track + 7 park halinde), olağan 4."
+   "note": "Yoğunluk iddiası doğrulandı: görüntüde 150 m içinde 15 araç, olağan 4."
   },
   {
    "report_id": "R054",
    "verdict": "reliable",
-   "note": "Durağanlık iddiası doğrulandı: T0153 70+ dk (görüntü anında 120 dk) yerinden ayrılmamış; çevredeki park halinde araçlarla uyumlu."
+   "note": "T0153'ün durağanlığı doğrulandı: rapor anında 70 dk, görüntü anında 120 dk durağan."
   },
   {
    "report_id": "R125",
    "verdict": "partly_reliable",
-   "note": "Varlık ve tip tutarlı; ancak 'sarı' renk iddiası görsel kontrolde doğrulanamadı (beyaz/gri, askeri işaret yok, düşük güven). 'Kimlik teyidi' iddiası gözlemle desteklenmiyor."
+   "note": "Sarı renk görsel olarak doğrulandı; 'dost devriye' kimliği hareket/drone verisiyle teyit edilemedi, araç üsse yaklaşan bir konumda."
   },
   {
    "report_id": "R093",
    "verdict": "unverifiable",
-   "note": "Doğrulanmamış üçüncü taraf ihbar; bu görüntüde destekleyen ya da çürüten gözlem yok, risk hesabına katılmadı."
+   "note": "Bölge ihbarı doğrulanamaz; bu görüntüdeki gözlemlerle desteklenmiyor, ancak çelişki de yok."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-26T23:52:00+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:23:30+00:00",
   "reasoning_effort": "high",
-  "iterations": 5,
+  "iterations": 2,
   "tool_calls": [
    {
     "iteration": 1,
     "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_005978\",\"question\":\"Bu araç sarı renkte mi ve askeri/devriye aracına benziyor mu (işaret, teçhizat, silah mount vb.)?\",\"vehicle_id\":\"track:T0153\"}",
-    "summary": "{\"image_id\": \"img_005978\", \"target\": \"track:T0153 (eşik altı aday kutusu)\", \"crop_px\": [381, 119, 541, 279], \"result\": {\"answer\": \"Kirmizi cercevede agac altinda kismen gorunen acik renkli (beyaz/gri) bir otomobil var; sari renkte degil ve …"
-   },
-   {
-    "iteration": 2,
-    "tool": "vehicles_in_area",
-    "args": "{\"lat\":39.9094,\"lon\":32.8281,\"radius_m\":300,\"time_from\":\"08:30\",\"time_to\":\"10:20\"}",
-    "summary": "{\"query\": {\"lat\": 39.9094, \"lon\": 32.8281, \"radius_m\": 300.0, \"window\": \"08:30–10:20\", \"vehicle_type\": null}, \"tracked_count\": 9, \"tracked\": [{\"track_id\": \"T0153\", \"label\": \"car\", \"detection_id\": \"img_005978_010\", \"image_id\": \"img_005978\", …"
-   },
-   {
-    "iteration": 3,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_005978\",\"lat\":39.9094,\"lon\":32.8281,\"question\":\"Bu noktadaki park halinde araçlarda herhangi bir örtü, yük veya askeri işaret var mı?\"}",
-    "summary": "{\"image_id\": \"img_005978\", \"target\": \"nokta 39.90940, 32.82810\", \"crop_px\": [396, 157, 556, 317], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": false, \"answer\": \"İşaret edilen nokta boş…"
+    "args": "{\"image_id\":\"img_005978\",\"question\":\"Bu araç sarı renkli mi ve bir devriye aracına benziyor mu?\",\"vehicle_id\":\"img_005978_005\"}",
+    "summary": "{\"image_id\": \"img_005978\", \"target\": \"img_005978_005 (car, güven 0.88)\", \"crop_px\": [474, 389, 698, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"sari\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Araç sar…"
    }
   ],
-  "repairs": 1,
+  "repairs": 0,
   "tokens": {
-   "input": 46753,
-   "output": 4269,
-   "reasoning": 1808
+   "input": 14258,
+   "output": 1927,
+   "reasoning": 704
   },
-  "cost_usd": 0.004877,
+  "cost_usd": 0.002926,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 108.6
+  "duration_s": 60.8
  }
 }

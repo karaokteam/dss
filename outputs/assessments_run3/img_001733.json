@@ -1,0 +1,150 @@
+{
+ "image_id": "img_001733",
+ "capture_time": "15:05",
+ "zone": "Kuzeybati Yolu",
+ "overall_risk": "high",
+ "summary": "Kuzeybati Yolu'nda üsse tutarlı yaklaşan bir araç (T0121) riskin merkezinde: 2 saatte 4 hareketin hepsi üsse yaklaştırdı (7614→2676 m), son 60 dakikada 3242 m yaklaştı, tahmini varış 50 dk. Bölgedeki resmî rapor R042 bölgede hareketlilik olmadığını söylüyor ama gözlem bunu çürütüyor; iki ayrı 'tatbikat nedeniyle dost unsurlar' duyurusu konumsuz ve doğrulanamaz olduğundan hiçbir aracın riskini düşürmüyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001733_003",
+   "label": "van",
+   "track_id": "T0121",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "Van tespiti (0.53) görsel teyitle doğrulandı: kutu biçimli, siyah minivan; ağır araç değil, yük/örtü görünmüyor (image:img_001733). Track T0121: TUTARLI YAKLAŞMA, 2 saatte 4 hareketin hepsi üsse yaklaştırdı (7614→2676 m), son 60 dk Δ-3242 m, ETA 50 dk, son hareket üsse 0° açıyla. Üsse 2676 m. Temel high seviyesi bu faktörlerle uyumlu; değişiklik yok.",
+   "evidence": [
+    "det:img_001733_003",
+    "track:T0121",
+    "image:img_001733"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_001",
+   "label": "car",
+   "track_id": "T0125",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Binek araç (0.89), track T0121 yakınında değil ama benzer mesafede: üsse 2643 m, 2 saatte 3930→2643 m, son 60 dk Δ-1490 m. 8 hareketin 5'i yaklaşan/3'ü uzaklaşan, dolaşma 4.3 (loitering), ETA 106 dk, son hareket 57° açıyla. Tutarlı yaklaşma işareti yok; temel medium korunuyor.",
+   "evidence": [
+    "det:img_001733_001",
+    "track:T0125"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_000",
+   "label": "car",
+   "track_id": "T0206",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2635 m; son 60 dk'da üsse 1553 m yaklaştı",
+   "evidence": [
+    "det:img_001733_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001733_002",
+   "label": "car",
+   "track_id": "T0101",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 2695 m; son 60 dk'da üsse 989 m yaklaştı",
+   "evidence": [
+    "det:img_001733_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001733_004",
+   "label": "van",
+   "track_id": "T0208",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 2694 m; son 60 dk'da üsten 1612 m uzaklaştı; dolaşma: yol/yer değiştirme 3.6, 6 hareket",
+   "evidence": [
+    "det:img_001733_004"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Bölge raporu gözlemle çelişiyor (R042)",
+   "risk_level": "medium",
+   "rationale": "R042 (15:00, official) 'Kuzeybati Yolu cevresinde kayda deger bir hareketlilik bulunmuyor' diyor; ancak rapor anında bölgede üsse tutarlı yaklaşan 1 araç var (T0121, üsse 2676 m, ETA 50 dk) ve görüntüde toplam 5 araç tespit edildi. Gözlem esas alınır; rapor güvenilirliği sorgulanmalı.",
+   "evidence": [
+    "report:R042",
+    "track:T0121",
+    "image:img_001733"
+   ]
+  },
+  {
+   "title": "Konumsuz 'dost unsurlar' duyuruları risk düşürmüyor",
+   "risk_level": "low",
+   "rationale": "R112 ve R035 (ikisi de 14:10–14:30 arası, official) 'tatbikat nedeniyle bölgede dost unsurlar olacak' diyor ancak konumsuz genel duyurulardır ve hiçbir araca bağlanamamıştır; ayrıca doğrulanamaz durumdadırlar. Kural gereği T0121'in tutarlı yaklaşma riski bu duyurularla düşürülemez.",
+   "evidence": [
+    "report:R112",
+    "report:R035"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R042",
+   "verdict": "unreliable",
+   "note": "'Hareketlilik yok' iddiası gözlemle çelişiyor: bölgede üsse tutarlı yaklaşan T0121 ve toplam 5 araç tespiti var."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir araca bağlanamadı, gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "R112 ile aynı metinli tekrar duyuru; doğrulanamaz, gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "Kuzeybati Yolu ihbarı 'doğrulanamadı' deniyor; görüntüde bağımsız doğrulama veya çürütme verisi yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:11:21+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001733\",\"question\":\"Bu araç bir minivan/kamyonet mi, yoksa ağır araç (kamyon/otobüs) mı? Tipi, rengi ve üzerinde yük/örtü var mı?\",\"vehicle_id\":\"img_001733_003\"}",
+    "summary": "{\"image_id\": \"img_001733\", \"target\": \"img_001733_003 (van, güven 0.53)\", \"crop_px\": [546, 220, 790, 464], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Ağır ar…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9366,
+   "output": 1929,
+   "reasoning": 670
+  },
+  "cost_usd": 0.001993,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 63.8
+ }
+}

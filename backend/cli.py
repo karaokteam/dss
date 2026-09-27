@@ -5,6 +5,7 @@
     python -m backend.cli parse-reports [--mode llm|rules]
     python -m backend.cli dossier <image_id|all> [--top N]
     python -m backend.cli assess <image_id|all> [--force] [--effort low|high] [--verbose]
+    python -m backend.cli eval [--errors]
 
 Sonraki step'lerde yeni komutlar eklenir (parse-reports, dossier, assess).
 """
@@ -157,6 +158,24 @@ def cmd_assess(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_eval(args: argparse.Namespace) -> int:
+    from backend.engine.eval.gold import evaluate
+    r = evaluate()
+    pct = lambda x: "-" if x is None else f"{x:.0%}"
+    print(f"Altın küme: {r['labels']} etiket (eval/gold_reports.json)")
+    print(f"  Katman 1 hüküm doğruluğu : {pct(r['l1_acc'])} ({sum(x['l1_ok'] for x in r['rows'])}/{r['labels']})")
+    print(f"  Agent hüküm doğruluğu    : {pct(r['agent_acc'])} ({r['agent_answered']} etikette agent notu var)")
+    print(f"  Kritik track atfı        : {pct(r['cite_recall'])}")
+    for x in r["rows"]:
+        bad = not x["l1_ok"] or x["agent_ok"] is False or x["missing_cite"]
+        if args.errors and not bad:
+            continue
+        mark = "OK " if x["l1_ok"] else "XX "
+        print(f"  {mark}{x['key']:<20} {x['category']:<14} altın {x['gold']:<18} K1 {x['l1']:<18} "
+              f"agent {x['agent'] or '-'}" + (f"  eksik atıf {x['missing_cite']}" if x["missing_cite"] else ""))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m backend.cli", description="DSS motor komutları")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -184,6 +203,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--top", type=int, default=5)
     p.add_argument("--verbose", action="store_true", help="tool çağrılarını canlı göster")
     p.set_defaults(func=cmd_assess)
+
+    p = sub.add_parser("eval", help="rapor hükümlerini elle etiketli altın kümeyle ölç")
+    p.add_argument("--errors", action="store_true", help="yalnızca hatalı satırları göster")
+    p.set_defaults(func=cmd_eval)
     return parser
 
 

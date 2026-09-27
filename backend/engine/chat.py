@@ -37,6 +37,7 @@ def _vehicle_levels(image_id: str) -> list[dict]:
             "risk": av["risk_level"] if av else v.baseline_risk.level.value,
             "dist_to_base_m": round(v.dist_to_base_m),
             "consistent_approach": bool(k and k.consistent_approach),
+            "circling": f"{k.circling_window}, ~{k.circling_radius_m:.0f} m" if k and k.circling else None,
             "motion": k.motion if k else "parked", "eta_min": k.eta_min if k else None,
             "why": (av["rationale"] if av else "; ".join(f.detail for f in v.baseline_risk.factors))[:220],
         })
@@ -46,9 +47,11 @@ def _vehicle_levels(image_id: str) -> list[dict]:
 # ---------------------------------------------------------------- veri araçları
 
 def find_alerts(min_risk: Level = "high", zone: str | None = None, time_from: str | None = None,
-                time_to: str | None = None, consistent_approach_only: bool = False, limit: int = 10) -> dict:
+                time_to: str | None = None, consistent_approach_only: bool = False, circling_only: bool = False,
+                limit: int = 10) -> dict:
     """Riskli araçları (tüm olaylarda) önem sırasıyla listeler. "Tutarlı yaklaşan araçlar" sorulursa
-    consistent_approach_only=true ve min_risk="low" ver (risk seviyesinden bağımsız hepsi gelsin).
+    consistent_approach_only=true, "üssün etrafında dönen araçlar" sorulursa circling_only=true ver; ikisinde de
+    min_risk="low" ver (risk seviyesinden bağımsız hepsi gelsin).
 
     Args:
         min_risk: En düşük risk seviyesi.
@@ -56,6 +59,7 @@ def find_alerts(min_risk: Level = "high", zone: str | None = None, time_from: st
         time_from: İsteğe bağlı başlangıç "HH:MM" (çekim saati).
         time_to: İsteğe bağlı bitiş "HH:MM".
         consistent_approach_only: Yalnızca 2 saat boyunca her hareketinde üsse yaklaşan araçlar.
+        circling_only: Yalnızca üssün etrafında sabit yarıçapta tur atan araçlar.
         limit: En fazla kaç sonuç (varsayılan 10).
     """
     repo = get_context().repo
@@ -69,6 +73,8 @@ def find_alerts(min_risk: Level = "high", zone: str | None = None, time_from: st
             if LEVELS.index(v["risk"]) > LEVELS.index(min_risk):
                 continue
             if consistent_approach_only and not v["consistent_approach"]:
+                continue
+            if circling_only and not v["circling"]:
                 continue
             if zone and nearest_zone(*img.center, repo.zones)[0].name != zone:
                 continue
@@ -113,7 +119,9 @@ def get_vehicle(track_id: str) -> dict:
         "risk": lv["risk"] if lv else None, "why": lv["why"] if lv else None,
         "dist_to_base": {"start_m": round(k.dist_to_base_start_m), "end_m": round(k.dist_to_base_m)},
         "motion": k.motion, "moves": k.moves, "approach_moves": k.approach_moves, "recede_moves": k.recede_moves,
-        "consistent_approach": k.consistent_approach, "stationary_min": k.stationary_min, "eta_min": k.eta_min,
+        "consistent_approach": k.consistent_approach,
+        "circling": f"{k.circling_window}, ~{k.circling_radius_m:.0f} m" if k.circling else None,
+        "min_dist_to_base_m": round(k.min_dist_to_base_m), "stationary_min": k.stationary_min, "eta_min": k.eta_min,
         "segments": [f"{s.start}-{s.end} {s.kind} {s.radial_change_m:+.0f}m" for s in k.segments],
         "claims": [f"{c.report_id} {c.claim_type.value}={c.status.value}: {c.reason[:120]}" for c in (v.claims if v else ())],
     }

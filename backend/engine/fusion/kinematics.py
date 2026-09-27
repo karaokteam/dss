@@ -82,6 +82,8 @@ def compute_kinematics(track: Track, base: Base, at: int | None = None,
     net = distance_m(pts[0].lat, pts[0].lon, end.lat, end.lon)
     tortuosity = round(path / net, 2) if move_idx and net > cfg.stationary_radius_m else None
 
+    circle = _circling(pts, base, dist_base, cfg)
+
     return Kinematics(
         track_id=track.id, at=fmt_hhmm(at), lat=end.lat, lon=end.lon,
         state="moving" if is_move and is_move[-1] else "stationary",
@@ -108,6 +110,10 @@ def compute_kinematics(track: Track, base: Base, at: int | None = None,
         tortuosity=tortuosity,
         observed_min=at - pts[0].t,
         segments=_segments(pts, is_move, dist_base, steps),
+        circling=circle is not None,
+        circling_radius_m=circle[0] if circle else None,
+        circling_window=circle[1] if circle else None,
+        circling_sweep_deg=circle[2] if circle else None,
     )
 
 
@@ -149,6 +155,28 @@ def _segments(pts: tuple[TrackPoint, ...], is_move: list[bool], dist_base: list[
         ))
         i = j + 1
     return tuple(segs)
+
+
+def _circling(pts: tuple[TrackPoint, ...], base: Base, dist_base: list[float],
+              cfg: KinematicsConfig) -> tuple[float, str, float] | None:
+    """Üssün etrafında dönme: ardışık noktalar üsse hep aynı uzaklıkta (±band) ve yakın, ama üsse göre yönleri
+    geniş bir açı tarıyor (farklı bölgelerden geçiyor). En uzun koşuyu döner: (yarıçap, "HH:MM–HH:MM", tarama°)."""
+    best = None
+    n = len(pts)
+    i = 0
+    while i < n:
+        j = i
+        while (j + 1 < n and dist_base[j + 1] <= cfg.circle_max_radius_m
+               and abs(dist_base[j + 1] - dist_base[i]) <= cfg.circle_band_m):
+            j += 1
+        if j - i + 1 >= cfg.circle_min_points and dist_base[i] <= cfg.circle_max_radius_m:
+            brs = [bearing_deg(base.lat, base.lon, p.lat, p.lon) for p in pts[i:j + 1]]
+            sweep = sum(angle_diff_deg(a, b) for a, b in zip(brs, brs[1:]))
+            if sweep >= cfg.circle_min_sweep_deg and (best is None or sweep > best[2]):
+                radius = sum(dist_base[i:j + 1]) / (j - i + 1)
+                best = (round(radius, 1), f"{fmt_hhmm(pts[i].t)}–{fmt_hhmm(pts[j].t)}", round(sweep, 1))
+        i = max(i + 1, j) if j > i else i + 1
+    return best
 
 
 def _point_at_or_before(pts: tuple[TrackPoint, ...], t: int) -> TrackPoint:

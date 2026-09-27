@@ -1,0 +1,191 @@
+{
+ "image_id": "img_001643",
+ "capture_time": "15:10",
+ "zone": "Kuzey Yolu",
+ "overall_risk": "low",
+ "summary": "Kuzey Yolu bölgesindeki img_001643 görüntüsünde 5 araç tespit edildi; tümü üsse 5284–5408 m mesafede ve tehdit sinyali düşük. En dikkat çekici husus, R025 raporundaki '2 kamyon' iddiasının hem bu görüntüdeki araçlarla hem de geniş alan taramasıyla (en yakın ağır araç 686 m'de) çelişmesidir; görsel teyit park halindeki iki aracın otomobil olduğunu doğruladı.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001643_002",
+   "label": "car",
+   "track_id": "T0094",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Otomobil (0.90), track T0094. 2 saatlik net üsse uzaklaşma eğilimi (3746→5408 m) ancak son 60 dakikada 522 m yaklaşma ve 5.2 dolaşma puanı var; yine de üsse 5408 m mesafe ve 621 dk ETA ile tehdit düşük. Geniş alan taramasında 14:30–15:00 arası 657 m mesafede görüldü.",
+   "evidence": [
+    "det:img_001643_002",
+    "track:T0094"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_001",
+   "label": "car",
+   "track_id": "T0005",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Otomobil (0.93), track T0005. 120 dakikadır üsse ~5379–5380 m mesafede hareketsiz; R015'in 'hareketsiz otomobil' iddiası (7 m sapmayla) doğrulandı, ancak R025'in '2 kamyon' iddiası bu tespitin tipiyle çelişiyor.",
+   "evidence": [
+    "det:img_001643_001",
+    "track:T0005",
+    "report:R015",
+    "report:R025"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Otomobil tespiti (0.77), track yok, park halinde, üsse 5294 m. Görsel teyit beyaz otomobil olarak doğrulandı (ağaç altında kısmen örtülü); R025'in '2 kamyon' iddiası bu tip etiketiyle çelişiyor. Alan taramasında (13:00–15:00, 2 km) bu konumda track'li eşleşme bulunamadı.",
+   "evidence": [
+    "det:img_001643_003",
+    "report:R025",
+    "image:img_001643"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_000",
+   "label": "car",
+   "track_id": "T0084",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Otomobil (0.93), track T0084. 2 saatte üsse uzaklaşma 675→5322 m (son 60 dk Δ+4664 m), 7 hareketin tamamı uzaklaşan (0/7), son hareket üsse 116° açıyla; üsse yaklaşma sinyali yok.",
+   "evidence": [
+    "det:img_001643_000",
+    "track:T0084"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Düşük güvenli otomobil tespiti (0.22), track yok, park halinde, üsse 5284 m. Görsel teyit araç varlığını doğruladı (siyah renkli, kısmen ağaç/çadır altında, tip büyük olasılıkla otomobil); R025 ile tip çelişkisi (kamyon değil) sürüyor.",
+   "evidence": [
+    "det:img_001643_004",
+    "report:R025",
+    "image:img_001643"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R025 '2 kamyon' iddiası gözlemle çelişiyor",
+   "risk_level": "low",
+   "rationale": "R025 (13:30, official) 39.9699N 32.8562E çevresinde 2 kamyon iddia ediyor. Bu görüntüdeki 5 araçtan hiçbiri kamyon değil (görsel teyit img_001643_003 ve img_001643_004 otomobil doğruladı); 12:30–15:10, 2 km yarıçaplı alan taramasında en yakın ağır araçlar 686 m (T0122, truck) ve 710 m (T0010, truck) mesafede ve T0122'nin 14:10'da bölgeden ayrıldığı kayıtlı. İddia bu zaman penceresinde belirtilen noktada doğrulanamıyor.",
+   "evidence": [
+    "report:R025",
+    "det:img_001643_001",
+    "det:img_001643_003",
+    "det:img_001643_004",
+    "image:img_001643"
+   ]
+  },
+  {
+   "title": "img_001643_003 ve img_001643_004 track'siz (park halinde) araçlar",
+   "risk_level": "low",
+   "rationale": "İki tespit (0.77 ve 0.22 güven) hareket kaydıyla eşleşememiş. img_001643_004 özellikle düşük güvenli (0.22); görsel teyit araç varlığını doğruladı ancak araç kısmen örtülü, güven düşük. Değerlendirmede göz ardı edilmemeli ancak izleme önerilir.",
+   "evidence": [
+    "det:img_001643_003",
+    "det:img_001643_004",
+    "image:img_001643"
+   ]
+  },
+  {
+   "title": "T0094 dolaşma örüntüsü",
+   "risk_level": "low",
+   "rationale": "T0094 son 60 dakikada 522 m üsse yaklaşmış ve 7 hareketle 3 yaklaşan/4 uzaklaşan örüntüde dolaşma puanı 5.2. Tutarlı yaklaşma sinyali yok, ancak dolaşma davranışı izlenmeye değer; üsse 5408 m mesafe ve 621 dk ETA ile acil tehdit yok.",
+   "evidence": [
+    "track:T0094",
+    "det:img_001643_002"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R025",
+   "verdict": "unreliable",
+   "note": "Bu görüntüdeki 5 araçtan hiçbiri kamyon değil; görsel teyit img_001643_003 ve img_001643_004'ün otomobil olduğunu doğruladı. 2 km / 12:30–15:10 alan taramasında en yakın ağır araçlar 686–765 m mesafede ve belirtilen noktada değil. Geniş alan/zaman taramasında da iddia doğrulanamadı."
+  },
+  {
+   "report_id": "R015",
+   "verdict": "reliable",
+   "note": "T0005 (car, 7 m sapmayla) 65+ dakika hareketsiz gözlemlendi; 'uzun süredir hareketsiz otomobil' iddiası gözlemle doğrulandı."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('gün içinde bölgede dost unsurlar'); hiçbir aracın riskini gözlemle doğrulama imkânı yok, araç riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulama verisi yok, araç riskini düşürmez."
+  },
+  {
+   "report_id": "R011",
+   "verdict": "unverifiable",
+   "note": "'Dün gece Kuzey Yolu çevresinde araç hareketliliği' iddiası doğrulanmamış ihbar; bu görüntüdeki gözlemlerle desteklenmiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:11:57+00:00",
+  "reasoning_effort": "high",
+  "iterations": 4,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9699,\"lon\":32.8562,\"radius_m\":2000,\"time_from\":\"12:30\",\"time_to\":\"15:10\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9699, \"lon\": 32.8562, \"radius_m\": 2000.0, \"window\": \"12:30–15:10\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 8, \"tracked\": [{\"track_id\": \"T0122\", \"label\": \"truck\", \"detection_id\": \"img_000860_006\", \"image_id\": \"img_000…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001643\",\"question\":\"Bu araç otomobil mi yoksa kamyon/kamyonet benzeri bir araç mı? Renk ve tip nedir?\",\"vehicle_id\":\"img_001643_003\"}",
+    "summary": "{\"image_id\": \"img_001643\", \"target\": \"img_001643_003 (car, güven 0.77)\", \"crop_px\": [672, 385, 1328, 765], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": true, \"answer\": \"Otomobil, be…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001643\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi nedir?\",\"vehicle_id\":\"img_001643_004\"}",
+    "summary": "{\"image_id\": \"img_001643\", \"target\": \"img_001643_004 (car, güven 0.22)\", \"crop_px\": [393, 583, 725, 765], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Evet, ki…"
+   },
+   {
+    "iteration": 2,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9699,\"lon\":32.8562,\"radius_m\":2000,\"time_from\":\"13:00\",\"time_to\":\"15:00\"}",
+    "summary": "{\"query\": {\"lat\": 39.9699, \"lon\": 32.8562, \"radius_m\": 2000.0, \"window\": \"13:00–15:00\", \"vehicle_type\": null}, \"tracked_count\": 18, \"tracked\": [{\"track_id\": \"T0005\", \"label\": \"car\", \"detection_id\": \"img_001643_001\", \"image_id\": \"img_001643\"…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 28391,
+   "output": 5470,
+   "reasoning": 967
+  },
+  "cost_usd": 0.004582,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 168.4
+ }
+}

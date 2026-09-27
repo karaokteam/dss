@@ -1,0 +1,242 @@
+{
+ "image_id": "img_006673",
+ "capture_time": "10:30",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "high",
+ "summary": "img_006673'de en kritik bulgu T0091'in tutarlı yaklaşması (7443→1870 m, 5/5 hareket yaklaşan, ETA 26 dk) ve örtülü kasalı kamyon T0095'in üsse 1803 m'de ETA 34 dk ile ilerlemesidir. Ayrıca dost kimlik iddialarının gözlemle çeliştiği örüntü tespit edildi: R006'nın 'planlı ikmal' iddiası gözlemle çelişkili, R123'ün 'mavi dost devriye' iddiası ise görsel kontrolde çürütüldü (araç siyah, sivil SUV). Bölgede ayrıca T0043 (dolaşma 4.2) ve T0181 (dolaşma 4.8) gibi üsse yakın sınırda hareket eden araçlar bulunuyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_006673_000",
+   "label": "car",
+   "track_id": "T0091",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 60,
+   "override_reason": null,
+   "rationale": "TUTARLI YAKLAŞMA: 2 saatte 5 hareketin hepsi üsse yaklaştırdı (7443→1870 m); son 60 dk'da 4262 m yaklaştı, ETA 26 dk, son hareket üsse 0° açıyla. Üsse 1870 m. Kanıt dosyasındaki TUTARLI YAKLAŞMA işareti ile tutarlı.",
+   "evidence": [
+    "det:img_006673_000",
+    "track:T0091"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_006",
+   "label": "truck",
+   "track_id": "T0095",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 55,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck, 0.87), üsse 1803 m, son 60 dk'da 3224 m yaklaştı, ETA 34 dk. Görsel kontrol: kasa kapalı/örtülü beyaz Iveco tipi kamyon, askeri görünüm değil — yük içeriği belirsiz; tip teyit edildi, risk seviyesi değişmedi.",
+   "evidence": [
+    "det:img_006673_006",
+    "track:T0095",
+    "image:img_006673"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_004",
+   "label": "car",
+   "track_id": "T0043",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "Üsse 1765 m, son 60 dk'da 2528 m yaklaştı (ETA 42 dk) ancak 8 hareketin 4'ü yaklaşan 4'ü uzaklaşan ve dolaşma 4.2 — davranış kararsız/dolaşan; tutarlı yaklaşma yok. Üsse yakın sınırda faal ve belirsiz hareket örüntüsü high seviyesini koruyor.",
+   "evidence": [
+    "det:img_006673_004",
+    "track:T0043"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "high",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": "Temel 40 medium üzerine yükseltme: R123'ün 'mavi dost devriye' renk iddiası görsel kontrolde ÇÜRÜTÜLDÜ (araç siyah, sivil SUV, devriye işareti/teçhizat yok, yüksek güven) — dost kimlik iddiası gözlemle çelişiyor (şüphe sinyali). Ayrıca R006'nın dost/planlı ikmal iddiası bu noktada zaten ÇELİŞKİLİ. Aynı noktada iki çelişen dost iddiası ve track'siz park halinde araç birlikteliği temel skorda tam karşılığı olmayan yeni görsel bulgudur.",
+   "rationale": "Üsse 1827 m, track'siz park halinde araç. R006 dost/ikmal iddiası ÇELİŞKİLİ, R123 renk iddiası görsel olarak çürütüldü (siyah SUV, sivil). Kimliğini gizleme şüphesi nedeniyle high.",
+   "evidence": [
+    "det:img_006673_005",
+    "report:R006",
+    "report:R123",
+    "image:img_006673"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_001",
+   "label": "car",
+   "track_id": "T0109",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1841 m, son 60 dk'da 3088 m yaklaştı, ETA 36 dk; 4 hareketin 3'ü yaklaşan. Tutarlı yaklaşma işareti yok, ağır araç değil — temel medium korunuyor.",
+   "evidence": [
+    "det:img_006673_001",
+    "track:T0109"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_002",
+   "label": "car",
+   "track_id": "T0102",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1830 m, son 60 dk'da 6142 m yaklaştı, ETA 18 dk (görüntüdeki en kısa varış sürelerinden); 6 hareketin 5'i yaklaşan. Tutarlı yaklaşma işareti yok; temel medium korunuyor.",
+   "evidence": [
+    "det:img_006673_002",
+    "track:T0102"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1890 m, track'siz park halinde araç (tespit güveni 0.69). R006'nın dost/planlı ikmal iddiası bu noktada ÇELİŞKİLİ (rapor anında hareket kayıtlı araç yok, yakında yalnızca park halinde araçlar var). Üsse yakın konum + çelişen dost iddiası; temel medium korunuyor.",
+   "evidence": [
+    "det:img_006673_007",
+    "report:R006"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_003",
+   "label": "car",
+   "track_id": "T0181",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 1858 m, 2 saatte net yer değiştirme yalnızca -5 m (yanal hareket), 11 hareket (5 yaklaşan/6 uzaklaşan), dolaşma 4.8 — üsse çok yakın mesafede uzun süreli dolaşma; temel medium korunuyor.",
+   "evidence": [
+    "det:img_006673_003",
+    "track:T0181"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_008",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1779 m",
+   "evidence": [
+    "det:img_006673_008"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_006673_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "üsse 1903 m; track'siz ve düşük güvenli tespit (0.29)",
+   "evidence": [
+    "det:img_006673_009"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Dost kimlik iddialarının gözlemle çelişmesi örüntüsü (R006 + R123)",
+   "risk_level": "high",
+   "rationale": "Aynı görüntüde iki ayrı 'kimlik teyidi yapılmıştır' dost iddiası gözlemle çelişiyor: R006 'planlı ikmal aracı' dediği araç noktada gözlenmedi (identity=ÇELİŞKİLİ), R123'ün 'mavi dost devriye' dediği img_006673_005 görsel kontrolde siyah, sivil bir SUV çıktı. Bu örüntü, dost kimlik iddialarının araçları gizleme amacıyla kullanılabileceğine işaret ediyor; yaklaşımdaki araçların kimlik doğrulaması rapora değil gözleme dayanmalı.",
+   "evidence": [
+    "report:R006",
+    "report:R123",
+    "det:img_006673_005",
+    "image:img_006673"
+   ]
+  },
+  {
+   "title": "Hızlı yaklaşan araç grubu (T0091, T0102, T0109)",
+   "risk_level": "high",
+   "rationale": "Üsse 1800–1870 m mesafede, son 60 dakikada 3000–4300 m kat eden ve 18–36 dk içinde varış beklenen üç araç (T0091, T0102, T0109) aynı anda üsse yöneliyor; T0091 bunların içinde tutarlı yaklaşma işaretli tek araç. Koordinasyon kanıtı (konvoy/birlikte hareket) olmadığı için grup olarak yalnızca zamanlama çakışması nedeniyle izlenmeli.",
+   "evidence": [
+    "track:T0091",
+    "track:T0102",
+    "track:T0109"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R118",
+   "verdict": "partly_reliable",
+   "note": "'1 ağır araç bulunuyor' iddiası 09:20–10:30 penceresinde çevrede T0035 (truck, 09:35–10:20 arası noktaya en yakın 180 m) ve T0095 ile desteklendi; ancak 'hareketleri olağan' kısmı doğrulanamadı."
+  },
+  {
+   "report_id": "R123",
+   "verdict": "unreliable",
+   "note": "Varlık ve tip kısmen tutarlı olsa da temel iddia gözlemle çelişiyor: 'mavi' araç görsel kontrolde siyah sivil SUV, devriye işareti/teçhizat yok; 'dost devriye, kimlik teyidi yapılmıştır' iddiası gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R006",
+   "verdict": "unreliable",
+   "note": "Dost/planlı ikmal iddiası rapor anında gözlenmedi; yakında yalnızca track'siz park halinde araçlar var (identity=ÇELİŞKİLİ). Riski düşüren iddiada ispat yükü raporda ve karşılanamadı; iddia gözlemle çelişiyor."
+  },
+  {
+   "report_id": "R066",
+   "verdict": "unverifiable",
+   "note": "Bölge ihbarı zaten 'doğrulanamadı' olarak işaretlenmiş; bu görüntüdeki bulgularla bağımsız teyidi yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:28:43+00:00",
+  "reasoning_effort": "high",
+  "iterations": 4,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006673\",\"question\":\"Bu araç mavi renkte mi ve askeri dost devriye aracına benziyor mu (işaret, anten, teçhizat)?\",\"vehicle_id\":\"img_006673_005\"}",
+    "summary": "{\"image_id\": \"img_006673\", \"target\": \"img_006673_005 (car, güven 0.90)\", \"crop_px\": [812, 0, 1336, 453], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": false, \"answer\": \"Arac mavi deg…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9102,\"lon\":32.8678,\"radius_m\":500,\"time_from\":\"09:20\",\"time_to\":\"10:30\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9102, \"lon\": 32.8678, \"radius_m\": 500.0, \"window\": \"09:20–10:30\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 3, \"tracked\": [{\"track_id\": \"T0095\", \"label\": \"truck\", \"detection_id\": \"img_006673_006\", \"image_id\": \"img_0066…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006673\",\"question\":\"Bu araç bir kamyon mu, yükü/örtüsü var mı, askeri görünümlü mü?\",\"vehicle_id\":\"img_006673_006\"}",
+    "summary": "{\"image_id\": \"img_006673\", \"target\": \"img_006673_006 (truck, güven 0.87)\", \"crop_px\": [738, 0, 1330, 336], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"beyaz\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Evet…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 29748,
+   "output": 7182,
+   "reasoning": 2524
+  },
+  "cost_usd": 0.002552,
+  "cached_calls": 3,
+  "fallback": false,
+  "duration_s": 29.3
+ }
+}

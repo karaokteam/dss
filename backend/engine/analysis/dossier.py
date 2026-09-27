@@ -125,9 +125,27 @@ def build_dossier(image_id: str, ctx: EvidenceContext | None = None) -> ImageDos
 
     vehicles.sort(key=lambda v: (-v.baseline_risk.score, v.vehicle_id))
 
+    for v in vehicles:
+        k = v.kinematics
+        if k and k.circling:
+            anomalies.append(Anomaly(
+                type="circling_base",
+                detail=(f"{v.track_id} ({v.label or 'etiketsiz'}) {k.circling_window} arasında üssün etrafında "
+                        f"~{k.circling_radius_m:.0f} m yarıçapta döndü ({k.circling_sweep_deg:.0f}° tarama, farklı "
+                        f"bölgelerden geçerek)."),
+                evidence=tuple(x for x in (f"track:{v.track_id}", f"det:{v.vehicle_id}"
+                                           if not v.vehicle_id.startswith("track:") else None) if x)))
+
     # ---- rapor özetleri ve rapor kaynaklı anomaliler
     reports = tuple(_summary(ctx, rid) for rid in report_ids)
     for rs in reports:
+        flagged = [c for c in rs.checks if (c.observed or {}).get("reassuring_on_approach")]
+        if flagged:
+            c = flagged[0]
+            anomalies.append(Anomaly(
+                type="reassuring_claim_on_approach",
+                detail=f"{rs.report_id} ({rs.time}) güven verici iddia üsse yaklaşan araca iliştirilmiş: {c.reason}",
+                evidence=c.evidence))
         for c in rs.checks:
             if not c.subjects and c.status in (ClaimStatus.UNVERIFIABLE, ClaimStatus.CONTRADICTED) \
                     and ctx.claims[rs.report_id].category == "coordinate":
@@ -230,7 +248,16 @@ def global_context(ctx: EvidenceContext, t: int) -> dict:
         z["heavy"] += int(ctx.label_of_track(tr.id) in HEAVY)
         z["closest_m"] = round(min(z["closest_m"] or k.dist_to_base_m, k.dist_to_base_m))
         z["tracks"].append(tr.id)
-    cache[t] = {"time": fmt_hhmm(t), "consistent_approachers": total, "by_zone": dict(sorted(by_zone.items()))}
+    circling = []
+    for tr in repo.tracks():
+        if tr.start_min > t or tr.end_min < t:
+            continue
+        k = track_state_at(tr, repo.base, t)
+        if k is not None and k.circling:
+            circling.append({"track_id": tr.id, "label": ctx.label_of_track(tr.id), "radius_m": k.circling_radius_m,
+                             "window": k.circling_window})
+    cache[t] = {"time": fmt_hhmm(t), "consistent_approachers": total, "by_zone": dict(sorted(by_zone.items())),
+                "circling": circling}
     return cache[t]
 
 

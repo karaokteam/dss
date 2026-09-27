@@ -3,8 +3,40 @@
  "capture_time": "12:05",
  "zone": "Guneybati Yolu",
  "overall_risk": "medium",
- "summary": "Bölgede ağır araç yok ve tüm tespitler binek araç; ancak iki resmi rapor (R132 planlı ikmal, R046 mavi devriye aracı) dost kimliği iddiasında bulunuyor ve anlattıkları araç gözlemde bulunamıyor. Görsel teyit, görüntüde mavi aracın bulunmadığını (park halindeki araçlar kırmızı ve beyaz/gri) gösteriyor; bu çelişkili dost iddiası örüntüsü bir aracı gizleme girişimi olabilir ve dikkat gerektiriyor.",
+ "summary": "Guneybati Yolu bölgesinde en dikkat çekici araç T0098'dir (img_000531_005): son 60 dakikada üsse 2027 m hızlı yaklaşmış ve üzerine doğrulanamayan bir 'planlı ikmal, kimlik teyitli' iddiası iliştirilmiştir. Ayrıca bölgede 'ağır araç yok' diyen R012 raporu, T0174 ağır araç kaydıyla gözlemle çelişmektedir. Diğer araçlar ya olağan biçimde yaklaşıyor ya da üsten uzaklaşıyor; ek tehdit sinyali yok.",
  "vehicles": [
+  {
+   "vehicle_id": "img_000531_005",
+   "label": "car",
+   "track_id": "T0098",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Binek araç (tespit güveni 0.88), track T0098. 2 saatte üsse 7016→4359 m yaklaşmış; son 60 dakikada Δ-2027 m ile hızlı yaklaşma (eşik 2000 m), ETA 129 dk. 8 hareketin 6'sı yaklaşan yönde, son hareket üsse 0° açıyla doğrudan. R132'deki güven verici iddia, aracın rapordan önce 10 dk yerinde durması ve rapordan sonra -2658 m daha yaklaşmasıyla gözlemle kısmen çelişiyor; kimlik drone verisinden teyit edilemediği için risk düşürülmedi (temel 30, medium korunur).",
+   "evidence": [
+    "det:img_000531_005",
+    "track:T0098",
+    "report:R132"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000531_000",
+   "label": "car",
+   "track_id": "T0189",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Binek araç (0.92), track T0189. Son 60 dakikada Δ-1093 m, 4/6 hareket yaklaşan, ETA 245 dk; hızlı yaklaşma eşiğini aşmıyor. R046'daki 'bize bağlı devriye' iddiası kimlik olarak teyit edilemediğinden risk düşürülmedi (temel 20, low).",
+   "evidence": [
+    "det:img_000531_000",
+    "track:T0189",
+    "report:R046"
+   ],
+   "source": "agent"
+  },
   {
    "vehicle_id": "img_000531_001",
    "label": "car",
@@ -13,12 +45,10 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Üsse 4373 m; son 60 dakikada 2627 m yaklaştı (7 hareketin 5'i yaklaşan), ETA ~100 dk. Binek araç, görsel teyitte kırmızı/bordo, devriye ekipmanı yok. R132'nin planlı ikmal iddiası bu araca bağlanamıyor (araç bulunamadı).",
+   "rationale": "Binek araç (0.91), track T0113. Son 60 dakikada Δ-2627 m hızlı yaklaşma (eşik 2000 m), ETA 100 dk; 5/7 hareket yaklaşan. Dost iddiası yok, dönme/dolaşma sinyali yok; temel 20 (low) korunur.",
    "evidence": [
     "det:img_000531_001",
-    "track:T0113",
-    "report:R132",
-    "image:img_000531"
+    "track:T0113"
    ],
    "source": "agent"
   },
@@ -30,40 +60,10 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Üsse 4485 m; son 60 dakikada 2395 m yaklaştı (6 hareketin 4'ü yaklaşan), ETA ~112 dk. Binek araç.",
+   "rationale": "Binek araç (0.91), track T0099. Son 60 dakikada Δ-2395 m hızlı yaklaşma, ETA 112 dk; 4/6 hareket yaklaşan. Temel 20 (low) korunur.",
    "evidence": [
     "det:img_000531_002",
     "track:T0099"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_000531_005",
-   "label": "car",
-   "track_id": "T0098",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 20,
-   "override_reason": null,
-   "rationale": "Üsse 4359 m; son 60 dakikada 2027 m yaklaştı (8 hareketin 6'sı yaklaşan), ETA ~129 dk. Binek araç.",
-   "evidence": [
-    "det:img_000531_005",
-    "track:T0098"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_000531_000",
-   "label": "car",
-   "track_id": "T0189",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 10,
-   "override_reason": null,
-   "rationale": "Üsse 4464 m; son 60 dakikada 1093 m yaklaştı (6 hareketin 4'ü yaklaşan), ETA ~245 dk, dolaşma 2.8. Binek araç.",
-   "evidence": [
-    "det:img_000531_000",
-    "track:T0189"
    ],
    "source": "agent"
   },
@@ -75,7 +75,7 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "Üsse 4413 m, yanal hareket; 2 saatte net yer değiştirme +8 m, 10 hareket, dolaşma 4.6 (loitering). Binek araç, tespit güveni 0.77.",
+   "rationale": "Binek araç (0.77), track T0197. 2 saatte üsse göre yanal hareket (Δ+8 m), 10 hareket ve dolaşma 4.6 ile loitering faktörü var; ancak üsse net yaklaşma ve diğer tehdit sinyali yok. Temel 10 (low).",
    "evidence": [
     "det:img_000531_007",
     "track:T0197"
@@ -90,7 +90,7 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Üsse 4530 m; son 60 dakikada 3875 m uzaklaştı (5 hareketin 3'ü uzaklaşan). Tehdit sinyali yok.",
+   "rationale": "Binek araç (0.91), track T0110. Son 60 dakikada üsten 3875 m uzaklaşıyor; ancak kayıt içinde üsse 645 m'ye kadar yaklaşmış (close_pass). Uzaklaşan hareket baskın; temel 0 (low).",
    "evidence": [
     "det:img_000531_003",
     "track:T0110"
@@ -105,7 +105,7 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Üsse 4477 m; son 60 dakikada 957 m uzaklaştı. Tehdit sinyali yok.",
+   "rationale": "Binek araç (0.90), track T0139. Üsten uzaklaşıyor (son 60 dk Δ+957 m), kayıt içi en yakın 894 m; temel 0 (low).",
    "evidence": [
     "det:img_000531_004",
     "track:T0139"
@@ -120,7 +120,7 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Üsse 4495 m; son 60 dakikada 3562 m uzaklaştı (6 hareketin 5'i uzaklaşan). Tehdit sinyali yok.",
+   "rationale": "Binek araç (0.83), track T0037. Üsten güçlü uzaklaşma (son 60 dk Δ+3562 m, 5/6 hareket uzaklaşan), kayıt içi en yakın 928 m; temel 0 (low).",
    "evidence": [
     "det:img_000531_006",
     "track:T0037"
@@ -135,10 +135,9 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Track'siz park halinde araç; görsel teyitte araç mevcut, kırmızı binek, yük/örtü yok, mavi değil. Hareket kaydı olmadığından izlenmesi yeterli.",
+   "rationale": "Binek araç (0.69), hareket kaydı yok, park halinde; üsse 4502 m. Tehdit sinyali yok; temel 0 (low).",
    "evidence": [
-    "det:img_000531_008",
-    "image:img_000531"
+    "det:img_000531_008"
    ],
    "source": "agent"
   },
@@ -150,126 +149,64 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Track'siz, düşük güvenli tespit (0.16); görsel teyitte araç mevcut ancak görüntü flu, gri/beyaz binek, mavi değil, yük yok. R046'nın 'mavi araç' iddiasıyla eşleşmiyor.",
+   "rationale": "Düşük güvenli tespit (0.16), track yok, park halinde; üsse 4400 m. Tek başına tehdit göstergesi değil; temel 0 (low).",
    "evidence": [
-    "det:img_000531_009",
-    "report:R046",
-    "image:img_000531"
+    "det:img_000531_009"
    ],
    "source": "agent"
   }
  ],
  "attention_items": [
   {
-   "title": "Çelişkili dost/planlı ikmal iddiası örüntüsü (R132, R046)",
+   "title": "Üsse yaklaşan araçlara iliştirilen gözlemle desteklenmeyen dost/planlı ikmal iddiaları",
    "risk_level": "medium",
-   "rationale": "R132 (10:15) planlı ikmal aracı olduğunu ve kimlik teyidi yapıldığını iddia ediyor; ancak rapor koordinatının 60 m yakınında track yok, en yakın track 1058 m. R046 (11:40) mavi devriye aracı iddia ediyor; 60 m yakında track yok (en yakın 677 m) ve görsel teyitte görüntüde mavi araç yok (park halindeki araçlar kırmızı ve beyaz/gri; img_000531_001 de kırmızı/bordo, devriye ekipmanı yok). İki resmi raporun gözlemle çelişen dost kimliği iddiası, bir aracı gizleme girişimi olabilir; bölgede dost iddiaları yalnızca gözlemle doğrulanırsa risk düşürülmelidir.",
+   "rationale": "R132 (10:15, official) T0098'e 'planlı ikmal, kimlik teyitli' demiş; ancak T0098 rapor öncesi 10 dk yerinde durmuş, rapordan sonra çekime kadar üsse -2658 m daha yaklaşmış — iddia gözlemle kısmen çelişiyor. R046 (11:40, official) T0189'a 'bize bağlı devriye, teyitlidir' demiş; T0189 rapor öncesi 30 dakikada -1764 m üsse yaklaşmış. Kimlik drone ve hareket verisinden teyit edilemediği için her iki güven iddiası risk düşürücü olarak kabul edilemez; kimliği doğrulanamayan araçların yaklaşmasını meşrulaştıran bu örüntü izlenmeli.",
    "evidence": [
     "report:R132",
     "report:R046",
-    "image:img_000531"
-   ]
-  },
-  {
-   "title": "Üsse tutarlı yaklaşan üç binek araç (T0113, T0099, T0098)",
-   "risk_level": "low",
-   "rationale": "Son 60 dakikada üsse sırasıyla 2627 m, 2395 m ve 2027 m yaklaşan, hareketlerinin çoğu yaklaşan üç binek araç; ETA 100–129 dk, hepsi 4360–4490 m mesafede. Ağır araç yok (R012/R137 doğrulandı), tekil riskler low; ancak izleme sürdürülmeli.",
-   "evidence": [
-    "track:T0113",
-    "track:T0099",
     "track:T0098",
-    "report:R012",
-    "report:R137"
+    "track:T0189"
    ]
   },
   {
-   "title": "Track'siz park halinde araçlar",
-   "risk_level": "low",
-   "rationale": "img_000531_008 (güven 0.69, kırmızı) ve img_000531_009 (güven 0.16, gri/beyaz) hareket kaydı olmadan park halinde. Görsel teyitte ikisi de gerçekten araç, yük/örtü yok. Özellikle 0.16 güvenli tespit flu görüntüde; hareket başlarsa track eşleşmesi yapılmalı.",
+   "title": "Bölge raporu çelişkisi: 'ağır araç yok' iddiası ağır araç kaydıyla çelişiyor",
+   "risk_level": "medium",
+   "rationale": "R012 (10:35, official) 'Guneybati Yolu bölgesinde ağır araç hareketi yok' diyor; ancak rapor anında ve önceki 15 dakikada bölgede 1 ağır araç kaydı (T0174) mevcut — rapor gözlemle çelişiyor. R137 (11:10) benzer şekilde bölgede ağır araç kaydı olmadığını söylüyor; park halindeki araçların track'i olmayabileceğinden yokluk tam doğrulanamıyor. Bu bölgedeki resmi raporların gözlemle çelişme örüntüsü, rapor kaynaklarına tek başına güvenilmemesi gerektiğini gösteriyor.",
    "evidence": [
-    "det:img_000531_008",
-    "det:img_000531_009",
-    "image:img_000531"
+    "report:R012",
+    "report:R137",
+    "track:T0174"
    ]
   }
  ],
  "report_notes": [
   {
    "report_id": "R132",
-   "verdict": "unreliable",
-   "note": "Planlı ikmal/kimlik teyidi iddiası ÇELİŞKİLİ: rapor koordinatının 60 m yakınında track yok, en yakın track 1058 m; anlatılan araç bulunamadı."
+   "verdict": "partly_reliable",
+   "note": "'Planlı ikmal, kimlik teyitli' iddiası gözlemle desteklenmiyor: anlattığı araç T0098 rapor öncesi 10 dk yerinde durmuş, rapordan sonra çekime kadar üsse -2658 m yaklaşmış (identity=KISMEN, motion=KISMEN). Güven verici iddia üsse yaklaşan araca iliştirildiğinden risk düşürücü kabul edilmez."
   },
   {
    "report_id": "R046",
-   "verdict": "unreliable",
-   "note": "Mavi devriye aracı iddiası ÇELİŞKİLİ: 60 m yakında track yok (en yakın 677 m) ve görsel teyitte görüntüde mavi araç yok; park halindeki araçlar kırmızı ve beyaz/gri."
-  },
-  {
-   "report_id": "R008",
-   "verdict": "reliable",
-   "note": "Guneybati Yolu'nda olağandışı durum yok iddiası gözlemle uyumlu; bölgede tehdit aracı görünmüyor."
-  },
-  {
-   "report_id": "R012",
-   "verdict": "reliable",
-   "note": "Ağır araç yok, yalnızca binek araç iddiası: görüntüdeki 10 tespitin tamamı car, doğrulandı."
-  },
-  {
-   "report_id": "R137",
-   "verdict": "reliable",
-   "note": "Ağır araç yok iddiası: görüntüdeki tüm araçlar binek, doğrulandı."
-  },
-  {
-   "report_id": "R122",
-   "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru ('dost unsurlar bulunacak'); hiçbir aracın riskini düşürmez ve gözlemle eşleştirilemez."
-  },
-  {
-   "report_id": "R003",
-   "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru; doğrulanabilir gözlem içermiyor, risk değerlendirmesine etki etmez."
-  },
-  {
-   "report_id": "R090",
-   "verdict": "unverifiable",
-   "note": "İhbar incelenmiş ancak doğrulanamamış; gözlemle ne doğrulanıyor ne çürütülüyor."
+   "verdict": "partly_reliable",
+   "note": "'Mavi araç, bize bağlı devriye, teyitlidir' iddiası kimlik olarak doğrulanamıyor; T0189 rapor öncesi 30 dakikada üsse -1764 m yaklaşmış (identity=KISMEN). Renk/bağlantı görsel ve hareket verisinden teyit edilmedi; iddia tek başına riski düşürmez."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-26T23:56:41+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:28:27+00:00",
   "reasoning_effort": "high",
-  "iterations": 3,
-  "tool_calls": [
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, mavi bir binek araç mı, üzerinde herhangi bir yük/örtü var mı?\",\"vehicle_id\":\"img_000531_009\"}",
-    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_009 (car, güven 0.16)\", \"crop_px\": [537, 0, 873, 177], \"result\": {\"answer\": \"Kirmizi cercevede bir arac gorunuyor; gri/beyaz tonunda bir binek arac gibi duruyor, mavi degil. Uzerinde yuk veya…"
-   },
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu noktada gerçekten bir araç var mı? Varsa tipi ve rengi nedir, mavi bir binek araç mı, üzerinde herhangi bir yük/örtü var mı?\",\"vehicle_id\":\"img_000531_008\"}",
-    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_008 (car, güven 0.69)\", \"crop_px\": [0, 0, 160, 255], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, bir…"
-   },
-   {
-    "iteration": 2,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_000531\",\"question\":\"Bu aracın rengi mavi mi? Devriye/birlik aracına benziyor mu (işaret, tepe lambası, çatı ekipmanı var mı)?\",\"vehicle_id\":\"img_000531_001\"}",
-    "summary": "{\"image_id\": \"img_000531\", \"target\": \"img_000531_001 (car, güven 0.91)\", \"crop_px\": [895, 0, 1279, 342], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Arac m…"
-   }
-  ],
-  "repairs": 0,
+  "iterations": 2,
+  "tool_calls": [],
+  "repairs": 1,
   "tokens": {
-   "input": 16664,
-   "output": 5959,
-   "reasoning": 2905
+   "input": 14335,
+   "output": 7135,
+   "reasoning": 2442
   },
-  "cost_usd": 0.003851,
+  "cost_usd": 0.004919,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 143.9
+  "duration_s": 119.8
  }
 }

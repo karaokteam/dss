@@ -1,7 +1,9 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, createElement, useEffect } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { Bus, Car, CircleHelp, Truck, Van, type LucideIcon } from "lucide-react";
 import { Circle, CircleMarker, MapContainer, Marker, Polygon, Polyline, Rectangle, TileLayer, Tooltip, useMap } from "react-leaflet";
 import L from "leaflet";
-import type { ImageSummary, Overview, Report, TrackFull, ZonePoint } from "../api";
+import type { GlobalTrack, ImageSummary, Overview, Report, TrackFull, ZonePoint } from "../api";
 import { LABEL_TR, RISK_COLOR, RISK_TR, STATUS_COLOR, STATUS_TR, posAt, toMin, zoneWedge } from "../risk";
 
 const baseIcon = L.divIcon({
@@ -14,6 +16,32 @@ const reportIcon = (color: string, active: boolean) => L.divIcon({
   html: `<div style="width:${active ? 16 : 12}px;height:${active ? 16 : 12}px;transform:rotate(45deg);background:${color};border:2px solid #0b1017;box-shadow:0 0 ${active ? 10 : 0}px ${color}"></div>`,
   iconSize: [16, 16], iconAnchor: [8, 8],
 });
+
+// Araç ikonu: tipine göre SVG (lucide), risk renginde halka
+const ICONS: Record<string, LucideIcon> = { car: Car, van: Van, truck: Truck, bus: Bus };
+const svgCache = new Map<string, string>();
+function iconSvg(label: string | null, px: number): string {
+  const key = `${label}|${px}`;
+  if (!svgCache.has(key)) {
+    const Icon = (label && ICONS[label]) || CircleHelp;
+    svgCache.set(key, renderToStaticMarkup(createElement(Icon, { size: px, color: "#e2e8f0", strokeWidth: 2.2 })));
+  }
+  return svgCache.get(key)!;
+}
+const iconCache = new Map<string, L.DivIcon>();
+export function vehicleIcon(label: string | null, color: string, size = 22, selected = false): L.DivIcon {
+  const key = `${label}|${color}|${size}|${selected}`;
+  let icon = iconCache.get(key);
+  if (!icon) {
+    icon = L.divIcon({
+      className: "",
+      html: `<div class="veh${selected ? " sel" : ""}" style="width:${size}px;height:${size}px;border-color:${color};box-shadow:0 0 ${selected ? 12 : 4}px ${color}">${iconSvg(label, Math.round(size * 0.6))}</div>`,
+      iconSize: [size, size], iconAnchor: [size / 2, size / 2],
+    });
+    iconCache.set(key, icon);
+  }
+  return icon;
+}
 
 function Fit({ bounds }: { bounds: [number, number][] | null }) {
   const map = useMap();
@@ -43,6 +71,8 @@ interface Props {
   onSelectTrack: (id: string) => void;
   onSelectReport: (r: Report) => void;
   highlight: TrackFull[];
+  global?: { tracks: GlobalTrack[]; time: number } | null;   // "Tüm gün" modu
+  onSelectGlobal?: (t: GlobalTrack) => void;
 }
 
 export default function OpsMap(p: Props) {
@@ -59,7 +89,7 @@ export default function OpsMap(p: Props) {
       {/* Üs + halkalar */}
       {[2000, 3500, 5000].map((r) => (
         <Circle key={r} center={[b.lat, b.lon]} radius={r} interactive={false}
-          pathOptions={{ color: "#7dd3fc", weight: 1.8, opacity: 0.75, fill: false, dashArray: "6 6" }} />
+          pathOptions={{ color: "#64748b", weight: 1, opacity: 0.35, fill: false, dashArray: "4 8" }} />
       ))}
       <Marker position={[b.lat, b.lon]} icon={baseIcon}><Tooltip>{b.name}</Tooltip></Marker>
       {p.overview.zones.map((z) => (
@@ -80,7 +110,7 @@ export default function OpsMap(p: Props) {
       ))}
 
       {/* Diğer olaylar: küçük soluk noktalar */}
-      {p.overview.images.filter((i) => i.id !== p.selected?.id).map((img) => (
+      {!p.global && p.overview.images.filter((i) => i.id !== p.selected?.id).map((img) => (
         <CircleMarker key={img.id} center={[img.center.lat, img.center.lon]} radius={5}
           pathOptions={{ color: RISK_COLOR[img.max_risk], fillColor: RISK_COLOR[img.max_risk], fillOpacity: 0.35, opacity: 0.6, weight: 1 }}
           eventHandlers={{ click: () => p.onSelectImage(img.id) }}>
@@ -107,13 +137,42 @@ export default function OpsMap(p: Props) {
             <Polyline positions={full} interactive={false} pathOptions={{ color, weight: 1, opacity: sel ? 0.45 : 0.18, dashArray: "2 4" }} />
             <Polyline positions={tail} interactive={false} pathOptions={{ color, weight: sel ? 4 : 2, opacity: sel ? 1 : 0.7 }} />
             {now && (
-              <CircleMarker center={now} radius={sel ? 9 : 6} eventHandlers={{ click: () => p.onSelectTrack(t.track_id) }}
-                pathOptions={{ color: sel ? "#f8fafc" : "#0b1017", fillColor: color, fillOpacity: 1, weight: sel ? 3 : 1.5 }}>
-                <Tooltip permanent={sel} direction="top" offset={[0, -8]}>
+              <Marker position={now} icon={vehicleIcon(t.label, color, sel ? 32 : 24, sel)} zIndexOffset={sel ? 1000 : 0}
+                eventHandlers={{ click: () => p.onSelectTrack(t.track_id) }}>
+                <Tooltip permanent={sel} direction="top" offset={[0, -14]}>
                   <b>{t.track_id}</b>{sel ? "" : ` · ${t.label ? LABEL_TR[t.label] ?? t.label : "?"} · ${t.risk_level ? RISK_TR[t.risk_level] : "-"}`}
                 </Tooltip>
-              </CircleMarker>
+              </Marker>
             )}
+          </Fragment>
+        );
+      })}
+
+      {/* Tüm gün modu: o anda kaydı olan bütün araçlar + son 30 dk kuyruk; o anda çekilen görüntüler yanıp söner */}
+      {p.global && p.overview.images.filter((i) => Math.abs(toMin(i.capture_time) - p.global!.time) <= 5).map((img) => (
+        <Rectangle key={"cam" + img.id} bounds={img.bounds} className="cam-pulse" eventHandlers={{ click: () => p.onSelectImage(img.id) }}
+          pathOptions={{ color: "#f8fafc", weight: 3, fillColor: RISK_COLOR[img.max_risk], fillOpacity: 0.5 }}>
+          <Tooltip permanent direction="bottom">{img.capture_time}</Tooltip>
+        </Rectangle>
+      ))}
+      {p.global && p.global.tracks.map((t) => {
+        const now = posAt(t.points, p.global!.time);
+        if (!now) return null;
+        const color = t.risk_level ? RISK_COLOR[t.risk_level] : "#94a3b8";
+        const tail = t.points.filter((q) => { const m = toMin(q.time); return m <= p.global!.time && m >= p.global!.time - 30; })
+          .map((q) => [q.lat, q.lon] as [number, number]);
+        tail.push(now);
+        const big = t.consistent_approach || t.circling || t.risk_level === "critical" || t.risk_level === "high";
+        return (
+          <Fragment key={"g" + t.track_id}>
+            {tail.length > 1 && <Polyline positions={tail} interactive={false} pathOptions={{ color, weight: big ? 2.5 : 1.2, opacity: big ? 0.9 : 0.5 }} />}
+            <Marker position={now} icon={vehicleIcon(t.label, color, big ? 24 : 16)} zIndexOffset={big ? 500 : 0}
+              eventHandlers={{ click: () => p.onSelectGlobal?.(t) }}>
+              <Tooltip direction="top" offset={[0, -10]}>
+                <b>{t.track_id}</b> · {t.label ? LABEL_TR[t.label] ?? t.label : "?"} · {t.risk_level ? RISK_TR[t.risk_level] : "-"}
+                {t.consistent_approach && " · tutarlı yaklaşma"}{t.circling && ` · üssün etrafında döndü (${t.circling_window})`}<br />kayıt sonu {t.points[t.points.length - 1].time}
+              </Tooltip>
+            </Marker>
           </Fragment>
         );
       })}
@@ -126,12 +185,9 @@ export default function OpsMap(p: Props) {
           <Fragment key={"h" + t.track_id}>
             <Polyline positions={pts} interactive={false} pathOptions={{ color: "#38bdf8", weight: 6, opacity: 0.25 }} />
             <Polyline positions={pts} interactive={false} pathOptions={{ color, weight: 2.5, opacity: 1 }} />
-            <CircleMarker center={pts[pts.length - 1]} radius={7} eventHandlers={{ click: () => p.onSelectImage(t.image_id) }}
-              pathOptions={{ color: "#f8fafc", fillColor: color, fillOpacity: 1, weight: 2 }}>
-              <Tooltip permanent direction="top" offset={[0, -8]}>
-                <b>{t.track_id}</b>
-              </Tooltip>
-            </CircleMarker>
+            <Marker position={pts[pts.length - 1]} icon={vehicleIcon(t.label, color, 28, true)} eventHandlers={{ click: () => p.onSelectImage(t.image_id) }}>
+              <Tooltip permanent direction="top" offset={[0, -14]}><b>{t.track_id}</b></Tooltip>
+            </Marker>
           </Fragment>
         );
       })}

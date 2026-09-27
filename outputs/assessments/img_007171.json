@@ -2,8 +2,8 @@
  "image_id": "img_007171",
  "capture_time": "15:00",
  "zone": "Kuzeydogu Kavsagi",
- "overall_risk": "medium",
- "summary": "Kuzeydoğu Kavşağı'nda ana dikkat noktası T0052 (img_007171_005): 2 saatte üsse 6548→3466 m yaklaşmış, son 60 dakikada 3158 m hızlı yaklaşma ve dolaşma örüntüsü gösteriyor — ETA 66 dk. Diğer araçlar ya park halinde, ya yavaş/yaklaşan (T0065, T0177: ortak hareket analizi koordinasyon göstermiyor) ya da üsten uzaklaşıyor durumda; dolayısıyla genel risk medium kalıyor.",
+ "overall_risk": "high",
+ "summary": "Görüntüdeki en belirgin araç img_007171_005 (T0052): son 60 dakikada üsse 3158 m yaklaşmış, dolaşıyor ve 66 dk içinde varış ETA'sı var (temel risk medium, korundu). Bağlamda üssün etrafında ~527 m yarıçapta dönen ağır bir kamyon (T0034, 14:45–15:00) tespit edilmiş olup bu en güçlü tehdit sinyalidir ve bölge raporlarıyla (R016: 'ağır araç yok') çelişir. Ayrıca R116 'normal' derken bölgede üsse tutarlı yaklaşan 2 araç vardı; R112/R035'teki konumsuz 'dost unsurlar' duyuruları hiçbir aracın riskini düşürmez.",
  "vehicles": [
   {
    "vehicle_id": "img_007171_005",
@@ -13,10 +13,11 @@
    "baseline_level": "medium",
    "baseline_score": 40,
    "override_reason": null,
-   "rationale": "Üsse 3466 m ve 2 saatte 6548→3466 m (Δ-3082 m) net yaklaşma; son 60 dakikada tek başına 3158 m yaklaşmış (fast_approach eşik 2000 m), 6 hareketin 4'ü yaklaşan, dolaşma 3.1 ve son hareket üsse 18° açıyla. ETA 66 dk ile izlenen araçların en tehditkârı. Ağır araç değil ve T0065/T0177 ile ilişkisi 'met_at_end' — bağımsız hareket, konvoy kanıtı yok.",
+   "rationale": "track T0052 (car 0.74): 2 saatte üsse 6548→3466 m yaklaştı; son 60 dk'da Δ-3158 m; 6 hareketin 4'ü yaklaşan; dolaşma 3.1 ve ETA 66 dk. Temel faktörler (mid_base, approaching, fast_approach, loitering) gözlemle uyumlu, seviye değişikliği için yeni somut bulgu yok.",
    "evidence": [
     "det:img_007171_005",
-    "track:T0052"
+    "track:T0052",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -28,10 +29,11 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Üsse 3447 m, son 60 dakikada 1906 m yaklaşmış ama orta tempoda (6 hareketin 4'ü yaklaşan, dolaşma 1.8), ETA göstergesi yok; hızlı yaklaşma eşiğini geçmiyor. T0052 ile sonunda 32 m mesafede ama ilişki 'met_at_end', koordinasyon kanıtı yok.",
+   "rationale": "track T0065 (car 0.94): yaklaşıyor (4358→3447 m, son 60 dk Δ-1906 m) ancak 30 dk duruyor, dolaşma 1.8, temel risk low.",
    "evidence": [
     "det:img_007171_001",
-    "track:T0065"
+    "track:T0065",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -43,10 +45,11 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Üsse 3434 m; son 60 dakikada 1044 m ılımlı yaklaşma (5 hareketin 3'ü yaklaşan), ETA 197 dk — yavaş, kısa vadeli tehdit değil.",
+   "rationale": "track T0177 (car 0.93): yavaş yaklaşma (son 60 dk Δ-1044 m), ETA 197 dk, dolaşma 2.6, temel risk low.",
    "evidence": [
     "det:img_007171_002",
-    "track:T0177"
+    "track:T0177",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -58,11 +61,12 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "120 dakikadır yerinde duruyor (Δ+4 m, 0 hareket), üsse 3437 m. R056'nın 'durağan' iddiası bu araç için doğrulandı (105 dk durağan ölçümü). Yaklaşma davranışı yok.",
+   "rationale": "track T0130 (car 0.85): 120 dk durağan, üsse 3437 m; R056 iddiası (stationary) DOĞRULANDI — rapor anında 105 dk durağan. Temel risk low.",
    "evidence": [
     "det:img_007171_004",
     "track:T0130",
-    "report:R056"
+    "report:R056",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -74,10 +78,10 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "Park halinde, hareket kaydı yok; R056'yla uyumlu şekilde durağan.",
+   "rationale": "Track yok, park halinde, üsse 3455 m; yalnızca mid_base faktörü.",
    "evidence": [
     "det:img_007171_003",
-    "report:R056"
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -89,10 +93,26 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "Park halinde, hareket kaydı yok; R056'yla uyumlu şekilde durağan.",
+   "rationale": "Track yok, park halinde; düşük güvenli tespit (car 0.53/van 0.30) ancak hareket kaydı ve tehdit göstergesi yok.",
    "evidence": [
     "det:img_007171_007",
-    "report:R056"
+    "image:img_007171"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_007171_008",
+   "label": "car",
+   "track_id": "T0173",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "track T0173: uzaklaşıyor (son 60 dk Δ+2940 m); kayıt içinde en yakın 508 m yakın geçiş temel skorda zaten hesaplı, yeni bulgu yok.",
+   "evidence": [
+    "det:img_007171_008",
+    "track:T0173",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -104,10 +124,11 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Üsten uzaklaşıyor: son 60 dakikada Δ+1425 m, 6 hareketin 3'ü yaklaşan 3'ü uzaklaşan, dolaşma 1.1 — tehdit örüntüsü yok.",
+   "rationale": "track T0058: uzaklaşıyor (son 60 dk Δ+1425 m), yakın geçiş zaten temel skorda, net uzaklaşma eğilimi.",
    "evidence": [
     "det:img_007171_000",
-    "track:T0058"
+    "track:T0058",
+    "image:img_007171"
    ],
    "source": "agent"
   },
@@ -119,89 +140,100 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Park halinde, hareket kaydı yok.",
+   "rationale": "Track yok, park halinde, üsse 3532 m; tehdit göstergesi yok.",
    "evidence": [
-    "det:img_007171_006"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_007171_008",
-   "label": "car",
-   "track_id": "T0173",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 0,
-   "override_reason": null,
-   "rationale": "Üsse 3449 m ama üsten uzaklaşıyor: son 60 dakikada Δ+2940 m (523→3449 m), son hareket 72° açıyla. Tehdit örüntüsü yok.",
-   "evidence": [
-    "det:img_007171_008",
-    "track:T0173"
+    "det:img_007171_006",
+    "image:img_007171"
    ],
    "source": "agent"
   }
  ],
  "attention_items": [
   {
-   "title": "T0052'nin hızlı ve dolaşmalı yaklaşması",
-   "risk_level": "medium",
-   "rationale": "img_007171_005 (T0052) 2 saatte üsse 3082 m yaklaşmış, son 60 dakikada 3158 m (hızlı yaklaşma eşiği 2000 m üstü) ve dolaşma örüntüsü (dolaşma 3.1, 6 hareket) var; ETA 66 dk. İzlenmesi ve yaklaşımı engellenmesi gereken birincil araç. Yalnızca binek araç (car 0.74) — ağır araç yok (R016 doğrulandı).",
+   "title": "Üssün etrafında dönen ağır kamyon (T0034)",
+   "risk_level": "high",
+   "rationale": "Bağlam verisinde T0034 (truck) 14:45–15:00 arasında üssün ~527 m yarıçapında farklı bölgelerden geçerek dönüyor. Sabit yarıçapta dönme, ağır araç olma ve üsse çok yakın geçiş birleşimi bu veri setindeki en güçlü tehdit sinyalidir; ayrıca R016'nın 'ağır araç hareketi yok' iddiasıyla çelişir. Bu kamyon bu görüntünün araç listesinde değildir ama bölge tehdidini yükseltir.",
    "evidence": [
-    "det:img_007171_005",
-    "track:T0052"
+    "track:T0034",
+    "report:R016",
+    "image:img_007171"
    ]
   },
   {
-   "title": "Yaklaşan üç aracın son anlarda bir araya gelmesi",
+   "title": "Bölge raporlarının gözlemle çelişmesi",
    "risk_level": "medium",
-   "rationale": "T0052, T0065 ve T0177 kamera anında birbirine 32–72 m mesafede; ancak ikili analiz hepsinde 'met_at_end' verdi (senkron hareketler 1–2, chance_rate 0.434–1.0), yani hareketler bağımsız, konvoy/koordinasyon kanıtı yok. Konum kesişimi ilerleyen dakikalarda izlenmeli; riski yükseltmez.",
+   "rationale": "R116 (14:00) bölgede 'olağandışı durum yok' derken rapor anında bölgede üsse tutarlı yaklaşan 2 araç (T0206, T0122) kayıtlı. R128'de devriyeyle telsiz bağlantısının 40 dakikadır kurulamadığı bildiriliyor ve bu görüntü verisiyle doğrulanamıyor. R016'nın 'ağır araç yok' iddiası, park halindeki araçların track'siz olabilmesi ve T0034 nedeniyle tam doğrulanamıyor.",
    "evidence": [
-    "track:T0052",
-    "track:T0065",
-    "track:T0177"
+    "report:R116",
+    "report:R128",
+    "report:R016",
+    "track:T0206",
+    "track:T0122"
    ]
   },
   {
-   "title": "R056 iddiası kısmen doğru",
+   "title": "Doğrulanamayan 'dost unsurlar' duyuruları",
    "risk_level": "low",
-   "rationale": "R056 'bir saatten uzun süredir yerinden ayrılmadı' diyor; bu görüntüde birden fazla durağan araç var: T0130 105 dk durağan (doğrulandı), img_007171_003/007 park halinde. Ancak T0065 (58 m mesafede) yalnızca 15 dk durağan — iddia T0065'i kapsıyorsa karşılanmıyor. Rapor genel hatlarıyla doğrulanmış, tek araç yönünden eksik kalmış olabilir.",
+   "rationale": "R112 ve R035'teki 'planlı tatbikat nedeniyle dost unsurlar' duyuruları konumsuz ve DOĞRULANAMAZ durumda. Kimlik drone/hareket verisiyle teyit edilemediği için bu iddialar hiçbir aracın riskini düşürmez; özellikle üsse yaklaşan T0052 gibi araçlara kimlik güvencesi olarak kabul edilmemelidir.",
    "evidence": [
-    "report:R056",
-    "track:T0130",
-    "track:T0065"
+    "report:R112",
+    "report:R035"
    ]
   }
  ],
  "report_notes": [
   {
    "report_id": "R056",
+   "verdict": "reliable",
+   "note": "stationary iddiası DOĞRULANDI: T0130 rapor anında 105 dk durağan, görüntüde de durağan görünüyor."
+  },
+  {
+   "report_id": "R116",
    "verdict": "partly_reliable",
-   "note": "Durağanlık iddiası T0130 için doğrulandı (105 dk) ve park halindeki img_007171_003/007 ile uyumlu; ancak 58 m mesafedeki T0065 yalnızca 15 dk durağan — 'bir saatten uzun' şartı tüm araçlar için sağlanmıyor."
+   "note": "'Normal' nitelemesi gözlemle çelişiyor: rapor anında bölgede üsse tutarlı yaklaşan 2 araç (T0206, T0122) var."
+  },
+  {
+   "report_id": "R016",
+   "verdict": "partly_reliable",
+   "note": "Ağır araç yokluğu tam doğrulanamaz: park halindeki araçların track'i olmayabilir; bağlamda dönen kamyon T0034 kayıtlı."
+  },
+  {
+   "report_id": "R069",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbar; görüntü verisiyle desteklenmiyor, tek başına risk gerekçesi yapılmamalı."
+  },
+  {
+   "report_id": "R128",
+   "verdict": "unverifiable",
+   "note": "Telsiz bağlantı kesintisi görüntü/hareket verisiyle doğrulanamıyor; gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; kimlik teyidi yok, hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; kimlik teyidi yok, hiçbir aracın riskini düşürmez."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:05:16+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:34:39+00:00",
   "reasoning_effort": "high",
-  "iterations": 2,
-  "tool_calls": [
-   {
-    "iteration": 1,
-    "tool": "co_movement",
-    "args": "{\"track_ids\":[\"T0052\", \"T0065\", \"T0177\"]}",
-    "summary": "{\"pairs\": [{\"tracks\": [\"T0052\", \"T0065\"], \"relation\": \"met_at_end\", \"common_window\": \"13:00–15:00\", \"dist_m\": {\"min\": 32, \"max\": 4141, \"end\": 32}, \"synchronous_moves\": 1, \"same_direction_moves\": 1, \"chance_rate\": 0.633}, {\"tracks\": [\"T0052\"…"
-   }
-  ],
+  "iterations": 1,
+  "tool_calls": [],
   "repairs": 0,
   "tokens": {
-   "input": 11213,
-   "output": 2431,
-   "reasoning": 610
+   "input": 5338,
+   "output": 3685,
+   "reasoning": 1416
   },
-  "cost_usd": 0.002176,
+  "cost_usd": 0.002244,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 58.3
+  "duration_s": 67.1
  }
 }

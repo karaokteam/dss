@@ -1,0 +1,191 @@
+{
+ "image_id": "img_006591",
+ "capture_time": "11:15",
+ "zone": "Bati Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Görüntüde en dikkat çekici unsurlar: T0118'in son 60 dakikada 2123 m üsse yaklaşması ve üsse 0° açıyla 55 dakikadır durağan beklemesi ile üsse 2,6 km mesafede 120 dakikadır yerinde bekleyen T0051. R051'in '2 kamyon' iddiası görüntüdeki araçlarla (siyah binek + gri panelvan) çelişiyor; genel tabloda üsse tutarlı yaklaşan araç sayısı 0, ancak T0118 ve R051'in olası konum/tip hatası izlenmeli.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_006591_002",
+   "label": "car",
+   "track_id": "T0118",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Car, üsse 2641 m; son 60 dk'da 2123 m yaklaştı (7899→2641 m, 2 saat). 5 hareketin 4'ü yaklaşan, 1'i uzaklaşan; 55 dakikadır duruyor ve son hareketi üsse 0° açıyla. fast_approach faktörü (≥2000 m) temel skorda mevcut. R051 ile çelişkili rapor faktörü var. Görsel/track verisi kamyon iddiasını doğrulamıyor; temel medium korunuyor.",
+   "evidence": [
+    "det:img_006591_002",
+    "track:T0118",
+    "report:R051",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_005",
+   "label": "car",
+   "track_id": "T0051",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Car (güven 0.52), üsse 2626 m mesafede 120 dakikadır durağan (long_stationary_near_base +10); son 60 dk Δ+9 m, hiç hareket yok (0/0). Görsel inceleme: ağaç örtüsü altında kısmen görünan siyah binek araç, kamyon yapısı yok (düşük güven). R051 çelişkisi bu kümeyle ilgili; temel medium korunuyor.",
+   "evidence": [
+    "det:img_006591_005",
+    "track:T0051",
+    "report:R051",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_000",
+   "label": "van",
+   "track_id": "T0003",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Van, üsse 2606 m; son 60 dk'da 1442 m yaklaştı (7056→2606 m). 6 hareketin 4'ü yaklaşan, 2'si uzaklaşan; ETA 108 dk, dolaşma 1.1. Yaklaşma var ama hız eşiği aşılmadı ve TUTARLI YAKLAŞMA işareti yok; temel low uygun.",
+   "evidence": [
+    "det:img_006591_000",
+    "track:T0003",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_001",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Park halinde van (güven 0.92), track kaydı yok, üsse 2632 m. Görsel inceleme (medium güven): panelvan/minibüs tipi kutu biçimli araç, kamyon değil, belirgin yük yok. R051 çelişkisi yalnızca tip uyuşmazlığı; hareket kaydı olmadığından tehdit göstergesi yok.",
+   "evidence": [
+    "det:img_006591_001",
+    "report:R051",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_004",
+   "label": "car",
+   "track_id": "T0015",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Car, üsse 2605 m; yanal hareket, son 60 dk Δ-5 m, 12 hareket (7 yaklaşan/5 uzaklaşan), dolaşma 6.6 — loitering faktörü var ama net mesafe değişimi yok. Temel low korunuyor.",
+   "evidence": [
+    "det:img_006591_004",
+    "track:T0015",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006591_003",
+   "label": "car",
+   "track_id": "T0219",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Car, üsse 2546 m; son 60 dk'da 1861 m üstten uzaklaşmış (receding -10), 7 hareket (4 yaklaşan/3 uzaklaşan), dolaşma 5.9 — loitering var ama net yön uzaklaşma. Temel low uygun.",
+   "evidence": [
+    "det:img_006591_003",
+    "track:T0219",
+    "image:img_006591"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R051 kamyon iddiasının çelişkisi ve olası konum/tip hatası",
+   "risk_level": "medium",
+   "rationale": "R051 (10:40, official) 39.9248N 32.8226E civarında 2 kamyon bildiriyor; o noktada tespit edilen araçlar siyah binek (img_006591_005, car 0.52) ve gri panelvan (img_006591_001) — görsel teyitte kamyon yok. Ancak 2 km geniş alan taramasında 10:35–10:40 civarında ~1,4 km mesafede kamyonlar mevcut (T0026, T0174, T0035, min_dist 1402–1484 m). İdda tamamen uydurma olmayabilir; konum ya da tip etiketi hatalı olabilir. Resmî rapor–gözlem çelişkisi izlenmeli.",
+   "evidence": [
+    "report:R051",
+    "det:img_006591_005",
+    "det:img_006591_001",
+    "track:T0026",
+    "track:T0174",
+    "track:T0035",
+    "image:img_006591"
+   ]
+  },
+  {
+   "title": "T0118'in hızlı yaklaşma sonrası üsse 0° açıyla 55 dk beklemesi",
+   "risk_level": "medium",
+   "rationale": "T0118 son 60 dakikada 2123 m yaklaştı, son hareketi üsse 0° açıyla ve 55 dakikadır duruyor (4/1 yaklaşan-uzaklaşan). Tek başına temel medium riskinin üstüne çıkmaz; bir sonraki görüntüde hareketi izlenmeli.",
+   "evidence": [
+    "det:img_006591_002",
+    "track:T0118"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R051",
+   "verdict": "partly_reliable",
+   "note": "Bildirilen noktada kamyon yok; orada car+van kümesi var (görsel teyit: kamyon değil). Ancak ~1,4 km ötede 10:35–10:40 civarında kamyonlar mevcut; konum/tip hatası olabilir, tamamen yanlış denemez."
+  },
+  {
+   "report_id": "R088",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbar; bu görüntüde üsse tutarlı yaklaşan araç 0, gece hareketliliği iddiası gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R136",
+   "verdict": "reliable",
+   "note": "Trafik akışının normal olduğu gözlemle uyumlu: bölgede aktif tehdit yaklaşımı yok, araçların çoğu durağan ya da yanal hareketli."
+  },
+  {
+   "report_id": "R111",
+   "verdict": "unverifiable",
+   "note": "Devriye telsiz bağlantısı kesintisi bu görüntü verisiyle doğrulanamıyor ya da çürütülemiyor; operasyonel olarak izlenmesi gereken sinyal."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:02:05+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006591\",\"question\":\"Bu araç kamyon mu, yoksa binek araç mı? Yükü veya kamyonet/otobüs benzeri bir yapı var mı?\",\"vehicle_id\":\"img_006591_005\"}",
+    "summary": "{\"image_id\": \"img_006591\", \"target\": \"img_006591_005 (car, güven 0.52)\", \"crop_px\": [120, 264, 324, 468], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Bölge ağ…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_006591\",\"question\":\"Bu park halindeki araç kamyon mu yoksa panelvan/minibüs mü? Yükü veya kasa yapısı var mı?\",\"vehicle_id\":\"img_006591_001\"}",
+    "summary": "{\"image_id\": \"img_006591\", \"target\": \"img_006591_001 (van, güven 0.92)\", \"crop_px\": [39, 312, 315, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kamyon değ…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9248,\"lon\":32.8226,\"radius_m\":2000,\"time_from\":\"08:40\",\"time_to\":\"11:15\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.9248, \"lon\": 32.8226, \"radius_m\": 2000.0, \"window\": \"08:40–11:15\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 9, \"tracked\": [{\"track_id\": \"T0205\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_005788\", \"present\"…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 19368,
+   "output": 5106,
+   "reasoning": 917
+  },
+  "cost_usd": 0.003776,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 140.9
+ }
+}

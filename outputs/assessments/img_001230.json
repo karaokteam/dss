@@ -3,8 +3,24 @@
  "capture_time": "15:15",
  "zone": "Guneydogu Yerlesimi",
  "overall_risk": "medium",
- "summary": "Üç otomobil (T0031, T0131, T0056) üsse 2685–2723 m mesafede, son 60 dakikada 1917–3213 m yaklaşmış durumda; T0131'de 3.4'lük dolaşma (loitering) dikkat çekiyor. Üsse 2683 m'de track'siz, düşük güvenli (0.12) bir tespit var; görsel inceleme ağaç örtüsü nedeniyle belirsiz (düşük güven), temel 'low' seviyesini değiştirecek somut kanıt yok. R007 ve R087'nin anlattığı araçlar hem 60 m yakında track hem görüntüde tespit olarak doğrulanamadı (en yakın track 828–850 m), bu yüzden dost/konvoy iddiaları güvenilmez; genel duyurular araca özgü olmadığından risk düşürücü değil.",
+ "summary": "Görüntüde üç kayıtlı araç (T0131, T0031, T0056) üsse hızla yaklaşıyor; T0131'e iliştirilen dost/planlı geliş iddiası (R007) hareket kaydıyla gözlemle çelişiyor ve bu güven verici iddia yaklaşan araca bağlandığı için şüphe sinyalidir. R087'nin anlattığı 3 araçlık kamyon konvoyu görüntüde 60 m içinde doğrulanmadı; çevre taramasında R087 noktasına ~100 m mesafeye varan iki ağır araç (T0039, T0023) bulundu ancak co_movement bağımsız hareket gösteriyor, konvoy iddiası gözlemle desteklenmiyor.",
  "vehicles": [
+  {
+   "vehicle_id": "img_001230_001",
+   "label": "car",
+   "track_id": "T0131",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 2695 m; son 60 dk'da 1917 m yaklaşmış (Δ-1917), ancak 2 saatte 6 hareketin 3'ü uzaklaşan ve dolaşma 3.4 ile loitering örüntüsü var; ETA 84 dk. R007'nin dost/planlı geliş iddiası iki başlıkta da gözlemle ÇELİŞİYOR: rapordan önceki 30 dk'da üsse uzaklık +1948 m. Güven verici iddia yaklaşan araca iliştirildiği için şüphe sinyali; temel risk medium korunuyor.",
+   "evidence": [
+    "det:img_001230_001",
+    "track:T0131",
+    "report:R007"
+   ],
+   "source": "agent"
+  },
   {
    "vehicle_id": "img_001230_000",
    "label": "car",
@@ -13,27 +29,11 @@
    "baseline_level": "medium",
    "baseline_score": 30,
    "override_reason": null,
-   "rationale": "Üsse 2685 m (mid_base +10). Hızlı yaklaşma: son 60 dakikada 7376→2684 m, Δ-3213 m ≥ 2000 m (fast_approach +10). 7 harekette 5'i yaklaşan, 2'si uzaklaşan; ETA 50 dk, dolaşma 2.2. Temel faktörlerin dışında yeni bulgu yok, seviye korunuyor.",
+   "rationale": "Üsse 2685 m; son 60 dk'da 3213 m hızlı yaklaşma (ETA 50 dk), 7 hareketin 5'i yaklaşan, dolaşma 2.2. R087'nin hareket iddiası gözlemle ÇELİŞİYOR (rapordan önceki 30 dk yerindeymiş) — tip/araç sayısı iddiası da görüntüyle uyuşmuyor. Temel risk medium korunuyor.",
    "evidence": [
     "det:img_001230_000",
     "track:T0031",
-    "image:img_001230"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_001230_001",
-   "label": "car",
-   "track_id": "T0131",
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 30,
-   "override_reason": null,
-   "rationale": "Üsse 2695 m (mid_base +10). Son 60 dk Δ-1917 m (approaching +10) ve 6 harekette 3 yaklaşan/3 uzaklaşan, dolaşma 3.4 ile loitering (+10). Dolaşma yüksek olsa da tek başına seviye yükseltmeye yetecek yeni somut kanıt yok; temel medium korunuyor.",
-   "evidence": [
-    "det:img_001230_001",
-    "track:T0131",
-    "image:img_001230"
+    "report:R087"
    ],
    "source": "agent"
   },
@@ -45,11 +45,10 @@
    "baseline_level": "medium",
    "baseline_score": 30,
    "override_reason": null,
-   "rationale": "Üsse 2723 m (mid_base +10). Son 60 dk Δ-2770 m ≥ 2000 m (fast_approach +10), 6 harekette 4'ü yaklaşan, 30 dk durma, dolaşma 1.7. Temel skorun kapsadığı faktörler; yeni bulgu yok.",
+   "rationale": "Üsse 2723 m; son 60 dk'da 2770 m hızlı yaklaşma, 6 hareketin 4'ü yaklaşan, 30 dk durmuş, dolaşma 1.7. Bağlı rapor iddiası yok; temel risk medium korunuyor.",
    "evidence": [
     "det:img_001230_002",
-    "track:T0056",
-    "image:img_001230"
+    "track:T0056"
    ],
    "source": "agent"
   },
@@ -61,7 +60,7 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "Track yok, tespit güveni 0.12 (low_confidence -10). inspect_image: ağaç örtüsü nedeniyle araç varlığı belirsiz, düşük güvenli sonuç; iddiayı doğrulayacak veya çürütecek net kanıt yok. Temel low korunuyor, izlenmeye devam edilmeli.",
+   "rationale": "Görsel inceleme: kırmızı çerçevede net araç yok, bölge yapraklarla kaplı — tespit ayrım/iskelet hatası. Tehdit değil, kayıt hatası; low.",
    "evidence": [
     "det:img_001230_003",
     "image:img_001230"
@@ -71,22 +70,32 @@
  ],
  "attention_items": [
   {
-   "title": "Track'siz düşük güvenli tespit (img_001230_003)",
-   "risk_level": "low",
-   "rationale": "Üsse 2683 m'de park halinde track'siz araç tespiti (güven 0.12). Görsel inceleme ağaç örtüsü nedeniyle belirsiz kaldı (vehicle_present: null, confidence: low). Yanlış tespit olma ihtimali yüksek ama net dışlanamadı.",
+   "title": "Güven verici dost iddiası gözlemle çelişiyor (R007 → T0131)",
+   "risk_level": "medium",
+   "rationale": "R007 (official) T0131 için 'bize bağlı, geliş önceden bildirildi' diyor; ancak hareket kaydı iddiayla gözlemle çelişiyor (rapordan önceki 30 dk'da üsse uzaklık +1948 m). Kimlik drone/hareket verisinden teyit edilemediği ve iddia üsse yaklaşan araca bağlandığı için güven verici iddia şüphe sinyalidir; T0131 izlenmeye devam edilmeli.",
    "evidence": [
-    "det:img_001230_003",
-    "image:img_001230"
+    "report:R007",
+    "track:T0131",
+    "det:img_001230_001"
    ]
   },
   {
-   "title": "R087 konvoy iddiası kısmen doğrulanıyor: yakın ağır araçlar",
+   "title": "R087 konvoy iddiası: iki ağır araç bulundu, konvoy davranışı doğrulanmadı",
    "risk_level": "medium",
-   "rationale": "R087'nin koordinatında (39.9017N 32.8702E) araç bulunamadı (en yakın track 850 m), ancak 2000 m yarıçaplı alanda 13:15–15:15 aralığında 7 ağır araç track'i bulundu; T0039 ve T0023 çekim anında (15:15) 98–109 m mesafede bölgede. Ancak co_movement bağımsız gösterdi (chance_rate 0.633, konvoy değil) ve bu araçlar bu görüntüde değil; R087'nin '3 araçlı konvoy' iddiası doğrudan doğrulanamıyor.",
+   "rationale": "R087 '3 araçlık kamyon konvoyu' diyor; görüntüde 60 m içinde ağır araç yok (gözlemle çelişiyor), ancak 400 m yarıçaplı taramada R087 noktasına 98 m (T0039) ve 109 m (T0023) mesafeye 14:15–15:15 arasında varan iki ağır araç saptandı. co_movement: independent, chance_rate 0.633 — konvoy/koordinasyon kanıtı yok. Sayı (3) ve konvoy davranışı gözlemle desteklenmiyor; araçlar ağır tip olduğu için izlenmeli.",
    "evidence": [
     "report:R087",
     "track:T0039",
     "track:T0023",
+    "image:img_001230"
+   ]
+  },
+  {
+   "title": "Yanlış pozitif tespit (img_001230_003)",
+   "risk_level": "low",
+   "rationale": "Güveni 0.12 olan track'siz tespit görsel olarak incelendi: çerçevede araç yok, yaprak örtüsü var; ayrım/iskelet hatası. Kayıt temizliği açısından not düşüldü, tehdit değil.",
+   "evidence": [
+    "det:img_001230_003",
     "image:img_001230"
    ]
   }
@@ -95,47 +104,47 @@
   {
    "report_id": "R007",
    "verdict": "unreliable",
-   "note": "Dost iddiası: rapor saatinde koordinatın 60 m yakınında track yok, en yakın track 828 m; çekimde orada araç görülmedi. Kimlik iddiası gözlemle çelişiyor; motion doğrulanamaz."
+   "note": "Identity ve motion iki başlıkta da gözlemle ÇELİŞİYOR: anlatılan aracın (T0131) hareketi iddiayı desteklemiyor; dost/planlı geliş kimlik olarak teyit edilemedi."
   },
   {
    "report_id": "R087",
-   "verdict": "unreliable",
-   "note": "Anlattığı koordinatta araç bulunamadı (en yakın track 850 m). 2 km içinde ağır araçlar var (T0039, T0023) ama co_movement bağımsız, konvoy kanıtı yok; count ve motion doğrulanamaz."
+   "verdict": "partly_reliable",
+   "note": "3 araçlık kamyon konvoyu ve hareketi görüntü/co_movement ile gözlemle ÇELİŞİYOR; ancak çevre taramasında R087 noktasına ~100 m'de iki ağır araç (T0039, T0023) bulundu — araç varlığı kısmen destekleniyor, sayı ve konvoy davranışı gözlemle desteklenmiyor."
   },
   {
    "report_id": "R119",
    "verdict": "unverifiable",
-   "note": "Gece hareketliliği ihbarı; bu görüntüden doğrulanabilir somut veri yok."
+   "note": "Dün geceye dair araç hareketliliği ihbarı bu görüntü ve 2 saatlik kayıtlarla doğrulanamıyor; gözlemle desteklenmiyor."
   },
   {
    "report_id": "R112",
    "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru, hiçbir aracın riskini düşürmez."
+   "note": "Konumsuz genel duyuru; hiçbir araca bağlanamıyor ve araç riskini düşürmez."
   },
   {
    "report_id": "R035",
    "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru, hiçbir aracın riskini düşürmez."
+   "note": "R112 ile aynı içerikli tekrar duyuru; konumsuz, hiçbir aracın riskini düşürmez."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:06:14+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:35:53+00:00",
   "reasoning_effort": "high",
-  "iterations": 3,
+  "iterations": 4,
   "tool_calls": [
    {
     "iteration": 1,
     "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_001230\",\"question\":\"Bu noktada gerçekten bir otomobil var mı? Park halinde mi, tipi ve rengi nedir?\",\"vehicle_id\":\"img_001230_003\"}",
-    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_003 (car, güven 0.12)\", \"crop_px\": [321, 144, 481, 304], \"result\": {\"vehicle_present\": null, \"vehicle_type\": \"car\", \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Belirsiz: h…"
+    "args": "{\"image_id\":\"img_001230\",\"question\":\"Bu tespit gerçekten bir araç mı? Tipi ve durumu nedir (park halinde araç mı, ayrım/iskelet hatası mı)?\",\"vehicle_id\":\"img_001230_003\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_003 (car, güven 0.12)\", \"crop_px\": [321, 144, 481, 304], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": false, \"answer\": \"Kirmizi cerceve…"
    },
    {
     "iteration": 1,
     "tool": "vehicles_in_area",
-    "args": "{\"lat\":39.9017,\"lon\":32.8702,\"radius_m\":2000,\"time_from\":\"13:15\",\"time_to\":\"15:15\",\"vehicle_type\":\"heavy\"}",
-    "summary": "{\"query\": {\"lat\": 39.9017, \"lon\": 32.8702, \"radius_m\": 2000.0, \"window\": \"13:15–15:15\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 7, \"tracked\": [{\"track_id\": \"T0039\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_001230\", \"present\"…"
+    "args": "{\"lat\":39.9017,\"lon\":32.8702,\"radius_m\":400,\"time_from\":\"14:15\",\"time_to\":\"15:15\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9017, \"lon\": 32.8702, \"radius_m\": 400.0, \"window\": \"14:15–15:15\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 2, \"tracked\": [{\"track_id\": \"T0039\", \"label\": null, \"detection_id\": null, \"image_id\": \"img_001230\", \"present\":…"
    },
    {
     "iteration": 2,
@@ -144,15 +153,15 @@
     "summary": "{\"pairs\": [{\"tracks\": [\"T0039\", \"T0023\"], \"relation\": \"independent\", \"common_window\": \"13:15–15:15\", \"dist_m\": {\"min\": 193, \"max\": 13574, \"end\": 193}, \"synchronous_moves\": 4, \"same_direction_moves\": 1, \"chance_rate\": 0.633}], \"chance_rate_n…"
    }
   ],
-  "repairs": 0,
+  "repairs": 1,
   "tokens": {
-   "input": 15570,
-   "output": 3004,
-   "reasoning": 1183
+   "input": 24691,
+   "output": 6503,
+   "reasoning": 2384
   },
-  "cost_usd": 0.002601,
+  "cost_usd": 0.004851,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 79.6
+  "duration_s": 162.5
  }
 }

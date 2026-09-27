@@ -4,6 +4,20 @@
 > Notların hem prompt düzeltmesine hem de sunumdaki "doğrulama" bölümüne girecek.
 > Aşağıdaki tabloda yalnızca **Senin hükmün** ve **Not** sütunlarını doldur, dosyayı bana gönder (ya da satırları yapıştır).
 
+## Otomatik ölçüm: altın küme (ekibin 23 elle etiketi)
+`eval/gold_reports.json` (ekip, `main` dalından). Komut: `python -m backend.cli eval [--errors]`.
+Hükümler eşlenir: DOGRULANDI=verified, KISMEN_DOGRULANDI=partial, CELISIYOR=contradicted, DOGRULANAMADI=unverifiable (etiketteki `status_ok` alternatifleri de kabul).
+
+| | Önce (rapor saati eşleştirmesi, run3) | Şimdi (görüntü konumu, run4) |
+|---|---|---|
+| Katman 1 hüküm doğruluğu | 16/23 | **22/23** |
+| Agent rapor hükmü doğruluğu | 13/23 (%57) | **21/23 (%91)** |
+| Kritik track atfı (must_cite) | – | %89 |
+
+Kalan fark: **R040** "uzun süredir hareketsiz" — T0076 35 dk durağan; bizde belirsiz "uzun süre" eşiği 30 dk (doğrulandı), etikette 60 dk (kısmen). R102'de etiketin hedefi T0081 (14,6 m, kamyon); bizim özne görüntü konumuna 0,3 m'deki otomobil T0022. Hüküm aynı (kısmen).
+
+> Aşağıdaki elle değerlendirme tablosu run3 seviyeleriyle hazırlanmıştı; güncel seviyeler için arayüze bakın.
+
 ## Nasıl yapılır (görüntü başına 1–3 dk)
 
 **Hazırlık:** Tarayıcıda `http://localhost:5173/#/image/<görüntü_id>` sayfasını aç. (Tablodaki bağlantılar doğrudan açar.)

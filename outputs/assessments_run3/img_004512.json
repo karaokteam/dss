@@ -1,0 +1,183 @@
+{
+ "image_id": "img_004512",
+ "capture_time": "13:05",
+ "zone": "Kuzeydogu Kavsagi",
+ "overall_risk": "low",
+ "summary": "Bölgede 7 araç var, hiçbiri ağır değil ve hepsi üsse 4.4 km'den uzak; en hızlı yaklaşan araç (T0100) 88 dk'lık ETA'ya sahip. R080'in '1 kamyon' iddiası hem kayıtlarla hem görsel incelemeyle çelişti (yakındaki iki araç da otomobil çıktı). Genel tablo tüm bölgede yalnızca 1 tutarlı yaklaşan araç gösteriyor; takip gerektiren kritik bir tehdit yok.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_004512_000",
+   "label": "car",
+   "track_id": "T0014",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Otomobil (0.93), üsse 4482 m; son 60 dk'da 1087 m yaklaştı (4 yaklaşan/3 uzaklaşan hareket), 55 dk'dır duruyor. Görsel inceleme siyah otomobil, yük yok (image:img_004512). R080'in kamyon iddiası bu araç için çüründü.",
+   "evidence": [
+    "det:img_004512_000",
+    "track:T0014",
+    "report:R080",
+    "image:img_004512"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_001",
+   "label": "van",
+   "track_id": "T0186",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Van (0.92), üsse 4462 m; son 60 dk'da 2150 m yaklaştı, ETA 124 dk, dolaşma 2.1. Yaklaşma hızı yüksek ama mesafe 4.4 km ve ağır araç değil.",
+   "evidence": [
+    "det:img_004512_001",
+    "track:T0186"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_002",
+   "label": "car",
+   "track_id": "T0100",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Otomobil (0.91), üsse 4470 m; son 60 dk'da 3046 m yaklaştı (6 yaklaşan/2 uzaklaşan), ETA 88 dk. Bölgedeki en hızlı yaklaşan araç; izlenmesi önerilir ama ağır araç değil ve mesafe güvenli.",
+   "evidence": [
+    "det:img_004512_002",
+    "track:T0100"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_005",
+   "label": "car",
+   "track_id": "T0175",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Tespit güveni düşük (car 0.51) ama track T0175 mevcut; üsse 4488 m, 55 dk'dır duruyor, son 60 dk'da 1660 m yaklaştı. Görsel inceleme gri otomobil/SUV, kamyon değil (image:img_004512); R080'in kamyon iddiası bu araç için de çüründü.",
+   "evidence": [
+    "det:img_004512_005",
+    "track:T0175",
+    "report:R080",
+    "image:img_004512"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_003",
+   "label": "car",
+   "track_id": "T0116",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Otomobil (0.89), üsse 4486 m; son 60 dk'da 563 m hafif yaklaştı, ETA 478 dk, dolaşma 1.6. Belirgin tehdit sinyali yok.",
+   "evidence": [
+    "det:img_004512_003",
+    "track:T0116"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_004",
+   "label": "car",
+   "track_id": "T0061",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Otomobil (0.77), üsse 4487 m; son 60 dk'da 3712 m ÜSTEN uzaklaştı (2 yaklaşan/4 uzaklaşan). Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_004512_004",
+    "track:T0061"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004512_006",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, düşük güvenli (0.21) park halinde van tespiti; hareket kaydı yok, üsse 4501 m. Anomali bildirilmedi; izleme dışı bırakılabilir.",
+   "evidence": [
+    "det:img_004512_006"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R080 kamyon iddiası gözlemle çüründü",
+   "risk_level": "low",
+   "rationale": "R080 (12:35, third_party) 39.9502N 32.8901E civarında 1 kamyon bildirdi; alanda bu tipte araç yok ve yakındaki iki araç (20 m ve 32 m mesafedeki T0014, T0175) görsel olarak otomobil çıktı. Ya araç yer değiştirmiş ya da rapor yanlış; ayrıca bir kamyonun gizlenme ihtimali düşük (bölgede hiç ağır araç kaydı yok).",
+   "evidence": [
+    "report:R080",
+    "track:T0014",
+    "track:T0175",
+    "image:img_004512"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R080",
+   "verdict": "unreliable",
+   "note": "Kamyon iddiası gözlemle çelişiyor: alanda kamyon yok; en yakın iki araç görsel teyitle otomobil (det:img_004512_000, det:img_004512_005)."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru ('dost unsurlar'); hiçbir araca bağlanamadı ve risk düşürücü olarak kullanılamaz."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "R122 ile aynı konumsuz duyurunun third_party kopyası; gözlemle doğrulanamadı."
+  },
+  {
+   "report_id": "R073",
+   "verdict": "reliable",
+   "note": "Bölge raporu (Kuzeydogu Kavsagi, olağandışı durum yok) mevcut görüntü tablosuyla uyumlu: tehdit işareti yok, anomali yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:05:13+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004512\",\"question\":\"Bu araç bir kamyon mu? Tipi, rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_004512_005\"}",
+    "summary": "{\"image_id\": \"img_004512\", \"target\": \"img_004512_005 (car, güven 0.51)\", \"crop_px\": [1004, 92, 1188, 276], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kamyon d…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004512\",\"question\":\"Bu araç bir kamyon mu? Tipi, rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_004512_000\"}",
+    "summary": "{\"image_id\": \"img_004512\", \"target\": \"img_004512_000 (car, güven 0.93)\", \"crop_px\": [878, 17, 1122, 261], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": false, \"answer\": \"Hayir, kamyo…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 9702,
+   "output": 2021,
+   "reasoning": 310
+  },
+  "cost_usd": 0.001698,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 54.1
+ }
+}

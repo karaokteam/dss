@@ -61,8 +61,11 @@ def _global_text(g: dict) -> str:
         return "GENEL TABLO: yok"
     zones = "; ".join(f"{z}: {info['count']} araç ({info['heavy']} ağır, en yakın {info['closest_m']} m; "
                       f"{', '.join(info['tracks'])})" for z, info in g["by_zone"].items())
+    circ = "; ".join(f"{c['track_id']} ({c['label'] or 'etiketsiz'}, ~{c['radius_m']:.0f} m, {c['window']})"
+                     for c in g.get("circling", []))
     return (f"GENEL TABLO ({g['time']} itibarıyla tüm bölgelerde üsse tutarlı yaklaşan araçlar): "
-            f"{g['consistent_approachers']}" + (f" — {zones}" if zones else ""))
+            f"{g['consistent_approachers']}" + (f" — {zones}" if zones else "")
+            + (f"\nÜSSÜN ETRAFINDA DÖNEN araçlar: {circ}" if circ else ""))
 
 
 def _kin_text(k: Kinematics) -> str:
@@ -75,6 +78,10 @@ def _kin_text(k: Kinematics) -> str:
     parts.append(f"{k.moves} hareket ({k.approach_moves} yaklaşan/{k.recede_moves} uzaklaşan)")
     if k.consistent_approach:
         parts.append("TUTARLI YAKLAŞMA")
+    if k.circling:
+        parts.append(f"ÜSSÜN ETRAFINDA DÖNDÜ (~{k.circling_radius_m:.0f} m, {k.circling_window})")
+    elif k.min_dist_to_base_m < k.dist_to_base_m - 200:
+        parts.append(f"kayıt içinde üsse en yakın {k.min_dist_to_base_m:.0f} m")
     if k.eta_min is not None:
         parts.append(f"ETA {k.eta_min:.0f} dk")
     if k.tortuosity:

@@ -1,0 +1,163 @@
+{
+ "image_id": "img_001230",
+ "capture_time": "15:15",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Görüntüde üsse ~2.7 km mesafede ve 60 dakikada 1.9–3.2 km yaklaşmış üç otomobil (T0031, T0131, T0056) var; ağır araç yok. Resmi dost iddiası (R007) koordinatında yalnızca park halinde, track'siz ve kırmızı bir otomobille tutarlı olabilecek şekilde bulundu (img_001230_003, 0.12); kamyon konvoyu iddiası (R087) bölgede hiç kamyona rastlanmadığı için gözlemle desteklenmiyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001230_000",
+   "label": "car",
+   "track_id": "T0031",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Car (0.87), üsse 2685 m; 2 saatte 7376→2684 m, son 60 dk Δ-3213 m (fast_approach), ETA 50 dk, 5/7 hareket yaklaşıyor, dolaşma 2.2. Temel skor 30 medium; değiştirecek yeni somut bulgu yok.",
+   "evidence": [
+    "det:img_001230_000",
+    "track:T0031"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_001",
+   "label": "car",
+   "track_id": "T0131",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Car (0.81), üsse 2695 m; 2 saatte 1059→2695 m, son 60 dk Δ-1917 m, 3/6 hareket yaklaşıyor, dolaşma 3.4 (loitering), son hareket üsse 0° açıyla. Temel skor 30 medium; değiştirecek yeni somut bulgu yok.",
+   "evidence": [
+    "det:img_001230_001",
+    "track:T0131",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_002",
+   "label": "car",
+   "track_id": "T0056",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Car (0.80), üsse 2723 m; 2 saatte 5967→2723 m, son 60 dk Δ-2770 m (fast_approach), 4/6 hareket yaklaşıyor, 30 dk durmuş. Temel skor 30 medium; değiştirecek yeni somut bulgu yok.",
+   "evidence": [
+    "det:img_001230_002",
+    "track:T0056"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001230_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, düşük güvenli tespit (0.12); görüntü incelemesinde park halinde kırmızı otomobil olarak teyit edildi (confidence: medium). Üsse gelmiyor, hareket kaydı yok, R007 koordinatında duruyor; temel skor 0 low korunuyor.",
+   "evidence": [
+    "det:img_001230_003",
+    "image:img_001230"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R007 dost aracı kimliği doğrulanamıyor (park halinde araçla karışmış olabilir)",
+   "risk_level": "low",
+   "rationale": "R007 (14:15, official) 39.90152N 32.87029E koordinatından gelen otomobili 'bizim unsurdur' diyor; anomaly kaydı çekim anında orada track olmadığını, en yakın track'in 828 m olduğunu söylüyor. Ancak düşük güvenli tespit img_001230_003 (0.12) bu noktada park halinde kırmızı otomobili işaretliyor; görüntü incelemesi 'park halinde/duruyor' sonucu verdi. Üsse gelen hareketli bir dost araçla örtüşmüyor.",
+   "evidence": [
+    "report:R007",
+    "det:img_001230_003",
+    "image:img_001230"
+   ]
+  },
+  {
+   "title": "R087'nin kamyon konvoyu iddiası bölgede doğrulanamadı",
+   "risk_level": "low",
+   "rationale": "R087 (14:15, third_party) '3 araçlık kamyon konvoyu' diyor; 39.9017N 32.8702E civarında çekim anında track yok ve 1 km yarıçap / 13:30–15:15 penceresindeki genişletilmiş aramada hiç kamyon yok. En yakın araçlar bu görüntüdeki üç otomobil (T0131, T0031, T0056) ve 14:20–14:45 arasında bölgeden geçmiş T0152/T0176/T0221/T0194/T0128; konvoy iddiasını gözlemle destekleyen bulgu yok.",
+   "evidence": [
+    "report:R087",
+    "track:T0031",
+    "track:T0131",
+    "track:T0056"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R007",
+   "verdict": "partly_reliable",
+   "note": "Dost kimliği iddiası ÇELİŞKİLİ; koordinatta üsse gelen hareketli araç yerine park halinde, track'siz kırmızı otomobil (0.12) var. Iddia gözlemle tam doğrulanmıyor."
+  },
+  {
+   "report_id": "R087",
+   "verdict": "unreliable",
+   "note": "3 araçlık kamyon konvoyu iddiası bölgede (1 km, 13:30–15:15) hiç kamyona rastlanmadığı için gözlemle desteklenmiyor; count ve motion doğrulanamıyor."
+  },
+  {
+   "report_id": "R119",
+   "verdict": "unverifiable",
+   "note": "Dün geceki araç hareketliliği ihbarı; bu görüntüyle doğrudan çelişen veya destekleyen bulgu yok, doğrulanamaz."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Planlı tatbikat duyurusu konumsuz genel bilgi; hiçbir aracın riskini gözlemle doğrulanmadan düşüremez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "R112 ile aynı metin, konumsuz genel duyuru; doğrulanamaz."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:12:17+00:00",
+  "reasoning_effort": "high",
+  "iterations": 5,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001230\",\"lat\":39.90152,\"lon\":32.87029,\"question\":\"img_001230_003 olarak işaretlenen noktada gerçekten bir araç var mı? Varsa tipi ve park halinde olup olmadığı nedir?\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"nokta 39.90152, 32.87029\", \"crop_px\": [422, 159, 582, 319], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, kirmizi…"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.90152,\"lon\":32.87029,\"radius_m\":1000,\"time_from\":\"13:30\",\"time_to\":\"15:15\"}",
+    "summary": "{\"query\": {\"lat\": 39.90152, \"lon\": 32.87029, \"radius_m\": 1000.0, \"window\": \"13:30–15:15\", \"vehicle_type\": null}, \"tracked_count\": 10, \"tracked\": [{\"track_id\": \"T0131\", \"label\": \"car\", \"detection_id\": \"img_001230_001\", \"image_id\": \"img_00123…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001230\",\"question\":\"img_001230_001 aracı park halinde mi, hareket ediyor mu? Renk ve tip nedir?\",\"vehicle_id\":\"img_001230_001\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_001 (car, güven 0.81)\", \"crop_px\": [422, 158, 582, 318], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": null, \"occluded\": false, \"answer\": \"Arac kirmi…"
+   },
+   {
+    "iteration": 3,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001230\",\"question\":\"img_001230_003 konumu ile img_001230_001 konumu ayrı araçlar mı yoksa aynı araç mı?\",\"vehicle_id\":\"img_001230_003\"}",
+    "summary": "{\"image_id\": \"img_001230\", \"target\": \"img_001230_003 (car, güven 0.12)\", \"crop_px\": [321, 144, 481, 304], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": null, \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi cer…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 32042,
+   "output": 5266,
+   "reasoning": 1467
+  },
+  "cost_usd": 0.004237,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 165.4
+ }
+}

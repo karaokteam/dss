@@ -2,21 +2,22 @@
  "image_id": "img_006673",
  "capture_time": "10:30",
  "zone": "Guneydogu Yerlesimi",
- "overall_risk": "high",
- "summary": "Görüntüde üsse tutarlı yaklaşan iki kritik araç var: T0091 (2 saatte 5 hareketin hepsi yaklaşan, 7443→1870 m, ETA 26 dk) ve ağır araç T0095 (truck, 7133→1803 m, ETA 34 dk). Ayrıca 4 hareketli araç üsse ~1800 m mesafede 38–84 m yarıçapta aynı noktada toplanmış durumda. Resmi raporların üçü de sorunlu: R006 ve R118 gözlemle çelişiyor (sahte dost/olağan hareket iddiası), R123'ün 'mavi dost devriye' iddiası görsel kontrolde çürüdü (araç siyah).",
+ "overall_risk": "critical",
+ "summary": "Kritik bulgu T0043 (car): 10:15–10:25 arasında üssün sadece ~630 m yarıçapında 334° tarama yaparak döndü ve şu an üsse 1765 m'de. Ayrıca üsse tutarlı/hızlı yaklaşan üç araç (T0091, T0102, T0109) ve ağır kamyon T0095 var; üç ayrı resmi raporun 'dost/planlı ikmal/hareketleri olağan' iddiaları üsse yaklaşan araçlara iliştirilmiş ve kimlik veriden teyit edilemediği için güven verici sayılamaz.",
  "vehicles": [
   {
-   "vehicle_id": "img_006673_000",
+   "vehicle_id": "img_006673_004",
    "label": "car",
-   "track_id": "T0091",
-   "risk_level": "high",
-   "baseline_level": "high",
-   "baseline_score": 60,
+   "track_id": "T0043",
+   "risk_level": "critical",
+   "baseline_level": "critical",
+   "baseline_score": 85,
    "override_reason": null,
-   "rationale": "TUTARLI YAKLAŞMA işaretli: 2 saatte 5 hareketin 5'i de üsse yaklaştırdı (7443→1870 m), son 60 dk'da 4262 m yaklaştı, ETA 26 dk, son hareket üsse 0° açıyla. Üsse en hızlı ve en tutarlı yaklaşan araç.",
+   "rationale": "Üssün etrafında ~630 m yarıçapta 10:15–10:25 arasında 334° tarama ile döndü (circling_base +35); şu an üsse 1765 m, son 60 dakikada 2528 m yaklaştı, ETA 42 dk; 8 hareketin 4'ü yaklaşan 4'ü uzaklaşan, dolaşma 4.2 ile yüksek. Dönme ve yakın geçiş en güçlü tehdit sinyalidir.",
    "evidence": [
-    "det:img_006673_000",
-    "track:T0091"
+    "det:img_006673_004",
+    "track:T0043",
+    "image:img_006673"
    ],
    "source": "agent"
   },
@@ -26,9 +27,9 @@
    "track_id": "T0095",
    "risk_level": "high",
    "baseline_level": "high",
-   "baseline_score": 55,
+   "baseline_score": 65,
    "override_reason": null,
-   "rationale": "Ağır araç (truck 0.87): üsse 7133→1803 m yaklaştı, son 60 dk'da 3224 m, 8 hareketin 6'sı yaklaşan, ETA 34 dk. R118'in '1 ağır araç, hareketleri olağan' iddiasıyla konumuyorsa bile hareket kaydı ağır aracın üsse hızlı yaklaştığını gösteriyor; 'olağan' nitelemesi güvenilmez.",
+   "rationale": "Ağır araç (truck 0.87) üsse 1803 m'de, son 60 dakikada 3224 m yaklaştı (8 hareketin 6'sı yaklaşan), ETA 34 dk. R118'in 'hareketleri olağan' iddiası kısmen: rapordan önceki 30 dk yerinde duruyor, rapordan sonra çekime kadar 3223 m yaklaştı — güven verici iddia riski düşürmez.",
    "evidence": [
     "det:img_006673_006",
     "track:T0095",
@@ -37,17 +38,18 @@
    "source": "agent"
   },
   {
-   "vehicle_id": "img_006673_004",
+   "vehicle_id": "img_006673_000",
    "label": "car",
-   "track_id": "T0043",
+   "track_id": "T0091",
    "risk_level": "high",
    "baseline_level": "high",
-   "baseline_score": 50,
+   "baseline_score": 60,
    "override_reason": null,
-   "rationale": "Üsse 2826→1765 m yaklaştı ancak dolaşma 4.2 ve 8 hareketin 4'ü uzaklaşan: davranış dengesiz, son hareket üsse 180° (uzaklaşan) açıyla. Yakınlık (1765 m) ve ETA 42 dk nedeniyle high izlenmeye devam.",
+   "rationale": "TUTARLI YAKLAŞMA: 2 saatte 5 hareketin hepsi üsse yaklaştırdı (7443→1870 m), son 60 dakikada 4262 m yaklaştı, ETA 26 dk. Üsse 1870 m'de en hızlı varış sürelerinden birine sahip.",
    "evidence": [
-    "det:img_006673_004",
-    "track:T0043"
+    "det:img_006673_000",
+    "track:T0091",
+    "image:img_006673"
    ],
    "source": "agent"
   },
@@ -55,14 +57,15 @@
    "vehicle_id": "img_006673_001",
    "label": "car",
    "track_id": "T0109",
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 40,
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
    "override_reason": null,
-   "rationale": "Yaklaşıyor: üsse 6905→1841 m, son 60 dk'da 3088 m yaklaştı, 4 hareketin 3'ü yaklaşan / 1'i uzaklaşan, ETA 36 dk. Hareketleri tamamen yaklaşan değil, temel medium seviye korunuyor.",
+   "rationale": "Üsse 1841 m'de, son 60 dakikada 3088 m yaklaştı (3/4 hareket yaklaşan), ETA 36 dk. R006'nın 'planlı ikmal' kimlik iddiası veriden teyit edilemez ve üsse yaklaşan araca iliştirildiği için risk düşürmez; rapordan sonraki 30 dakikada ek 1487 m yaklaştı.",
    "evidence": [
     "det:img_006673_001",
-    "track:T0109"
+    "track:T0109",
+    "report:R006"
    ],
    "source": "agent"
   },
@@ -70,46 +73,15 @@
    "vehicle_id": "img_006673_002",
    "label": "car",
    "track_id": "T0102",
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 40,
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
    "override_reason": null,
-   "rationale": "Yaklaşıyor: üsse 6647→1830 m, son 60 dk'da 6142 m yaklaştı (en hızlı mesafe kazanımı), 6 hareketin 5'i yaklaşan / 1'i uzaklaşan, ETA 18 dk (görüntüdeki en kısa varış süresi). 6 hareketin 1'i uzaklaşan olduğundan temel medium korunuyor; izlenmesi öncelikli.",
+   "rationale": "Üsse 1830 m'de, son 60 dakikada 6142 m yaklaştı (5/6 hareket yaklaşan), ETA 18 dk — bölgedeki en kısa varış süresi. R123'ün 'mavi dost devriye' kimlik iddiası teyit edilemez, üsse yaklaşan araca iliştirilmiş; risk düşürülmez.",
    "evidence": [
     "det:img_006673_002",
-    "track:T0102"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_006673_005",
-   "label": "car",
-   "track_id": null,
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 40,
-   "override_reason": null,
-   "rationale": "Park halinde, hareket kaydı yok. R006'nın 'planlı ikmal aracı, kimlik teyitli' iddiası hareket kaydı olmadığı için ÇELİŞKİLİ; R123'ün 'mavi' renk iddiası görsel kontrolde çürüdü (araç siyah, güven: high). Dost iddiası gözlemle çelişen araç — şüphe sinyali olarak medium seviyede tutuldu.",
-   "evidence": [
-    "det:img_006673_005",
-    "report:R006",
-    "report:R123",
-    "image:img_006673"
-   ],
-   "source": "agent"
-  },
-  {
-   "vehicle_id": "img_006673_007",
-   "label": "car",
-   "track_id": null,
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 40,
-   "override_reason": null,
-   "rationale": "Park halinde, hareket kaydı yok; R006'nın dost/ilerileyen araç iddiası bu araç için de gözlemle (hareketsizlik) çelişiyor. Üsse 1890 m.",
-   "evidence": [
-    "det:img_006673_007",
-    "report:R006"
+    "track:T0102",
+    "report:R123"
    ],
    "source": "agent"
   },
@@ -121,27 +93,55 @@
    "baseline_level": "medium",
    "baseline_score": 30,
    "override_reason": null,
-   "rationale": "Yanal hareket: 2 saatte net değişim sadece -5 m (1863→1858 m), 11 hareket (5 yaklaşan/6 uzaklaşan), dolaşma 4.8. Üsse 1858 m mesafede uzun süre dolaşan araç — yaklaşmıyor ama üsse yakın kalıcı varlık.",
+   "rationale": "Üsse 1858 m'de konumunu koruyor (2 saatte Δ-2 m), 11 hareket (5 yaklaşan/6 uzaklaşan) ve dolaşma 4.8 ile bölgede uzun süre beklediğini gösteriyor; belirgin üsse yaklaşma yok.",
    "evidence": [
     "det:img_006673_003",
-    "track:T0181"
+    "track:T0181",
+    "image:img_006673"
    ],
    "source": "agent"
+  },
+  {
+   "vehicle_id": "img_006673_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1827 m",
+   "evidence": [
+    "det:img_006673_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_006673_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "üsse 1890 m",
+   "evidence": [
+    "det:img_006673_007"
+   ],
+   "source": "baseline"
   },
   {
    "vehicle_id": "img_006673_008",
    "label": "van",
    "track_id": null,
-   "risk_level": "medium",
-   "baseline_level": "medium",
-   "baseline_score": 30,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
    "override_reason": null,
-   "rationale": "Park halinde van (tespit güveni 0.33, düşük). R118'in '1 ağır araç' sayım iddiasıyla bağlantılı konumda ama hareket kaydı yok; sayım ve hareket iddiaları ÇELİŞKİLİ.",
+   "rationale": "üsse 1779 m",
    "evidence": [
-    "det:img_006673_008",
-    "report:R118"
+    "det:img_006673_008"
    ],
-   "source": "agent"
+   "source": "baseline"
   },
   {
    "vehicle_id": "img_006673_009",
@@ -160,97 +160,78 @@
  ],
  "attention_items": [
   {
-   "title": "Sahte dost/planlı ikmal iddiası örüntüsü (R006, R118, R123)",
-   "risk_level": "medium",
-   "rationale": "Bu görüntüye bağlı 3 resmi rapordan 2'si (R006 'planlı ikmal, kimlik teyitli'; R118 'ağır araç, hareketleri olağan') gözlemle ÇELİŞKİLİ; R123'ün 'mavi dost devriye' iddiası görsel kontrolde çürüdü (img_006673_005 siyah sivil otomobil, güven high). Resmi kaynaklı kimlik teyidi iddialarının bu yoğunlukta çelişmesi, dost unsurları taklit etme / araç gizleme girişimine işaret ediyor; kimlik teyidi yalnızca gözlemle doğrulanırsa kabul edilmeli.",
+   "title": "Üssün etrafında dönme: T0043",
+   "risk_level": "critical",
+   "rationale": "T0043 (car) 10:15–10:25 arasında üssün ~630 m yarıçapında 334° tarama yaparak farklı bölgelerden geçerek döndü; görüntüdeki konumu uzak görünse de üsse çok yakın geçiş + son 60 dakikada 2528 m yaklaşma (ETA 42 dk) ile birleşiyor. Bu veri setindeki en güçlü tehdit sinyalidir.",
    "evidence": [
-    "report:R006",
-    "report:R118",
-    "report:R123",
-    "image:img_006673",
-    "det:img_006673_005"
+    "track:T0043",
+    "det:img_006673_004",
+    "image:img_006673"
    ]
   },
   {
-   "title": "Üsse ~1800 m mesafede dört hareketli aracın aynı noktada toplanması",
+   "title": "Teyit edilemeyen dost/ikmal kimlik iddiaları örüntüsü",
    "risk_level": "high",
-   "rationale": "T0091, T0095, T0109 ve T0102 10:30 itibarııyla birbirine 38–84 m mesafede buluşmuş durumda (co_movement: tüm çiftler met_at_end). Konvoy kanıtı yok (ilişki bağımsız), ancak 4 araçtan 3'ü üsse hızla yaklaşırken (T0091: 5/5 hareket yaklaşan, T0095: ağır araç, T0102: ETA 18 dk) aynı noktada toplanması izlenmesi gereken bir gruplaşma; hareketleri ayrı ayrı ve topluca takip edilmeli.",
+   "rationale": "Üç resmi raporun güven verici kimlik iddiası (R006 'planli ikmal', R123 'mavi dost devriye', R118 'hareketleri olagan') doğrudan üsse yaklaşan araçlara (T0109, T0102, T0095) iliştirilmiş; kimlik drone/hareket verisinden teyit edilemiyor ve her üç araç rapor sonrasında üsse yaklaşmayı sürdürüyor (-1487 m, -2407 m, -3223 m). Bu örüntü kimlik maskesi ihtimalini düşündürüyor.",
    "evidence": [
-    "track:T0091",
-    "track:T0095",
+    "report:R006",
+    "report:R123",
+    "report:R118",
     "track:T0109",
     "track:T0102",
-    "det:img_006673_000",
-    "det:img_006673_006",
-    "det:img_006673_001",
-    "det:img_006673_002"
+    "track:T0095"
    ]
   },
   {
-   "title": "Üsse ~1800 m mesafede hareket kaydı olmayan park halinde araç yığını",
-   "risk_level": "medium",
-   "rationale": "img_006673_005, img_006673_007, img_006673_008 ve img_006673_009 (hepsi ~1779–1903 m) hareket kaydı olmadan park halinde; ikisi düşük güvenli tespit (van 0.33, car 0.29). Resmi raporların bu araçları 'hareket eden/ağır/dost' olarak anlatması gözlemle çelişiyor; alandaki gerçek araç sayısı ve durumı belirsiz, yerinde doğrulama gerekebilir.",
+   "title": "Üsse eşzamanlı hızlı yaklaşan araç grubu",
+   "risk_level": "high",
+   "rationale": "T0091 (ETA 26 dk), T0102 (ETA 18 dk), T0109 (ETA 36 dk) ve ağır kamyon T0095 (ETA 34 dk) çekim anında aynı anda üsse ~1800 m mesafede hızla yaklaşıyor; T0091 tutarlı yaklaşma (5/5 hareket) gösteriyor. Üsse yakın eşzamanlı yaklaşma koordineli bir hareket olasılığını akla getiriyor.",
    "evidence": [
-    "det:img_006673_005",
-    "det:img_006673_007",
-    "det:img_006673_008",
-    "det:img_006673_009",
-    "report:R006",
-    "report:R118"
+    "track:T0091",
+    "track:T0102",
+    "track:T0109",
+    "track:T0095"
    ]
   }
  ],
  "report_notes": [
   {
    "report_id": "R118",
-   "verdict": "unreliable",
-   "note": "Sayım (count) ve hareket (motion) iddialarının ikisi de ÇELİŞKİLİ: iddia edilen ağır aracın tipteki karşılığı yok, park halindeki araçlar 'hareketleri olağan' diye anlatılamaz."
+   "verdict": "partly_reliable",
+   "note": "Ağır araç sayısı (1) 60 m içinde doğrulandı; ancak 'hareketleri olağan' iddiası kısmen çürük: T0095 rapordan önceki 30 dk yerinde durmuş, rapordan sonra çekime kadar 3223 m üsse yaklaşmış."
   },
   {
    "report_id": "R123",
    "verdict": "unreliable",
-   "note": "Varlık ve tip kısmen tutarlı, ancak 'mavi' renk iddiası görsel kontrolde çürüdü (araç siyah, high güven); 'kimlik teyidi yapılmıştır' iddiası bu çelişkiyle güvenilmez hale geldi."
+   "note": "'Mavi araç dost devriye, kimlik teyit edildi' iddiası gözlemle desteklenmiyor; kimlik veriden teyit edilemiyor ve iddia üsse yaklaşan T0102'ye iliştirilmiş (rapor sonrası ek -2407 m yaklaşma)."
   },
   {
    "report_id": "R006",
    "verdict": "unreliable",
-   "note": "Kimlik ve hareket iddialarının ikisi de ÇELİŞKİLİ: anlatılan araç park halinde ve hareket kaydı yok; 'planlı ikmal, kimlik teyitli' dost iddiası şüpheli dost iddiası örüntüsüne uyuyor."
+   "note": "'Planlı ikmal aracı, kimlik teyit edildi' iddiası gözlemle desteklenmiyor; T0109'un rapor sonrası 1487 m üsse yaklaşması kimlik iddiasını doğrulamıyor."
   },
   {
    "report_id": "R066",
    "verdict": "unverifiable",
-   "note": "Bölge ihbarı doğrulanamadı; bu görüntüdeki bulgularla doğrudan bağlanamıyor, konumsuz duyuru olarak risk değerlendirmesini etkilemiyor."
+   "note": "Bölge ihbarı doğrulanamadı (zone_status=DOĞRULANAMAZ); bu görüntüdeki bulgularla desteklenmiyor ya da çürük değil."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-26T23:53:46+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:24:31+00:00",
   "reasoning_effort": "high",
-  "iterations": 3,
-  "tool_calls": [
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_006673\",\"lat\":39.9097,\"lon\":32.8675,\"question\":\"Bu araç mavi renkte mi ve sivil otomobile mi benziyor, yoksa devriye/askeri bir araca mı?\",\"vehicle_id\":\"img_006673_005\"}",
-    "summary": "{\"image_id\": \"img_006673\", \"target\": \"img_006673_005 (car, güven 0.90)\", \"crop_px\": [812, 0, 1336, 453], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": null, \"occluded\": false, \"answer\": \"Arac mavi deg…"
-   },
-   {
-    "iteration": 1,
-    "tool": "co_movement",
-    "args": "{\"track_ids\":[\"T0091\", \"T0095\", \"T0109\", \"T0102\"]}",
-    "summary": "{\"pairs\": [{\"tracks\": [\"T0091\", \"T0095\"], \"relation\": \"met_at_end\", \"common_window\": \"08:30–10:30\", \"dist_m\": {\"min\": 84, \"max\": 8496, \"end\": 84}, \"synchronous_moves\": 3, \"same_direction_moves\": 3, \"chance_rate\": 0.188}, {\"tracks\": [\"T0091\"…"
-   }
-  ],
-  "repairs": 1,
+  "iterations": 1,
+  "tool_calls": [],
+  "repairs": 0,
   "tokens": {
-   "input": 22159,
-   "output": 7008,
-   "reasoning": 1329
+   "input": 6067,
+   "output": 2314,
+   "reasoning": 432
   },
-  "cost_usd": 0.004985,
+  "cost_usd": 0.002067,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 130.5
+  "duration_s": 48.3
  }
 }

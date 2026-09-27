@@ -309,6 +309,10 @@ class Kinematics(Serializable):
     tortuosity: float | None               # yol / net yer değiştirme (dolaşma göstergesi)
     observed_min: int                      # hesaba giren kayıt süresi
     segments: tuple[Segment, ...] = ()
+    circling: bool = False                 # üssün etrafında sabit yarıçapta dönme
+    circling_radius_m: float | None = None
+    circling_window: str | None = None     # "14:45–15:05"
+    circling_sweep_deg: float | None = None
 
 
 # ---------------------------------------------------------------- Step 5: rapor iddiaları ve bağlantıları
@@ -354,7 +358,7 @@ class ImageLink(Serializable):
 @dataclass(frozen=True)
 class TrackLink(Serializable):
     track_id: str
-    dist_m: float                  # rapor saatinde track konumu ↔ rapor koordinatı
+    dist_m: float                  # track.in çekim (görüntü) konumu ↔ rapor koordinatı
     image_id: str | None
 
 

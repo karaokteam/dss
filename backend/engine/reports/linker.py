@@ -1,7 +1,9 @@
-"""Raporları uzay-zamanda görüntülere, track'lere, tespitlere ve bölgelere bağlar.
+"""Raporları görüntülere, track'lere, tespitlere ve bölgelere bağlar.
 
-- Koordinatlı rapor: aracın GEÇMİŞTEKİ bir anını anlatır. Bu yüzden track'ler RAPOR SAATİNDEKİ konumlarına göre
-  bağlanır; görüntüler ise rapordan sonraki 2 saat içinde çekilmiş ve ayak izi koordinata yakın olanlardır.
+- Koordinatlı rapor: koordinat, anlatılan aracın GÖRÜNTÜDEKİ konumudur (veri: 5 ondalıklı koordinatların 31/35'i
+  görüntüdeki araca ≤3 m; görev tanımındaki örnek de böyle eşleştirir). Görüntü: rapordan sonraki 2 saat içinde
+  çekilmiş ve ayak izi koordinata yakın olan; track'ler: o görüntüde biten ve SON (çekim) noktası koordinata yakın olanlar.
+  İddianın doğruluğu ise aracın rapordan önceki davranışıyla ölçülür (analysis/consistency.py).
 - Bölge raporu: o bölgedeki görüntüler ve rapor saatinde o bölgede kaydı olan track'ler bağlam olarak bağlanır.
 - Genel rapor (hava, tatbikat vb.): bağlantı yok.
 """
@@ -48,7 +50,9 @@ def _link_coordinate(repo: Repository, report: Report, claim: Claim, cfg) -> Rep
                                     minutes_before_capture=img.capture_min - report.t))
     images.sort(key=lambda x: (x.dist_to_footprint_m, x.minutes_before_capture))
 
-    candidates = sorted((distance_m(lat, lon, p.lat, p.lon), tr) for tr, p in repo.tracks_active_at(report.t))
+    image_ids = {il.image_id for il in images}
+    candidates = sorted((distance_m(lat, lon, tr.last.lat, tr.last.lon), tr) for tr in repo.tracks()
+                        if tr.image_id in image_ids)
     nearest = round(candidates[0][0], 1) if candidates else None
     tracks = tuple(TrackLink(track_id=tr.id, dist_m=round(d, 1), image_id=tr.image_id)
                    for d, tr in candidates if d <= cfg.track_link_radius_m)

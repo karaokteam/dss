@@ -75,16 +75,27 @@ class KinematicsConfig:
     approach_net_m: float = 300.0     # pencerede üsse uzaklık bu kadar azaldıysa "yaklaşıyor", arttıysa "uzaklaşıyor"
     heading_to_base_deg: float = 45.0 # son hareket yönü üsse bu açıdan yakınsa "üsse yöneliyor"
     consistent_approach_min_moves: int = 3  # en az bu kadar hareketin hepsi üsse yaklaştırdıysa "tutarlı yaklaşma"
+    # Üssün etrafında dönme: ≥N ardışık nokta, üsse uzaklık ±band içinde sabit, yakın yarıçap, geniş açı taraması
+    # (veri: T0034 kamyonu 14:45–15:05 tam 527 m'de 5 farklı bölgeden geçiyor; T0172/T0158/T0198 de benzer)
+    circle_min_points: int = 3
+    circle_band_m: float = 30.0
+    circle_max_radius_m: float = 1500.0
+    circle_min_sweep_deg: float = 120.0
+    close_pass_m: float = 1000.0      # kayıt içinde üsse bundan yakın geçiş (dönmeden bağımsız)
 
 
 @dataclass(frozen=True)
 class ReportConfig:
     link_radius_m: float = 150.0      # rapor koordinatı ↔ görüntü ayak izi (veride en fazla 133 m)
-    track_link_radius_m: float = 150.0  # rapor saatinde bu yarıçaptaki track'ler aday olarak bağlanır
-    track_close_m: float = 60.0       # bu mesafe içindeki track "raporun anlattığı araç" sayılır (veride çoğu ≤ 60 m)
+    track_link_radius_m: float = 150.0  # görüntüde koordinata bu yarıçaptaki araçlar bağlanır (yoğunluk sayımı)
+    track_close_m: float = 60.0       # sayım iddiaları: görüntüde koordinata bu yarıçaptaki araçlar sayılır
     window_min: int = 120             # rapor, çekimden en fazla bu kadar önce olabilir (track uzunluğu)
     stationary_claim_default_min: int = 60
     long_stationary_min: int = 30     # süresiz "uzun süredir hareketsiz" iddiası için asgari duruş
+    subject_tolerance_min_m: float = 3.0   # rapor koordinatı ↔ görüntüdeki araç (5 ondalık: 31/35 ≤3 m)
+    behavior_window_min: int = 30     # iddia, aracın rapordan önceki bu kadar dakikadaki davranışıyla değerlendirilir
+    after_approach_m: float = 1000.0  # güven verici iddiadan SONRA üsse bu kadar yaklaşan araç → iddia yanıltıcı işaretlenir
+    zone_lookback_min: int = 15       # bölge raporu: son bu kadar dakikada bölgede bulunan araçlar da sayılır
     parser_mode: str = "llm"          # "llm": LLM + kural çapraz kontrolü (LLM yoksa kurallar) | "rules": yalnızca kurallar
 
 
@@ -109,10 +120,12 @@ class RiskConfig:
         "long_stationary_near_base": 10,
         "loitering": 10,
         "group": 10,
-        "report_contradiction": 10,
-        "report_partial_contradiction": 8,
-        "unverified_friendly_claim": 10,
-        "verified_friendly_claim": -15,
+        "circling_base": 35,
+        "close_pass": 10,
+        # Yalnızca riski DÜŞÜRMEYE yönelik iddialar (dost / "olağan" / "uzaklaşıyor") risk etkiler:
+        # gözlemle çelişirse ya da üsse yaklaşan araca iliştirilmişse şüphe sinyalidir. Kimlik teyit edilemediği
+        # için hiçbir dost iddiası riski DÜŞÜRMEZ (eski "verified_friendly_claim −15" kaldırıldı).
+        "reassuring_claim": 10,
         "receding": -10,
         "low_confidence": -10,
     })

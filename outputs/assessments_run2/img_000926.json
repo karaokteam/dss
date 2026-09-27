@@ -1,0 +1,240 @@
+{
+ "image_id": "img_000926",
+ "capture_time": "11:35",
+ "zone": "Kuzeydogu Kavsagi",
+ "overall_risk": "high",
+ "summary": "R078'in 'planlı ikmal, kimlik teyitli' dost iddiası gözlemle çelişiyor: iddia edilen araç T0154 zaten 120 dakikadır üsse ~1650 m mesafede duruyor ve yakalanan park halindeki img_000926_003'ün hareket kaydı yok — bu, dost kimliğiyle bir aracı gizleme girişimi olabilir. Ayrıca T0168 son 60 dakikada 4699 m yaklaşıp ETA 21 dk ile en hızlı tehdit; T0172 ve T0185 de hızlı yaklaşıyor (ETA 44/35 dk).",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000926_008",
+   "label": "car",
+   "track_id": "T0154",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 50,
+   "override_reason": null,
+   "rationale": "Base 50 high korunuyor: üsse 1650 m, 120 dakikadır durağan (1663→1650 m, son 60 dk Δ-9 m). R078'in 'planlı ikmal, üsse ilerleyen' iddiası ÇELİŞKİLİ — rapor anında stationary; dost iddiası gözlemle uyuşmuyor, bu şüphe sinyalidir. Görsel teyit: beyaz otomobil, kısmen örtülü, tip iddiasını çürütmüyor (image:img_000926).",
+   "evidence": [
+    "det:img_000926_008",
+    "track:T0154",
+    "report:R078",
+    "image:img_000926"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_000",
+   "label": "car",
+   "track_id": "T0172",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1693 m; son 60 dk'da 2308 m yaklaştı (5186→1693 m), 10 hareketin 6'sı yaklaşan, ETA 44 dk. Tutarlı yaklaşma işareti yok; hızlı yaklaşma faktörleri temel skorda zaten var.",
+   "evidence": [
+    "det:img_000926_000",
+    "track:T0172"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_002",
+   "label": "car",
+   "track_id": "T0185",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1687 m; son 60 dk'da 2925 m yaklaştı (4102→1687 m), 7 hareketin 5'i yaklaşan, ETA 35 dk. Tutarlı yaklaşma işareti yok; temel skor korunuyor.",
+   "evidence": [
+    "det:img_000926_002",
+    "track:T0185"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1688 m, park halinde, hareket kaydı yok. R078 bu araca bağlanan dost/hareket iddiasını ÇELİŞKİLİ buldu: rapor 'approaching' diyor, gözlem park. Görsel teyit: büyük ölçüde otomobil görünümünde, kısmen örtülü (image:img_000926); tip değişikliği gerekçesi yok.",
+   "evidence": [
+    "det:img_000926_003",
+    "report:R078",
+    "image:img_000926"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_005",
+   "label": "car",
+   "track_id": "T0168",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Üsse 1659 m; son 60 dk'da 4699 m yaklaştı (7937→1660 m), 9 hareketin 8'i yaklaşan, ETA 21 dk — görüntüdeki en hızlı yaklaşan araç. Tespit güveni düşük (0.21), görsel/doğrulama imkânı yok; temel medium korunuyor, faktörler zaten skor içinde.",
+   "evidence": [
+    "det:img_000926_005",
+    "track:T0168"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_001",
+   "label": "car",
+   "track_id": "T0179",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 1680 m; yanal hareket, 2 saatte Δ+8 m, 11 hareket (6 yaklaşan/5 uzaklaşan), dolaşma 6.6 ile loitering örüntüsü. Tehdit sinyali düşük ama yakınlık nedeniyle temel medium korunuyor.",
+   "evidence": [
+    "det:img_000926_001",
+    "track:T0179"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, track yok, tespit güveni 0.28; üsse 1687 m yakınlık düşük güvenle dengelenmiş (temel 10 low).",
+   "evidence": [
+    "det:img_000926_004"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, track yok, tespit güveni 0.19; temel 10 low korunuyor.",
+   "evidence": [
+    "det:img_000926_006"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000926_007",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, track yok, tespit güveni 0.17, üsse 1636 m; temel 10 low korunuyor.",
+   "evidence": [
+    "det:img_000926_007"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Sahte dost/planlı ikmal iddiası (R078)",
+   "risk_level": "high",
+   "rationale": "R078 (10:40, official) T0154'ü 'planlı ikmal, kimlik teyitli, üsse ilerleyen' olarak tanımlıyor; ancak T0154 rapor anında stationary (2 sa 0 hareket) ve iddiaya bağlanan img_000926_003 park halinde. Çelişen dost iddiası, bir aracın kimliğini gizleme girişimi olabilir; T0154 base 50 high ile eşleşiyor.",
+   "evidence": [
+    "report:R078",
+    "track:T0154",
+    "det:img_000926_003",
+    "det:img_000926_008"
+   ]
+  },
+  {
+   "title": "Hızlı çok yönlü yaklaşan üç araç",
+   "risk_level": "medium",
+   "rationale": "T0168 (ETA 21 dk, son 60 dk -4699 m), T0185 (ETA 35 dk, -2925 m) ve T0172 (ETA 44 dk, -2308 m) üsse ~1650–1693 m mesafeye hızla yaklaşmış durumda. Tutarlı yaklaşma işareti yok ama kısa varış süreleri izleme gerektiriyor.",
+   "evidence": [
+    "track:T0168",
+    "track:T0185",
+    "track:T0172"
+   ]
+  },
+  {
+   "title": "Üsse yakın park halindeki düşük güvenli araç kümesi",
+   "risk_level": "medium",
+   "rationale": "img_000926_003/004/006/007 hareket kaydı olmadan üsse ~1636–1688 m mesafede park halinde; tespit güvenleri 0.17–0.33. Bu araçların gerçek tip/yük durumu görsel olarak kısmen örtülü; yerli yerince bekleyen araçlar mı yoksa izlenmeyen hareketli araçlar mı belirsiz.",
+   "evidence": [
+    "det:img_000926_003",
+    "det:img_000926_004",
+    "det:img_000926_006",
+    "det:img_000926_007",
+    "image:img_000926"
+   ]
+  },
+  {
+   "title": "Bölge raporu çelişkisi: ağır araç iddiası (R092)",
+   "risk_level": "medium",
+   "rationale": "R092 'ağır araç hareketi yok' diyor; bölge görüntülerinde 2 ağır araç tespiti var (çekim anında 0 ağır track). Rapor güvenilirliği sorgulanmalı; araç tehdidi olmadığı için medium ile sınırlı.",
+   "evidence": [
+    "report:R092"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R078",
+   "verdict": "unreliable",
+   "note": "Hem identity hem motion iddiası gözlemle çelişiyor: T0154 stationary (120 dk), img_000926_003 park halinde; 'planlı ikmal' dost iddiası doğrulanamadı, gizleme şüphesi var."
+  },
+  {
+   "report_id": "R092",
+   "verdict": "unreliable",
+   "note": "'Bölgede ağır araç yok' iddiası bölge görüntülerindeki 2 ağır araç tespitiyle çelişiyor."
+  },
+  {
+   "report_id": "R024",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış ihbara dayanıyor; kanıt dosyasında destekleyen veya çürüten gözlem yok."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir aracın riskini düşürmez ve gözlemle teyit edilemiyor."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T00:11:30+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000926\",\"question\":\"Bu araç gerçekten otomobil mi? R078 raporu bu bölgede planlı ikmal aracı olduğunu ve üsse ilerlediğini iddia ediyor; araç duruyor mu, tipi ve rengi ne?\",\"vehicle_id\":\"img_000926_008\"}",
+    "summary": "{\"image_id\": \"img_000926\", \"target\": \"img_000926_008 (car, güven 0.16)\", \"crop_px\": [707, 0, 935, 131], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi ce…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000926\",\"question\":\"Bu park halindeki araç gerçekten otomobil mi, yoksa kamyon/otobüs gibi bir ağır araç mı? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_000926_003\"}",
+    "summary": "{\"image_id\": \"img_000926\", \"target\": \"img_000926_003 (car, güven 0.33)\", \"crop_px\": [1198, 0, 1358, 91], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Kirmizi c…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 10499,
+   "output": 2921,
+   "reasoning": 724
+  },
+  "cost_usd": 0.0,
+  "cached_calls": 2,
+  "fallback": false,
+  "duration_s": 0.0
+ }
+}

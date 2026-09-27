@@ -3,7 +3,7 @@
  "capture_time": "15:50",
  "zone": "Kuzeybati Yolu",
  "overall_risk": "medium",
- "summary": "Kuzeybatı Yolu boyunca 100 m içinde park halinde 3 ağır araç (kamyon) gruplaşması var; hareket etmiyorlar ve üsse yaklaşmıyorlar (15:50 itibarıyla üsse tutarlı yaklaşan araç 0). R127'nin '3 kamyon' sayımı gözlemle kısmen uyumlu, yükler tespit edilemiyor; R042'nin 'hareketlilik yok' beyanı bölgede yaklaşan T0083 ile çelişiyor. Genel risk seviyesi medium olarak korunuyor.",
+ "summary": "Üsse 5,2 km uzaklıktaki Kuzeybati Yolu bölgesinde 10 araç var; bunlardan ikisi (T0076 ve track'siz bir kamyon) ağır araç + 3'lü ağır araç gruplaşması nedeniyle medium riskli ve T0076 120 dakikadır hareketsiz bekliyor. Tutarlı üsse yaklaşan araç yok (genel tablo 0), ancak bölge raporu R042'nin 'hareketlilik yok' ifadesi üssün etrafında dönen T0034 anomalisiyle çelişiyor; ayrıca 'dost unsurlar' duyuruları doğrulanamadığından riski düşürmüyor.",
  "vehicles": [
   {
    "vehicle_id": "img_004423_003",
@@ -11,14 +11,15 @@
    "track_id": "T0076",
    "risk_level": "medium",
    "baseline_level": "medium",
-   "baseline_score": 33,
+   "baseline_score": 25,
    "override_reason": null,
-   "rationale": "Ağır araç (truck 0.56, alt bus 0.47) ve track T0076 ile 120 dakikadır hareketsiz; üsse 5212→5217 m (son 60 dk Δ-0 m) olarak konum değiştirmemiş. 100 m içinde 3 ağır araç gruplaşması ve R127 kısmi çelişkisi riski artıran faktörler. R040 (14:25) stationary iddiası DOĞRULANDI. Yaklaşma hareketi yok, tehdit sabit kalıyor.",
+   "rationale": "Truck 0.56 (alt: bus 0.47) ağır araç; T0076 hareket kaydı 120 dakikadır tamamen hareketsiz (2 saatte üsse 5212→5217 m, Δ-0 m). 100 m içinde 3 ağır araç grup faktörü var. R040 (14:25, third_party) 'uzun süredir hareketsiz' iddiası DOĞRULANDI, R127 (14:50) '3 kamyon' sayımı DOĞRULANDI. Üsse uzak (5217 m) ve yaklaşma yok; bu nedenle medium üzerinde yükseltme gerekçesi yok.",
    "evidence": [
     "det:img_004423_003",
     "track:T0076",
     "report:R040",
-    "report:R127"
+    "report:R127",
+    "image:img_004423"
    ],
    "source": "agent"
   },
@@ -28,12 +29,11 @@
    "track_id": null,
    "risk_level": "medium",
    "baseline_level": "medium",
-   "baseline_score": 33,
+   "baseline_score": 25,
    "override_reason": null,
-   "rationale": "Track'siz park halinde truck (0.33), üsse 5219 m. 100 m içinde 3 ağır araç gruplaşması ve R127 kısmi çelişkisi mevcut. Görsel teyit (img_004423) düşük güvenli, araç net ayırt edilemedi (ağaçlar arasında, bulanık) — tip/yük kesinleşmedi. R040 stationary iddiasıyla uyumlu; hareketsiz, üsse yaklaşmıyor.",
+   "rationale": "Track'siz (park halinde) truck 0.33 tespiti, ağır araç (+15) ve 100 m içinde 3 ağır araç gruplaşması (+10) faktörleriyle temel risk medium. R127 (14:50, official) '3 kamyon' sayımı bu tespiti de kapsayacak şekilde DOĞRULANDI. Hareket kaydı olmadığından yaklaşma tehdidi sinyali yok.",
    "evidence": [
     "det:img_004423_005",
-    "report:R040",
     "report:R127",
     "image:img_004423"
    ],
@@ -154,48 +154,26 @@
  ],
  "attention_items": [
   {
-   "title": "Üsse yakın ağır araç gruplaşması (park halinde)",
+   "title": "Bölge raporu R042 gözlemle çelişiyor",
    "risk_level": "medium",
-   "rationale": "100 m içinde 3 ağır araç (img_004423_003/T0076, img_004423_005, img_004423_007) yakın konumlanmış; 120 dk'dır hareket yok ve üsse tutarlı yaklaşan araç 0 (15:50 genel tablo). Gruplaşma ağır araçlarla dikkat gerektiriyor; ancak hiçbir tutarlı yaklaşma hareketi yok, tehdit şu an pasif.",
-   "evidence": [
-    "det:img_004423_003",
-    "det:img_004423_005",
-    "det:img_004423_007",
-    "track:T0076"
-   ]
-  },
-  {
-   "title": "R127 kamyon sayımı kısmen doğrulanamadı, yükler tespit edilemedi",
-   "risk_level": "medium",
-   "rationale": "R127 (official, 14:50) 3 kamyon bildirdi; gözlem 2 truck + 1 car verdi (T0076, img_004423_005, img_004423_006). Görsel teyitler düşük güvenli (007: koyu kırmızı uzun araç, yük belirsiz; 009: yeşil kapalı kasalı, kısmen gizlenmiş; 005: net ayırt edilemedi). Kapalı/gizli yük olasılığı ve resmi sayım uyuşmazlığı takip gerektiriyor.",
-   "evidence": [
-    "report:R127",
-    "image:img_004423",
-    "det:img_004423_005",
-    "det:img_004423_007",
-    "det:img_004423_009"
-   ]
-  },
-  {
-   "title": "R042 bölge raporu gözlemle çelişiyor",
-   "risk_level": "medium",
-   "rationale": "R042 (15:00, official) 'Kuzeybatı Yolu çevresinde kayda değer hareketlilik yok' diyor; ancak bölgede T0083 (img_004423_001, car 0.89) son 60 dakikada üsse 1497 m yaklaşmış, 7 hareketin 4'ü yaklaşan ve ETA 207 dk (yaklaşan/içinde). Resmi raporun gözleme aykırı beyanı güvenilirlik zafiyeti gösteriyor.",
+   "rationale": "R042 (15:00, official) 'Kuzeybati Yolu çevresinde kayda değer hareketlilik yok' diyor; ancak anomali kaydına göre rapor anında son 15 dakikada üssün etrafında dönen araç (T0034) mevcut. Bölge raporları bu veride güvenilir sayılmamalı.",
    "evidence": [
     "report:R042",
-    "det:img_004423_001",
-    "track:T0083"
+    "track:T0034"
    ]
   },
   {
-   "title": "Konumsuz dost/planlı tatbikat duyuruları riski düşürmüyor",
+   "title": "Üsse uzak noktada 3 ağır araç gruplaşması ve uzun süreli hareketsizlik",
    "risk_level": "medium",
-   "rationale": "R112 ve R035 (official, 14:10/14:30) 'planlı tatbikat nedeniyle bölgede dost unsurlar' beyanları konumsuz ve DOĞRULANAMAZ durumda; hiçbir aracın riskini gözlemle teyit edilmediği için azaltmıyor. Yükü tespit edilemeyen/gyerçekimi belirsiz ağır araçların bu duyuruya bağlanması güvenli değil.",
+   "rationale": "100 m içinde 3 ağır araç (img_004423_003/004/005) tespit edildi; T0076 120 dakikadır, rapor anından önce de en az 35 dakikadır (R040) hareketsiz. Yükleri tespit edilemedi (R127). Üsse 5,2 km uzaklık ve yaklaşma hareketi olmadığı için izleme düzeyinde kalmalı; konvoy/birlikte hareket kanıtı yok.",
    "evidence": [
-    "report:R112",
-    "report:R035",
+    "det:img_004423_003",
+    "det:img_004423_004",
     "det:img_004423_005",
-    "det:img_004423_007",
-    "det:img_004423_009"
+    "track:T0076",
+    "track:T0170",
+    "report:R040",
+    "report:R127"
    ]
   }
  ],
@@ -203,64 +181,45 @@
   {
    "report_id": "R040",
    "verdict": "reliable",
-   "note": "Kamyonun uzun süredir hareketsiz olduğu iddiası T0076 (35 dk durağan) ve img_004423_005 (park halinde) gözlemiyle DOĞRULANDI."
+   "note": "Third_party 'kamyon uzun süredir hareketsiz' iddiası doğrulandı: T0076 rapor anında 35 dk, şu an 120 dk durağan; konum img_004423_003 ile uyumlu."
   },
   {
    "report_id": "R127",
-   "verdict": "partly_reliable",
-   "note": "'3 kamyon' sayımı gözlemle KISMEN uyumlu (2 truck + 1 car); yükler tespit edilemedi, görsel teyitler düşük güvenli (005 net ayırt edilemedi, 007/009 düşük çözünürlük)."
-  },
-  {
-   "report_id": "R112",
-   "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru, hiçbir araca doğrulanabilir şekilde bağlanamadı; riski düşürücü olarak kullanılamaz."
-  },
-  {
-   "report_id": "R035",
-   "verdict": "unverifiable",
-   "note": "R112 ile aynı konumsuz genel duyuru; gözlemle teyit yok."
+   "verdict": "reliable",
+   "note": "Official '3 kamyon' sayımı doğrulandı: görüntüde 60 m içinde 3 truck tespiti (img_004423_003/004/005) mevcut."
   },
   {
    "report_id": "R042",
    "verdict": "unreliable",
-   "note": "'Hareketlilik yok' beyanı bölgede üsse yaklaşan T0083 gözlemiyle çelişiyor (anomali: zone_report_mismatch)."
+   "note": "'Hareketlilik yok' ifadesi gözlemle çelişiyor: rapor anında üssün etrafında dönen T0034 kayıtlı. Bölge raporu güvenilir değil."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "'Planlı tatbikat nedeniyle dost unsurlar' duyurusu konumsuz ve doğrulanamaz; hiçbir aracın riskini düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "R112 ile aynı konumsuz 'dost unsurlar' duyurusu; doğrulanamaz, risk düşürücü olarak kullanılamaz."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:08:00+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:38:28+00:00",
   "reasoning_effort": "high",
-  "iterations": 3,
-  "tool_calls": [
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit gerçekten kamyon mu? Tipi, rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_004423_007\"}",
-    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_007 (truck, güven 0.15)\", \"crop_px\": [861, 38, 960, 198], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"kirmizi\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Ki…"
-   },
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit gerçekten kamyon mu? Tipi, rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_004423_009\"}",
-    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_009 (truck, güven 0.11)\", \"crop_px\": [806, 22, 960, 194], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"yesil\", \"cargo\": \"covered\", \"occluded\": true, \"answer\": \"Kirmi…"
-   },
-   {
-    "iteration": 2,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_004423\",\"question\":\"Bu tespit gerçekten kamyon mu? Tipi, rengi ve yükü/örtüsü var mı?\",\"vehicle_id\":\"img_004423_005\"}",
-    "summary": "{\"image_id\": \"img_004423\", \"target\": \"img_004423_005 (truck, güven 0.33)\", \"crop_px\": [440, 28, 600, 188], \"result\": {\"answer\": \"Belirsiz; kirmizi cercevede net bir kamyon ayirt edilemiyor, bolge agaclarin arasinda ve cok bulanik.\", \"cargo\"…"
-   }
-  ],
+  "iterations": 1,
+  "tool_calls": [],
   "repairs": 0,
   "tokens": {
-   "input": 16356,
-   "output": 2829,
-   "reasoning": 709
+   "input": 5221,
+   "output": 2332,
+   "reasoning": 891
   },
-  "cost_usd": 0.002485,
+  "cost_usd": 0.00155,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 99.9
+  "duration_s": 56.9
  }
 }

@@ -1,0 +1,261 @@
+{
+ "image_id": "img_008001",
+ "capture_time": "14:25",
+ "zone": "Dogu Yolu",
+ "overall_risk": "medium",
+ "summary": "Üsse 4,3 km uzaklıktaki Dogu Yolu'nda en dikkat çekici araç, park halinde hareket kaydı olmayan ve resmi R117 raporuyla çelişen kamyonet img_008001_008'dir (görsel teyit: kapalı yüklü kasa, düşük güven). Diğer track'li araçlar üsse yaklaşsa da mesafe (yaklaşık 4,3 km) ve ETA'lar (116-477 dk) orta vadede tehdit göstermiyor. R106'nın anlattığı mavi otomobil görsel olarak doğrulanamıyor; yakın araç mavi değil siyah.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_008001_008",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck) tespiti düşük güvenle (0.32) yapıldı; görsel inceleme beyaz, kapalı yüklü küçük kamyonet gösterdi, heavy_vehicle faktörünü zayıfça doğruluyor. Track yok, park halinde; resmi R117 yoğunluk raporuyla çelişiyor (150 m içinde 2 araç, olağan 4). Üsse 4350 m; hareket tehdidi gözlenmedi.",
+   "evidence": [
+    "det:img_008001_008",
+    "report:R117",
+    "image:img_008001"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_003",
+   "label": "car",
+   "track_id": "T0054",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Üsse 5763→4356 m yaklaşmış, son 60 dk'da 2251 m yaklaşılmış (hızlı yaklaşma faktörü); ancak mesafe hala 4356 m ve ETA 116 dk. Tutarlı yaklaşma işareti yok (6 yaklaşan/1 uzaklaşan), dolaşma 1.6.",
+   "evidence": [
+    "det:img_008001_003",
+    "track:T0054"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_000",
+   "label": "car",
+   "track_id": "T0018",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 1020 m yaklaştı; üsse 4338 m, ETA 255 dk, 5 yaklaşan/1 uzaklaşan hareket. Belirgin tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008001_000",
+    "track:T0018"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_001",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Park halinde, track yok; R106'nın anlattığı mavi otomobil iddiasıyla uyumsuz — görsel inceleme aracı siyah/koyu renkli gösterdi. R117 yoğunluk çelişkisi rapor kaynaklı; araçta ek tehdit bulgusu yok.",
+   "evidence": [
+    "det:img_008001_001",
+    "report:R106",
+    "image:img_008001"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_005",
+   "label": "car",
+   "track_id": "T0196",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 1160 m yaklaştı; üsse 4364 m, ETA 226 dk, 4 yaklaşan/2 uzaklaşan. Hareketleri dengeli, tehdit sinyali zayıf.",
+   "evidence": [
+    "det:img_008001_005",
+    "track:T0196"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_006",
+   "label": "car",
+   "track_id": "T0222",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 548 m yaklaştı; üsse 4357 m, ETA 477 dk. En yavaş yaklaşan araç, tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008001_006",
+    "track:T0222"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_007",
+   "label": "car",
+   "track_id": "T0149",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Son 60 dk'da 1811 m yaklaştı; üsse 4329 m, ETA 143 dk, 5 yaklaşan/2 uzaklaşan. Mesafe nedeniyle düşük risk korunuyor.",
+   "evidence": [
+    "det:img_008001_007",
+    "track:T0149"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_002",
+   "label": "car",
+   "track_id": "T0097",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsten uzaklaşıyor: son 60 dk'da +3482 m, 3 uzaklaşan/2 yaklaşan hareket. Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008001_002",
+    "track:T0097"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_004",
+   "label": "car",
+   "track_id": "T0164",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsten tutarlı biçimde uzaklaşıyor: 6 hareketin 6'sı uzaklaşan, son 60 dk'da +3770 m. Tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008001_004",
+    "track:T0164"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_009",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, düşük güvenli park halinde tespit (0.23); hareket kanıtı yok.",
+   "evidence": [
+    "det:img_008001_009"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008001_010",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Track'siz, düşük güvenli park halinde tespit (0.20); hareket kanıtı yok.",
+   "evidence": [
+    "det:img_008001_010"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Düşük güvenli kamyonet tespiti görsel olarak ancak zayıf doğrulandı",
+   "risk_level": "medium",
+   "rationale": "img_008001_008'in truck etiketi güveni 0.32 (alternatif van 0.14). Görsel inceleme kapalı yüklü küçük kamyonet gösterdi ancak sonuç düşük güvenli. Park halinde ve track'siz; üsse 4350 m. Kalkışında izlenmeli.",
+   "evidence": [
+    "det:img_008001_008",
+    "image:img_008001"
+   ]
+  },
+  {
+   "title": "R106 mavi otomobil iddiası doğrulanamıyor; yakın araç uyumsuz",
+   "risk_level": "medium",
+   "rationale": "R106 (12:25, third_party) 39.9254N 32.9037E yakınındaki mavi otomobilin bolgeden uzaklastigini iddia ediyor; rapor anında hareket kaydı yok. Görüntüdeki en yakın park araçlarından img_008001_001 görsel olarak mavi değil, siyah/koyu renkli. İddia edilen araç ya geçip gitmiş ya da fark edilmedi; 'dost/ihbar' iddiaları gözlemle doğrulanmadan risk düşürücü sayılmaz.",
+   "evidence": [
+    "report:R106",
+    "det:img_008001_001",
+    "image:img_008001"
+   ]
+  },
+  {
+   "title": "Resmi R117 yoğunluk raporu gözlemle çelişiyor",
+   "risk_level": "low",
+   "rationale": "R117 (13:15, official) 39.9255N 32.9039E'de 'beklenmedik yoğunluk' (olağan ~4 araç) diyor; gözlemde 150 m içinde 0 track + 2 park halinde araç = 2 araç var. Resmi kaynak olsa da gözlem esas alınır; rapor güvenilmez, araç bazında risk yükseltici değil.",
+   "evidence": [
+    "report:R117",
+    "det:img_008001_001",
+    "det:img_008001_008"
+   ]
+  },
+  {
+   "title": "Konumsuz 'dost unsurlar' duyurusu risk düşürücü sayılmaz",
+   "risk_level": "low",
+   "rationale": "R112 (14:10, official) tatbikat nedeniyle bölgede dost unsurlar olacağını bildiriyor ancak konum/zaman bağlantısı doğrulanamıyor (noise=DOĞRULANAMAZ). Hiçbir aracın riskini düşürmek için kullanılamaz.",
+   "evidence": [
+    "report:R112"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R106",
+   "verdict": "unverifiable",
+   "note": "Rapor anında o konumda hareket kayıtlı araç yok; en yakın park araçlarından img_008001_001 görsel olarak mavi değil siyah. Araç geçip gitmiş olabilir, iddia doğrulanamadı."
+  },
+  {
+   "report_id": "R117",
+   "verdict": "unreliable",
+   "note": "Yoğunluk iddiası gözlemle çelişiyor: 150 m içinde 2 araç (0 track + 2 park), rapor 4+ bekliyordu. Resmi kaynak olmasına rağmen gözlem esas alınır."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulama bağlantısı yok, araç risk değerlendirmesinde kullanılamaz."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T01:50:33+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008001\",\"question\":\"Bu park halindeki araç gerçekten kamyon (truck) mı, yoksa otomobil/minibüs (van) mı? Yük/örtü var mı, rengi ne?\",\"vehicle_id\":\"img_008001_008\"}",
+    "summary": "{\"image_id\": \"img_008001\", \"target\": \"img_008001_008 (truck, güven 0.32)\", \"crop_px\": [342, 30, 502, 190], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"beyaz\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Kucu…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008001\",\"question\":\"Bu park halindeki araç mavi bir otomobil mi? Hareket halinde mi, park halinde mi görünüyor?\",\"vehicle_id\":\"img_008001_001\"}",
+    "summary": "{\"image_id\": \"img_008001\", \"target\": \"img_008001_001 (car, güven 0.91)\", \"crop_px\": [246, 163, 406, 323], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Arac ma…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 10318,
+   "output": 3736,
+   "reasoning": 1002
+  },
+  "cost_usd": 0.003354,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 108.8
+ }
+}

@@ -135,8 +135,8 @@ def test_every_coordinate_report_links_to_one_image(claims, links):
 
 def test_track_proximity_split(claims, links):
     coord = [links[k] for k, c in claims.items() if c.category == "coordinate"]
-    assert sum(any(t.dist_m <= 60 for t in l.tracks) for l in coord) == 47
-    assert sum(not l.tracks for l in coord) == 20
+    # görüntü konumuyla: koordinatlı raporların çoğu görüntüdeki bir araca 60 m içinde
+    assert sum(any(t.dist_m <= 60 for t in l.tracks) for l in coord) == 71
 
 
 def test_sample_links(links):
@@ -144,8 +144,7 @@ def test_sample_links(links):
     assert l.images[0].image_id == SAMPLE_IMAGE and l.zone == "Dogu Yolu"
     assert l.tracks[0].track_id == SAMPLE_TRUCK_TRACK
     assert l.detections[0].detection_id == "img_000267_003"
-    assert links["R101"].nearest_track_m > 1000   # "7 kamyon": rapor saatinde yakında track yok
-    assert links["R101"].tracks == ()
+    assert links["R101"].nearest_track_m < 60      # "7 kamyon": görüntüde koordinatta kamyon kümesi
 
 
 def test_zone_links_stay_in_zone(repo, claims, links):

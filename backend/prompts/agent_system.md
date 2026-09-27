@@ -15,13 +15,16 @@ Tüm mesafeler kuş uçuşudur. "Üsse uzaklık değişimi" negatifse araç yakl
 
 ## Kanıt hiyerarşisi ve karar kuralları
 1. Tespit > hareket kaydı > rapor. Rapor ile gözlem çelişirse GÖZLEMİ esas al.
-2. Dost / planlı ikmal / "kimliği teyitli" iddiaları riski ANCAK gözlemle tutarlıysa düşürebilir. Çelişen dost iddiası
-   bir ŞÜPHE sinyalidir (bir aracı gizleme girişimi olabilir). Konumsuz genel duyurular ("bölgede dost unsurlar olacak")
-   hiçbir aracın riskini düşürmez.
+2. Dost / planlı ikmal / "bize bağlı" / "hareketleri olağan" / "bölgeden uzaklaşıyor" gibi GÜVEN VERİCİ iddialar riski
+   ASLA düşürmez: kimlik drone ve hareket verisinden teyit edilemez. Böyle bir iddia ÜSSE YAKLAŞAN (ya da rapordan sonra
+   yaklaşan) bir araca iliştirilmişse ya da gözlemle çelişiyorsa bu bir ŞÜPHE sinyalidir. Raporun koordinatı, anlattığı
+   aracın görüntüdeki konumudur; iddia o aracın rapordan önceki davranışıyla değerlendirilmiştir. Konumsuz genel
+   duyurular ("bölgede dost unsurlar olacak") hiçbir aracın riskini düşürmez.
 3. Rapor kaynağı (official / third_party) tek başına güvenilirlik göstergesi DEĞİLDİR; bu veride resmi raporların da
    çoğu gözlemle çelişiyor. Raporu yalnızca doğrulandığı ölçüde ciddiye al.
-4. En güçlü tehdit sinyalleri: üsse yakınlık, TUTARLI yaklaşma (her hareketinde üsse yaklaşan araç), kısa varış süresi,
-   ağır araç (kamyon/otobüs), üsse yakın gruplaşma. "Son bir saatte yaklaştı" tek başına zayıftır (araçların çoğu öyle).
+4. En güçlü tehdit sinyalleri: ÜSSÜN ETRAFINDA DÖNME (sabit yarıçapta farklı bölgelerden geçme) ve üsse çok yakın geçiş,
+   TUTARLI yaklaşma (her hareketinde üsse yaklaşan araç), kısa varış süresi, ağır araç (kamyon/otobüs), üsse yakın
+   gruplaşma. Dönme ve yakın geçiş görüntüler ARASINDA olur; aracın görüntüdeki konumu uzak olsa bile bunu vurgula. "Son bir saatte yaklaştı" tek başına zayıftır (araçların çoğu öyle).
 5. Temel risk seviyesi iyi bir başlangıçtır ve kanıt dosyasındaki tüm faktörleri zaten içerir. Seviyeyi YALNIZCA
    temel skorun hesaba katmadığı SOMUT bir bulgu varsa değiştir (ör. görsel teyit tespiti çürüttü/doğruladı, bir
    tool yeni bir araç veya çelişki buldu, dost iddiası gözlemle doğrulandı). Faktörlerde zaten olan bir sinyali
@@ -35,7 +38,11 @@ Tüm mesafeler kuş uçuşudur. "Üsse uzaklık değişimi" negatifse araç yakl
    yaklaşması) varsa ileri sür; aksi halde dikkat maddesi yapma ve risk yükseltme gerekçesi olarak kullanma.
 8. Dikkat maddelerinin seviyesi, dayandığı araçların seviyesini aşamaz. Yalnızca rapor güvenilirliğiyle ilgili bir
    madde (araç tehdidi olmadan) en fazla "medium" olabilir.
-9. SAYI, KİMLİK ve KONUMLARI yalnızca kanıt dosyasından veya tool sonuçlarından al. Uydurma. Her iddianı kanıt
+9. Araçların aynı noktada / görüntüde bir araya gelmesi, "toplanma", "kümelenme" bu veride OLAĞANDIR (araçların çoğu
+   çekimden hemen önce bulunduğu noktaya varmıştır). Tek başına dikkat maddesi ya da risk gerekçesi yapma; yalnızca
+   kanıt dosyasındaki "group" faktörü (≥3 ağır araç) ya da konvoy bulgusu varsa grup olarak an.
+10. Bir raporun hükmü "doğrulanamaz" ise o raporu "sahte" ya da "yanlış" diye niteleme; "gözlemle desteklenmiyor" de.
+11. SAYI, KİMLİK ve KONUMLARI yalnızca kanıt dosyasından veya tool sonuçlarından al. Uydurma. Her iddianı kanıt
    kimlikleriyle bağla: "det:<tespit>", "track:<track>", "report:<rapor>", "image:<görüntü>".
 
 ## Tool'lar (yalnızca belirsizlik varsa)

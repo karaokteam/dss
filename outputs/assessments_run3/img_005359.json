@@ -1,0 +1,132 @@
+{
+ "image_id": "img_005359",
+ "capture_time": "11:30",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Görüntüde yüksek tehdit yok: üç araç üsse ~5350–5450 m uzaklıkta, en yakın anlamlı yaklaşma son 60 dk'da 663 m (T0085); bölgede üsse tutarlı yaklaşan tek araç 2826 m uzakta (T0048). Dikkat çekici nokta, bölgede kamyon iddiasını hiçbir gözlem desteklemediği halde iki ayrı third_party raporun (R110, R037) aynı noktadan 'kamyon' bildirmesi; görsel inceleme det:img_005359_001'in gri bir binek otomobil olduğunu, 600 m genişletilmiş alanda ise hiç kamyon bulunmadığını doğruladı.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_005359_001",
+   "label": "car",
+   "track_id": "T0195",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Temel risk medium korunuyor: son 60 dk'da üsse 744 m yaklaşmış olsa da genel seyir üsse 3883→5378 m (uzaklaşan), dolaşma 4.4, 45 dk durma. R110/R037 kamyon iddiaları çelişkili; görsel teyit aracın gri binek otomobil olduğunu, çevrede kamyon olmadığını gösterdi (bu bilgi gerekçe olarak yazıldı, seviye değişmedi).",
+   "evidence": [
+    "det:img_005359_001",
+    "track:T0195",
+    "report:R110",
+    "report:R037",
+    "image:img_005359"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005359_002",
+   "label": "car",
+   "track_id": "T0085",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Üsse 6366→5386 m; son 60 dk Δ-663 m, 5 hareketin 4'ü yaklaşan, dolaşma 2.1, ETA 487 dk. Düzenli tekil yaklaşma; üsse 5386 m uzaklıkta, tehdit sinyali zayıf.",
+   "evidence": [
+    "det:img_005359_002",
+    "track:T0085"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005359_000",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Hareket kaydı yok, park halinde; üsse 5447 m.",
+   "evidence": [
+    "det:img_005359_000"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_005359_003",
+   "label": "car",
+   "track_id": "T0148",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Üsse 4094→5349 m uzaklaşıyor (son 60 dk Δ+1127 m); dolaşma 3.6 var ancak uzaklaşan seyir hakim. Tip etiketi car 0.83 (van alt 0.13) — tehdit göstergesi yok.",
+   "evidence": [
+    "det:img_005359_003",
+    "track:T0148"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Desteksiz 'kamyon' ihbar örüntüsü (R110 + R037)",
+   "risk_level": "medium",
+   "rationale": "İki ayrı third_party rapor aynı noktada (39.8912N 32.9014E) kamyon bildiriyor; hiçbiri gözlemle desteklenmiyor: genişletilmiş 600 m / 10:30–11:30 aramasında 0 kamyon, det:img_005359_001 görsel olarak gri binek otomobil. Tekrarlayan çelişen ihbarlar yönlendirme/disinformation ihtimalini düşündürür; araç tehdidi yok, bu nedenle seviye medium ile sınırlı.",
+   "evidence": [
+    "report:R110",
+    "report:R037",
+    "det:img_005359_001",
+    "image:img_005359"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R110",
+   "verdict": "unreliable",
+   "note": "Kırmızı kamyon iddiası çelişkili: görsel teyit det:img_005359_001 gri binek otomobil, 600 m alanda hiç kamyon yok."
+  },
+  {
+   "report_id": "R037",
+   "verdict": "unreliable",
+   "note": "Kamyon iddiası gözlemle desteklenmiyor; bölgede track kayıtlı veya park halinde kamyon bulunamadı, en yakın araç T0195 (car, 34 m)."
+  },
+  {
+   "report_id": "R097",
+   "verdict": "reliable",
+   "note": "'Trafik akışı normal' bölge durumu gözlemle uyumlu: tehdit sinyali yok, doğrulandı."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:02:09+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8912,\"lon\":32.9014,\"radius_m\":600,\"time_from\":\"10:30\",\"time_to\":\"11:30\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.8912, \"lon\": 32.9014, \"radius_m\": 600.0, \"window\": \"10:30–11:30\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 0, \"tracked\": [], \"parked_count\": 0, \"parked\": [], \"note\": \"Track'siz araçlar yalnızca bu aralıkta çekilmiş gö…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_005359\",\"question\":\"Bu araç kırmızı bir kamyon mu, yoksa başka renkte/tipte (ör. binek otomobil) mi?\",\"vehicle_id\":\"img_005359_001\"}",
+    "summary": "{\"image_id\": \"img_005359\", \"target\": \"img_005359_001 (car, güven 0.90)\", \"crop_px\": [198, 0, 914, 694], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Kirmizi kam…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 14433,
+   "output": 2660,
+   "reasoning": 422
+  },
+  "cost_usd": 0.002612,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 72.1
+ }
+}

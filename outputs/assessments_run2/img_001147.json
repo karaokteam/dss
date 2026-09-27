@@ -1,0 +1,234 @@
+{
+ "image_id": "img_001147",
+ "capture_time": "15:20",
+ "zone": "Guneybati Yolu",
+ "overall_risk": "medium",
+ "summary": "Guneybati Yolu bölgesinde üsse tutarlı yaklaşan bir otomobil (T0060) ve hızlı yaklaşan, yüklü kırmızı sivil kargo kamyonu (T0078) dikkat gerektiriyor; kamyonun ETA'sı 48 dk. Resmi rapor R055'in '1 kamyon duruyor' iddiası gözlemle çelişiyor (kamyon durmuyor, üsse yaklaşıyor) — bu, rapor güvenilirliğine dair şüphe sinyalidir.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_001147_003",
+   "label": "car",
+   "track_id": "T0060",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "TUTARLI YAKLAŞMA: 2 saatte 6 hareketin hepsi üsse yaklaştırdı (6819→3559 m); son 60 dk'da 2158 m yaklaştı, ETA 99 dk. Ağır araç yok, hızlı yaklaşma faktörleri temel skorda (40 medium) zaten hesaplı; yeni override bulgusu yok.",
+   "evidence": [
+    "det:img_001147_003",
+    "track:T0060",
+    "image:img_001147"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001147_004",
+   "label": "truck",
+   "track_id": "T0078",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 35,
+   "override_reason": null,
+   "rationale": "Görsel teyit: kırmızı, yüklü sivil kargo kamyonu (askeri değil). Ağır araç + son 60 dk'da 4431 m hızlı yaklaşma (7579→3522 m), ETA 48 dk — en kısa varış süresi. R022'nin 'uzaklaşıyor' iddiası gözlemle çelişiyor. Bu faktörler temel skorda (35 medium) zaten hesaplı; görsel teyit kamyon tespitini doğruladığı için seviye değişikliği gerekmedi.",
+   "evidence": [
+    "det:img_001147_004",
+    "track:T0078",
+    "image:img_001147"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001147_000",
+   "label": "car",
+   "track_id": "T0029",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R055",
+   "evidence": [
+    "det:img_001147_000"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_002",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R055",
+   "evidence": [
+    "det:img_001147_002"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_005",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "çelişen rapor: R055",
+   "evidence": [
+    "det:img_001147_005"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_007",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 5,
+   "override_reason": null,
+   "rationale": "ağır araç (truck); track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_001147_007"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_001",
+   "label": "car",
+   "track_id": "T0107",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "son 60 dk'da üsten 468 m uzaklaştı; dolaşma: yol/yer değiştirme 3.9, 8 hareket",
+   "evidence": [
+    "det:img_001147_001"
+   ],
+   "source": "baseline"
+  },
+  {
+   "vehicle_id": "img_001147_006",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "track'siz ve düşük güvenli tespit (0.16)",
+   "evidence": [
+    "det:img_001147_006"
+   ],
+   "source": "baseline"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R055 resmi raporu gözlemle çelişiyor (kamyon konumu/hareketi)",
+   "risk_level": "medium",
+   "rationale": "R055 (14:25, official) bildirilen noktada duran kamyon olduğunu iddia ediyor; ancak bölgedeki tek kamyon T0078 (img_001147_004) durmuyor, üsse hızlı yaklaşıyor (ETA 48 dk). İddia edilen noktada görsel incelemede kamyon yok, yalnızca koyu kırmızı otomobil (img_001147_000). Çelişen resmi rapor, aracı gizleme veya yanıltıcı bilgi sinyali olabilir; report reliability maddesi olarak medium ile sınırlı.",
+   "evidence": [
+    "report:R055",
+    "det:img_001147_004",
+    "track:T0078",
+    "image:img_001147"
+   ]
+  },
+  {
+   "title": "R022 'uzaklaşıyor' iddiası gözlemle çelişiyor",
+   "risk_level": "medium",
+   "rationale": "R022 (13:50, third_party) kırmızı kamyonun bölgeden uzaklaştığını söylüyor; kırmızı yüklü kamyon görsel olarak teyit edildi ancak gözlemsel hareket kaydı (7579→3522 m, 4 yaklaşan/2 uzaklaşan) üsse doğru hareket gösteriyor. Motion iddiası doğrulanamadı; rapor anındaki konum/araç eşleşmesi belirsiz.",
+   "evidence": [
+    "report:R022",
+    "det:img_001147_004",
+    "track:T0078",
+    "image:img_001147"
+   ]
+  },
+  {
+   "title": "img_001147_007 'truck' tespiti görsel olarak çürütüldü",
+   "risk_level": "low",
+   "rationale": "0.16 güvenli truck tespiti görsel incelemede doğrulanamadı: hedefte beyaz küçük araç benzeri nesne var, kamyon ayırt edilemiyor (düşük netlik). Bölgede R055'in iddia ettiği duran kamyon yok; kamyon tespiti tekil değil.",
+   "evidence": [
+    "det:img_001147_007",
+    "image:img_001147"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R022",
+   "verdict": "unreliable",
+   "note": "Kırmızı yüklü kamyon bölgede mevcut (T0078) ancak gözlem üsse doğru hareket gösteriyor; 'uzaklaşıyor' iddiası gözlemle çelişiyor."
+  },
+  {
+   "report_id": "R055",
+   "verdict": "unreliable",
+   "note": "İddia edilen noktada duran kamyon yok (count ÇELİŞKİLİ); kamyon tespiti img_001147_007 görsel teyidde doğrulanamadı, T0078 ise durmuyor."
+  },
+  {
+   "report_id": "R086",
+   "verdict": "unverifiable",
+   "note": "Sabah devriyesi olagandışı durum bildirmedi; şu anki görüntüde yaklaşan araçlar var — iddianın 15:20 durumuyla bağıntısı kurulamıyor."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; hiçbir aracın dost kimliğini gözlemle doğrulamıyor, riski düşürmez."
+  },
+  {
+   "report_id": "R035",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; R112 ile aynı içerik, kanıt değeri yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "a71328441d87",
+  "created_at": "2026-09-27T01:52:12+00:00",
+  "reasoning_effort": "high",
+  "iterations": 5,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"Bu araç gerçekten kamyon mu (yük/kasa görünüyor mu)?\",\"vehicle_id\":\"img_001147_004\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_004 (truck, güven 0.74)\", \"crop_px\": [554, 125, 850, 421], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"kirmizi\", \"cargo\": \"loaded\", \"occluded\": false, \"answer\": \"Ev…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"Bu noktada gerçekten bir kamyon var mı, yoksa nesne tespiti yanlış mı (aslında araba/boş alan mı)?\",\"vehicle_id\":\"img_001147_007\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_007 (truck, güven 0.16)\", \"crop_px\": [792, 198, 960, 394], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": false, \"answer\": \"Kirmizi ce…"
+   },
+   {
+    "iteration": 2,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"Bu kırmızı yüklü kamyon askeri benzeri (askeri/askeri yeşil tarzda) bir araç mı, sivil kargo kamyonu mu?\",\"vehicle_id\":\"img_001147_004\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_004 (truck, güven 0.74)\", \"crop_px\": [554, 125, 850, 421], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"kirmizi\", \"cargo\": \"loaded\", \"occluded\": false, \"answer\": \"Ki…"
+   },
+   {
+    "iteration": 3,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"Bu bölgede bir kamyon var mı (kırmızı yüklü kamyon img_001147_004 mü, başka bir kamyon mu)? Bu noktada kamyon duruyor mu?\",\"vehicle_id\":\"img_001147_000\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_000 (car, güven 0.90)\", \"crop_px\": [366, 316, 526, 476], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"kirmizi\", \"cargo\": null, \"occluded\": false, \"answer\": \"Kırmızı çe…"
+   },
+   {
+    "iteration": 4,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_001147\",\"question\":\"img_001147_007 konumundaki beyaz araç ile img_001147_004'teki kırmızı kamyon aynı mı? img_001147_007'de yüklü kamyon görünüyor mu?\",\"vehicle_id\":\"img_001147_007\"}",
+    "summary": "{\"image_id\": \"img_001147\", \"target\": \"img_001147_007 (truck, güven 0.16)\", \"crop_px\": [792, 198, 960, 394], \"result\": {\"answer\": \"Çok küçük ve bulanık; hedefte beyazimsi bir araç benzeri nesne seçiliyor ama kamyon olup olmadığı ve yükü ayır…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 30978,
+   "output": 4267,
+   "reasoning": 1924
+  },
+  "cost_usd": 0.003547,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 162.9
+ }
+}

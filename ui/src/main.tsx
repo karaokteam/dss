@@ -35,7 +35,8 @@ function App() {
   const [path, query = ""] = hash.split("?");
   const [, route, param] = path.split("/");
   const focusReport = new URLSearchParams(query).get("report");
-  const page = route === "reports" ? <Reports key={param ?? ""} initialStatus={param ?? ""} /> : <Ops id={route === "image" && param ? param : null} initialReport={focusReport} />;
+  const initialMode = new URLSearchParams(query).get("mode") === "all" ? "global" : "event";
+  const page = route === "reports" ? <Reports key={param ?? ""} initialStatus={param ?? ""} /> : <Ops id={route === "image" && param ? param : null} initialReport={focusReport} initialMode={initialMode} />;
   const active = (r: string) => (r === "reports" ? route === "reports" : route !== "reports") ? "active" : "";
   return (
     <>

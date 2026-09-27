@@ -75,6 +75,10 @@ select { background: var(--panel2); color: var(--text); border: 1px solid var(--
 
 .trace { font-family: ui-monospace, monospace; font-size: 12px; max-height: 260px; overflow-y: auto; background: #070b10; border: 1px solid var(--border); border-radius: 6px; padding: 8px; }
 .trace div { margin-bottom: 4px; white-space: pre-wrap; word-break: break-word; }
+.veh { border-radius: 50%; background: rgba(11,16,23,.92); border: 2px solid; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.veh.sel { border-width: 3px; }
+.cam-pulse { animation: campulse 1s ease-in-out infinite alternate; }
+@keyframes campulse { from { opacity: .35; } to { opacity: 1; } }
 .md p { margin: 0 0 6px; }
 .md p:last-child { margin-bottom: 0; }
 .md ul, .md ol { margin: 4px 0 6px; padding-left: 18px; }

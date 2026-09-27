@@ -3,7 +3,7 @@
  "capture_time": "15:05",
  "zone": "Kuzeybati Yolu",
  "overall_risk": "high",
- "summary": "Kuzeybati Yolu'nda üsse tutarlı yaklaşan bir araç (T0121, 7614→2676 m, ETA ~50 dk) ana tehdit; bölgede ayrıca üsse yaklaşan 3 sivil araç var. R042 bölge raporu 'hareketlilik yok' derken gözlem bunu çürütüyor; tatbikat duyuruları konumsuz olduğundan hiçbir aracın riskini düşürmüyor.",
+ "summary": "Görüntüdeki en önemli tehdit T0121 van'ın 2 saatte 4 hareketle kesintisiz üsse yaklaşması (7614→2676 m, son 60 dk'da 3242 m, ETA ~50 dk) iken, T0101 aracının kayıtlar içinde üsse 763 m'ye kadar sokulması dikkat çekici. Bağlamda üssün etrafında dönen T0034 kamyonunun varlığı, 15:00 tarihli 'hareketlilik yok' raporu R042 ile doğrudan çelişmektedir; dost unsurlara dair duyurular doğrulanamaz nitelikte olduğundan riski düşürmez.",
  "vehicles": [
   {
    "vehicle_id": "img_001733_003",
@@ -13,7 +13,7 @@
    "baseline_level": "high",
    "baseline_score": 50,
    "override_reason": null,
-   "rationale": "2 saatte 4 hareketin hepsi üsse yaklaştırdı (7614→2676 m), son 60 dk'da 3242 m hızlı yaklaşma, TUTARLI YAKLAŞMA işaretli, ETA ~50 dk. Tespit güveni düşük (van 0.53) ve tip belirsiz (truck 0.32 alt etiketi), ancak temel risk faktörleri bu belirsizliği zaten kapsıyor.",
+   "rationale": "Van (0.53) üsse 2676 m'de; TUTARLI YAKLAŞMA: 2 saatte 4 hareketin 4'ü de yaklaştırdı (7614→2676 m), son 60 dk'da 3242 m yaklaştı ve son hareket üsse 0° açıyla — üsse doğrudan yönleniyor, ETA ~50 dk.",
    "evidence": [
     "det:img_001733_003",
     "track:T0121"
@@ -28,10 +28,25 @@
    "baseline_level": "medium",
    "baseline_score": 30,
    "override_reason": null,
-   "rationale": "Üsse 2643 m'de, 2 saatte 3930→2643 m'ye yaklaştı; son 60 dk'da 1490 m yaklaştı. Ancak 8 hareketin 3'ü uzaklaşan ve dolaşma 4.3 ile dolaşan/dolaşan profil gösteriyor; ETA 106 dk.",
+   "rationale": "Car (0.89) üsse 2643 m'de; son 60 dk'da 1490 m yaklaştı ancak dolaşma 4.3 ve 8 hareketin 5'i yaklaşan/3'ü uzaklaşan; kayıtlarda üsse en yakın 1896 m. Yön değiştiren, gezen hareket profili.",
    "evidence": [
     "det:img_001733_001",
     "track:T0125"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001733_002",
+   "label": "car",
+   "track_id": "T0101",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Car (0.84) üsse 2695 m'de; son 60 dk'da 989 m yaklaştı, kayıt içinde üsse en yakın 763 m (yakın geçiş). Son hareket 141° açıyla, yakın geçiş sinyali mevcut.",
+   "evidence": [
+    "det:img_001733_002",
+    "track:T0101"
    ],
    "source": "agent"
   },
@@ -43,25 +58,12 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "üsse 2635 m; son 60 dk'da üsse 1553 m yaklaştı",
+   "rationale": "Car (0.92) üsse 2635 m'de; son 60 dk'da 1553 m yaklaştı (8 hareketin 6'sı yaklaşan) ancak dolaşma düşük (1.1), yakın geçiş yok, ETA ~102 dk. Temel low korundu.",
    "evidence": [
-    "det:img_001733_000"
+    "det:img_001733_000",
+    "track:T0206"
    ],
-   "source": "baseline"
-  },
-  {
-   "vehicle_id": "img_001733_002",
-   "label": "car",
-   "track_id": "T0101",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 20,
-   "override_reason": null,
-   "rationale": "üsse 2695 m; son 60 dk'da üsse 989 m yaklaştı",
-   "evidence": [
-    "det:img_001733_002"
-   ],
-   "source": "baseline"
+   "source": "agent"
   },
   {
    "vehicle_id": "img_001733_004",
@@ -71,32 +73,32 @@
    "baseline_level": "low",
    "baseline_score": 10,
    "override_reason": null,
-   "rationale": "üsse 2694 m; son 60 dk'da üsten 1612 m uzaklaştı; dolaşma: yol/yer değiştirme 3.6, 6 hareket",
+   "rationale": "Van (0.40, belirsiz tip) üsten uzaklaşıyor: son 60 dk'da +1612 m (6 hareketin 4'ü uzaklaşan); loitering 3.6 var ancak net yön üssten dışa. Temel low korundu.",
    "evidence": [
-    "det:img_001733_004"
+    "det:img_001733_004",
+    "track:T0208"
    ],
-   "source": "baseline"
+   "source": "agent"
   }
  ],
  "attention_items": [
   {
-   "title": "R042 bölge raporu gözlemle çelişiyor",
+   "title": "Üs etrafında dönen kamyon (T0034) ve R042 raporuyla çelişki",
    "risk_level": "medium",
-   "rationale": "R042 (15:00) Kuzeybati Yolu için 'kayda deger hareketlilik yok' diyor; ancak aynı saatte bölgede üsse tutarlı yaklaşan 1 araç (T0121, 2676 m) ve toplam 5 araç gözlemleniyor. Resmi bölge raporunun durumu yanlış/eksik bildirdiği şüphesi doğuruyor.",
+   "rationale": "T0034 (truck) 14:45–15:05 arasında üssün ~527 m sabit yarıçapında farklı bölgelerden geçerek dönüyor. 15:00 tarihli resmi rapor R042 'kayda değer hareketlilik yok' derken çekim anında bu araç bölgede — bölge raporu gözlemle çelişiyor (gözlem esas alınır).",
    "evidence": [
-    "report:R042",
-    "track:T0121",
-    "image:img_001733"
+    "track:T0034",
+    "report:R042"
    ]
   },
   {
-   "title": "Doğrulanamayan ihbar ve konumsuz dost duyuruları",
+   "title": "Doğrulanamaz dost unsuru duyuruları",
    "risk_level": "medium",
-   "rationale": "R062 ihbarı doğrulanamadı; R112 ve R035 'dost unsurlar' duyuruları konumsuz ve gözlemle eşleştirilemediği için hiçbir aracın riskini düşürmüyor. Bölgede kimliği teyitli dost araç yok.",
+   "rationale": "R112 (14:10) ve R035 (14:30) 'planlı tatbikat, dost unsurlar' duyurusu konumsuz ve doğrulanamaz; hiçbir aracın riskini düşürmez. Üsse tutarlı yaklaşan 5 araç (T0121, T0125, T0101, T0206) bu iddiayla doğrulanmadan değerlendirilmeye devam edilmeli. Ayrıca R062'deki ihbar da doğrulanamadı (zone_status=DOĞRULANAMAZ).",
    "evidence": [
-    "report:R062",
     "report:R112",
-    "report:R035"
+    "report:R035",
+    "report:R062"
    ]
   }
  ],
@@ -104,47 +106,40 @@
   {
    "report_id": "R042",
    "verdict": "unreliable",
-   "note": "15:00'te 'hareketlilik yok' iddiası, aynı saatte bölgede üsse tutarlı yaklaşan T0121 dahil 5 araç gözlemiyle çelişiyor."
-  },
-  {
-   "report_id": "R062",
-   "verdict": "unverifiable",
-   "note": "İhbar incelenmiş ama doğrulanamamış; bölgede doğrulanabilir bir karşılık yok."
+   "note": "15:00'de 'hareketlilik yok' iddiası, bölgede dönen T0034 kamyonu ve üsse yaklaşan araçlarla gözlemle çelişiyor."
   },
   {
    "report_id": "R112",
    "verdict": "unverifiable",
-   "note": "Konumsuz genel duyuru; hiçbir gözlemlenen araçla eşleştirilemedi, risk düşürücü olarak kullanılamaz."
+   "note": "Konumsuz 'dost unsurlar' duyurusu; drone/hareket verisiyle teyit edilemedi, riski düşürücü olarak kullanılamaz."
   },
   {
    "report_id": "R035",
    "verdict": "unverifiable",
-   "note": "R112 ile aynı metnin tekrarı; konumsuz ve doğrulanamaz."
+   "note": "R112 ile aynı içerikli tekrar duyuru; gözlemle desteklenmiyor, riski düşürmez."
+  },
+  {
+   "report_id": "R062",
+   "verdict": "unverifiable",
+   "note": "Kuzeybati Yolu ihbarı doğrulanamadı; gözlemle desteklenmiyor."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:05:32+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:35:22+00:00",
   "reasoning_effort": "high",
-  "iterations": 3,
-  "tool_calls": [
-   {
-    "iteration": 1,
-    "tool": "co_movement",
-    "args": "{\"track_ids\":[\"T0121\", \"T0125\", \"T0206\", \"T0101\"]}",
-    "summary": "{\"pairs\": [{\"tracks\": [\"T0121\", \"T0125\"], \"relation\": \"met_at_end\", \"common_window\": \"13:05–15:05\", \"dist_m\": {\"min\": 60, \"max\": 11735, \"end\": 60}, \"synchronous_moves\": 2, \"same_direction_moves\": 2, \"chance_rate\": 0.434}, {\"tracks\": [\"T0121…"
-   }
-  ],
-  "repairs": 1,
+  "iterations": 1,
+  "tool_calls": [],
+  "repairs": 0,
   "tokens": {
-   "input": 16450,
-   "output": 2997,
-   "reasoning": 879
+   "input": 4869,
+   "output": 2207,
+   "reasoning": 800
   },
-  "cost_usd": 0.003083,
+  "cost_usd": 0.001434,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 63.1
+  "duration_s": 55.2
  }
 }

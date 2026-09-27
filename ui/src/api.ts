@@ -21,7 +21,7 @@ export interface Alert {
   vehicle_id: string; label: string | null; track_id: string | null; risk_level: Level; baseline_level: Level;
   score: number; rationale: string; source: "agent" | "baseline"; image_id: string; capture_time: string;
   zone: string | null; lat: number | null; lon: number | null; dist_to_base_m: number | null;
-  eta_min: number | null; consistent_approach: boolean; headline: string;
+  eta_min: number | null; consistent_approach: boolean; circling: boolean; headline: string;
 }
 
 export interface TrackPointLive {
@@ -50,6 +50,8 @@ export interface Kinematics {
   state: string; motion: string; dist_to_base_m: number; dist_to_base_start_m: number;
   radial_change_window_m: number | null; speed_mps: number; eta_min: number | null; stationary_min: number;
   moves: number; approach_moves: number; recede_moves: number; consistent_approach: boolean;
+  circling: boolean; circling_radius_m: number | null; circling_window: string | null; circling_sweep_deg: number | null;
+  min_dist_to_base_m: number;
   tortuosity: number | null; segments: { kind: string; start: string; end: string; distance_m: number; radial_change_m: number }[];
 }
 export interface VehicleEvidence {
@@ -92,6 +94,12 @@ export interface TrackFull {
   kinematics: Kinematics | null;
 }
 
+export interface GlobalTrack {
+  track_id: string; image_id: string; label: string | null; risk_level: Level | null; consistent_approach: boolean;
+  circling: boolean; circling_window: string | null;
+  points: { time: string; lat: number; lon: number }[];
+}
+
 export interface ZonePoint { track_id: string; lat: number; lon: number; zone: string; label: string | null; image_id: string | null; risk_level: Level | null }
 
 export interface Job { job_id: string; status: string; events_url: string; progress: { done: number; total: number } }
@@ -121,6 +129,7 @@ export const api = {
   assessment: (id: string) => get<Assessment>(`/api/images/${id}/assessment`).catch(() => null),
   assess: (id: string, force = false) => post<Job>(`/api/images/${id}/assess`, { force }),
   reports: () => get<{ items: Report[] }>("/api/reports"),
+  allTracks: () => get<{ items: GlobalTrack[] }>("/api/tracks?all=1"),
   reportsForImage: (id: string) => get<{ items: Report[] }>(`/api/reports?image_id=${id}`),
   tracksForImage: (id: string) => get<{ items: TrackFull[] }>(`/api/tracks?image_id=${id}`),
   zoneTracks: (time: string, zone: string) => get<{ points: ZonePoint[] }>(`/api/tracks?time=${time}&zone=${encodeURIComponent(zone)}`),

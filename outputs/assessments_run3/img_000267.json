@@ -1,0 +1,187 @@
+{
+ "image_id": "img_000267",
+ "capture_time": "10:15",
+ "zone": "Dogu Yolu",
+ "overall_risk": "medium",
+ "summary": "En dikkat çekici bulgu R083'ün 'planlı ikmal, kimlik teyitli' dost iddiasının gözlemle çelişmesidir (iddia otomobil/üsseden ilerliyor derken tespit duran kamyon T0045); bu bir gizleme girişimi şüphesidir ve T0045'in riskini medium'da tutar. Ayrıca T0134 (van) son 60 dakikada 2377 m hızlı yaklaşmış ve dolaşma hareketi (6 hareket, 3/3) göstermektedir; ETA ~91 dk. img_000267_005'in düşük güvenli tespiti görsel olarak gerçek bir park halindeki beyaz panelvan olarak teyit edilmiştir, ayrı tehdit oluşturmaz.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_000267_003",
+   "label": "truck",
+   "track_id": "T0045",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 35,
+   "override_reason": null,
+   "rationale": "Ağır araç (truck 0.82, T0045), üsse 3609 m ve 120 dk'dır yerinde duruyor (0 hareket). R083'ün 'kimlik teyitli planlı ikmal' dost iddiası gözlemle çelişiyor: rapor otomobil ve üsseden ilerleyen hareket iddia ediyor; gözlem truck ve rapordan çekime üsse uzaklık -18 m, rapor anında duruyor (det:img_000267_003). Çelişen dost iddiası şüphe sinyalidir, riski düşürmez.",
+   "evidence": [
+    "det:img_000267_003",
+    "track:T0045",
+    "report:R083",
+    "report:R053"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000267_004",
+   "label": "van",
+   "track_id": "T0134",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Van 0.65 (T0134), son 60 dk'da üsse 2377 m hızlı yaklaşmış (ETA 91 dk) ve dolaşma davranışı gösteriyor: 6 hareket (3 yaklaşan/3 uzaklaşan), yol/yer değiştirme 4.5. Görsel inceleme aracı beyaz, kapalı yüklü van olarak doğruladı (düşük güven); truck alternatifi zayıf (0.18). Temel faktörler (approaching, fast_approach, loitering) seviyeyi zaten medium yapar.",
+   "evidence": [
+    "det:img_000267_004",
+    "track:T0134",
+    "image:img_000267"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000267_000",
+   "label": "car",
+   "track_id": "T0226",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Car 0.89 (T0226), son 60 dk'da 3734 m yaklaşmış, ETA 59 dk; üsse 3678 m ile uzakta ve ağır araç değil. Temel risk low.",
+   "evidence": [
+    "det:img_000267_000",
+    "track:T0226"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000267_001",
+   "label": "car",
+   "track_id": "T0066",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Car 0.88 (T0066), 120 dk'dır durağan, üsse 3617 m, herhangi bir şüphe faktörü yok. R094/R053'ün durağanlık iddiası doğrulandı.",
+   "evidence": [
+    "det:img_000267_001",
+    "track:T0066",
+    "report:R094"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000267_002",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Car 0.87, park halinde, hareket kaydı yok; üsse 3614 m. T0045/T0066 ile aynı noktada duran durağan araç grubunun parçası; tek başına tehdit sinyali yok.",
+   "evidence": [
+    "det:img_000267_002"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_000267_005",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "Düşük güvenli tespit (van 0.14) görsel incelemede gerçek bir park halindeki beyaz panelvan olarak teyit edildi (medium güven); track yok, hareket yok, üsse 3590 m'de park halinde. Temel low korunur.",
+   "evidence": [
+    "det:img_000267_005",
+    "image:img_000267"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Çelişen dost/ikmal iddiası (R083)",
+   "risk_level": "medium",
+   "rationale": "R083 img_000267_003 için 'kimlik teyitli planlı ikmal otomobili' diyor; gözlem truck ve rapor anında durağan, hareket iddiası da üsse yaklaşma iddiasıyla çelişiyor (rapordan çekime üsse uzaklık -18 m). Kimlik teyidi gözlemle doğrulanamadığı için dost muamelesi uygulanmaz; T0045 şüpheli kalır.",
+   "evidence": [
+    "report:R083",
+    "det:img_000267_003",
+    "track:T0045"
+   ]
+  },
+  {
+   "title": "Hızlı yaklaşan + dolaşan van (T0134)",
+   "risk_level": "medium",
+   "rationale": "img_000267_004 son 60 dk'da 2377 m yaklaşıp (ETA 91 dk) 6 hareketle (3/3, dolaşma 4.5) yol/yere gidiyor. Görsel teyit beyaz kapalı yüklü van (düşük güven); ağır araç değil ama davranış örüntüsü izlenmeli.",
+   "evidence": [
+    "det:img_000267_004",
+    "track:T0134",
+    "image:img_000267"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R094",
+   "verdict": "partly_reliable",
+   "note": "2 kamyon iddiası kısmen: bölgede 1 truck (T0045) + 1 car (T0066) + park halindeki img_000267_002 var; durağanlık kısmı gözlemle doğrulandı, sayı/tip tam uyuşmuyor."
+  },
+  {
+   "report_id": "R053",
+   "verdict": "reliable",
+   "note": "Kamyonun uzun süredir yerinde olmadığı iddiası T0045 ile doğrulandı (kayıt başından 35 dk beri durağan); tip (kamyon) tespitle uyumlu."
+  },
+  {
+   "report_id": "R083",
+   "verdict": "unreliable",
+   "note": "Kimlik ve hareket iddiaları gözlemle çelişiyor: iddia otomobil/üsseden ilerleyen, gözlem truck/durağan (T0045). Dost ikmal iddiası doğrulanamadı; gizleme şüphesi olarak işlendi."
+  },
+  {
+   "report_id": "R081",
+   "verdict": "reliable",
+   "note": "Sabah devriyesi bölgede olağandışı durum bildirmemiş; bölge raporu doğrulandı."
+  },
+  {
+   "report_id": "R013",
+   "verdict": "unverifiable",
+   "note": "Doğrulanmamış gece hareketliliği ihbarı; bu görüntüdeki gözlemlerle ne destek ne çürütme. Sahte sayılmaz, yalnızca gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R070",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamadı ifadesi raporun kendi sonucu; gözlemle eşleşen ya da çelişen somut araç verisi yok."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T01:58:08+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000267\",\"question\":\"img_000267_004 numaralı araç van mı yoksa kamyon (truck) mu? Yükü veya örtüsü var mı?\",\"vehicle_id\":\"img_000267_004\"}",
+    "summary": "{\"image_id\": \"img_000267\", \"target\": \"img_000267_004 (van, güven 0.65)\", \"crop_px\": [749, 29, 909, 189], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"beyaz\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Kirmizi …"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_000267\",\"question\":\"img_000267_005 konumunda gerçek bir araç var mı? Varsa tipi ve rengi nedir?\",\"vehicle_id\":\"img_000267_005\"}",
+    "summary": "{\"image_id\": \"img_000267\", \"target\": \"img_000267_005 (van, güven 0.14)\", \"crop_px\": [680, 1, 840, 161], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, kir…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 10139,
+   "output": 2297,
+   "reasoning": 441
+  },
+  "cost_usd": 0.002086,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 65.6
+ }
+}

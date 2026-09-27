@@ -2,8 +2,8 @@
  "image_id": "img_001643",
  "capture_time": "15:10",
  "zone": "Kuzey Yolu",
- "overall_risk": "low",
- "summary": "Görüntüdeki 5 araç risk açısından düşük profil gösteriyor; en dikkat çekici olanı T0094'ün son 60 dakikada 522 m yaklaşmasına rağmen dolaşan ve ETA'sı 621 dk olan hareketidir. R025'in '2 kamyon' ihbarı görsel incelemeyle çürütüldü (bölgedeki iki araç da otomobil), bu durum yanlış veya yönlendirici ihbar olasılığına işaret ediyor. Genel tablo üsse tutarlı yaklaşan araç bu görüntü bölgesinde göstermiyor.",
+ "overall_risk": "medium",
+ "summary": "Kuzey Yolu bölgesindeki 5 tespitten 4'ü düşük riskli; T0005'in hareketsizliği R015 tarafından doğrulandı. R025'in '2 kamyon' iddiası görüntüyle gözlemle çelişiyor; 39.9699N 32.8562E civarında (800 m, 13:10–15:10) yapılan ağır araç taramasında T0010 (710 m, 13:55) ve üssün etrafında dönen T0034 (765 m) bulundu, ancak ikisi de iddia anından sonra bölgeye girdi, dolayısıyla iddia gözlemle desteklenmiyor. img_001643_004 tespiti görsel incelemede araç olarak doğrulanamadı (yalnızca direk görüldü). Genel tablo, üssü izleyen tek dikkat noktası olan bu rapor güvenilirliği sorunudur; T0034'ün üssün etrafında dönmesi ayrıca takip edilmelidir.",
  "vehicles": [
   {
    "vehicle_id": "img_001643_002",
@@ -13,39 +13,14 @@
    "baseline_level": "low",
    "baseline_score": 20,
    "override_reason": null,
-   "rationale": "son 60 dk'da üsse 522 m yaklaştı; dolaşma: yol/yer değiştirme 5.2, 7 hareket",
+   "rationale": "T0094 (car, 0.90): Üsse 5408 m, son 60 dk'da 522 m yaklaşmış (3746→5408 m, 7 harekette 3 yaklaşan/4 uzaklaşan), dolaşma 5.2. İddia bağlantısı (R025 count) ÇELİŞKİLİ: R025'te 2 kamyon denmiş ancak görüntüde 60 m içinde kamyon yok (T0005, T0084, img_001643_003 park, T0094 — hepsi car). Belirgin tehdit göstergesi yok, düşük risk.",
    "evidence": [
-    "det:img_001643_002"
+    "det:img_001643_002",
+    "track:T0094",
+    "report:R025",
+    "image:img_001643"
    ],
-   "source": "baseline"
-  },
-  {
-   "vehicle_id": "img_001643_001",
-   "label": "car",
-   "track_id": "T0005",
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 10,
-   "override_reason": null,
-   "rationale": "çelişen rapor: R025",
-   "evidence": [
-    "det:img_001643_001"
-   ],
-   "source": "baseline"
-  },
-  {
-   "vehicle_id": "img_001643_003",
-   "label": "car",
-   "track_id": null,
-   "risk_level": "low",
-   "baseline_level": "low",
-   "baseline_score": 10,
-   "override_reason": null,
-   "rationale": "çelişen rapor: R025",
-   "evidence": [
-    "det:img_001643_003"
-   ],
-   "source": "baseline"
+   "source": "agent"
   },
   {
    "vehicle_id": "img_001643_000",
@@ -55,11 +30,48 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "son 60 dk'da üsten 4664 m uzaklaştı",
+   "rationale": "T0084 (car, 0.93): Üsse 5322 m, istikrarlı uzaklaşıyor (675→5322 m, son 60 dk Δ+4664 m, 0 yaklaşan/7 uzaklaşan hareket). 2 saat içinde üsse en yakın 658 m'ye yaklaşmış ancak şu an net uzaklaşma eğiliminde. R025 count iddiası ÇELİŞKİLİ (2 kamyon iddiasına karşın araç car). Düşük risk.",
    "evidence": [
-    "det:img_001643_000"
+    "det:img_001643_000",
+    "track:T0084",
+    "report:R025",
+    "image:img_001643"
    ],
-   "source": "baseline"
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_001",
+   "label": "car",
+   "track_id": "T0005",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0005 (car, 0.93): Üsse 5380 m, 120 dk'dır durağan (hareket yok). R015 (14:15) hareketsizlik iddiası DOĞRULANDI: rapor anında 65 dk'dır durağan. R025 count iddiası ÇELİŞKİLİ (2 kamyon iddiasına karşın araç car). Tehdit göstergesi yok, düşük risk.",
+   "evidence": [
+    "det:img_001643_001",
+    "track:T0005",
+    "report:R015",
+    "report:R025",
+    "image:img_001643"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_001643_003",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "car 0.77, park halinde, track yok, üsse 5294 m. R025 count iddiası ÇELİŞKİLİ (2 kamyon iddiasına karşın araç car). Park halinde araç için tehdit göstergesi yok, düşük risk.",
+   "evidence": [
+    "det:img_001643_003",
+    "report:R025",
+    "image:img_001643"
+   ],
+   "source": "agent"
   },
   {
    "vehicle_id": "img_001643_004",
@@ -69,38 +81,39 @@
    "baseline_level": "low",
    "baseline_score": 0,
    "override_reason": null,
-   "rationale": "track'siz ve düşük güvenli tespit (0.22)",
+   "rationale": "car 0.22, park halinde, track yok, üsse 5284 m. Düşük güvenli tespit (-10) ve R025 count iddiası ÇELİŞKİLİ. Görsel inceleme (img_001643, 39.9699N 32.8562E) 'araç yok, yalnızca bir direk görünüyor' (yüksek güven) sonucu verdi; bu yüzden özet ve katalog dışına alındı. Ayrı bir tehdit göstergesi yok, düşük risk.",
    "evidence": [
-    "det:img_001643_004"
+    "det:img_001643_004",
+    "report:R025",
+    "image:img_001643"
    ],
-   "source": "baseline"
+   "source": "agent"
   }
  ],
  "attention_items": [
   {
-   "title": "Çelişkili kamyon ihbarı (R025) — yanlış/yönlendirici ihbar olasılığı",
-   "risk_level": "low",
-   "rationale": "R025 (13:30, official) 39.9699N 32.8562E çevresinde 2 kamyon bildiriyor; ancak o noktaya 43 m ve 58 m uzaklıktaki img_001643_001 (car 0.93) ile img_001643_003 (car 0.77) görsel incelemede 'beyaz otomobil' olarak teyit edildi, bölgede kamyon tipinde araç yok. Tespit gözlemi raporu çürütüyor (hiyerarşi kural 1). Tehdit göstergesi değil, rapor güvenilirliği sorunu.",
+   "title": "R025 kamyon iddiası bölgeyle gözlemle çelişiyor",
+   "risk_level": "medium",
+   "rationale": "R025 (13:30, official) 39.9699N 32.8562E civarında 2 kamyon bildiriyor, ancak img_001643'de 60 m içinde kamyon yok (tüm tespitler car). Genişletilmiş tarama (800 m, 13:10–15:10) yalnızca T0010 (710 m, 13:55'te var, 14:00'te kayıt sonu) ve T0034 (765 m, 14:05'te var, üssün etrafında dönen) buldu; ikisi de iddia anından SONRA bölgeye girdi, dolayısıyla R025 gözlemle desteklenmiyor. Rapor güvenilirliğiyle ilgili bir madde olduğu için risk medium olarak sınırlıdır.",
    "evidence": [
     "report:R025",
-    "det:img_001643_001",
-    "det:img_001643_003",
-    "image:img_001643"
+    "image:img_001643",
+    "track:T0034"
    ]
   },
   {
-   "title": "T0094: dolaşan ve yavaş yaklaşan araç",
+   "title": "Üssün etrafında dönen kamyon T0034'i izlemeye devam et",
    "risk_level": "low",
-   "rationale": "T0094 (track) son 60 dakikada üsse 522 m yaklaştı ancak 7 hareketin 4'ü uzaklaşan, dolaşma 5.2, ETA 621 dk ve üsse uzaklığı 5408 m. Uzaklık ve yavaşlık nedeniyle tekil tehdit değil; izlenmeye devam edilmeli.",
+   "rationale": "T0034 (truck), 14:45–15:05 arasında üssün yaklaşık 527 m'lik sabit bir yarıçapında dönmektedir (bağlam). Bu görüntüde yer almamakla birlikte, R025 taramasında 14:05'te iddia noktası yakınında (765 m) görülmüştür. Üssün etrafında dönme güçlü tehdit sinyalidir; güncel görüntüde tespit edilemediği için yalnızca izleme maddesi olarak düşük seviyede not edilmiştir.",
    "evidence": [
-    "det:img_001643_002",
-    "track:T0094"
+    "track:T0034",
+    "report:R025"
    ]
   },
   {
-   "title": "Düşük güvenli park halinde araç görsel olarak teyit edildi",
+   "title": "img_001643_004 tespiti görsel olarak doğrulanamadı",
    "risk_level": "low",
-   "rationale": "img_001643_004 tespiti 0.22 güvenle track'sizdi; görsel inceleme araç olduğunu doğruladı (koyu renkli otomobil, çoğu çerçeve dışı, düşük güven). Park halinde ve hareketsiz olduğundan tehdit göstergesi yok.",
+   "rationale": "img_001643_004 (car 0.22, park, track yok) için inspect_image sonucu: 'arac yok, yalnizca bir direk gorunuyor' (yüksek güven). Tespit muhtemelen yanlış pozitif; katalog/özet dışına alındı. Tehdit göstergesi yok.",
    "evidence": [
     "det:img_001643_004",
     "image:img_001643"
@@ -110,65 +123,54 @@
  "report_notes": [
   {
    "report_id": "R025",
-   "verdict": "unreliable",
-   "note": "'2 kamyon' iddiası gözlemle çelişiyor: bölgedeki iki araç (T0005, img_001643_003) görsel teyitle otomobil. Kamyon yok."
+   "verdict": "partly_reliable",
+   "note": "2 kamyon iddiası (39.9699N 32.8562E) img_001643 gözlemiyle çelişiyor: 60 m içinde kamyon yok (tüm tespitler car). 800 m / 2 saatlik taramada yalnızca T0010 (710 m, 13:55) ve T0034 (765 m, 14:05) bulundu; ikisi de iddia anından sonra geldi, dolayısıyla rapor gözlemle desteklenmiyor; iddia sonrası bölgede ağır araç mevcut olduğu için tamamen geçersiz sayılmadı."
   },
   {
    "report_id": "R015",
    "verdict": "reliable",
-   "note": "Hareketsiz otomobil iddiası doğrulandı: T0005, 7 m mesafede, 120 dk durağan."
+   "note": "T0005'in 39.97018N 32.85580E civarında hareketsiz durduğu iddiası DOĞRULANDI: rapor anında (14:15) 65 dk'dır durağan, toplam 120 dk duruyor."
   },
   {
    "report_id": "R112",
    "verdict": "unverifiable",
-   "note": "Konumsuz genel dost unsurlar duyurusu; hiçbir aracın riskini düşürmez."
+   "note": "'Planli tatbikat nedeniyle bolgede dost unsurlar bulunacak' — konumsuz genel duyuru, noise; drone/hareket verisiyle doğrulanamaz, herhangi bir aracın riskini düşürmez."
   },
   {
    "report_id": "R035",
    "verdict": "unverifiable",
-   "note": "R112 ile aynı konumsuz duyuru; doğrulanamaz."
-  },
-  {
-   "report_id": "R011",
-   "verdict": "unverifiable",
-   "note": "Dünkü araç hareketliliği ihbarı doğrulanmamış; bu görüntüde destekleyen gözlem yok."
+   "note": "R112 ile aynı içerikte genel duyuru (noise), doğrulanamaz; risk değerlendirmesini etkilemez."
   }
  ],
  "trace": {
   "model": "glm-5.3-flash",
-  "prompt_version": "a71328441d87",
-  "created_at": "2026-09-27T00:05:55+00:00",
+  "prompt_version": "dfce04c49b2d",
+  "created_at": "2026-09-27T03:35:46+00:00",
   "reasoning_effort": "high",
-  "iterations": 2,
+  "iterations": 4,
   "tool_calls": [
    {
     "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_001643\",\"question\":\"Bu araç otomobil mi yoksa kamyon (R025 ihbarındaki 2 kamyon iddiasıyla ilgilisi) mi? Tipini ve rengini belirt.\",\"vehicle_id\":\"img_001643_001\"}",
-    "summary": "{\"image_id\": \"img_001643\", \"target\": \"img_001643_001 (car, güven 0.93)\", \"crop_px\": [580, 0, 1156, 507], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": false, \"answer\": \"Bu bir otomob…"
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9699,\"lon\":32.8562,\"radius_m\":800,\"time_from\":\"13:10\",\"time_to\":\"15:10\",\"vehicle_type\":\"heavy\"}",
+    "summary": "{\"query\": {\"lat\": 39.9699, \"lon\": 32.8562, \"radius_m\": 800.0, \"window\": \"13:10–15:10\", \"vehicle_type\": \"heavy\"}, \"tracked_count\": 2, \"tracked\": [{\"track_id\": \"T0010\", \"label\": \"truck\", \"detection_id\": \"img_002661_007\", \"image_id\": \"img_0026…"
    },
    {
-    "iteration": 1,
+    "iteration": 2,
     "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_001643\",\"question\":\"Bu park halindeki araç otomobil mi yoksa kamyon mu? Tipini belirt.\",\"vehicle_id\":\"img_001643_003\"}",
-    "summary": "{\"image_id\": \"img_001643\", \"target\": \"img_001643_003 (car, güven 0.77)\", \"crop_px\": [672, 385, 1328, 765], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": null, \"occluded\": true, \"answer\": \"Beyaz bir ot…"
-   },
-   {
-    "iteration": 1,
-    "tool": "inspect_image",
-    "args": "{\"image_id\":\"img_001643\",\"question\":\"Bu düşük güvenli (0.22) tespit gerçekten bir araç mı? Varsa tipini belirt.\",\"vehicle_id\":\"img_001643_004\"}",
-    "summary": "{\"image_id\": \"img_001643\", \"target\": \"img_001643_004 (car, güven 0.22)\", \"crop_px\": [393, 583, 725, 765], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"siyah\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, k…"
+    "args": "{\"image_id\":\"img_001643\",\"question\":\"img_001643_004 konumunda gerçekten bir araç var mı, tipi ve park halinde mi?\",\"lat\":39.9699,\"lon\":32.8562}",
+    "summary": "{\"image_id\": \"img_001643\", \"target\": \"nokta 39.96990, 32.85620\", \"crop_px\": [979, 314, 1139, 474], \"result\": {\"vehicle_present\": false, \"vehicle_type\": null, \"color\": null, \"cargo\": null, \"occluded\": false, \"answer\": \"Kirmizi isaret yolda, …"
    }
   ],
-  "repairs": 0,
+  "repairs": 1,
   "tokens": {
-   "input": 9125,
-   "output": 1737,
-   "reasoning": 563
+   "input": 22980,
+   "output": 5703,
+   "reasoning": 1214
   },
-  "cost_usd": 0.001369,
+  "cost_usd": 0.005277,
   "cached_calls": 0,
   "fallback": false,
-  "duration_s": 55.1
+  "duration_s": 125.5
  }
 }

@@ -1,0 +1,187 @@
+{
+ "image_id": "img_008562",
+ "capture_time": "14:20",
+ "zone": "Guneydogu Yerlesimi",
+ "overall_risk": "medium",
+ "summary": "Bölgede görsel olarak kamyon yok: R029'un ihbar ettiği '1 kamyon' iddiası hem görsel inceleme (img_008562_001 hafif van) hem de 600 m / 2 saatlik kamyon taramasıyla gözlemle çelişiyor. Tek dikkat gerektiren araç, üsse son 60 dakikada 3855 m tutarlı yaklaşan img_008562_002 (T0194); kalan araçlar park halinde veya üsten uzaklaşıyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_008562_002",
+   "label": "car",
+   "track_id": "T0194",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Üsse 6431→3489 m yaklaşan (son 60 dk Δ-3855 m), 5 hareketin 4'ü yaklaşan, ETA 54 dk olan otomobil (det:img_008562_002, track:T0194). Temel risk medium aynen korundu.",
+   "evidence": [
+    "det:img_008562_002",
+    "track:T0194"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008562_001",
+   "label": "van",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Park halinde hafif van; R029'un 'kamyon' iddiası görsel incelemeyle (van, gri, kamyon değil) ve 600 m/2 saatlik kamyon taramasının 0 sonuç vermesiyle gözlemle çelişiyor; report_contradiction faktörü rapora karşı çözüldü.",
+   "evidence": [
+    "det:img_008562_001",
+    "image:img_008562",
+    "report:R029"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008562_004",
+   "label": "car",
+   "track_id": null,
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 20,
+   "override_reason": null,
+   "rationale": "Park halinde otomobil; R091 stationary iddiası doğrulandı, R029 kamyon iddiası bu araç için de geçersiz (çevrede kamyon yok).",
+   "evidence": [
+    "det:img_008562_004",
+    "report:R091",
+    "report:R029"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008562_003",
+   "label": "car",
+   "track_id": "T0128",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "T0128 120 dakikadır duruyor (son 60 dk Δ-26 m); hareket tehdidi yok, R029 kamyon iddiası çevrede kamyon bulunmamasıyla gözlemle çelişiyor.",
+   "evidence": [
+    "det:img_008562_003",
+    "track:T0128",
+    "report:R091",
+    "report:R029"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008562_000",
+   "label": "car",
+   "track_id": "T0221",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0221 üsten uzaklaşıyor: son 60 dk Δ+2600 m, 5 hareketin 4'ü uzaklaşan; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008562_000",
+    "track:T0221"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_008562_005",
+   "label": "car",
+   "track_id": "T0176",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 0,
+   "override_reason": null,
+   "rationale": "T0176 üsten uzaklaşıyor: son 60 dk Δ+2563 m, dolaşma 2.7 ile dağınık hareket; tehdit sinyali yok.",
+   "evidence": [
+    "det:img_008562_005",
+    "track:T0176"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Kamyon ihbarı gözlemle çelişiyor (R029)",
+   "risk_level": "medium",
+   "rationale": "R029 '39.8947N 32.8736E çevresinde 1 kamyon' iddiası iki bağımsız şekilde gözlemle çelişiyor: (1) görsel inceleme img_008562_001'in kamyon değil hafif van olduğunu gösterdi, (2) 600 m yarıçaplı 12:20–14:20 kamyon taraması 0 sonuç verdi. Gözlemle çelişen ağır araç ihbarı, dikkat dağıtma veya gizleme girişimi olabilir; izlenmeye devam edilmeli.",
+   "evidence": [
+    "report:R029",
+    "image:img_008562",
+    "det:img_008562_001"
+   ]
+  },
+  {
+   "title": "Doğrulanamaz bölge sinyalleri: telsiz teması ve dün gece hareketlilik",
+   "risk_level": "low",
+   "rationale": "R067 (devriyeyle telsiz bağlantısı 40 dk kesik) ve R119 (dün gece araç hareketliliği ihbarı) gözlemle desteklenmiyor; bu görüntüdeki araçlar bunları desteklemiyor. Ek önlem olarak not edilmeli, risk seviyesi yükseltilmemeli.",
+   "evidence": [
+    "report:R067",
+    "report:R119"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R091",
+   "verdict": "reliable",
+   "note": "Stationary iddiası T0128 ve park halindeki img_008562_004 / img_008562_001 ile doğrulandı."
+  },
+  {
+   "report_id": "R029",
+   "verdict": "unreliable",
+   "note": "Kamyon iddiası gözlemle çelişiyor: görsel inceleme van gösteriyor, 600 m/2 saatte hiç kamyon yok; ihbarın gözlemlerle uyuşmazlığı gizleme girişimi olasılığını düşündürüyor."
+  },
+  {
+   "report_id": "R109",
+   "verdict": "reliable",
+   "note": "Trafik akışının normal olduğu gözlemle uyumlu: aktif hareket eden araçlar yalnızca 3 (T0194 yaklaşan, T0221/T0176 uzaklaşan)."
+  },
+  {
+   "report_id": "R067",
+   "verdict": "unverifiable",
+   "note": "Telsiz bağlantısı kesintisi bu görüntü verisiyle doğrulanamıyor; gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R119",
+   "verdict": "unverifiable",
+   "note": "Dün gece hareketlilik ihbarı doğrulanamıyor; bu görüntüde destekleyici iz yok."
+  },
+  {
+   "report_id": "R112",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel dost unsurlar duyurusu; hiçbir aracın riskini düşürmez, gözlemle teyit de edilemez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:28:46+00:00",
+  "reasoning_effort": "high",
+  "iterations": 3,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_008562\",\"question\":\"Bu araç kamyon (yük/örtü, büyük kasa) mı yoksa hafif van (minibüs/ticari) mı? Yük veya örtü var mı?\",\"vehicle_id\":\"img_008562_001\"}",
+    "summary": "{\"image_id\": \"img_008562\", \"target\": \"img_008562_001 (van, güven 0.90)\", \"crop_px\": [134, 297, 386, 540], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"gri\", \"cargo\": \"unknown\", \"occluded\": true, \"answer\": \"Hafif van …"
+   },
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.8947,\"lon\":32.8736,\"radius_m\":600,\"time_from\":\"12:20\",\"time_to\":\"14:20\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.8947, \"lon\": 32.8736, \"radius_m\": 600.0, \"window\": \"12:20–14:20\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 0, \"tracked\": [], \"parked_count\": 0, \"parked\": [], \"note\": \"Track'siz araçlar yalnızca bu aralıkta çekilmiş gö…"
+   }
+  ],
+  "repairs": 1,
+  "tokens": {
+   "input": 17224,
+   "output": 3933,
+   "reasoning": 680
+  },
+  "cost_usd": 0.001475,
+  "cached_calls": 2,
+  "fallback": false,
+  "duration_s": 23.1
+ }
+}

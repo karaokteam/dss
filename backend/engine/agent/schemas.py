@@ -51,6 +51,24 @@ def _claims_consistent_approach(text: str) -> bool:
     return False
 
 
+_TRACK = re.compile(r"\bT\d{4}\b")
+
+
+def _misused_consistent(text: str, consistent: set[str]) -> list[str]:
+    """Cümlede olumlu 'tutarlı yaklaşma' ifadesinden hemen önce geçen track işaretli değilse o track'i döner."""
+    bad = []
+    for sentence in re.split(r"[.;\n]", text):
+        for m in _CONSISTENT.finditer(sentence):
+            if not _claims_consistent_approach(sentence[m.start():]):
+                continue
+            after = _TRACK.search(sentence[m.end():m.end() + 25])     # "tutarlı yaklaşan T0184" → özne sonrakidir
+            before = _TRACK.findall(sentence[:m.start()])
+            subject = after.group(0) if after else (before[-1] if before else None)
+            if subject and subject not in consistent:
+                bad.append(subject)
+    return sorted(set(bad))
+
+
 def _level_idx(level: str) -> int:
     return LEVELS.index(level)
 
@@ -70,6 +88,47 @@ def _check_refs(refs, where: str, errors: list[str]) -> None:
             {"det": repo.detection, "track": repo.track, "report": repo.report, "image": repo.image}[kind](key)
         except KeyError:
             errors.append(f"{where}.evidence: '{ref}' veride yok")
+
+
+def normalize_refs(raw: dict) -> dict:
+    """Kanıt kimliklerindeki bariz önek hatalarını düzeltir (ör. 'image:img_x_005' aslında bir tespit → 'det:')."""
+    if not isinstance(raw, dict):
+        return raw
+    repo = get_repository()
+    items = [v for v in raw.get("vehicles") or [] if isinstance(v, dict)]
+    items += [a for a in raw.get("attention_items") or [] if isinstance(a, dict)]
+    for it in items:
+        fixed = []
+        for ref in it.get("evidence") or []:
+            m = _REF.match(str(ref))
+            key = m[2] if m else str(ref)
+            kind = m[1] if m else None
+            for k, getter in (("det", repo.detection), ("track", repo.track), ("report", repo.report), ("image", repo.image)):
+                if kind == k:
+                    break
+                try:
+                    getter(key)
+                except KeyError:
+                    continue
+                ref = f"{k}:{key}"   # doğru önek bulundu
+                break
+            fixed.append(ref)
+        if "evidence" in it:
+            it["evidence"] = fixed
+    # Genel risk, yazılan en yüksek seviyeden düşük olamaz: bu tutarsızlık yorum değil, mekanik olarak düzeltilir
+    levels = [x.get("risk_level") for x in items if x.get("risk_level") in LEVELS]
+    if raw.get("overall_risk") in LEVELS and levels:
+        top = min(levels, key=_level_idx)
+        if _level_idx(raw["overall_risk"]) > _level_idx(top):
+            raw["overall_risk"] = top
+    return raw
+
+
+_FAKE = re.compile(r"\bsahte\w*", re.I)
+# Veride tesadüften ayırt edilemediği gösterilen sinyaller (FINDINGS D6, A4): tek başına yükseltme gerekçesi olamaz
+_RULED_OUT = re.compile(r"chance|tesadüf|toplan|kümelen|bir araya|buluş|son adımda|son 5 d|çekim anında bit", re.I)
+_ALLOWED = re.compile(r"görsel|teyit|dön|yakın geç|çeliş|güven verici|dost|tutarlı yaklaş|varış|eta|konvoy|"
+                      r"vehicles_in_area|alan sorgu|kaçırıl|örtül", re.I)
 
 
 def validate(raw: dict, dossier: ImageDossier) -> list[str]:
@@ -106,9 +165,14 @@ def validate(raw: dict, dossier: ImageDossier) -> list[str]:
         if level not in LEVELS:
             errors.append(f"{where}.risk_level {LEVELS} içinden olmalı")
             continue
-        if level != baseline[vid] and not str(v.get("override_reason") or "").strip():
+        reason = str(v.get("override_reason") or "")
+        if level != baseline[vid] and not reason.strip():
             errors.append(f"{where}: risk_level ({level}) temel seviyeden ({baseline[vid]}) farklı; "
                           "override_reason zorunlu")
+        elif (_level_idx(level) < _level_idx(baseline[vid]) and _RULED_OUT.search(reason)
+              and not _ALLOWED.search(reason)):
+            errors.append(f"{where}: yükseltme yalnızca elenmiş sinyallere dayanıyor (tesadüf oranı / toplanma / "
+                          "son adımda varış). Somut yeni bulgu yoksa temel seviyede bırak")
         if not str(v.get("rationale") or "").strip():
             errors.append(f"{where}.rationale boş olamaz")
         _check_refs(v.get("evidence"), where, errors)
@@ -121,6 +185,24 @@ def validate(raw: dict, dossier: ImageDossier) -> list[str]:
             if _claims_consistent_approach(text):
                 errors.append(f"vehicles[{i}] ({v['vehicle_id']}): kanıt dosyasında TUTARLI YAKLAŞMA işareti yok; "
                               "'tutarlı yaklaşma' deme, 'yaklaşıyor' ve hareket sayılarını kullan")
+
+    # Aynı koruma özet ve dikkat maddeleri için: ifadeden hemen önce geçen track işaretli olmalı
+    free_text = [("summary", raw.get("summary") or "")] + [
+        (f"attention_items[{i}]", f"{a.get('title', '')}. {a.get('rationale', '')}")
+        for i, a in enumerate(raw.get("attention_items") or []) if isinstance(a, dict)]
+    track_consistent = {v.track_id for v in dossier.vehicles if v.track_id and v.kinematics and v.kinematics.consistent_approach}
+    track_consistent |= {t for z in (dossier.global_context or {}).get("by_zone", {}).values() for t in z.get("tracks", [])}
+    for where, text in free_text:
+        for tid in _misused_consistent(text, track_consistent):
+            errors.append(f"{where}: {tid} için 'tutarlı yaklaşma' denmiş ama bu araçta TUTARLI YAKLAŞMA işareti yok")
+
+    # Dil: rapor "sahte" diye nitelenmez; hüküm gözleme dayalıdır ("gözlemle çelişiyor / desteklenmiyor")
+    texts = [raw.get("summary") or ""] + [f"{a.get('title', '')} {a.get('rationale', '')}"
+                                          for a in raw.get("attention_items") or [] if isinstance(a, dict)]
+    texts += [f"{v.get('rationale', '')} {v.get('override_reason') or ''}" for v in vehicles if isinstance(v, dict)]
+    texts += [n.get("note", "") for n in raw.get("report_notes") or [] if isinstance(n, dict)]
+    if any(_FAKE.search(t) for t in texts):
+        errors.append("'sahte' kelimesini kullanma; raporlar için 'gözlemle çelişiyor' ya da 'gözlemle desteklenmiyor' de")
 
     # Temel seviyesi ≥ medium olan her araç yazılmalı (önemli araç atlanmasın)
     missing = [vid for vid, lvl in baseline.items()

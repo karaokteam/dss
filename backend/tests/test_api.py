@@ -63,7 +63,7 @@ def test_reports(client):
     contradicted = _ok(client, "/api/reports?status=contradicted&category=coordinate")["items"]
     assert contradicted and all(r["status"] == "contradicted" for r in contradicted)
     r = _ok(client, "/api/reports/R053")
-    assert r["status"] == "verified" and r["links"]["tracks"][0] == "T0045" and "links_detail" in r
+    assert r["status"] == "partial" and r["links"]["tracks"][0] == "T0045" and "links_detail" in r
 
 
 def test_alerts_and_timeline(client):

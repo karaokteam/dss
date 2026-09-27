@@ -1,0 +1,233 @@
+{
+ "image_id": "img_003464",
+ "capture_time": "12:15",
+ "zone": "Kuzey Yolu",
+ "overall_risk": "high",
+ "summary": "Kuzey Yolu noktasında üsse 2612–2669 m mesafede 5 kamyon (3'ü takipli ve tutarlı yaklaşan, ETA 37–53 dk; 2'si park halinde) bulunuyor; üç yaklaşan kamyon aynı noktada birleşiyor ve T0028–T0001 eşzamanlı aynı yönlü hareket gösteriyor. R101'in '7 kamyon durdu' iddiası kısmen doğrulandı; R099'un 'trafik normal' beyanı bölgede üsse tutarlı yaklaşan araçla çelişiyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_003464_002",
+   "label": "truck",
+   "track_id": "T0135",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 65,
+   "override_reason": null,
+   "rationale": "Truck 0.89, üsse 2652 m; 2 saatte 4881→2653 m (son 60 dk Δ-4264 m), ETA 37 dk, dolaşma 4.2 (5 hareket, 3 yaklaşan/2 uzaklaşan). 100 m içinde 6 ağır araç. co_movement: T0028 ve T0001 ile yalnızca son noktada buluşuyor (bağımsız hareket). Temel high korunuyor.",
+   "evidence": [
+    "det:img_003464_002",
+    "track:T0135",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_000",
+   "label": "truck",
+   "track_id": "T0028",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 55,
+   "override_reason": null,
+   "rationale": "Truck 0.91, üsse 2612 m; 2 saatte 6674→2612 m (son 60 dk Δ-4172 m), 9 hareketin 7'si yaklaşan, ETA 38 dk. co_movement: T0001 ile 'converged_in_step' (4/4 aynı yönlü eşzamanlı hareket, chance_rate 0.053) — bu tek başına konvoy kanıtı değil ama not edilmiştir. Temel high korunuyor.",
+   "evidence": [
+    "det:img_003464_000",
+    "track:T0028",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_001",
+   "label": "truck",
+   "track_id": "T0001",
+   "risk_level": "high",
+   "baseline_level": "high",
+   "baseline_score": 55,
+   "override_reason": null,
+   "rationale": "Truck 0.90, üsse 2635 m; 2 saatte 7799→2636 m (son 60 dk Δ-2993 m), 7 hareketin 6'sı yaklaşan, ETA 53 dk. co_movement: T0028 ile 'converged_in_step' (4/4 eşzamanlı, chance_rate 0.053). Temel high korunuyor.",
+   "evidence": [
+    "det:img_003464_001",
+    "track:T0001",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_003",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 43,
+   "override_reason": null,
+   "rationale": "Truck 0.89, track yok, park halinde, üsse 2662 m; R101'in stationary iddiası bu araçta doğrulandı (51 m), count iddiası kısmen. Hareket kaydı olmadığından niyeti izlenemiyor. Temel medium korunuyor.",
+   "evidence": [
+    "det:img_003464_003",
+    "report:R101",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_006",
+   "label": "truck",
+   "track_id": null,
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 35,
+   "override_reason": null,
+   "rationale": "Düşük güvenli tespit (truck 0.45) görsel olarak doğrulandı: kamyon, kırmızı, örtülü kasalı (inspect_image, medium güven). Track yok, park halinde, üsse 2642 m. Ağır araç sınıflandırması teyit edildi; temel medium korunuyor.",
+   "evidence": [
+    "det:img_003464_006",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_004",
+   "label": "truck",
+   "track_id": "T0068",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 25,
+   "override_reason": null,
+   "rationale": "Truck 0.88, track T0068; son 60 dk'da üsten 1085 m uzaklaşmış (168° açı), dolaşma düşük. Diğer kamyonlarla yalnızca son noktada buluşuyor, koordinasyon sinyali yok. Temel medium korunuyor; izlemeye devam edilmeli.",
+   "evidence": [
+    "det:img_003464_004",
+    "track:T0068",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_003464_005",
+   "label": "van",
+   "track_id": "T0055",
+   "risk_level": "low",
+   "baseline_level": "low",
+   "baseline_score": 10,
+   "override_reason": null,
+   "rationale": "Van 0.50 (alt: car 0.36), track T0055; son 60 dk'da üsten 1562 m uzaklaşıyor (6 hareketin 4'ü uzaklaşan). Dolaşma 3.6 izlenmeye değer ama ağır araç değil ve üsten uzaklaşıyor. Temel low korunuyor.",
+   "evidence": [
+    "det:img_003464_005",
+    "track:T0055",
+    "image:img_003464"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "Üsse yaklaşan üç kamyonun aynı noktada birleşmesi",
+   "risk_level": "high",
+   "rationale": "T0135 (ETA 37 dk), T0028 (ETA 38 dk) ve T0001 (ETA 53 dk) son 60 dakikada sırasıyla 4264 m, 4172 m ve 2993 m yaklaşarak üsse ~2610–2650 m mesafede aynı noktada birleşti. T0028–T0001 çifti 'converged_in_step' gösteriyor (4/4 aynı yönlü eşzamanlı hareket, chance_rate 0.053); T0135 ile olan ilişkiler bağımsız buluşma. Konvoy kanıtı olarak sunulmaz, ancak üç ağır aracın üsse benzer sürede kümelenmesi izlenmelidir.",
+   "evidence": [
+    "track:T0135",
+    "track:T0028",
+    "track:T0001",
+    "det:img_003464_002",
+    "det:img_003464_000",
+    "det:img_003464_001"
+   ]
+  },
+  {
+   "title": "R099 bölge raporu ile gözlem çelişkisi",
+   "risk_level": "medium",
+   "rationale": "R099 (11:30, official) 'Kuzey Yolu bolgesinde trafik akisi normal' diyor; rapor anında bölgede üsse tutarlı yaklaşan 1 araç (T0048) mevcut. Bu görüntüde ayrıca üsse 2612–2669 m mesafede 5 kamyon var. Resmi rapor gözlemle çelişiyor; bölge raporlarına olan güven sorgulanmalı.",
+   "evidence": [
+    "report:R099",
+    "track:T0048",
+    "det:img_003464_002"
+   ]
+  },
+  {
+   "title": "R101 sayım iddiasının tam doğrulanamaması",
+   "risk_level": "medium",
+   "rationale": "R101 (11:40, official) noktada 7 kamyon durduğunu bildiriyor; çekim anında 5 kamyon gözleniyor. 2000 m yarıçaplı geniş taramada (11:00–12:15) 9 takipli + 2 park halinde kamyon bulundu; sayım çürütülmüyor ama tam doğrulanamıyor. Stationary iddiası img_003464_003'te doğrulandı.",
+   "evidence": [
+    "report:R101",
+    "det:img_003464_003",
+    "det:img_003464_006"
+   ]
+  },
+  {
+   "title": "Konumsuz 'dost unsurlar' duyuruları riski düşürmüyor",
+   "risk_level": "low",
+   "rationale": "R122 ve R003 ('planlı tatbikat nedeniyle bölgede dost unsurlar bulunacak') konumsuz genel duyuru ve doğrulanamaz durumda; bu veri hiyerarşisine göre hiçbir aracın riskini düşürmez. Yaklaşan kamyonlar tatbikat gerekçesiyle hafifletilmemelidir.",
+   "evidence": [
+    "report:R122",
+    "report:R003"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R101",
+   "verdict": "partly_reliable",
+   "note": "Stationary iddiası doğrulandı (img_003464_003, 51 m); count iddiası kısmen — çekim anında 5 kamyon görüldü, geniş taramada (2000 m, 11:00–12:15) 9 takipli + 2 park halinde kamyon bulundu, 7 sayısı çürütülmüyor ama tam doğrulanamıyor."
+  },
+  {
+   "report_id": "R032",
+   "verdict": "reliable",
+   "note": "11:00'da bölgede olağandışı durum yoktu; o saatte tespit edilen araçlar bu değerlendirmeyi destekliyor (yaklaşan araçlar daha sonra gelmiştir)."
+  },
+  {
+   "report_id": "R072",
+   "verdict": "unverifiable",
+   "note": "İhbar doğrulanamıyor; gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R099",
+   "verdict": "partly_reliable",
+   "note": "'Trafik normal' beyanı, rapor anında bölgede üsse tutarlı yaklaşan T0048 ve bu görüntüdeki 5 kamyonla kısmen çelişiyor."
+  },
+  {
+   "report_id": "R122",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulanamaz ve araç risklerini düşürmez."
+  },
+  {
+   "report_id": "R003",
+   "verdict": "unverifiable",
+   "note": "Konumsuz genel duyuru; doğrulanamaz ve araç risklerini düşürmez."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:04:25+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "vehicles_in_area",
+    "args": "{\"lat\":39.9453,\"lon\":32.8582,\"radius_m\":2000,\"time_from\":\"11:00\",\"time_to\":\"12:15\",\"vehicle_type\":\"truck\"}",
+    "summary": "{\"query\": {\"lat\": 39.9453, \"lon\": 32.8582, \"radius_m\": 2000.0, \"window\": \"11:00–12:15\", \"vehicle_type\": \"truck\"}, \"tracked_count\": 9, \"tracked\": [{\"track_id\": \"T0135\", \"label\": \"truck\", \"detection_id\": \"img_003464_002\", \"image_id\": \"img_003…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_003464\",\"question\":\"Bu araç kamyon mu? Tipi ve boyutu nedir, yüklü veya örtülü bir kasa var mı?\",\"vehicle_id\":\"img_003464_006\"}",
+    "summary": "{\"image_id\": \"img_003464\", \"target\": \"img_003464_006 (truck, güven 0.45)\", \"crop_px\": [866, 66, 1322, 522], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"truck\", \"color\": \"kirmizi\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"E…"
+   },
+   {
+    "iteration": 1,
+    "tool": "co_movement",
+    "args": "{\"track_ids\":[\"T0135\", \"T0028\", \"T0001\", \"T0068\"]}",
+    "summary": "{\"pairs\": [{\"tracks\": [\"T0135\", \"T0028\"], \"relation\": \"met_at_end\", \"common_window\": \"10:15–12:15\", \"dist_m\": {\"min\": 68, \"max\": 2981, \"end\": 68}, \"synchronous_moves\": 3, \"same_direction_moves\": 3, \"chance_rate\": 0.188}, {\"tracks\": [\"T0135\"…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 12463,
+   "output": 4494,
+   "reasoning": 1620
+  },
+  "cost_usd": 0.003356,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 112.4
+ }
+}

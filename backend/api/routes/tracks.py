@@ -45,6 +45,17 @@ def list_tracks():
                            "consistent_approach": k.consistent_approach,
                            "risk_level": _vehicle_risk(tr.image_id, tr.id)})
         return jsonify({"time": fmt_hhmm(t), "points": points})
+    if request.args.get("all"):
+        # Tüm gün oynatma: 226 track'in noktaları tek istekte (~5,6 bin nokta)
+        items = []
+        for tr in ctx.repo.tracks():
+            k = ctx.kinematics[tr.id]
+            items.append({"track_id": tr.id, "image_id": tr.image_id, "label": ctx.label_of_track(tr.id),
+                          "risk_level": _vehicle_risk(tr.image_id, tr.id),
+                          "consistent_approach": k.consistent_approach,
+                          "circling": k.circling, "circling_window": k.circling_window,
+                          "points": [{"time": p.time, "lat": p.lat, "lon": p.lon} for p in tr.points]})
+        return jsonify({"items": items})
     if "image_id" in request.args:
         image_id = request.args["image_id"]
         tracks = ctx.repo.tracks_for_image(image_id)

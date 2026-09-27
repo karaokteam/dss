@@ -1,0 +1,217 @@
+{
+ "image_id": "img_004530",
+ "capture_time": "10:45",
+ "zone": "Guney Kapisi Yaklasimi",
+ "overall_risk": "medium",
+ "summary": "Güney Kapısı Yaklaşımı'nda dört araç üsse hızla yaklaşıyor (ETA 26–35 dk), iki araç ise üsse 1655–1726 m mesafede 2 saattir hareketsiz bekliyor. R049'un 'planlı ikmal, kimlik teyitli' dost iddiası doğrulanamıyor ve rapor noktasında görsel teyitle track'siz bir otomobil bulundu; bu, dost kimlik iddiasıyla gizlenen bir olasılık olarak dikkat gerektiriyor. R134'ün kamyon iddiası ve R017'in 'ağır araç yok' bölge raporu da gözlemle çelişiyor.",
+ "vehicles": [
+  {
+   "vehicle_id": "img_004530_000",
+   "label": "van",
+   "track_id": "T0016",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0016, üsse 1726 m'de 120 dakikadır hareketsiz (son 60 dk Δ+6 m, 0 hareket). R095'in 'hareketsiz panelvan' iddiası DOĞRULANDI (14 m mesafeyle); R134'ün '1 kamyon' iddiası ÇELİŞKİLİ — görsel inceleme (image:img_004530) aracın gri renkli panelvan olduğunu, kamyon olmadığını doğruladı. Yakın bekleme + çelişen resmi rapor nedeniyle medium temel seviye korunuyor.",
+   "evidence": [
+    "det:img_004530_000",
+    "track:T0016",
+    "report:R095",
+    "report:R134",
+    "image:img_004530"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_001",
+   "label": "car",
+   "track_id": "T0209",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0209, 2 saatte üsse 6238 m'den 1700 m'ye yaklaştı; son 60 dakikada 2917 m (5 yaklaşan/2 uzaklaşan hareket) ve şu an 50 dakikadır üsse 1700 m'de duruyor. Hızlı yaklaşma + yakın bekleme kombinasyonu temel medium seviyesini doğruluyor.",
+   "evidence": [
+    "det:img_004530_001",
+    "track:T0209"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_003",
+   "label": "car",
+   "track_id": "T0151",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0151, 2 saatte 7007 m'den 1759 m'ye (son 60 dk Δ-3918 m, 6/1 hareket), ETA 27 dk, son hareket üsse 0° açıyla. Hızlı ve hedefe yönelik yaklaşma; temel medium uygun.",
+   "evidence": [
+    "det:img_004530_003",
+    "track:T0151"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_004",
+   "label": "car",
+   "track_id": "T0165",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0165, 2 saatte 5774 m'den 1655 m'ye (son 60 dk Δ-3874 m, 5/2 hareket), ETA 26 dk, dolaşma 2.5, son hareket üsse 9° açıyla. Hızlı yaklaşma ve kısa varış süresi; temel medium korunuyor.",
+   "evidence": [
+    "det:img_004530_004",
+    "track:T0165"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_005",
+   "label": "car",
+   "track_id": "T0089",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 40,
+   "override_reason": null,
+   "rationale": "Track T0089, 2 saatte 4188 m'den 1728 m'ye (son 60 dk Δ-2971 m, 5/3 hareket), ETA 35 dk, dolaşma 2.2. Hızlı yaklaşma; temel medium korunuyor.",
+   "evidence": [
+    "det:img_004530_005",
+    "track:T0089"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_002",
+   "label": "car",
+   "track_id": "T0218",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Track T0218, üsse 1655 m'de 120 dakikadır hareketsiz (son 60 dk Δ+13 m). Bu görüntüdeki en yakın duran nokta; ayrıca R049'un anlattığı 'planlı ikmal aracı' için 150 m içindeki adaylardan biri (106 m) ancak R049'un kimlik teyidi ÇELİŞKİLİ olduğundan dost iddiası bu araca bağlanamıyor. Uzun süreli yakın bekleme nedeniyle temel medium uygun.",
+   "evidence": [
+    "det:img_004530_002",
+    "track:T0218",
+    "report:R049"
+   ],
+   "source": "agent"
+  },
+  {
+   "vehicle_id": "img_004530_006",
+   "label": "car",
+   "track_id": "T0006",
+   "risk_level": "medium",
+   "baseline_level": "medium",
+   "baseline_score": 30,
+   "override_reason": null,
+   "rationale": "Track T0006, tip tespiti belirsiz (car 0.74, van alt 0.19) ve dolaşma 4.1 ile 8 harekette yanal loitering örüntüsü gösteriyor; üsse 1690 m. Belirsiz tip + dolanan hareket temel medium seviyesini destekliyor.",
+   "evidence": [
+    "det:img_004530_006",
+    "track:T0006"
+   ],
+   "source": "agent"
+  }
+ ],
+ "attention_items": [
+  {
+   "title": "R049 dost/planlı ikmal iddiası doğrulanamıyor — noktada track'siz araç",
+   "risk_level": "medium",
+   "rationale": "R049 (09:45, official) 'kimlik teyidi yapılmış planlı ikmal aracı' diyor; ancak rapor koordinatının 60 m yakınında track yok (en yakın track 106 m) ve kimlik teyidi ÇELİŞKİLİ. Görsel inceleme (image:img_004530, 39.90639N 32.85084E) o noktada track'siz, üsse doğru hareket eden beyaz bir otomobil gösteriyor (yüksek güven). Tespit kaydına girmemiş bir aracın, çelişen bir dost kimlik iddiasıyla anılıyor olması gizleme/yanlış kimliklendirme şüphesi yaratıyor; bu araç izlenmeli ve kimliği bağımsız doğrulanmalı.",
+   "evidence": [
+    "report:R049",
+    "image:img_004530",
+    "track:T0218",
+    "track:T0016"
+   ]
+  },
+  {
+   "title": "R134 kamyon iddiası hem kayıt hem görsel ile çelişiyor",
+   "risk_level": "medium",
+   "rationale": "R134 (09:15, official) '1 kamyon' bildiriyor; bölgedeki eşleşen track T0016 van ve görsel inceleme (image:img_004530) aracın gri panelvan olduğunu, yük/örtü sinyali vermediğini doğruladı. İddia ÇELİŞKİLİ; resmi bir kaynağın tipi yanlış bildirmesi ya bölge durumu hakkında haber kaynaklarının güvenilirliğini ya da bir araç tipini kasıtlı yanlış bildirme ihtimalini düşündürüyor. Anlatılan kamyonun başka bir yerde olup olmadığı belirsiz.",
+   "evidence": [
+    "report:R134",
+    "det:img_004530_000",
+    "track:T0016",
+    "image:img_004530"
+   ]
+  },
+  {
+   "title": "R017 bölge raporu gözlemle çelişiyor",
+   "risk_level": "medium",
+   "rationale": "R017 (10:20, official) 'bölgede ağır araç hareketi yok' diyor; ancak rapor anında bölgede 1 ağır araç kaydı var (T0174) ve ÇELİŞKİLİ. Bu, bölge raporlarının bu sektördeki gözlemlerle tutarsız olduğunu gösteriyor; resmi raporlara dayalı kimlik/durum varsayımlarına ek temkin gerekli.",
+   "evidence": [
+    "report:R017",
+    "track:T0174"
+   ]
+  },
+  {
+   "title": "Üsse hızlı yaklaşan 4 araç ve yakın bekleme örüntüsü",
+   "risk_level": "medium",
+   "rationale": "T0209, T0151, T0165, T0089 son 60 dakikada 2917–3918 m yaklaşımla üsse 26–35 dakikalık ETA ile geliyor; ayrıca T0016 ve T0218 üsse 1655–1726 m'de 120 dakikadır hareketsiz bekliyor. Kanıt dosyasında 'TUTARLI YAKLAŞMA' işaretli araç yok (yaklaşan/uzaklaşan hareketler 5-6/1-3 oranında) ve koordinasyon kanıtı bulunmadığından konvoy iddiası ileri sürülmüyor; ancak kapı yaklaşımında eşzamanlı çoklu varış ve yakın bekleme izlenmelidir.",
+   "evidence": [
+    "track:T0209",
+    "track:T0151",
+    "track:T0165",
+    "track:T0089",
+    "track:T0016",
+    "track:T0218"
+   ]
+  }
+ ],
+ "report_notes": [
+  {
+   "report_id": "R095",
+   "verdict": "reliable",
+   "note": "Hareketsiz panelvan iddiası T0016 ile (14 m) doğrulandı; görsel inceleme de panelvan tipini teyit etti."
+  },
+  {
+   "report_id": "R134",
+   "verdict": "unreliable",
+   "note": "Kamyon iddiası ÇELİŞKİLİ: noktadaki araç T0016 bir van; görsel inceleme kamyon olmadığını doğruladı."
+  },
+  {
+   "report_id": "R049",
+   "verdict": "unverifiable",
+   "note": "Kimlik teyidi ÇELİŞKİLİ ve anlatılan araç bulunamadı; motion doğrulanamaz. Noktada track'siz bir otomobil görüldü ancak dost ikmal bağlantısı kanıtlanamadı — sahte ya da yanlış demek için yeterli kanıt yok, gözlemle desteklenmiyor."
+  },
+  {
+   "report_id": "R017",
+   "verdict": "unreliable",
+   "note": "'Ağır araç yok' iddiası ÇELİŞKİLİ: rapor anında bölgede 1 ağır araç kaydı (T0174) var."
+  }
+ ],
+ "trace": {
+  "model": "glm-5.3-flash",
+  "prompt_version": "0d4fd6ade975",
+  "created_at": "2026-09-27T02:00:45+00:00",
+  "reasoning_effort": "high",
+  "iterations": 2,
+  "tool_calls": [
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004530\",\"question\":\"Bu araç bir panelvan mı yoksa kamyon mu? Üzerinde yük/örtü var mı?\",\"vehicle_id\":\"img_004530_000\"}",
+    "summary": "{\"image_id\": \"img_004530\", \"target\": \"img_004530_000 (van, güven 0.94)\", \"crop_px\": [68, 35, 936, 765], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"van\", \"color\": \"gri\", \"cargo\": \"covered\", \"occluded\": false, \"answer\": \"Araç panelv…"
+   },
+   {
+    "iteration": 1,
+    "tool": "inspect_image",
+    "args": "{\"image_id\":\"img_004530\",\"lat\":39.90639,\"lon\":32.85084,\"question\":\"Bu konumda R049 raporunun anlattığı üsse doğru ilerleyen bir otomobil görülüyor mu? Track'siz bir araç var mı?\"}",
+    "summary": "{\"image_id\": \"img_004530\", \"target\": \"nokta 39.90639, 32.85084\", \"crop_px\": [1056, 492, 1216, 652], \"result\": {\"vehicle_present\": true, \"vehicle_type\": \"car\", \"color\": \"beyaz\", \"cargo\": \"unknown\", \"occluded\": false, \"answer\": \"Evet, noktada…"
+   }
+  ],
+  "repairs": 0,
+  "tokens": {
+   "input": 10327,
+   "output": 3419,
+   "reasoning": 678
+  },
+  "cost_usd": 0.002875,
+  "cached_calls": 0,
+  "fallback": false,
+  "duration_s": 83.7
+ }
+}

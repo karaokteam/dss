@@ -85,25 +85,27 @@ Görev açıkça şunu söylüyor: *"Çelişki varsa raporu değil tespitinizi e
   ETA yalnızca araç hâlâ hareket ediyorsa verilir; 30 dakikadan uzun süredir duran araç için ortalama hız yanıltıcıdır.
 
 ### 3.8 Raporların doğrulama sonuçları (Katman 1, LLM'siz)
-Her rapor iddiası, raporun anlattığı araçla ("özne") karşılaştırıldı. Özneler iki kaynaktan gelir:
-**rapor saatinde** koordinata ≤ 60 m olan track'ler ve görüntüde koordinata yakın, track'i olmayan, güvenli (≥ 0,30) tespitler (park halinde).
+**Rapor koordinatı, anlattığı aracın GÖRÜNTÜDEKİ konumudur** (5 ondalıklı koordinatların 31/35'i görüntüdeki bir araca ≤ 3 m; rapor saatindeki konuma yakın olan 0/35; görev tanımındaki örnek de böyle eşleştirir). Özne görüntüde aranır (tolerans: 5 hane ~3 m, 4 hane ~12 m; tip uyuşan tercih edilir); iddia ise aracın **rapordan önceki 30 dakikadaki** davranışıyla yargılanır. Rapordan sonra çekime kadar üsse yaklaşma ayrıca bayraklanır.
 
 | Kalıp | Örnek | Sonuç |
 |---|---|---|
-| **Sayı şişirme** | R010 / R018 "5 kamyon durdu" → 1 kamyon; R101 "7 kamyon" → 1 park halinde kamyon | `partial` |
-| **Tip yanlış** | R130 "1 ağır araç" → yalnızca otomobiller (img_003201) | `contradicted` |
-| **Sahte dost / ikmal hikâyesi** | R083 "üsse ilerleyen otomobil, planlı ikmal" → yakında yalnızca duran kamyon T0045; R129 "üsse ilerleyen panelvan" → araçlar duruyor | `contradicted` |
-| **Anlatılan araç yok** | R007 "üsse gelen otomobil bize bağlı" (14:15) → orada araç yok; koordinattaki otomobil T0131 oraya ancak 15:00–15:15'te geliyor | dost iddiası `contradicted` |
-| **Doğru raporlar** | R053 "kamyon bir saatten uzun süredir yerinden ayrılmadı" → T0045 kayıt başından beri durağan; R019 "otomobil hareketsiz" | `verified` |
-| **Bölge raporu çelişkisi** | R092 "Kuzeydoğu Kavşağı'nda ağır araç yok" → bölge görüntülerinde 2 ağır araç | `contradicted` |
+| **Güven verici iddia, sonra yaklaşan araç** | R126 "hareketleri olağan" (12:35) → T0122 kamyonu o an duruyor, sonra üsse 4,3 km yaklaşıyor | `partial` + şüphe |
+| **Dost iddiası, yaklaşan araç** | R113 "bize bağlı" → T0124 30 dk'da üsse 3,2 km yaklaşmış; R129 "planlı ikmal" → T0156 yaklaşıyor | `partial` + şüphe |
+| **Ters yön** | R007 "üsse gelen dost otomobil" → T0131 rapordan önce 1,9 km uzaklaşıyor; R083 → T0226 1,1 km uzaklaşıyor | `contradicted` |
+| **Sayı şişirme** | R018 "5 kamyon" → 1 (`contradicted`); R094 "2 kamyon" → 1, R101 "7 kamyon" → 5 (`partial`) | |
+| **Kısmi kapsama** | R053 "bir saatten uzun süredir" → T0045 kaydın kapsadığı 35 dk boyunca durağan, kalanı veride yok | `partial` |
+| **Bölge raporu çelişkisi** | R017 "Güney Kapısı'nda ağır araç yok" (10:20) → T0174 kamyonu; R042 "Kuzeybatı'da olağandışı yok" (15:00) → T0034 kamyonu üssün etrafında dönüyor | `contradicted` |
+| **Yokluk** | R092 / R100 "ağır araç yok" → kayıtta yok; park halindeki araçların track'i olmayabilir | `partial` |
 
-Özet: 18 dost/ikmal iddiasının **16'sı** fiziksel gözlemle çelişiyor; kalan 2'si renk iddiası içerdiği için görsel kontrol bekliyor (`partial`, Step 8'de vision). Yani bu veride dost iddiaları **risk düşürücü değil, şüphe sinyali**.
+Özet: **dost/ikmal iddialarının 17/18'i üsse yaklaşan (rapordan önce ya da sonra) bir araca iliştirilmiş.** Kimlik veriden teyit edilemez; bu veride dost iddiaları **risk düşürücü değil, şüphe sinyali**. Tüm raporlar: 28 doğrulandı, 38 kısmen, 22 çelişkili, 49 doğrulanamaz.
+Ekibin elle etiketlediği 23 raporla (`eval/gold_reports.json`, `python -m backend.cli eval`): **22/23 uyum**.
 
 ### 3.9 Temel risk sıralaması (kural tabanlı, agent öncesi)
-- 327 araç (323 tespit + 4 tespitsiz track): **1 kritik, 19 yüksek, 77 orta, 230 düşük**.
-- En üstte **T0122** (img_000860, 14:10): 2 saatte her hareketi üsse yaklaştıran, 6 km'den 1,6 km'ye gelen **kamyon** → kritik (75).
-- Ardından: T0020 / T0184 / T0091 (üsse 1,6–1,9 km'ye tutarlı yaklaşan otomobiller), img_006388 ve img_003464'teki **kamyon grupları** (100 m içinde 3–6 ağır araç), img_005368'de "dost otomobil" hikâyesiyle çelişen, 2 saattir duran iki kamyon.
-- Ağırlık ilkesi: fiziksel tehdit (yakınlık, tutarlı yaklaşma, ağır araç) rapor çelişkisinden ağır basar; çelişki tek başına kritik üretmez.
+- 327 araç (323 tespit + 4 tespitsiz track): **6 kritik, 20 yüksek, 68 orta, 233 düşük**.
+- En üstte **T0122** (img_000860, 14:10, 85): 2 saatte her hareketi üsse yaklaştıran, 6 km'den 1,6 km'ye gelen **kamyon**; üstelik 12:35'te "hareketleri olağan" raporu bu araca iliştirilmiş.
+- **Üssün etrafında dönen 5 araç** (70–85): T0043 (10:15–10:25, 630 m), T0158, T0172, T0198 otomobil ve T0034 kamyon (14:45–15:05, 527 m). Dönüş görüntüler arasında olur; yalnızca hareket kaydından bulunur.
+- Ardından: T0095 / T0174 kamyonları, img_003464'teki kamyon grubu, tutarlı yaklaşan otomobiller T0020 / T0184 / T0091.
+- Ağırlık ilkesi: fiziksel tehdit (dönme, yakınlık, tutarlı yaklaşma, ağır araç) raporlardan ağır basar; hiçbir rapor riski düşürmez.
 
 ### 3.10 Kaçırılan araçlar neden kaçırıldı?
 Tespitsiz 4 track'in hepsinin tam konumunda modelin eşik altı (0,04–0,09) bir `car` tahmini var. Görsel teyitte T0057'nin bir reklam panosunun kenarında, T0188'in ise bir ağacın altında kaldığı görüldü; T0046 ağaç altında yarı görünür durumda.

@@ -1,27 +1,21 @@
-# Üs Savunma DSS — Run:ai "New Workload via YAML" (Kubernetes Deployment, GPU gerekmez)
-#   1) namespace satırını kendi projenle değiştir: runai-<proje-adı>
-#   2) İsteğe bağlı LLM (sohbet asistanı, yeniden değerlendirme): aşağıdaki LLM_API_KEY
+# Üs Savunma DSS — Run:ai "Via YAML" (Knative Service: kendi adresi olur, parola yok, GPU gerekmez)
 # Açılışta runai dalı klonlanır, kurulur, arayüz derlenir ve 8080'de sunulur (ilk açılış ~3-5 dk).
-apiVersion: apps/v1
-kind: Deployment
+# Adres: https://dss-runai-trubaai.<küme alan adı>  (Run:ai iş listesinde "Connection(s)" sütunu)
+apiVersion: serving.knative.dev/v1
+kind: Service
 metadata:
   name: dss
-  namespace: runai-PROJE_ADI
-  labels:
-    app: dss
+  namespace: runai-trubaai
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: dss
   template:
     metadata:
-      labels:
-        app: dss
+      annotations:
+        autoscaling.knative.dev/min-scale: "1"            # hep açık, soğuk başlatma yok
+        autoscaling.knative.dev/max-scale: "1"            # tek kopya: işler ve önbellekler bellekte
+        serving.knative.dev/progress-deadline: "1200s"    # ilk kurulum + arayüz derlemesi için süre
     spec:
       containers:
-        - name: dss
-          image: nikolaik/python-nodejs:python3.12-nodejs22
+        - image: nikolaik/python-nodejs:python3.12-nodejs22
           command: ["bash", "-c"]
           args:
             - git clone --depth 1 --branch runai https://github.com/karaokteam/dss.git /tmp/dss && exec bash /tmp/dss/deploy/start.sh
@@ -32,22 +26,12 @@ spec:
               value: https://berriailitellm-databasev1826rc3-production-d691.up.railway.app/v1
             - name: LLM_MODEL
               value: glm-5.3-flash
-            # Anahtar yoksa uygulama LLM'siz çalışır (kural sonuçları + repodaki ajan çıktıları).
-            # Eklemek için: "dss-llm" adlı secret (anahtar: LLM_API_KEY) ya da bu bloğu value: "<anahtar>" ile değiştir.
-            - name: LLM_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: dss-llm
-                  key: LLM_API_KEY
-                  optional: true
           ports:
-            - name: http
-              containerPort: 8080
+            - containerPort: 8080
           readinessProbe:
             httpGet:
               path: /api/health
-              port: 8080
-            periodSeconds: 10
+            periodSeconds: 5
           resources:
             requests:
               cpu: "2"

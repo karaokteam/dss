@@ -140,6 +140,15 @@ export default function Ops({ id, initialReport, initialTrack, initialMode = "ev
   const end = d ? toMin(d.img.capture_time) : 0;
   const start = end - 120;
 
+  // Olay satırlarındaki track kimlikleri için tüm izler bir kez yüklenir (tüm gün modu da bunu kullanır)
+  useEffect(() => { api.allTracks().then((r) => setAllTracks((cur) => cur ?? r.items)).catch(() => {}); }, []);
+  const tracksByImage = useMemo(() => {
+    const m: Record<string, { id: string; risk: Level | null }[]> = {};
+    for (const t of allTracks ?? []) (m[t.image_id] ??= []).push({ id: t.track_id, risk: t.risk_level });
+    for (const k in m) m[k].sort((a, b) => rank(a.risk) - rank(b.risk) || a.id.localeCompare(b.id));
+    return m;
+  }, [allTracks]);
+
   // Tüm gün aralığı
   const gStart = overview ? toMin(overview.time_range.from) : 0;
   const gEnd = overview ? toMin(overview.time_range.to) : 0;
@@ -248,6 +257,9 @@ export default function Ops({ id, initialReport, initialTrack, initialMode = "ev
   if (err) return <div className="page">Hata: {err} — Flask API (port 5000) çalışıyor mu?</div>;
   if (!overview) return <div className="page muted">Yükleniyor…</div>;
   const selectedSummary = overview.images.find((i) => i.id === id) ?? null;
+  // Aramadan seçilen iz (#/image/<id>?track=…): haritada yalnızca bu araç ve onunla ilgili raporlar
+  const trackFocus = mode === "event" ? initialTrack ?? null : null;
+  const clearTrackFocus = () => { if (id) window.location.hash = `#/image/${id}`; };
   // Vurgulanan dilim: haritada seçilen bölge (rengi = o bölgedeki en yüksek olay riski), yoksa seçili olayın bölgesi
   const zoneMax = (name: string) => overview.images.filter((i) => i.zone === name)
     .reduce<Level>((best, i) => (rank(i.max_risk) < rank(best) ? i.max_risk : best), "low");
@@ -268,13 +280,16 @@ export default function Ops({ id, initialReport, initialTrack, initialMode = "ev
         <RulePanel />
         <div className="flex-1 min-h-0">
           <EventList images={overview.images} selected={id} onSelect={(x) => (window.location.hash = `#/image/${x}`)}
-            zone={zoneFilter} onClearZone={() => setZoneFilter(null)} />
+            zone={zoneFilter} onClearZone={() => setZoneFilter(null)}
+            trackFocus={trackFocus} onClearTrack={clearTrackFocus} tracksByImage={tracksByImage}
+            onSelectTrack={(img, tid) => (window.location.hash = `#/image/${img}?track=${tid}`)} />
         </div>
       </aside>
 
       <main className="relative min-h-0">
         <OpsMap overview={overview} selected={mode === "event" ? selectedSummary : null}
-          tracks={mode === "event" ? d?.tracks ?? [] : []} reports={mode === "event" ? d?.reports ?? [] : []}
+          tracks={mode === "event" ? (d?.tracks ?? []).filter((t) => !trackFocus || t.track_id === trackFocus) : []}
+          reports={mode === "event" ? (d?.reports ?? []).filter((r) => !trackFocus || r.links.tracks.includes(trackFocus)) : []}
           time={time} selectedTrack={selTrackId} focus={focus} fitTo={fitTo}
           onSelectImage={(x) => (window.location.hash = `#/image/${x}`)} onSelectTrack={selectTrackOnMap} onSelectReport={focusReport}
           highlight={highlight?.tracks ?? []}
@@ -286,6 +301,13 @@ export default function Ops({ id, initialReport, initialTrack, initialMode = "ev
         {band && (
           <div className="absolute top-3 left-1/2 -translate-x-1/2 z-[890] max-w-[70%] bg-slate-950/85 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 text-center">
             {band}
+          </div>
+        )}
+
+        {trackFocus && !highlight && (
+          <div className="absolute top-12 left-1/2 -translate-x-1/2 z-[900] bg-amber-950/90 border border-amber-600 rounded-lg px-3 py-1.5 text-xs flex items-center gap-3">
+            <span>🔎 <b>{trackFocus}</b> · yalnızca bu araç ve onunla ilgili raporlar gösteriliyor</span>
+            <button className="!py-0 !px-1.5 text-[10px]" onClick={clearTrackFocus}>tümünü göster</button>
           </div>
         )}
 
